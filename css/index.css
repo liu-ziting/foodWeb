@@ -1,0 +1,94 @@
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,
+cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,
+caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: none;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #f5f5f5;
+	width: 100%;
+}
+
+ol,
+ul {
+	list-style: none;
+}
+
+img {
+	object-fit: cover;
+	display: block;
+	border: none;
+}
+
+a:link {
+	color: inherit;
+	text-decoration: none;
+}
+
+a:hover {
+	color: inherit;
+	text-decoration: none;
+}
+
+a:visited {
+	color: inherit;
+	text-decoration: none;
+}
+
+blockquote,
+q {
+	quotes: none;
+}
+
+i,
+em {
+	font-style: normal;
+}
+
+.clear {
+	clear: both;
+}
+
+.clear {
+	clear: both;
+}
+
+button {
+	outline: none !important;
+	border: none;
+	cursor: pointer;
+}
+
+.hide {
+	display: none;
+}
+
+.centered {
+	width: 1170px;
+	margin: 0 auto;
+	overflow: hidden;
+	min-height: 800px;
+}
+.row {
+	padding: 0;
+	margin: 0;
+}
+
+.layui-layer-msg {
+	width: 210px;
+}
+
+.paging {
+	width: 100%;
+	text-align: center
+}
+
+.layui-laypage .layui-laypage-curr .layui-laypage-em {
+	background-color: #195edd;
+}
