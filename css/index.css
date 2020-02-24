@@ -204,7 +204,7 @@ header nav  ul .active i{
     margin-right: 5px;
 }
 .title{
-	padding: 30px 0;
+	padding: 50px 0;
 }
 .title p{
 	font-size: 24px;
@@ -215,4 +215,146 @@ header nav  ul .active i{
 	font-size: 14px;
 	color: #666666;
 	padding-left: 18px;
+	font-weight: normal;
+}
+.employee{
+	padding-bottom: 50px;
+	overflow: hidden;
+}
+.course{
+	
+}
+.course li{
+	width: 33.3%;
+	height: 300px;
+	float: left;
+	cursor: pointer;
+	position: relative;
+}
+.course li .kbox{
+	width: 336px;
+	height: 255px;
+	border: 1px solid #e7e6ed;
+	position: absolute;
+	top: 43px;
+	left: 43px;
+	z-index: 8;
+	padding: 22px;
+	transition: all 0.3s;
+}
+.course li .kbox .right{
+	padding-left: 125px;
+	height: 150px;
+	position: relative;
+	transition: all 0.3s;
+}
+.course li .kbox .right h2{
+	font-size: 16px;
+	color: #333333;
+	margin-bottom: 20px;
+}
+.course li .kbox .right p{
+	font-size: 12px;
+	color: #333333;
+}
+.course li .kbox .right i{
+	font-size: 12px;
+	color: #666666;
+	position: absolute;
+	bottom: 0;
+	line-height: 20px;
+}
+.course li .kbox .timeBox{
+	width: 100%;
+	height: 45px;
+	border-top: 1px solid #e7e6ed;
+	margin-top: 35px;
+	transition: all 0.3s;
+}
+.course li .kbox .timeBox span{
+	display: block;
+	float: left;
+	line-height: 45px;
+	width: 50%;
+	color: #666666;
+	font-size: 12px;
+}
+.course li .kbox .timeBox span img{
+	display: block;
+	float: left;
+	margin-top: 13px;
+	margin-right: 8px;
+}
+.course li .gbox{
+	width: 178px;
+	height: 226px;
+	position: absolute;
+	border-radius: 3px;
+	z-index: 9;
+	transition: all 0.3s;
+}
+.course li:nth-child(1) .gbox{
+	background: url(../img/bk1.png);
+}
+.course li:nth-child(2) .gbox{
+	background: url(../img/bk2.png);
+}
+.course li:nth-child(3) .gbox{
+	background: url(../img/bk3.png);
+}
+.course li .gbox h1{
+	font-size: 18px;
+	color: #ffffff;
+	width: 100%;
+	text-align: center;
+	font-weight: bold;
+	margin: 85px 0 15px 0;
+}
+.course li .gbox p{
+	font-size: 12px;
+	color: #ffffff;
+	width: 100%;
+	text-align: center;
+	opacity: .8;
+}
+.course li .gbox a{
+	font-size: 12px;
+	color: #ffffff;
+	width: 100%;
+	text-align: center;
+	display: block;
+	margin-top: 40px;
+	opacity: .8;
+}
+.course li:hover .kbox{
+    width: 95%;
+	height: 300px;
+	top: 0;
+	left: 0;
+	transition: all 0.3s;
+	padding-top: 10px;
+	box-shadow:0px 8px 10px 0px #e6e6e6 ;
+	-webkit-box-shadow:0px 8px 10px 0px #e6e6e6 ;
+	-moz-box-shadow:0px 8px 10px 0px #e6e6e6 ;
+}
+.course li:hover .kbox .right{
+	padding-left: 186px;
+	height: 230px;
+	transition: all 0.3s;
+}
+.course li:hover .timeBox{
+	margin-top: 13px;
+	transition: all 0.3s;
+}
+.course li:hover .gbox{
+	margin-top: 12px;
+	margin-left: 22px;
+	transition: all 0.3s;
+}
+
+
+.manager{
+	width: 100%;
+	height: 470px;
+	background-color: #f7f8fa;
 }
