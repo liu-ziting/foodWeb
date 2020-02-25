@@ -231,7 +231,10 @@
 			<section>
 				<div class="left">
 					<div class="videoBox">
-						
+						<div class="videosamplex">
+							<video id="videoplayer"
+								src="http://img.ksbbs.com/asset/Mon_1703/05cacb4e02f9d9e.mp4"></video>
+						</div>
 					</div>
 					<div class="synopsis">
 						<h1>食品生产领域从业人员培训课 - 食品生产与卫生基础知识01 <a href="#">试听课程</a></h1>
@@ -279,7 +282,7 @@
 			<section>
 				<div class="left">
 					<div class="imgBox">
-						
+
 					</div>
 					<div class="textBox">
 						<time>新闻 | 2019年11月21日</time>
@@ -351,6 +354,7 @@
 	<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
 	<script type="text/javascript" src="../layui/layui.all.js"></script>
 	<script type="text/javascript" src="../js/swiper.min.js"> </script>
+	<script type="text/javascript" src="../ckplayer/ckplayer.min.js"></script>
 	<script type="text/javascript" src="../js/main.js"></script>
 	<script>
 		//轮播图
@@ -366,6 +370,22 @@
 				delay: 3000
 			},
 		});
+
+		//视频
+		$(".information .right li").click(function(){
+			$(this).addClass("active").siblings().removeClass("active")
+		});
+		
+		var videoObject = {
+			container: '.videosamplex',//“#”代表容器的ID，“.”或“”代表容器的class
+			variable: 'player',//该属性必需设置，值等于下面的new chplayer()的对象
+			poster: 'pic/wdm.jpg',
+			mobileCkControls: true,//是否在移动端（包括ios）环境中显示控制栏
+			mobileAutoFull: false,//在移动端播放后是否按系统设置的全屏播放
+			h5container: '#videoplayer',//h5环境中使用自定义容器
+			video: 'http://img.ksbbs.com/asset/Mon_1703/05cacb4e02f9d9e.mp4'//视频地址
+		};
+		var player = new ckplayer(videoObject);
 	</script>
 </body>
 
