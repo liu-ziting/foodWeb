@@ -178,7 +178,7 @@ header nav  ul .active i{
 /* 首页轮播图 */
 .banner img{
 	width: 100%;
-	height: 545px;
+	height: auto;
 }
 .notice{
 	width: 100%;
@@ -203,6 +203,7 @@ header nav  ul .active i{
 	margin-top: 5px;
     margin-right: 5px;
 }
+/* 公告标题 */
 .title{
 	padding: 50px 0;
 }
@@ -221,9 +222,7 @@ header nav  ul .active i{
 	padding-bottom: 50px;
 	overflow: hidden;
 }
-.course{
-	
-}
+/* 模块 */
 .course li{
 	width: 33.3%;
 	height: 300px;
@@ -357,4 +356,315 @@ header nav  ul .active i{
 	width: 100%;
 	height: 470px;
 	background-color: #f7f8fa;
+}
+.information section{
+	width: 100%;
+	height: 580px;
+	border: 1px solid #E7E6ED;
+}
+.information section .left{
+	width: 868px;
+	height: 470px;
+	float: left;
+}
+.information section .left .videoBox{
+	width:868px;
+	height:491px;
+	background:rgba(0,0,0,1);
+	position: relative;
+}
+.information section .left .videoBox:before {
+	content: "食品安全培训网";
+	font-family: "宋体";
+	font-size: 28px;
+	color: #8D8D8D;
+	background-color: #eeeeee;
+    top: 0;
+    text-align: center;
+    line-height: 491px;
+    width:100%;
+    position: absolute;
+    z-index: 9;
+}
+.information section .left .videoBox img{
+	width: 100%;
+	height: 100%;
+}
+.information section .left .synopsis{
+	width:868px;
+	height:90px;
+	padding: 23px 29px;
+}
+.information section .left .synopsis h1{
+	font-size:18px;
+	font-weight:bold;
+	color: #333333;
+	margin-bottom: 10px;
+}
+.information section .left .synopsis a{
+	font-size:18px;
+	color: #FE5409;
+	margin-left: 20px;
+	font-weight: normal;
+}
+.information section .left .synopsis span{
+	font-size:14px;
+	color: #333333;
+	margin-right: 49px;
+}
+.information section .left .synopsis span:last-child{
+	cursor: pointer;
+}
+.information section .right{
+	width: 330px;
+	height: 100%;
+	float: right;
+	padding: 23px 0 20px 18px;
+	border-left: 1px solid #E7E6ED;
+}
+.information section .right h1{
+	font-size: 16px;
+	color: #666666;
+	font-weight:bold;
+}
+.information section .right h1 span{
+	font-size: 12px;
+	color: #999999;
+	margin-left: 9px;
+	font-weight: normal;
+}
+.information section .right ul{
+	margin-top: 5px;
+}
+.information section .right ul li{
+	width: 100%;
+	border-bottom: 1px solid #E7E6ED;
+	padding: 23px 0;
+	cursor: pointer;
+}
+.information section .right ul li:last-child{
+	border: none;
+}
+.information section .right ul li span{
+	display: block;
+	float: left;
+	width:64px;
+	height:23px;
+	background:#DADEDD;
+	border-radius:12px;
+	text-align: center;
+	line-height:23px;
+	color: #999999;
+	font-size: 12px;
+}
+.information section .right ul li p{
+	font-size: 14px;
+	color: #999999;
+	margin-left: 76px;
+}
+.information section .right ul .active span{
+	background-color: #1CC39A;
+	color: #ffffff;
+}
+.information section .right ul .active p{
+	color: #000000;
+	font-weight: bold;
+}
+.information section .right button{
+	width:253px;
+	height:54px;
+	background:rgba(245,82,13,1);
+	border-radius:3px;
+	font-size:14px;
+	color: #ffffff;
+	display: block;
+	margin: 25px auto;
+}
+.foodInformation {
+	margin-bottom: 114px;
+	overflow: hidden;
+}
+.foodInformation section > div{
+	float: left;
+}
+.foodInformation section .left{
+	width:381px;
+	height:340px;
+	background:rgba(248,247,253,1);
+	float: left;
+}
+.foodInformation section .left .imgBox{
+	width:100%;
+	height:227px;
+	position: relative;
+}
+.foodInformation section .left .imgBox:before {
+	content: "食品安全培训网";
+	font-family: "宋体";
+	font-size: 20px;
+	color: #8D8D8D;
+	background-color: #eeeeee;
+    top: 0;
+    text-align: center;
+    line-height: 227px;
+    width:100%;
+    position: absolute;
+    z-index: 9;
+}
+.foodInformation section .left .imgBox img{
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.foodInformation section .left time{
+	font-size: 14px;
+	color: #666666;
+}
+.foodInformation section .left .textBox{
+	padding: 10px;
+}
+.foodInformation section .left .textBox p{
+	font-size: 16px;
+	font-weight:bold;
+	color: #333333;
+	margin-top: 8px;
+	line-height: 24px;
+}
+.foodInformation section .left .textBox a{
+	font-size: 12px;
+	color: #246EC9;
+	float: right;
+}
+.foodInformation section .middle {
+	width:381px;
+	height:340px;
+	margin: 0 32px;
+}
+.foodInformation section .middle ul{
+	border-bottom: 2px solid #E7E6ED;
+}
+.foodInformation section .middle ul li {
+	width: 100%;
+	height: 14px;
+	line-height: 14px;
+	margin-bottom: 14px;
+	cursor: pointer;
+	color: #333333;
+}
+.foodInformation section .middle ul li p{
+	font-size: 14px;
+	width: 280px;
+	float: left;
+	-webkit-line-clamp: 1;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+.foodInformation section .middle ul li span{
+	float: right;
+}
+.foodInformation section .middle a{
+	font-size: 12px;
+	color: #246EC9;
+	float: right;
+	margin-top: 5px;
+}
+.foodInformation section .middle ul li:hover{
+	color: #246EC9;
+}
+.foodInformation section .right{
+	width:374px;
+	height:340px;
+}
+.foodInformation section .right ul li{
+	width: 100%;
+	height: 102px;
+	background-color: #F4F1FE;
+	margin-bottom: 12px;
+	cursor: pointer;
+	position: relative;
+}
+.foodInformation section .right ul li img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.foodInformation section .right ul li:before {
+	content: "食品安全培训网";
+	font-family: "宋体";
+	font-size: 20px;
+	color: #8D8D8D;
+	background-color: #eeeeee;
+    top: 0;
+    text-align: center;
+    line-height: 102px;
+    width:100%;
+    position: absolute;
+    z-index: 9;
+}
+/* 公共底部 */
+.footer{
+	width: 100%;
+	height:165px;
+	background: url(../img/footer.png) no-repeat;
+	background-size: 100% 100%;
+	color: #ffffff;
+	padding: 29px 0 13px 0;
+}
+.footer .left{
+	width: 660px;
+	float: left;
+}
+.footer h1{
+	font-size: 16px;
+	font-weight: bold;
+	margin-bottom: 24px;
+}
+.footer .left p a{
+	font-size: 14px;
+	margin-right: 55px;
+}
+.footer .left p{
+	font-size: 12px;
+	opacity: .9;
+	margin-top: 17px;
+}
+.footer .right{
+	float: right;
+	opacity: .9;
+}
+.footer .right ul {
+	float: left;
+}
+.footer .right ul li{
+	margin-bottom: 10px;
+	font-size: 14px;
+}
+.footer .right ul li span{
+	width: 90px;
+	display: block;
+	float: left;
+}
+.footer .right ul li span img{
+	display: block;
+	float: left;
+	margin-top: 3px;
+	margin-right: 8px;
+}
+.footer .right .ewm{
+	float: left;
+	width: 138px;
+	height: 124px;
+	margin-left: 60px;
+	margin-top: -40px;
+}
+.footer .right .ewm img{
+	display: block;
+	margin: 0 auto;
+	margin-bottom: 10px;
+}
+.footer .right .ewm p{
+	font-size: 12px;
+	width: 100%;
+	text-align: center;
 }
