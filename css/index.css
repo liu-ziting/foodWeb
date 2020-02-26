@@ -671,3 +671,322 @@ header nav  ul .active i{
 	width: 100%;
 	text-align: center;
 }
+/* 登录 */
+.loginMain{
+	background: url(../img/loginBg.png) no-repeat;
+	background-size: 100% 100%;
+	width: 100%;
+	height: 72vh;
+	position: relative;
+}
+.loginMain section{
+	background: url(../img/loginBox.png) no-repeat;
+	background-size: 100% 100%;
+	width: 480px;
+	height: 480px;
+	margin: 0 auto;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -240px;
+	margin-top: -225px;
+	padding: 26px;
+}
+.loginMain section h1{
+	font-size: 18px;
+	color: #333333;
+	font-weight:bold;
+	width: 103px;
+	margin: 0 auto;
+	text-align: center;
+	border-bottom: 3px solid #397D47;
+	margin-top: 10px;
+	padding-bottom: 5px;
+}
+.loginMain section .qrCode{
+	width: 236px;
+	height: 236px;
+	border-radius: 236px;
+	display: block;
+	margin: 31px auto;
+	position: relative;
+}
+.loginMain section p{
+	font-size: 14px;
+	color: #333333;
+	width: 100%;
+	text-align: center;
+	line-height: 25px;
+}
+.loginMain section .qrCode:before {
+    content: "小程序码加载中...";
+    font-family: "宋体";
+    font-size: 20px;
+    color: #8D8D8D;
+    background-color: #eeeeee;
+    top: 0;
+	text-align: center;
+	border-radius: 236px;
+    line-height: 236px;
+    width: 100%;
+    position: absolute;
+    z-index: 9;
+}
+.loginMain section .qrCode img{
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+	position: absolute;
+}
+/* 个人中心 */
+.userMain {
+	background-color: #f2f3f4;
+	overflow: hidden;
+}
+.userMain section{
+	margin-top: 32px;
+}
+.sonBanner{
+	width: 100%;
+	height: 257px;
+}
+.sonBanner img{
+	width: 100%;
+	height: 257px;
+	display: block;
+}
+.userTitle{
+	font-size:24px;
+	color: #333333;
+	border-bottom: 1px solid #333333;
+	width: 100%;
+	overflow: hidden;
+	margin-bottom: 45px;
+}
+.userTitle span{
+	display: block;
+	float: left;
+	border-left: 8px solid #047BC7;
+	margin-bottom: 9px;
+	padding-left: 19px;
+}
+.userContent > div{
+	float: left;
+	margin-bottom: 90px;
+}
+.userContent .left{
+	width:285px;
+	height:678px;
+	background:rgba(255,255,255,1);
+	border:1px solid rgba(231,230,237,1);
+}
+.userContent .left > img{
+	width: 100%;
+}
+.userContent .left .tx{
+	width: 89px;
+	height: 89px;
+	border-radius: 89px;
+	background-color: #f1f1f1;
+	z-index: 999;
+	position: relative;
+	margin: 0 auto;
+	margin-top: -44.5px;
+	cursor: pointer;
+}
+.userContent .left .tx img{
+	width: 89px;
+	height: 89px;
+}
+.userContent .left  h1{
+	font-size: 24px;
+	color: #333333;
+	text-align: center;
+	margin-top: 22px;
+	width: 100%;
+	font-weight: bold;
+	text-align: center;
+	cursor: pointer;
+}
+.userContent .left  p{
+	font-size: 14px;
+	color: #666666;
+	text-align: center;
+	margin-top: 10px;
+	width: 100%;
+	text-align: center;
+}
+.userContent .left .linkList{
+	padding:18px 23px;
+}
+.userContent .left .linkList > div{
+	border-top: 1px solid #E7E6ED;
+	padding-top: 22px;
+	padding-bottom: 10px;
+}
+.userContent .left .linkList h2{
+	font-size: 18px;
+	color: #333333;
+	padding-left: 43px;
+	margin-bottom: 13px;
+}
+.userContent .left .linkList h2 img{
+	display: block;
+	float: left;
+	margin-right: 20px;
+	margin-top: 2px;
+}
+.userContent .left .linkList p{
+	width: 100%;
+	text-align: center;
+	font-size: 14px;
+	color: #666666;
+	font-weight: bold;
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+.userContent .left .quit{
+	width: 100%;
+	height:51px;
+	background:rgba(41,105,201,1);
+	font-size:15px;
+	color: #ffffff;
+	margin-top: 12px;
+}
+.userContent .right{
+	width:890px;
+	height:678px;
+	margin-left: 25px;
+}
+.userContent .right > div{
+	padding: 24px 28px;
+}
+.userContent .right .up{
+	width:100%;
+	height:305px;
+	background:rgba(255,255,255,1);
+	border:1px solid rgba(231,230,237,1);
+	margin-bottom: 26px;
+}
+.userContent .right .down{
+	width:100%;
+	height:347px;
+	background:rgba(255,255,255,1);
+	border:1px solid rgba(231,230,237,1);
+}
+.userContent .right  h3{
+	font-size: 16px;
+	color: #333333;
+	width: 100%;
+	border-bottom: 1px solid #E7E6ED;
+	padding-bottom: 10px;
+	position: relative;
+	font-weight: bold;
+}
+.userContent .right  h3:after {
+    content: '';
+    position: absolute;
+    top: 97%;
+    background: #2969C9;
+    width: 72px;
+    height: 2px;
+    left: 0;
+}
+.userContent .right .up h3{
+	margin-bottom: 25px;
+}
+.userContent .right .Rleft {
+	width: 530px;
+	float: left;
+}
+.userContent .right .Rleft p{
+	font-size: 14px;
+	color: #666666;
+	width: 100%;
+	margin-bottom: 15px;
+	padding-left: 5px;
+}
+.userContent .right .Rleft p span{
+	width: 74px;
+	display: block;
+	float: left;
+	margin-right: 30px;
+}
+.userContent .right .Rright{
+	float: left;
+}
+.userContent .right .Rright h4{
+	font-size: 14px;
+	color: #666666;
+	width:145px;
+	text-align: center;
+	font-weight: bold;
+}
+.userContent .right .Rright button{
+	width:145px;
+	height:38px;
+	background:rgba(244,241,254,1);
+	font-size: 12px;
+	color: #999999;
+	margin-top: 60px;
+}
+.userContent .right .courseSwiper{
+	margin-top: 13px;
+	height: 270px;
+}
+.userContent .right .courseSwiper time{
+	font-size: 12px;
+	color: #333333;
+	display: block;
+    position: absolute;
+	bottom: 15px;
+	width: 178px;
+}
+.userContent .right .courseSwiper time span{
+	float: right;
+	color: #F5520D;
+}
+.userContent .right .courseSwiper .gbox{
+	width: 178px;
+	height: 226px;
+	position: absolute;
+	border-radius: 3px;
+	z-index: 9;
+	transition: all 0.3s;
+}
+.userContent .right .courseSwiper .blue{
+	background: url(../img/bk1.png);
+}
+.userContent .right .courseSwiper .green{
+	background: url(../img/bk2.png);
+}
+.userContent .right .courseSwiper .yellow{
+	background: url(../img/bk3.png);
+}
+.userContent .right .courseSwiper .gbox h1{
+	font-size: 18px;
+	color: #ffffff;
+	width: 100%;
+	text-align: center;
+	font-weight: bold;
+	margin: 85px 0 15px 0;
+}
+.userContent .right .courseSwiper .gbox p{
+	font-size: 12px;
+	color: #ffffff;
+	width: 100%;
+	text-align: center;
+	opacity: .8;
+}
+.userContent .right .courseSwiper .gbox a{
+	font-size: 12px;
+	color: #ffffff;
+	width: 100%;
+	text-align: center;
+	display: block;
+	margin-top: 40px;
+	opacity: .8;
+}
+.swiper-container-horizontal>.swiper-scrollbar{
+	bottom: -3px;
+}

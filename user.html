@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>安徽食品安全培训网</title>
+	<link rel="stylesheet" href="layui/css/layui.css" />
+	<link rel="stylesheet" href="css/swiper.min.css">
+	<link rel="stylesheet" href="css/index.css" />
+</head>
+
+<body>
+	<!-- 头部 -->
+	<header>
+		<div class="top">
+			<section>
+				<p>你好，欢迎访问滁州食品安全网</p>
+				<p>
+					<a onclick="openUrl('login.html')" href="javascript:;">现在登录！</a>
+				</p>
+				<p onclick="openUrl('user.html')"><img src="img/user.png" />个人中心</p>
+			</section>
+			<nav>
+				<h1>
+					<img src="img/logo.png" />
+					<p>安徽食品安全培训网</p>
+					<i>Food safety training in anhui province </i>
+				</h1>
+				<ul>
+					<li onclick="openUrl('index.html')">首页<i></i></li>
+					<li>课程中心<i></i></li>
+					<li>学习指南<i></i></li>
+					<li>教学公告<i></i></li>
+					<li>食品安全资讯<i></i></li>
+					<li>在线证书查询<i></i></li>
+					<li>考试中心<i></i></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<div class="userMain">
+		<!-- 子页面轮播 -->
+		<div class="swiper-container sonBanner">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">
+					<img src="img/sbanner.png" />
+				</div>
+				<div class="swiper-slide">
+					<img src="img/sbanner.png" />
+				</div>
+			</div>
+		</div>
+		<section class="centre">
+			<h1 class="userTitle">
+				<span>个人中心</span>
+			</h1>
+			<div class="userContent">
+				<div class="left">
+					<span onclick="openUrl('user.html')">
+					<img src="img/userbg.png"/>
+					<div  class="tx">
+						<img src="img/man.png"/>
+					</div>
+					<h1>韩梅梅</h1>
+					</span>
+					<p>个人用户</p>
+					<div class="linkList">
+						<div>
+							<h2><img src="img/useri1.png"/>用户管理</h2>
+							<p>修改资料</p>
+							<p>我的消息</p>
+							<p>更改手机号</p>
+						</div>
+						<div>
+							<h2><img src="img/useri2.png"/>培训课程</h2>
+							<p>课程管理</p>
+							<p>学习记录</p>
+							<p>我的收藏</p>
+							<p>购买记录</p>
+						</div>
+						<button type="button" onclick="logout()" class="layui-btn quit">退出登陆</button>
+					</div>
+				</div>
+				<div class="right">
+					<div class="up">
+						<h3>个人资料</h3>
+						<div class="Rleft">
+							<p><span>姓名：</span>韩梅梅</p>
+							<p><span>性别：</span>女</p>
+							<p><span>手机号：</span>15755055889</p>
+							<p><span>身份证号：</span>3452578948597895896</p>
+							<p><span>工作单位：</span>杭州孚立计算机有限公司</p>
+							<p><span>工作地址：</span>杭州市西湖区西溪科创园</p>
+						</div>
+						<div class="Rright">
+							<h4>已获取资格证:</h4>
+							<button type="button">尚未获取资格证</button>
+						</div>
+					</div>
+					<div class="down">
+						<h3>我的课程</h3>
+						 <!-- Swiper -->
+						<div class="swiper-container courseSwiper">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<div class="gbox blue">
+										<h1>生产领域培训课程</h1>
+										<p>食品行业从业人员适用</p>
+										<a href="#">前往学习 &gt;</a>
+									</div>
+									<time>已学习课程<span>继续学习</span></time>
+								</div>
+								<div class="swiper-slide">
+									<div class="gbox green">
+										<h1>生产领域培训课程</h1>
+										<p>食品行业从业人员适用</p>
+										<a href="#">前往学习 &gt;</a>
+									</div>
+									<time>尚未学习<span>继续学习</span></time>
+								</div>
+								<div class="swiper-slide">
+									<div class="gbox yellow">
+										<h1>生产领域培训课程</h1>
+										<p>食品行业从业人员适用</p>
+										<a href="#">前往学习 &gt;</a>
+									</div>
+									<time>学习已完成</time>
+								</div>
+								<div class="swiper-slide">
+									<div class="gbox blue">
+										<h1>生产领域培训课程</h1>
+										<p>食品行业从业人员适用</p>
+										<a href="#">前往学习 &gt;</a>
+									</div>
+									<time>已学习课程<span>继续学习</span></time>
+								</div>
+								<div class="swiper-slide">
+									<div class="gbox green">
+										<h1>生产领域培训课程</h1>
+										<p>食品行业从业人员适用</p>
+										<a href="#">前往学习 &gt;</a>
+									</div>
+									<time>尚未学习<span>继续学习</span></time>
+								</div>
+								<div class="swiper-slide">
+									<div class="gbox yellow">
+										<h1>生产领域培训课程</h1>
+										<p>食品行业从业人员适用</p>
+										<a href="#">前往学习 &gt;</a>
+									</div>
+									<time>学习已完成</time>
+								</div>
+							</div>
+							 <!-- 如果需要滚动条 -->
+    						<div class="swiper-scrollbar"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+	<footer></footer>
+	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="layui/layui.all.js"></script>
+	<script type="text/javascript" src="js/swiper.min.js"> </script>
+	<script type="text/javascript" src="js/main.js"></script>
+	<script>
+		//轮播图
+		var indexBannerswiper = new Swiper('.sonBanner', {
+			autoplay: {
+				delay: 5000
+			},
+		});
+		// 我的课程轮播
+		var courseSwiper = new Swiper('.courseSwiper', {
+			slidesPerView: 3,
+			spaceBetween: 124,
+			// 如果需要滚动条
+			scrollbar: {
+				el: '.swiper-scrollbar',
+			},
+		});
+	</script>
+</body>
+
+</html>
