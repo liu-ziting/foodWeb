@@ -1104,9 +1104,11 @@ header nav  ul .active i{
 .publicList .right{
 	width:890px;
 	height:auto;
+	min-height: 678px;
 	background:rgba(255,255,255,1);
 	border:1px solid rgba(231,230,237,1);
 	padding: 24px 28px;
+	overflow: hidden;
 }
 .publicList .right ul li{
 	padding: 29px 0;
@@ -1135,6 +1137,91 @@ header nav  ul .active i{
 	font-size: 14px;
 	color: #666666;
 }
+.publicList .right ul li p i{
+	font-size: 14px;
+	color: #F5520D;
+	margin-right: 50px;
+	font-weight: bold;
+}
+.publicList .right ul li:hover > p{
+	color: #2969C9;
+}
 .publicList .right ul li .read{
 	color: #F5520D;
+}
+.publicList .right  .gbox{
+	width: 178px;
+	height: 226px;
+	position: absolute;
+	border-radius: 3px;
+	z-index: 9;
+	transition: all 0.3s;
+}
+.publicList .right  .blue{
+	background: url(../img/bk1.png);
+}
+.publicList .right  .green{
+	background: url(../img/bk2.png);
+}
+.publicList .right  .yellow{
+	background: url(../img/bk3.png);
+}
+.publicList .right  .gbox h1{
+	font-size: 18px;
+	color: #ffffff;
+	width: 100%;
+	text-align: center;
+	font-weight: bold;
+	margin: 85px 0 15px 0;
+}
+.publicList .right .gbox p{
+	font-size: 12px;
+	color: #ffffff;
+	width: 100%;
+	text-align: center;
+	opacity: .8;
+	margin: 0;
+}
+.publicList .right  .gbox a{
+	font-size: 12px;
+	color: #ffffff;
+	width: 100%;
+	text-align: center;
+	display: block;
+	margin-top: 40px;
+	opacity: .8;
+}
+.publicList .right  .gbox em{
+	color: #F5520D;
+	float: right;
+	margin-right: 8px;
+	font-size: 20px;
+}
+#myCourse ul{
+	padding-left: 5px;
+}
+#myCourse ul li{
+	float: left;
+	width: 33.3%;
+	border-bottom: none;
+	padding-bottom: 15px;
+}
+#myCourse ul li > p{
+	width: 178px;
+	margin-top: 240px;
+}
+#myCourse ul li > time{
+	width: 178px;
+	display: block;
+	margin-top: 10px;
+	margin-left: 0;
+}
+#myCourse ul li > time span{
+	margin: 0;
+	color: #F5520D;
+}
+#myCourse ul li:hover .gbox{
+	box-shadow:0px 6px 10px 0px #cccccc ;
+	-webkit-box-shadow:0px 6px 10px 0px #cccccc ;
+	-moz-box-shadow:0px 6px 10px 0px #cccccc ;
 }

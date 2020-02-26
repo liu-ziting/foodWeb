@@ -50,7 +50,7 @@
 				</div>
 			</div>
 		</div>
-		<section id="myNews" class="centre publicList">
+		<section id="myCourse" class="centre publicList">
 			<h1 class="userTitle">
 				<span>个人中心</span>
 			</h1>
@@ -68,45 +68,33 @@
 						<div>
 							<h2><img src="img/useri1.png"/>用户管理</h2>
 							<p onclick="openUrl('modifiedData.html?#modifiedData')">修改资料</p>
-							<p class="active">我的消息</p>
+							<p onclick="openUrl('myNews.html?#myNews')">我的消息</p>
 							<p onclick="openUrl('modifyPhone.html?#modifyPhone')">更换手机号</p>
 						</div>
 						<div>
 							<h2><img src="img/useri2.png"/>培训课程</h2>
 							<p onclick="openUrl('myCourse.html?#myCourse')">课程管理</p>
 							<p onclick="openUrl('studyRecord.html?#studyRecord')">学习记录</p>
-							<p onclick="openUrl('myFavorite.html?#myCourse')">我的收藏</p>
+							<p class="active">我的收藏</p>
 							<p onclick="openUrl('purchaseRecord.html?#purchaseRecord')">购买记录</p>
 						</div>
 						<button type="button" onclick="logout()" class="layui-btn quit">退出登陆</button>
 					</div>
 				</div>
 				<div class="right">
-					<h3>我的消息<p><i>个人中心 > 用户管理 > <span>我的消息</span></i></p></h3>
+					<h3>我的收藏<p><i>个人中心 > 培训课程 > <span>我的收藏</span></i></p></h3>
 					<ul>
 						<li>
-							<h1>滁州食品安全网<time>2020-01-09</time><span class="read">已读</span></h1>
-							<p>您购买的食品从业人员流通领域培训课程已生效，请在课程中心中查看课程并学习</p>
-						</li>
-						<li>
-							<h1>滁州食品安全网<time>2020-01-09</time><span class="">未读</span></h1>
-							<p>您购买的食品从业人员流通领域培训课程已生效，请在课程中心中查看课程并学习</p>
-						</li>
-						<li>
-							<h1>滁州食品安全网<time>2020-01-09</time><span class="">未读</span></h1>
-							<p>您购买的食品从业人员流通领域培训课程已生效，请在课程中心中查看课程并学习</p>
-						</li>
-						<li>
-							<h1>滁州食品安全网<time>2020-01-09</time><span class="">未读</span></h1>
-							<p>您购买的食品从业人员流通领域培训课程已生效，请在课程中心中查看课程并学习</p>
-						</li>
-						<li>
-							<h1>滁州食品安全网<time>2020-01-09</time><span class="">未读</span></h1>
-							<p>您购买的食品从业人员流通领域培训课程已生效，请在课程中心中查看课程并学习</p>
+							<div class="gbox green">
+								<h1>生产领域培训课程</h1>
+								<p>食品行业从业人员适用</p>
+								<a href="#">前往学习 &gt;</a>
+								<em class="layui-icon layui-icon-rate-solid"></em>
+							</div>
+							<p>流通领域从业人员培训课程</p>
+							<time>取消收藏<span>前往购买</span></time>
 						</li>
 					</ul>
-					<!--分页-->
-					<div id="paging" class="paging"></div>
 				</div>
 			</div>
 		</section>
@@ -123,20 +111,6 @@
 				delay: 5000
 			},
 		});
-		layui.use(['laypage', 'layer'], function(){
-			var laypage = layui.laypage
-			,layer = layui.layer;
-
-			//分页
-			laypage.render({
-				elem: 'paging'
-				,count: 100
-				,layout: ['count', 'prev', 'page', 'next', 'limit', 'skip']
-				,jump: function(obj){
-				console.log(obj)
-				}
-			});
-		})
 	</script>
 </body>
 
