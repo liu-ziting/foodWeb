@@ -50,26 +50,26 @@
 				</div>
 			</div>
 		</div>
-		<section class="centre">
+		<section id="user" class="centre">
 			<h1 class="userTitle">
 				<span>个人中心</span>
 			</h1>
 			<div class="userContent">
 				<div class="left">
-					<span onclick="openUrl('user.html')">
-					<img src="img/userbg.png"/>
-					<div  class="tx">
-						<img src="img/man.png"/>
-					</div>
-					<h1>韩梅梅</h1>
+					<span onclick="openUrl('user.html?#user')">
+						<img src="img/userbg.png"/>
+						<div  class="tx">
+							<img src="img/man.png"/>
+						</div>
+						<h1>韩梅梅</h1>
 					</span>
 					<p>个人用户</p>
 					<div class="linkList">
 						<div>
 							<h2><img src="img/useri1.png"/>用户管理</h2>
-							<p>修改资料</p>
-							<p>我的消息</p>
-							<p>更改手机号</p>
+							<p onclick="openUrl('modifiedData.html?#modifiedData')">修改资料</p>
+							<p onclick="openUrl('myNews.html?#myNews')">我的消息</p>
+							<p onclick="openUrl('modifyPhone.html?#modifyPhone')">更换手机号</p>
 						</div>
 						<div>
 							<h2><img src="img/useri2.png"/>培训课程</h2>
