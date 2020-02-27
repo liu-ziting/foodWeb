@@ -32,7 +32,15 @@ $(function () {
 	});
 });
 
-
+// 返回顶部
+layui.use(['util'], function(){
+	var util = layui.util
+	//固定块
+	util.fixbar({
+		css: {right: 50, bottom: 100}
+		,bgcolor: '#393D49'
+	});
+})
 
 /* 获取url地址参数  */
 function getQueryString(name) {
