@@ -357,7 +357,7 @@ header nav  ul .active i{
 		rgba(255,255,255,.3) 50%,rgba(255,255,255,0) 100%);
 	transform: skewX(-45deg);
 	z-index: 99;
-	animation: skeleton-ani 1s ease infinite;
+	animation: skeleton-ani 0.8s ease infinite;
 }
 .course li:hover .kbox{
     width: 95%;
@@ -1299,6 +1299,14 @@ header nav  ul .active i{
 	float: left;
 	position: relative;
 	margin-right: 50px;
+	overflow: hidden;
+}
+.newsList ul li .imgBox img{
+	display: block;
+	width: 100%;
+	height: 100%;
+	z-index: 99999;
+	position: absolute;
 }
 .newsList ul li .imgBox:before {
     content: "食品安全培训网";
@@ -1394,6 +1402,8 @@ header nav  ul .active i{
 .courseCenter .courseMain li{
 	margin-bottom: 55px;
 }
+
+/* 骨架屏 */
 .gjpAfter::after{
 	content: '';
 	position: absolute;
@@ -1415,4 +1425,293 @@ header nav  ul .active i{
     to {
       left: 150%;
     }
+}
+/* 课程详情 */
+.courseDetalisTop {
+	margin-top: 26px;
+	overflow: hidden;
+	padding-bottom: 25px;
+}
+.courseDetalisTop .left{
+	width:420px;
+	height:283px;
+	overflow: hidden;
+	margin-right: 55px;
+	float: left;
+	position: relative;
+}
+.courseDetalisTop .left img{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: 9999;
+}
+.courseDetalisTop .left:before {
+    content: "食品安全培训网";
+    font-family: "宋体";
+    font-size: 20px;
+    color: #8D8D8D;
+    background-color: #eeeeee;
+    top: 0;
+    text-align: center;
+    line-height: 283px;
+    width: 100%;
+    position: absolute;
+    z-index: 9;
+}
+.courseDetalisTop .right{
+	float: left;
+	width: 725px;
+}
+.courseDetalisTop .right h1{
+	font-size: 24px;
+	color: #333333;
+	font-weight: bold;
+	margin-bottom: 12px;
+}
+.courseDetalisTop .right p{
+	font-size: 12px;
+	color: #666666;
+}
+.courseDetalisTop .right h1{
+	width: 100%;
+	overflow: hidden;
+}
+.courseDetalisTop .right h1 span{
+	width:68px;
+	height:23px;
+	background:rgba(255,255,255,1);
+	border:1px solid rgba(245,82,13,1);
+	border-radius:3px;
+	display: block;
+	font-size: 12px;
+	color: #F5520D;
+	text-align: center;
+	line-height: 23px;
+	float: left;
+	font-weight: normal;
+	margin-left: 18px;
+	margin-top: 5px;
+}
+.courseDetalisTop .right h1 em{
+	float: left;
+	display: block;
+}
+.courseDetalisTop .right h1 b{
+	float: right;
+	display: block;
+	font-size: 14px;
+	color: #666666;
+	font-weight: normal;
+	margin-top: 6px;
+	cursor: pointer;
+}
+.courseDetalisTop .right h1 b i{
+	margin-right: 3px;
+}
+.courseDetalisTop .right .timeBox{
+	width: 100%;
+	overflow: hidden;
+	margin-top: 10px;
+}
+.courseDetalisTop .right .timeBox span{
+	display: block;
+	float: left;
+	line-height: 45px;
+	color: #666666;
+	font-size: 12px;
+	width: 110px;
+	margin-right: 30px;
+}
+.courseDetalisTop .right .timeBox span img{
+	display: block;
+	float: left;
+	margin-top: 13px;
+	margin-right: 8px;
+}
+.courseDetalisTop .right .priceBox{
+	width: 100%;
+	overflow: hidden;
+}
+.courseDetalisTop .right .priceBox h2{
+	font-size: 24px;
+	color: #333333;
+	float: left;
+	font-weight: bold;
+}
+.courseDetalisTop .right .priceBox  i{
+	font-size: 14px;
+	color: #999999;
+	float: left;
+	margin-left: 20px;
+	margin-top: 9px;
+	text-decoration:line-through
+}
+.courseDetalisTop .right .priceBox  span{
+	background:rgba(255,255,255,1);
+	border:1px solid rgba(245,82,13,1);
+	border-radius:3px;
+	display: block;
+	font-size: 12px;
+	color: #F5520D;
+	text-align: center;
+	line-height: 20px;
+	float: left;
+	font-weight: normal;
+	margin-left: 18px;
+	margin-top: 5px;
+	padding: 0 10px;
+}
+.orange{
+	color: #F5520D !important;
+}
+.courseDetalisTop .right button{
+	width:235px;
+	height:64px;
+	background:rgba(245,82,13,1);
+	border-radius:3px;
+	font-size: 24px;
+	color: #FFFFFF;
+	position: absolute;
+	bottom: -12px;
+}
+.courseDetalisTab{
+	background-color: #f7f8fa;
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+}
+.courseDetalisTab .centre{
+	background-color: #fff;
+	margin-top: 14px;
+	overflow: hidden;
+	height: auto;
+	min-height: 700px;
+	padding-bottom: 50px;
+	margin-bottom: 30px;
+
+}
+.courseDetalisTab .centre .layui-tab{
+	margin: 0;
+}
+.courseDetalisTab .centre .layui-tab ul{
+	padding-left: 20px;
+	height: 50px;
+}
+.courseDetalisTab .centre .layui-tab ul li{
+	padding:0 2px;
+	margin-right: 45px;
+	font-size: 16px;
+	color: #333333;
+	line-height: 50px;
+}
+.courseDetalisTab .centre .layui-tab .layui-this:after {
+	border-bottom: 4px solid #397D47;
+	height: 50px;
+}
+.courseDetalisTab .centre .layui-tab-content{
+	padding: 38px 32px;
+	font-size: 16px;
+	color: #333333;
+	min-height: 500px;
+}
+.courseDetalisTab .centre .layui-tab-content > div:nth-child(1){
+	width: 560px;
+	line-height: 35px;
+}
+.courseDetalisTab .centre .layui-tab-content ul{
+	padding: 0;
+}
+.courseDetalisTab .centre .layui-tab-content ul li{
+	width: 100%;
+	height:55px;
+	background:rgba(244,241,254,1);
+	border-radius:3px;
+	cursor: pointer;
+	margin-bottom: 15px;
+	padding:0 24px ;
+}
+.courseDetalisTab .centre .layui-tab-content ul li p{
+	line-height: 55px;
+	font-size: 16px;
+	color: #333333;
+	float: left;
+	padding-left: 10px;
+}
+.courseDetalisTab .centre .layui-tab-content ul li img{
+	display: block;
+	float: left;
+	margin-right: 10px;
+	margin-top: 17px;
+}
+.courseDetalisTab .centre .layui-tab-content ul li time{
+	font-size: 16px;
+	color: #333333;
+	line-height: 55px;
+	float: right;
+}
+.courseDetalisTab .centre .layui-tab-content ul .active{
+	background-color: #50D26B;
+}
+.courseDetalisTab .centre .layui-tab-content ul .active time{
+	color: #ffffff;
+}
+.courseDetalisTab .centre .layui-tab-content ul .active time img{
+	display: none;
+}
+.courseDetalisTab .centre .layui-tab-content .qrCodeBox .left{
+	width:290px;
+	height:288px;
+	background:rgba(244,241,254,1);
+	border-radius:3px;
+	border: 4px solid #F4F1FE;
+	float: left;
+}
+.courseDetalisTab .centre .layui-tab-content .qrCodeBox .left img{
+	width: 100%;
+	height: 100%;
+}
+.courseDetalisTab .centre .layui-tab-content .qrCodeBox .right{
+	float: left;
+	margin-left: 45px;
+	width: 290px;
+}
+.courseDetalisTab .centre .layui-tab-content .qrCodeBox .right h1{
+	font-size: 24px;
+	color: #333333;
+	line-height: 35px;
+	margin-bottom: 21px;
+	font-weight: 500;
+}
+.courseDetalisTab .centre .layui-tab-content .qrCodeBox .right span{
+	width:66px;
+	height:25px;
+	background:rgba(255,255,255,1);
+	border:1px solid rgba(245,82,13,1);
+	border-radius:3px;
+	font-size: 12px;
+	color: #F5520D;
+	padding:3px 4px;
+	margin-right: 15px;
+}
+.courseDetalisTab .centre .layui-tab-content .qrCodeBox .right p{
+	font-size: 16px;
+	color: #666666;
+	line-height: 30px;
+	margin-top: 75px;
+}
+.courseDetalisTab .centre .layui-tab-content .qrCodeBox .right h2{
+	font-size: 24px;
+	color: #333333;
+	font-weight: bold;
+	margin-top: 12px;
+}
+.courseDetalisTab .centre .layui-tab-content .qrCodeBox button{
+	width:206px;
+	height:48px;
+	background:rgba(232,240,243,1);
+	font-size: 14px;
+	color: #333333;
+	float: right;
+	margin-top: 250px;
 }

@@ -7,6 +7,7 @@ var App = {
 
 // 获取导航栏
 $(function () {
+	document.getElementById("navList").innerHTML = "";
 	$.ajax({
 		type: "GET",
 		url: "js/nav.json",
