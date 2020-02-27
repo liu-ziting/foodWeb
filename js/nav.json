@@ -1,0 +1,37 @@
+[{
+	"title" : "首页",
+	"id" : "index",
+	"href" : "index.html",
+	"spread" : false
+},{
+	"title" : "课程中心",
+	"id" : "courseCenter",
+	"href" : "courseCenter.html",
+	"spread" : false
+},{
+	"title" : "学习指南",
+	"id" : "",
+	"href" : "",
+	"spread" : false
+},{
+	"title" : "教学公告",
+	"id" : "announcement",
+	"href" : "announcement.html",
+	"spread" : false
+},{
+	"title" : "食品安全资讯",
+	"id" : "information",
+	"href" : "information.html",
+	"spread" : false
+},{
+	"title" : "在线证书查询",
+	"id" : "",
+	"href" : "",
+	"spread" : false
+},{
+	"title" : "考试中心",
+	"id" : "",
+	"href" : "",
+	"spread" : false
+}
+]

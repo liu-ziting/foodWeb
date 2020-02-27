@@ -5,7 +5,35 @@ var App = {
 	timestamp: ((Date.parse(new Date())) / 1000).toString(),	//时间戳
 };
 
-$("footer").load("footer.html");
+// 获取导航栏
+$(function () {
+	$.ajax({
+		type: "GET",
+		url: "js/nav.json",
+		dataType: "json",
+		success: function (data) {
+			var ihtml = "";
+			// 获取主机地址之后的目录
+			var pathName = window.document.location.pathname;
+			var aPos = pathName.indexOf('/');
+			var bPos = pathName.indexOf('.');
+			var activeUrl = pathName.substr(aPos + 1, bPos - aPos - 1);
+			for (var i = 0; i < data.length; i++) {
+				if (activeUrl == data[i].id) {
+					ihtml += '<li class="active" onclick=\"openUrl(\'' + data[i].href + '\')\">' + data[i].title + '<i></i></li>'
+				} else {
+					ihtml += '<li onclick=\"openUrl(\'' + data[i].href + '\')\">' + data[i].title + '<i></i></li>'
+				}
+			};
+			$("#navList").append(ihtml);
+			// 底部
+			$("footer").load("footer.html");
+		}
+	});
+});
+
+
+
 /* 获取url地址参数  */
 function getQueryString(name) {
 	var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');

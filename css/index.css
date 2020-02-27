@@ -139,6 +139,7 @@ header nav h1{
 	color: #029042;
 	width: 380px;
 	float: left;
+	cursor: pointer;
 }
 header nav h1 img{
 	display: block;
@@ -292,13 +293,13 @@ header nav  ul .active i{
 	z-index: 9;
 	transition: all 0.3s;
 }
-.course li:nth-child(1) .gbox{
+.course li .blue{
 	background: url(../img/bk1.png);
 }
-.course li:nth-child(2) .gbox{
+.course li .green{
 	background: url(../img/bk2.png);
 }
-.course li:nth-child(3) .gbox{
+.course li .yellow{
 	background: url(../img/bk3.png);
 }
 .course li .gbox h1{
@@ -1229,16 +1230,16 @@ header nav  ul .active i{
 .newsList {
 	padding-bottom: 50px;
 }
-.newsList .title{
+.titleSon{
 	padding: 22px 0;
 	width: 100%;
 	border-bottom: 1px solid #E7E6ED;
 }
-.newsList .title a{
+.titleSon a{
 	font-size: 14px;
 	color: #999999;
 }
-.newsList .title a:last-child{
+.titleSon a:last-child{
 	color:#333333
 }
 .newsList ul{
@@ -1297,4 +1298,58 @@ header nav  ul .active i{
 	font-family:Microsoft YaHei;
 	font-weight:bold;
 	color:rgba(102,102,102,1);
+}
+/* 课程中心 */
+.courseCenter .topList ul li{
+	width: 100%;
+	border-bottom: 1px solid #E7E6ED;
+	padding: 38px 0;
+	overflow: hidden;
+}
+.courseCenter .topList ul li p{
+	font-size: 14px;
+	color: #666666;
+	float: left;
+	height:30px;
+	line-height: 30px;
+}
+.courseCenter .topList ul li span{
+	font-size: 14px;
+	color: #666666;
+	float: left;
+	display: block;
+	float: left;
+	width:83px;
+	height:30px;
+	font-size: 14px;
+	color: #333333;
+	margin-left: 30px;
+	text-align: center;
+	line-height: 30px;
+	cursor: pointer;
+	border-radius: 3px;
+	font-weight:bold;
+}
+.courseCenter .topList ul li .active{
+	background-color: #397D47;
+	color:#ffffff
+}
+.courseCenter .topList ul li span:hover{
+	background-color: rgba(57,125,71,.8);
+	color: #ffffff;
+}
+.courseCenter .topList .totality{
+	font-size: 18px;
+	color: #333333;
+	padding: 42px 0;
+}
+.courseCenter .topList .totality span{
+	color: #F5520D;
+}
+.courseCenter .courseMain{
+	overflow: hidden;
+	padding-bottom: 45px;
+}
+.courseCenter .courseMain li{
+	margin-bottom: 55px;
 }

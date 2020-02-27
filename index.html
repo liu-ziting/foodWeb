@@ -21,19 +21,19 @@
 				<p onclick="openUrl('user.html')"><img src="img/user.png" />个人中心</p>
 			</section>
 			<nav>
-				<h1>
+				<h1 onclick="openUrl('index.html')">
 					<img src="img/logo.png" />
 					<p>安徽食品安全培训网</p>
 					<i>Food safety training in anhui province </i>
 				</h1>
-				<ul>
-					<li class="active" onclick="openUrl('index.html')">首页<i></i></li>
-					<li>课程中心<i></i></li>
+				<ul id="navList">
+					<!-- <li class="active" onclick="openUrl('index.html')">首页<i></i></li>
+					<li onclick="openUrl('courseCenter.html')">课程中心<i></i></li>
 					<li>学习指南<i></i></li>
 					<li onclick="openUrl('announcement.html')">教学公告<i></i></li>
 					<li onclick="openUrl('information.html')">食品安全资讯<i></i></li>
 					<li>在线证书查询<i></i></li>
-					<li>考试中心<i></i></li>
+					<li>考试中心<i></i></li> -->
 				</ul>
 			</nav>
 		</div>
@@ -71,7 +71,7 @@
 			</h1>
 			<ul class="course">
 				<li>
-					<div class="gbox">
+					<div class="gbox blue">
 						<h1>流通领域培训课程</h1>
 						<p>食品行业从业人员适用</p>
 						<a href="#">前往学习 ></a>
@@ -95,7 +95,7 @@
 					</div>
 				</li>
 				<li>
-					<div class="gbox">
+					<div class="gbox green">
 						<h1>生产领域培训课程</h1>
 						<p>食品行业从业人员适用</p>
 						<a href="#">前往学习 ></a>
@@ -118,7 +118,7 @@
 						</div>
 					</div>
 				<li>
-					<div class="gbox">
+					<div class="gbox yellow">
 						<h1>餐饮领域培训课程</h1>
 						<p>食品行业从业人员适用</p>
 						<a href="#">前往学习 ></a>
@@ -150,7 +150,7 @@
 				</h1>
 				<ul class="course">
 					<li>
-						<div class="gbox">
+						<div class="gbox yellow">
 							<h1>流通领域培训课程</h1>
 							<p>食品行业从业人员适用</p>
 							<a href="#">前往学习 ></a>
@@ -174,7 +174,7 @@
 						</div>
 					</li>
 					<li>
-						<div class="gbox">
+						<div class="gbox blue">
 							<h1>生产领域培训课程</h1>
 							<p>食品行业从业人员适用</p>
 							<a href="#">前往学习 ></a>
@@ -197,7 +197,7 @@
 							</div>
 						</div>
 					<li>
-						<div class="gbox">
+						<div class="gbox green">
 							<h1>餐饮领域培训课程</h1>
 							<p>食品行业从业人员适用</p>
 							<a href="#">前往学习 ></a>
@@ -371,20 +371,21 @@
 		});
 
 		//视频
-		$(".information .right li").click(function(){
+		$(".information .right li").click(function () {
 			$(this).addClass("active").siblings().removeClass("active")
 		});
-		
+
 		var videoObject = {
 			container: '.videosamplex',//“#”代表容器的ID，“.”或“”代表容器的class
 			variable: 'player',//该属性必需设置，值等于下面的new chplayer()的对象
-			poster: 'pic/wdm.jpg',
+			// poster: 'pic/wdm.jpg',
 			mobileCkControls: true,//是否在移动端（包括ios）环境中显示控制栏
 			mobileAutoFull: false,//在移动端播放后是否按系统设置的全屏播放
 			h5container: '#videoplayer',//h5环境中使用自定义容器
 			video: 'http://img.ksbbs.com/asset/Mon_1703/05cacb4e02f9d9e.mp4'//视频地址
 		};
 		var player = new ckplayer(videoObject);
+
 	</script>
 </body>
 
