@@ -1462,6 +1462,8 @@ header nav  ul .active i{
 .courseDetalisTop .right{
 	float: left;
 	width: 725px;
+	height: 283px;
+    position: relative;
 }
 .courseDetalisTop .right h1{
 	font-size: 24px;
@@ -1573,7 +1575,7 @@ header nav  ul .active i{
 	font-size: 24px;
 	color: #FFFFFF;
 	position: absolute;
-	bottom: -12px;
+	bottom: 0px;
 }
 .courseDetalisTab{
 	background-color: #f7f8fa;
