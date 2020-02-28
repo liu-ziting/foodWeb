@@ -1826,7 +1826,7 @@ header nav  ul .active i{
 	float: left;
 }
 .watchVideo .exercise .left ul li{
-	padding: 20px 15px;
+	padding: 20px 0;
 	background-color: #F6F6F6;
 	margin-bottom: 12px;
 }
@@ -1835,6 +1835,7 @@ header nav  ul .active i{
 	color: #161616;
 	width: 100%;
 	font-weight:400;
+	padding: 0 15px;
 }
 .watchVideo .exercise .left ul li p:first-child{
 	margin-bottom: 20px;
@@ -1863,9 +1864,9 @@ header nav  ul .active i{
 	color: #161616;
 	border-top: 1px solid #999999;
 	margin-top: 22px;
-	padding-top: 20px;
 	line-height: 28px;
 	display: none;
+	padding: 20px 15px 0 15px;
 }
 .watchVideo .exercise .right{
 	float: left;
