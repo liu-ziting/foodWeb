@@ -1717,3 +1717,186 @@ header nav  ul .active i{
 	float: right;
 	margin-top: 250px;
 }
+/* 学习视频 */
+.watchVideo {
+	overflow: hidden;
+	padding-bottom: 90px;
+}
+.watchVideo .videoBox {
+	margin-bottom: 30px;
+	overflow: hidden;
+}
+.watchVideo .videoBox .left{
+	width:900px;
+	height:581px;
+	float: left;
+	position: relative;
+	overflow: hidden;
+}
+.watchVideo .videoBox .left:before {
+    content: "食品安全培训网";
+    font-family: "宋体";
+    font-size: 20px;
+    color: #8D8D8D;
+    background-color: #eeeeee;
+    top: 0;
+    text-align: center;
+    line-height: 581px;
+    width: 100%;
+    position: absolute;
+    z-index: 9;
+}
+.watchVideo .videoBox  .right{
+	width:276px;
+	height:578px;
+	background:rgba(255,255,255,1);
+	border:1px solid rgba(204,204,204,1);
+	float: left;
+	margin-left: 24px;
+	overflow: hidden;
+}
+.watchVideo .videoBox  .right h1{
+	width:100%;
+	line-height: 58px;
+	font-size: 16px;
+	color: #666666;
+	height:58px;
+	background:rgba(255,255,255,1);
+	padding-left: 13px;
+	box-shadow:1px 2px 5px 0px rgba(153,153,153,0.14);
+	font-weight: bold;
+}
+.watchVideo .videoBox  .right h1 span{
+	font-size: 12px;
+	margin-left: 9px;
+	color: #999999;
+}
+.watchVideo .videoBox  .right ul{
+	width: 100%;
+	padding: 14px;
+	padding-top: 0;
+	overflow-y: scroll;
+	height: 520px;
+}
+.watchVideo .videoBox  .right ul li{
+	font-size: 14px;
+	color: #999999;
+	text-align: left;
+	border-bottom: 1px solid #E7E6ED;
+	padding: 24px 10px;
+	cursor: pointer;
+}
+.watchVideo .videoBox  .right ul::-webkit-scrollbar {
+    width: 6px;
+    height: 1px;
+}
+.watchVideo .videoBox  .right ul::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  -webkit-box-shadow: none;
+  background: #f1f1f1;
+  -webkit-box-shadow: none;
+}
+
+.watchVideo .videoBox  .right ul::-webkit-scrollbar-track {
+  -webkit-box-shadow: none;
+  border-radius: 3px;
+  /*background: #06b0b9;*/
+  -webkit-box-shadow: none;
+}
+.watchVideo .videoBox  .right ul .active{
+	color: #397D47;
+	font-weight: bold;
+}
+.watchVideo .videoBox .videosamplex{
+	width: 100%;
+	height: 100%;
+}
+.watchVideo .exercise h1{
+	width: 100%;
+	color: #333333;
+	font-size: 14px;
+	border-bottom: 1px solid #E7E6ED;
+	padding-bottom: 6px;
+	font-weight: bold;
+	margin-bottom: 14px;
+}
+.watchVideo .exercise .left{
+	width:870px;
+	height: auto;
+	float: left;
+}
+.watchVideo .exercise .left ul li{
+	padding: 20px 15px;
+	background-color: #F6F6F6;
+	margin-bottom: 12px;
+}
+.watchVideo .exercise .left ul li p{
+	font-size: 14px;
+	color: #161616;
+	width: 100%;
+	font-weight:400;
+}
+.watchVideo .exercise .left ul li p:first-child{
+	margin-bottom: 20px;
+}
+.watchVideo .exercise .left ul li p i{
+	font-size: 12px;
+	float: right;
+	color: rgba(245,82,13,1);
+	cursor: pointer;
+	width:66px;
+	height:23px;
+	text-align: center;
+	line-height: 23px;
+	border-radius:2px;
+	margin-top: -3px;
+}
+.watchVideo .exercise .left ul li p .activei{
+	background:rgba(245,82,13,1);
+	color: #ffffff;
+}
+.watchVideo .exercise .left ul li .layui-input-block{
+	margin-left: 18px;
+}
+.watchVideo .exercise .left ul li h2{
+	font-size: 14px;
+	color: #161616;
+	border-top: 1px solid #999999;
+	margin-top: 22px;
+	padding-top: 20px;
+	line-height: 28px;
+	display: none;
+}
+.watchVideo .exercise .right{
+	float: left;
+	margin-left: 70px;
+	width:240px;
+}
+.watchVideo .exercise .right .codeBox{
+	width:234px;
+	height:234px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.watchVideo .exercise .right .codeBox img{
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+.watchVideo .exercise .right  p{
+	font-size: 14px;
+	color: #666666;
+	width: 100%;
+	text-align: center;
+	margin-top: 25px;
+	margin-bottom: 8px;
+}
+.watchVideo .exercise .right span{
+	font-size: 14px;
+	color: #F5520D;
+	width: 100%;
+	text-align: center;
+	margin-left: 41px;
+	border-bottom: 1px solid #F5520D;
+	cursor: pointer;
+}

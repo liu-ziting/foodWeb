@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>安徽食品安全培训网</title>
+	<link rel="stylesheet" href="layui/css/layui.css" />
+	<link rel="stylesheet" href="css/index.css" />
+	<style>
+		#navList li:nth-child(2) i{
+			display: block;
+			width: 100%;
+			height: 6px;
+			background-color: #029042;
+			position: absolute;
+			bottom:-1px;
+			border-radius: 3px;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- 头部 -->
+	<header>
+		<div class="top">
+			<section>
+				<p>你好，欢迎访问滁州食品安全网</p>
+				<p>
+					<a onclick="openUrl('login.html')" href="javascript:;">现在登录！</a>
+				</p>
+				<p onclick="openUrl('user.html')"><img src="img/user.png" />个人中心</p>
+			</section>
+			<nav style="border-bottom: 1px solid #E7E6ED;">
+				<h1 onclick="openUrl('index.html')">
+					<img src="img/logo.png" />
+					<p>安徽食品安全培训网</p>
+					<i>Food safety training in anhui province </i>
+				</h1>
+				<ul id="navList"></ul>
+			</nav>
+		</div>
+	</header>
+	<div class="watchVideo">
+		<section class="centre">
+			<h1 class="titleSon" style="border-bottom:none">
+				<a href="index.html">首页</a>
+				<a href="">> 课程中心</a>
+				<a href="">> 食品行业流通领域从业人员培训课程</a>
+				<a href="">> 02食品安全法解读（第二讲）</a>
+			</h1>
+			<div class="videoBox">
+				<div class="left gjpAfter">
+					<div class="videosamplex"></div>
+				</div>
+				<div class="right">
+					<h1>课程列表<span>当前学习进度：04课/34课</span></h1>
+					<ul>
+						<li class="active">04-食品安全与卫生基础知识(第四讲)</li>
+						<li>04-食品安全与卫生基础知识(第四讲)</li>
+						<li>04-食品安全与卫生基础知识(第四讲)</li>
+						<li>04-食品安全与卫生基础知识(第四讲)</li>
+						<li>04-食品安全与卫生基础知识(第四讲)</li>
+						<li>04-食品安全与卫生基础知识(第四讲)</li>
+						<li>04-食品安全与卫生基础知识(第四讲)</li>
+						<li>04-食品安全与卫生基础知识(第四讲)</li>
+						<li>04-食品安全与卫生基础知识(第四讲)</li>
+						<li>04-食品安全与卫生基础知识(第四讲)</li>
+						<li>04-食品安全与卫生基础知识(第四讲)</li>
+						<li>04-食品安全与卫生基础知识(第四讲)</li>
+					</ul>
+				</div>
+			</div>
+			<div class="exercise">
+				<h1>随堂小练</h1>
+				<div class="left">
+					<form class="layui-form" action="">
+						<ul>
+							<li>
+								<p>
+									1、食品安全法规定，制定食品安全标准，应当以保障________为宗旨，做到科学合理、安全可靠
+									<i>查看解析</i>
+								</p>
+								<div class="layui-input-block">
+									<input type="radio" name="sex" value="A：公众身体健康" title="A：公众身体健康" >
+									<input type="radio" name="sex" value="B：公众生活需要" title="B：公众生活需要">
+									<input type="radio" name="sex" value="C：社会生活需要" title="C：社会生活需要">
+									<input type="radio" name="sex" value="D" title="D：企业安全生产">
+								</div>
+								<h2>
+									解析：中华人民共和国食品安全法（2018修正）中第二十五条规定食品安全标准是强制执行的标准。除食品安全标准外，不得制定其他 食品强制性标准。因此，本题正确。
+								</h2>
+							</li>
+							<li>
+								<p>
+									2、食品安全法规定，制定食品安全标准，应当以保障________为宗旨，做到科学合理、安全可靠
+									<i>查看解析</i>
+								</p>
+								<div class="layui-input-block">
+									<input type="radio" name="sex" value="A：公众身体健康" title="A：公众身体健康" >
+									<input type="radio" name="sex" value="B：公众生活需要" title="B：公众生活需要">
+									<input type="radio" name="sex" value="C：社会生活需要" title="C：社会生活需要">
+									<input type="radio" name="sex" value="D" title="D：企业安全生产">
+								</div>
+								<h2>
+									解析：中华人民共和国食品安全法（2018修正）中第二十五条规定食品安全标准是强制执行的标准。除食品安全标准外，不得制定其他 食品强制性标准。因此，本题正确。
+								</h2>
+							</li>
+						</ul>
+					</form>
+				</div>
+				<div class="right">
+					<div class="codeBox">
+						<img src="img/code.png"/>
+					</div>
+					<p>扫描二维码前往小程序，练习更多题目</p>
+					<span>前往线上题库进行刷题 >></span>
+				</div>
+			</div>
+		</section>
+	</div>
+	<footer></footer>
+	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="layui/layui.all.js"></script>
+	<script type="text/javascript" src="ckplayer/ckplayer.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	<script>
+		//视频
+		$(".watchVideo .right li").click(function () {
+			$(this).addClass("active").siblings().removeClass("active")
+		});
+		var videoObject = {
+			container: '.videosamplex',//“#”代表容器的ID，“.”或“”代表容器的class
+			variable: 'player',//该属性必需设置，值等于下面的new chplayer()的对象
+			// poster: 'pic/wdm.jpg',
+			mobileCkControls: true,//是否在移动端（包括ios）环境中显示控制栏
+			mobileAutoFull: false,//在移动端播放后是否按系统设置的全屏播放
+			h5container: '#videoplayer',//h5环境中使用自定义容器
+			video: 'http://img.ksbbs.com/asset/Mon_1703/05cacb4e02f9d9e.mp4'//视频地址
+		};
+		var player = new ckplayer(videoObject);
+
+		//查看解析
+		$(".exercise .left li i").click(function () {
+			if($(this).hasClass("activei")){
+				$(this).removeClass("activei");
+				$(this).parent().siblings("h2").hide()
+			}else{
+				$(this).addClass("activei");
+				$(this).parent().siblings("h2").show()
+			}
+		});
+
+	</script>
+</body>
+
+</html>
