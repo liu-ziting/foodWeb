@@ -791,11 +791,27 @@ header nav  ul .active i{
 .sonBanner{
 	width: 100%;
 	height: 257px;
+	overflow: hidden;
+}
+.sonBanner .swiper-slide::before{
+	content: "食品安全培训网";
+    font-family: "宋体";
+    font-size: 20px;
+    color: #8D8D8D;
+    background-color: #eeeeee;
+    top: 0;
+    text-align: center;
+    line-height: 257px;
+    width: 100%;
+    position: absolute;
+    z-index: 9;
 }
 .sonBanner img{
 	width: 100%;
 	height: 257px;
 	display: block;
+	position: absolute;
+	z-index: 999;
 }
 .userTitle{
 	font-size:24px;
@@ -1900,4 +1916,171 @@ header nav  ul .active i{
 	margin-left: 41px;
 	border-bottom: 1px solid #F5520D;
 	cursor: pointer;
+}
+/* 证书查询 */
+.certificate{
+	min-height: 700px;
+}
+.certificate form{
+	width: 555px;
+	margin: 70px auto;
+}
+.certificate form h1{
+	font-size: 32px;
+	color: #397D47;
+	width: 100%;
+	padding-bottom: 27px;
+	text-align: center;
+	font-weight: bold;
+	border-bottom: 2px solid #397D47;
+}
+.certificate form  span{
+	display: block;
+	width: 0;
+	height: 0;
+	border-width: 11px;
+	border-style: solid;
+	border-color:  #397D47  transparent transparent transparent;
+	margin: 0 auto 60px auto;
+}
+.certificate form .layui-form-item{
+	padding-left: 30px;
+	margin-bottom: 40px;
+}
+.certificate form .layui-form-label{
+	text-align: right;
+	width: 100px;
+}
+.certificate form .layui-input-block{
+	width: 373px;
+	margin-left: 104px;
+}
+.certificate form i{
+	color: #F5520D;
+	font-weight: bold;
+	padding-right: 3px;
+}
+.certificate form p{
+	font-size: 14px;
+	color: #FF6600;
+	width: 527px;
+	text-align: center;
+	margin: 0 auto;
+	line-height: 28px;
+	margin-top: -10px;
+}
+.certificate form .inquire{
+	width:264px;
+	height:51px;
+	background:rgba(41,105,201,1);
+	border-radius:3px;
+	font-size: 14px;
+	color: #FFFFFF;
+	margin: 36px auto 0 auto;
+	display: block
+}
+.searchResult{
+	padding: 86px;
+	display: none;
+}
+.searchResult > div{
+	width:864px;
+	height:577px;
+	position: relative;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.searchResult > div img{
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+.searchResult > div::before{
+	content: "资格证书加载中...";
+    font-family: "宋体";
+    font-size: 30px;
+    color: #8D8D8D;
+    background-color: #eeeeee;
+    top: 0;
+    text-align: center;
+    line-height: 577px;
+    width: 100%;
+    position: absolute;
+	z-index: -1;
+}
+/* 支付 */
+.purchase {
+	padding-bottom: 210px;
+}
+.purchase ul li{
+	padding: 50px 5px;
+	border-bottom: 1px solid #CCCCCC;
+	overflow: hidden;
+}
+.purchase ul li p{
+	font-size: 20px;
+	color: #666666;
+	margin-right: 54px;
+	float: left;
+	line-height: 50px;
+}
+.purchase ul li h1{
+	font-size: 22px;
+	color: #666666;
+	line-height: 50px;
+	float: left;
+}
+.purchase ul li .money{
+	font-size: 22px;
+	color: #FF6600;
+	float: right;
+	display: block;
+	line-height: 50px;
+}
+.purchase ul li .pbox{
+	width: 136px;
+    height: 50px;
+    border: 1px solid #666666;
+    float: left;
+    margin-right: 60px;
+	cursor: pointer;
+	color: #666666;
+	border-radius: 2px;
+}
+.purchase ul li .pbox i{
+	display: block;
+    float: left;
+    width: 26px;
+    height: 23px;
+    margin-right: 5px;
+    margin-top: 12px;
+    margin-left: 32px;
+}
+.purchase ul li .pbox .wicon{ 
+	background: url(../img/wx1.png) no-repeat;
+    background-size: 100% 100%;
+}
+.purchase ul li .pbox .zicon{ 
+	background: url(../img/zfb1.png) no-repeat;
+    background-size: 100% 100%;
+}
+.purchase ul li .pbox  span {
+    font-size: 14px;
+    display: block;
+    float: left;
+    line-height: 48px;
+    padding-right: 0;
+}
+.purchase ul li .active{
+	background-color: #2f9833;
+	color: #FFFFFF;
+	border: none;
+}
+.purchase ul li .active .wicon{
+	background: url(../img/wx2.png) no-repeat;
+	background-size: 100% 100%;
+}
+.purchase ul li .active .zicon{
+	background: url(../img/zfb2.png) no-repeat;
+	background-size: 100% 100%;
 }

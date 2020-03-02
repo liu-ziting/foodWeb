@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>安徽食品安全培训网</title>
+	<link rel="stylesheet" href="layui/css/layui.css" />
+	<link rel="stylesheet" href="css/swiper.min.css">
+	<link rel="stylesheet" href="css/index.css" />
+</head>
+
+<body>
+	<!-- 头部 -->
+	<header>
+		<div class="top">
+			<section>
+				<p>你好，欢迎访问滁州食品安全网</p>
+				<p>
+					<a onclick="openUrl('login.html')" href="javascript:;">现在登录！</a>
+				</p>
+				<p onclick="openUrl('user.html')"><img src="img/user.png" />个人中心</p>
+			</section>
+			<nav>
+				<h1 onclick="openUrl('index.html')">
+					<img src="img/logo.png" />
+					<p>安徽食品安全培训网</p>
+					<i>Food safety training in anhui province </i>
+				</h1>
+				<ul id="navList">
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<div class="">
+		<!-- 子页面轮播 -->
+		<div class="swiper-container sonBanner">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">
+					<img src="img/sbanner.png" />
+				</div>
+				<div class="swiper-slide">
+					<img src="img/sbanner.png" />
+				</div>
+			</div>
+		</div>
+		<section class="centre">
+			<h1 class="titleSon">
+				<a href="index.html">首页</a>
+				<a href="">> 在线证书查询</a>
+			</h1>
+			<div class="certificate">
+				<form class="layui-form" action="">
+					<h1>证书查询</h1>
+					<span></span>
+					<div class="layui-form-item">
+						<label class="layui-form-label"><i>*</i>姓名：</label>
+						<div class="layui-input-block">
+							<input type="text" name="username" lay-verify="required" lay-reqtext="请输入您的姓名"
+									placeholder="请输入您的姓名" value="" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label"><i>*</i>身份证：</label>
+						<div class="layui-input-block">
+							<input type="text" name="username" lay-verify="required" lay-reqtext="请输入您的身份证号"
+									placeholder="请输入您的身份证号" value="" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">证书编号：</label>
+						<div class="layui-input-block">
+							<input type="text" name="username" 
+									placeholder="请输入您的证书编号" value="" class="layui-input">						</div>
+					</div>
+					<p>带 “ * ” 为必填选项，可通过正确有效的证书编号进行查询，也可通过<br/>姓名+身份证的方式进行查询。</p>
+					<button type="button" class="layui-btn inquire" lay-submit="" lay-filter="register">查询</button>
+				</form>
+			</div>
+			<div class="searchResult">
+				<div class="gjpAfter">
+					
+				</div>
+			</div>
+		</section>
+	</div>
+	<footer></footer>
+	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="layui/layui.all.js"></script>
+	<script type="text/javascript" src="js/swiper.min.js"> </script>
+	<script type="text/javascript" src="js/main.js"></script>
+	<script>
+		//轮播图
+		var indexBannerswiper = new Swiper('.sonBanner', {
+			autoplay: {
+				delay: 5000
+			},
+		});
+		
+	</script>
+</body>
+
+</html>

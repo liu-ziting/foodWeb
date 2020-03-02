@@ -25,8 +25,8 @@
 	"spread" : false
 },{
 	"title" : "在线证书查询",
-	"id" : "",
-	"href" : "",
+	"id" : "certificate",
+	"href" : "certificate.html",
 	"spread" : false
 },{
 	"title" : "考试中心",
