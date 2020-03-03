@@ -65,8 +65,8 @@
 						<li>
 							<h1>单选题</h1>
 							<div>
-								<span>1</span>
-								<span>2</span>
+								<span class="green">1</span>
+								<span class="yellow">2</span>
 								<span>3</span>
 								<span>4</span>
 								<span>5</span>
@@ -376,25 +376,23 @@
 			},
 		});
 
-		//当页面加载状态为完全结束时进入 
-		document.onreadystatechange = function () {
-			if (document.readyState == "complete") {
-				layer.confirm('考试马上开始，准备好了吗？', {
-					btn: ['是', '否'],
-					title: "温馨提示",
-					closeBtn: 0
-				}, function () {
-					layer.msg('考试开始！', { icon: 1 });
-					timer = setInterval("CountDown()", 1000);
-				}, function () {
-					history.back();
-				});
-			}
-		}
 		//倒计时,时间存入缓存，休想刷新混时长
 		var maxtime = 1 * 60;
+		console.log(localStorage.getItem("maxtime"))
 		if (localStorage.getItem("maxtime")) {
 			maxtime = localStorage.getItem("maxtime");
+			timer = setInterval("CountDown()", 1000);
+		}else{
+			layer.confirm('考试马上开始，准备好了吗？', {
+				btn: ['是', '否'],
+				title: "温馨提示",
+				closeBtn: 0
+			}, function () {
+				layer.msg('考试开始！', { icon: 1 });
+				timer = setInterval("CountDown()", 1000);
+			}, function () {
+				history.back();
+			});
 		}
 		function CountDown() {
 			if (maxtime >= 0) {
@@ -415,11 +413,11 @@
 			}
 		}
 
-			// window.addEventListener("beforeunload", function (e) {
-			// 	var confirmationMessage = "\o/";
-			// 	(e || window.event).returnValue = confirmationMessage; // Gecko and Trident
-			// 	return confirmationMessage; // Gecko and WebKit
-			// });
+		window.addEventListener("beforeunload", function (e) {
+			var confirmationMessage = "\o/";
+			(e || window.event).returnValue = confirmationMessage; // Gecko and Trident
+			return confirmationMessage; // Gecko and WebKit
+		});
 
 	</script>
 </body>

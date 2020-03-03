@@ -2206,6 +2206,12 @@ header nav  ul .active i{
 	margin-bottom: 7px;
 	cursor: pointer;
 }
+.examination .left .green{
+	background: #397D47;
+}
+.examination .left .yellow{
+	background: #FF803A;
+}
 .examination .left ul li{
 	border-bottom:1px dashed rgba(226,226,226,1);
 	overflow: hidden;
