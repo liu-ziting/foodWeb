@@ -268,3 +268,29 @@ function shareToQq(_this) {
     var shareqqzonestring = 'http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?summary=' + summary + '&title=' + title + '&url=' + url + '&pics=' + picurl;
     window.open(shareqqzonestring, 'newwindow', 'height=400,width=400,top=100,left=100');
 }
+
+//操作cookie的对象
+var cookie = {
+	set: function(name, value) {
+		var Days = 30;
+		var exp = new Date();
+		exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
+		document.cookie = name + '=' + escape(value) + ';expires=' + exp.toGMTString();
+	},
+	get: function(name) {
+		var arr, reg = new RegExp('(^| )' + name + '=([^;]*)(;|$)');
+		if(arr = document.cookie.match(reg)) {
+			return unescape(arr[2]);
+		} else {
+			return null;
+		}
+	},
+	del: function(name) {
+		var exp = new Date();
+		exp.setTime(exp.getTime() - 1);
+		var cval = getCookie(name);
+		if(cval != null) {
+			document.cookie = name + '=' + cval + ';expires=' + exp.toGMTString();
+		}
+	}
+};

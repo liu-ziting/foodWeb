@@ -2084,3 +2084,145 @@ header nav  ul .active i{
 	background: url(../img/zfb2.png) no-repeat;
 	background-size: 100% 100%;
 }
+/* 考试中心 */
+.testCenter ul li{
+	padding: 44px 50px;
+	height: 314px;
+	border-bottom: 1px solid #E7E6ED;
+}
+.testCenter ul .leftBox{
+	width: 178px;
+	height: 226px;
+	float: left;
+	margin-right: 52px;
+}
+.testCenter li .gbox{
+	width: 178px;
+	height: 226px;
+	position: absolute;
+	border-radius: 3px;
+	z-index: 9;
+	transition: all 0.3s;
+	overflow: hidden;
+	background-color: #029042;
+}
+.testCenter li .blue{
+	background: url(../img/bk1.png);
+}
+.testCenter li .green{
+	background: url(../img/bk2.png);
+}
+.testCenter li .yellow{
+	background: url(../img/bk3.png);
+}
+.testCenter li .gbox h1{
+	font-size: 18px;
+	color: #ffffff;
+	width: 100%;
+	text-align: center;
+	font-weight: bold;
+	margin: 85px 0 15px 0;
+}
+.testCenter li .gbox p{
+	font-size: 12px;
+	color: #ffffff;
+	width: 100%;
+	text-align: center;
+	opacity: .8;
+}
+.testCenter li .gbox a{
+	font-size: 12px;
+	color: #ffffff;
+	width: 100%;
+	text-align: center;
+	display: block;
+	margin-top: 40px;
+	opacity: .8;
+}
+.testCenter li .rightBox {
+	float: left;
+	width: 800px;
+}
+.testCenter li .rightBox h1{
+	font-size: 23.98px;
+	color: #333333;
+	margin-bottom: 20px;
+}
+.testCenter li .rightBox span{
+	font-size: 15px;
+	color: #666666;
+	margin-right: 50px;
+}
+.testCenter li .rightBox span i{
+	margin-right: 2px;
+}
+.testCenter li .rightBox p{
+	font-size: 15.98px;
+	color: #666666;
+	margin-top: 6px;
+	line-height: 23px;
+	font-weight: 400;
+}
+.testCenter li .startTest{
+	width:253px;
+	height:54px;
+	background:rgba(245,82,13,1);
+	border-radius:3px;
+	font-size:16px;
+	color: #ffffff;
+	margin-top: 19px;
+}
+.testCenter .paging{
+	margin: 30px 0;
+}
+/* 考试 */
+.examination{
+	padding: 49px;
+	overflow: hidden;
+	min-height: 900px;
+}
+.examination .left{
+	width: 210px;
+	float: left;
+	height: 100%;
+}
+.examination .left h1{
+	font-size: 14px;
+	color: #161616;
+	margin-bottom: 15px;
+}
+.examination .left span{
+	width:28px;
+	height:25px;
+	background:rgba(196,196,196,1);
+	border-radius:3px;
+	font-size: 14px;
+	color: #FFFFFF;
+	text-align: center;
+	line-height: 25px;
+	display: block;
+	float: left;
+	margin-right: 7px;
+	margin-bottom: 7px;
+}
+.examination .left ul li{
+	border-bottom:1px dashed rgba(226,226,226,1);
+	overflow: hidden;
+	padding-bottom: 14px;
+	padding-top: 18px;
+}
+.examination .left ul li:last-child{
+	border: none;
+}
+.examination .left .submit{
+	width:199px;
+	height:36px;
+	background:rgba(57,125,71,1);
+	border-radius:18px;
+	margin-top: 12px;
+}
+.examination .right{
+	width: 974px;
+	height: 100%;
+	margin-left: 62px;
+}

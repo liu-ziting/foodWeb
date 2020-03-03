@@ -30,8 +30,8 @@
 	"spread" : false
 },{
 	"title" : "考试中心",
-	"id" : "",
-	"href" : "",
+	"id" : "testCenter",
+	"href" : "testCenter.html",
 	"spread" : false
 }
 ]

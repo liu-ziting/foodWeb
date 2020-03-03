@@ -381,14 +381,42 @@
 			container: '.videosamplex',//“#”代表容器的ID，“.”或“”代表容器的class
 			variable: 'player',//该属性必需设置，值等于下面的new chplayer()的对象
 			// poster: 'pic/wdm.jpg',
+			loaded:"loadHandler",
 			mobileCkControls: true,//是否在移动端（包括ios）环境中显示控制栏
 			mobileAutoFull: false,//在移动端播放后是否按系统设置的全屏播放
 			h5container: '#videoplayer',//h5环境中使用自定义容器
 			video: 'http://img.ksbbs.com/asset/Mon_1703/05cacb4e02f9d9e.mp4'//视频地址
 		};
+	
+
+		
+		var videoID = 10; //视频的区分ID，每个视频分配一个唯一的ID
+		var cookieTime = cookie.get('time_' + videoID); //调用已记录的time
+		console.log(cookieTime);
+		if(!cookieTime || cookieTime == undefined) { //如果没有记录值，则设置时间0开始播放
+			cookieTime = 0;
+		}
+		if(cookieTime > 0) {
+			console.log('本视频记录的上次观看时间(秒)为：' + cookieTime);
+		}
+		
+		if(cookieTime > 0) { //如果记录时间大于0，则设置视频播放后跳转至上次记录时间
+			videoObject['seek'] = cookieTime;
+		}
 		var player = new ckplayer(videoObject);
-
-
+	
+		function loadHandler() {
+			player.addListener('time', timeHandler); //监听播放时间
+			player.addListener('ended', VideoPlayEndedHandler);//监听播放结束
+		}
+	
+		function timeHandler(t) {
+			console.log(t)
+			cookie.set('time_' + videoID, t); //当前视频播放时间写入cookie
+		}
+		function VideoPlayEndedHandler(){//监听视频播放完成
+			console.log('本视频已结束');
+		}
 	</script>
 </body>
 
