@@ -5,7 +5,14 @@ var App = {
 	timestamp: ((Date.parse(new Date())) / 1000).toString(),	//时间戳
 };
 
-
+//头部进度加载条
+NProgress.start();
+	document.onreadystatechange = function () {
+	if (document.readyState == "complete") {
+		NProgress.done();
+	}
+}
+			
 //导航栏操作
 $("#navList li").click(function () {
 	var _index = $(this).index() + 1;
@@ -36,6 +43,10 @@ function jumpActive(value) {
 			return "0";
 		case "courseCenter":
 			return "1";
+		case "courseCenterDetails":
+			return "1";	
+		case "watchVideo":
+			return "1";	
 		case "fingerpost":
 			return "2";
 		case "announcement":
@@ -46,6 +57,8 @@ function jumpActive(value) {
 			return "5";
 		case "testCenter":
 			return "6";
+		case "examination":
+			return "6";	
 	}
 };
 var pathName = window.document.location.pathname;
