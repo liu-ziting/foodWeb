@@ -2338,3 +2338,71 @@ header nav  ul .active i{
 .examination .right form .layui-form-checked i{
 	font-weight: bold;
 }
+/* 新闻详情 */
+.details .detailsBox{
+	min-height: 500px;
+	padding-bottom: 100px;
+}
+.details .detailsBox h1{
+	font-size: 36px;
+	color: #333333;
+	margin: 40px 0 35px 0;
+	font-weight: bold;
+}
+.details .detailsBox > p{
+	font-size: 16px;
+	color: #666666;
+	margin-bottom: 55px;
+	width: 100%;
+	line-height: 25px;
+}
+.details .detailsBox > p span{
+	margin-right: 58px;
+	float: left;
+}
+.details .detailsBox > p i{
+	float: right;
+	font-size: 26px;
+	margin-left: 5px;
+	margin-top: -4px;
+	cursor: pointer;
+}
+.details .detailsBox .content{
+	font-size: 16px;
+	color: #111111;
+	line-height: 28px;
+	padding-bottom: 70px;
+	border-bottom: 1px solid #DDDDDD;
+	margin-bottom: 28px;
+	font-weight:400;
+	margin-top: 35px;
+}
+.details .detailsBox .content p{
+	margin-bottom: 10px;
+}
+.layui-icon-login-weibo{
+	color: #d81e06;
+}
+.layui-icon-login-wechat{
+	color: #0AB70E;
+}
+.layui-icon-login-qq{
+	color: #17ACFB;
+}
+.details .detailsBox .goBack{
+	font-size: 24px;
+	color: #4294F7;
+	padding-right: 10px;
+	border-right: 2px solid #4294F7;
+	margin-bottom: 20px;
+	width: 108px;
+	cursor: pointer;
+}
+.details .detailsBox  a{
+	font-size: 16px;
+	color: #666666;
+	width: 100%;
+	float: left;
+	margin-bottom: 16px;
+	overflow: hidden;
+}

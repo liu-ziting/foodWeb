@@ -7,7 +7,7 @@ var App = {
 
 //头部进度加载条
 NProgress.start();
-	document.onreadystatechange = function () {
+document.onreadystatechange = function () {
 	if (document.readyState == "complete") {
 		NProgress.done();
 	}
@@ -52,6 +52,8 @@ function jumpActive(value) {
 		case "announcement":
 			return "3";
 		case "information":
+			return "4";
+		case "details":
 			return "4";
 		case "certificate":
 			return "5";
