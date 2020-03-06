@@ -261,22 +261,23 @@
 				delay: 5000
 			},
 		});
-
 		//模拟提交
 		$(".submit").click(function () {
 			layer.confirm('确定提交答卷？', {
 				title:"温馨提示",
 				btn: ['确定', '再看看'] //按钮
 			}, function () {
-				layer.msg('提交成功！', {offset: 'b',time:'300'});
-				$(".examination").hide();
-				$(".certificate").show();
-				//初始化数字滚动特效
-				$(".font").numScroll();
+				layer.msg('考试结果正在加载中', {icon: 16,time:'950'})
+				setTimeout(function(){
+					$(".examination").hide();
+					$(".certificate").show();
+					//初始化数字滚动特效
+					$(".font").numScroll();
+				},1000)
 			}, function () {
 
 			});
-		})
+		});
 
 		// 数据绑定到右侧答题卡
 		$("#topic li .layui-input-block").click(function () {
