@@ -59,7 +59,7 @@
 				<a href="">> 生产领域培训课程</a>
 			</h1>
 			<div class="examination">
-				<div class="left">
+				<div class="left fixation">
 					<ul id="sequence">
 						<li>
 							<h1>单选题</h1>
@@ -212,16 +212,21 @@
 									10、食品安全法规定，制定食品安全标准，应当以保障________为宗旨，做到科学合理、安全可靠
 								</p>
 								<div class="layui-input-block multipleChoice">
-									<input type="checkbox"  lay-filter="ck_hao_10"  name="like" value="A" title="A：公众身体健康">
-									<input type="checkbox"  lay-filter="ck_hao_10"  name="like" value="B" title="B：公众生活需要">
-									<input type="checkbox"  lay-filter="ck_hao_10"  name="like" value="C" title="C：社会生活需要">
-									<input type="checkbox"  lay-filter="ck_hao_10"  name="like" value="D" title="D：企业安全生产">
+									<input type="checkbox" lay-filter="ck_hao_10" name="like" value="A"
+										title="A：公众身体健康">
+									<input type="checkbox" lay-filter="ck_hao_10" name="like" value="B"
+										title="B：公众生活需要">
+									<input type="checkbox" lay-filter="ck_hao_10" name="like" value="C"
+										title="C：社会生活需要">
+									<input type="checkbox" lay-filter="ck_hao_10" name="like" value="D"
+										title="D：企业安全生产">
 								</div>
 								<em class="layui-icon layui-icon-rate-solid"></em>
 							</li>
 						</ul>
 					</form>
 				</div>
+				<div class="clear"></div>
 			</div>
 		</section>
 	</div>
@@ -239,27 +244,27 @@
 		});
 
 		// 数据绑定到右侧答题卡
-		$("#topic li .layui-input-block").click(function(){
-			var selectedIndex = $(this).parents("li").index() ;
+		$("#topic li .layui-input-block").click(function () {
+			var selectedIndex = $(this).parents("li").index();
 			$("#sequence .number").eq(selectedIndex).addClass("green");
-			if($(this).hasClass("multipleChoice")){
-				if($(this).find('.layui-form-checked').length == 0){
+			if ($(this).hasClass("multipleChoice")) {
+				if ($(this).find('.layui-form-checked').length == 0) {
 					$("#sequence .number").eq(selectedIndex).removeClass("green");
 				}
 			}
 		});
 
 		//获取复选框选中的值
-		$.makeArray($(':checkbox[name="like"]:checked').map(function(){
+		$.makeArray($(':checkbox[name="like"]:checked').map(function () {
 			return this.value;
 		})).join(',');
 		//收藏题目
-		$("#topic li em").click(function(){
-			var selectedIndex = $(this).parents("li").index() ;
-			if($(this).hasClass("activeStar")){
+		$("#topic li em").click(function () {
+			var selectedIndex = $(this).parents("li").index();
+			if ($(this).hasClass("activeStar")) {
 				$(this).removeClass("activeStar");
 				$("#sequence .number").eq(selectedIndex).removeClass("yellow")
-			}else{
+			} else {
 				$(this).addClass("activeStar");
 				$("#sequence .number").eq(selectedIndex).addClass("yellow")
 			}
@@ -277,7 +282,7 @@
 				(e || window.event).returnValue = confirmationMessage; // Gecko and Trident
 				return confirmationMessage; // Gecko and WebKit
 			});
-		}else{
+		} else {
 			layer.confirm('考试马上开始，准备好了吗？', {
 				btn: ['是', '否'],
 				title: "温馨提示",
@@ -308,7 +313,29 @@
 			}
 		}
 
-		
+
+		// 鼠标下滑，昨天答题卡固定在顶部
+		var ie6 = /msie 6/i.test(navigator.userAgent);
+		var tableDv = $('.fixation');
+		var st;
+		tableDv.attr('otop', tableDv.offset().top); //存储原来的距离顶部的距离
+		$(window).scroll(function () {
+			st = Math.max(document.body.scrollTop || document.documentElement.scrollTop);
+			if (st >= parseInt(tableDv.attr('otop'))) {
+				if (ie6) {//IE6不支持fixed属性，所以只能靠设置position为absolute和top实现此效果
+					tableDv.css({ position: 'absolute', top: st });
+				}else if (tableDv.css('position') != 'fixed') {
+					tableDv.css({ 'position': 'fixed', top: 0 });
+				}
+				console.log(1)	
+				$(".examination .right").css("margin-left","272px")
+			} else if (tableDv.css('position') != 'static') {
+				tableDv.css({ 'position': 'static' });
+				console.log(2)
+				$(".examination .right").css("margin-left","62px")
+			}
+			
+		});
 
 	</script>
 </body>
