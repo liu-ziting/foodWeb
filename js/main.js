@@ -61,6 +61,8 @@ function jumpActive(value) {
 			return "6";
 		case "examination":
 			return "6";	
+		case "doExercise":
+			return "6";	
 	}
 };
 var pathName = window.document.location.pathname;

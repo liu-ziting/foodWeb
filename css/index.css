@@ -2205,12 +2205,41 @@ header nav  ul .active i{
 	margin-right: 7px;
 	margin-bottom: 7px;
 	cursor: pointer;
+	position: relative;
 }
 .examination .left .green{
 	background: #397D47;
 }
 .examination .left .yellow{
 	background: #FF803A;
+}
+.examination .left .wrong:before {
+    content: "✘";
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #C7000A;
+	top: 0;
+	border-radius:3px;
+	left: 0;
+    text-align: center;
+    line-height: 25px;
+    width: 100%;
+    position: absolute;
+	z-index: 99;
+}
+.examination .left .correct:before {
+    content: "✔";
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #397D47;
+	top: 0;
+	border-radius:3px;
+	left: 0;
+    text-align: center;
+    line-height: 25px;
+    width: 100%;
+    position: absolute;
+	z-index: 99;
 }
 .examination .left ul li{
 	border-bottom:1px dashed rgba(226,226,226,1);
@@ -2293,10 +2322,11 @@ header nav  ul .active i{
 	line-height: 23px;
 	border-radius:2px;
 	margin-top: -3px;
+	display: none;
 }
-.examination .right form ul li p .activei{
-	background:rgba(245,82,13,1);
-	color: #ffffff;
+.examination .right form ul li p .activei {
+    background: rgba(245,82,13,1);
+    color: #ffffff;
 }
 .examination .right form ul li .layui-input-block{
 	margin-left: 36px;
