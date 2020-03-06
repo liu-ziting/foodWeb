@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>安徽食品安全培训网</title>
+	<link rel="stylesheet" href="css/nprogress.css">
+	<script type="text/javascript" src="js/nprogress.js"> </script>
+	<link rel="stylesheet" href="layui/css/layui.css" />
+	<link rel="stylesheet" href="css/swiper.min.css">
+	<link rel="stylesheet" href="css/index.css" />
+</head>
+
+<body>
+	<!-- 头部 -->
+	<header>
+		<div class="top">
+			<section>
+				<p>你好，欢迎访问滁州食品安全网</p>
+				<p>
+					<a onclick="openUrl('login.html')" href="javascript:;">现在登录！</a>
+				</p>
+				<p onclick="openUrl('user.html')"><img src="img/user.png" />个人中心</p>
+			</section>
+			<nav>
+				<h1 onclick="openUrl('index.html')">
+					<img src="img/logo.png" />
+					<p>安徽食品安全培训网</p>
+					<i>Food safety training in anhui province </i>
+				</h1>
+				<ul id="navList">
+					<li>首页<i></i></li>
+					<li>课程中心<i></i></li>
+					<li>学习指南<i></i></li>
+					<li>教学公告<i></i></li>
+					<li>食品安全资讯<i></i></li>
+					<li>在线证书查询<i></i></li>
+					<li>考试中心<i></i></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<div class="">
+		<!-- 子页面轮播 -->
+		<div class="swiper-container sonBanner">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">
+					<img src="img/sbanner.png" />
+				</div>
+				<div class="swiper-slide">
+					<img src="img/sbanner.png" />
+				</div>
+			</div>
+		</div>
+		<section class="centre">
+			<h1 class="titleSon">
+				<a href="index.html">首页</a>
+				<a href="testCenter.html">> 考试中心</a>
+				<a href="">> 考试成绩</a>
+			</h1>
+			<div class="certificate">
+				<form class="layui-form" action="">
+					<h1>考试成绩</h1>
+					<span></span>
+					<div class="examResult">
+						<div class="circle">
+							<p>98<i>分</i></p>
+							<div class="white">
+								考试结束
+							</div>
+						</div>
+						<b>恭喜您已成功通过<br> 【食品行业流通领域从业人员资格证】考试</b>
+						<button onclick="openUrl('certificate.html')" type="button" class="layui-btn query">在线查询资格证书</button>
+					</div>
+				</form>
+			</div>
+		</section>
+	</div>
+	<footer></footer>
+	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="layui/layui.all.js"></script>
+	<script type="text/javascript" src="js/swiper.min.js"> </script>
+	<script type="text/javascript" src="js/main.js"></script>
+	<script>
+		//轮播图
+		var indexBannerswiper = new Swiper('.sonBanner', {
+			autoplay: {
+				delay: 5000
+			},
+		});
+		
+	</script>
+</body>
+
+</html>
