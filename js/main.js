@@ -1,7 +1,7 @@
 var App = {
-	apiBasePath: "http://www.chenkaix.cn:8088/", 	//接口地址
+	apiBasePath: "http://api-business.chenkaix.cn/", 	//接口地址
 	rootPath: getRootPath(),				//项目根目录地址
-	filePath: 'http://www.chenkaix.cn:8088/',
+	filePath: 'http://api-business.chenkaix.cn/',
 	timestamp: ((Date.parse(new Date())) / 1000).toString(),	//时间戳
 };
 
@@ -74,33 +74,6 @@ var activeUrl = pathName.substr(aPos + 1, bPos - aPos - 1);
 $("#navList li").eq(jumpActive(activeUrl)).addClass("active")
 // 底部
 $("footer").load("footer.html");
-
-// 获取导航栏
-// $(function () {
-// 	$.ajax({
-// 		type: "GET",
-// 		url: "js/nav.json",
-// 		dataType: "json",
-// 		success: function (data) {
-// 			var ihtml = "";
-// 			// 获取主机地址之后的目录
-// 			var pathName = window.document.location.pathname;
-// 			var aPos = pathName.indexOf('/');
-// 			var bPos = pathName.indexOf('.');
-// 			var activeUrl = pathName.substr(aPos + 1, bPos - aPos - 1);
-// 			for (var i = 0; i < data.length; i++) {
-// 				if (activeUrl == data[i].id) {
-// 					ihtml += '<li class="active" onclick=\"openUrl(\'' + data[i].href + '\')\">' + data[i].title + '<i></i></li>'
-// 				} else {
-// 					ihtml += '<li onclick=\"openUrl(\'' + data[i].href + '\')\">' + data[i].title + '<i></i></li>'
-// 				}
-// 			};
-// 			$("#navList").html(ihtml);
-// 			// 底部
-// 			$("footer").load("footer.html");
-// 		}
-// 	});
-// });
 
 // 返回顶部
 layui.use(['util'], function () {
@@ -180,11 +153,11 @@ var http = {
 						});
 						break;
 					case 403: // 403 未登录
-						//						layer.msg('登录失效，请重新登录！', {
-						//							icon: 5
-						//						},function(){
-						//							location.href = 'login.html';
-						//						});
+						//layer.msg('登录失效，请重新登录！', {
+						//icon: 5
+						//},function(){
+						//location.href = 'login.html';
+						//});
 						break;
 					case 401: // 401 登录失败
 						layer.msg('登录失败！', {
@@ -231,6 +204,22 @@ var http = {
 		return def;
 	}
 }
+
+//更新用户token
+function update_token(){
+	http.ajax({
+		url: 'user/update_token',
+		type: 'GET',
+		json: false,
+		mask: false,
+	}).then(function (data) {
+		if (data.code == 200) {}
+	}, function (err) {
+		if(err.status == 403){
+			
+		}
+	})
+};
 
 /* 获取当前的日期时间 格式“yyyy-MM-dd HH:MM:SS” */
 function getNowFormatDate() {
@@ -363,3 +352,30 @@ var cookie = {
 		}
 	}
 };
+
+// 获取导航栏
+// $(function () {
+// 	$.ajax({
+// 		type: "GET",
+// 		url: "js/nav.json",
+// 		dataType: "json",
+// 		success: function (data) {
+// 			var ihtml = "";
+// 			// 获取主机地址之后的目录
+// 			var pathName = window.document.location.pathname;
+// 			var aPos = pathName.indexOf('/');
+// 			var bPos = pathName.indexOf('.');
+// 			var activeUrl = pathName.substr(aPos + 1, bPos - aPos - 1);
+// 			for (var i = 0; i < data.length; i++) {
+// 				if (activeUrl == data[i].id) {
+// 					ihtml += '<li class="active" onclick=\"openUrl(\'' + data[i].href + '\')\">' + data[i].title + '<i></i></li>'
+// 				} else {
+// 					ihtml += '<li onclick=\"openUrl(\'' + data[i].href + '\')\">' + data[i].title + '<i></i></li>'
+// 				}
+// 			};
+// 			$("#navList").html(ihtml);
+// 			// 底部
+// 			$("footer").load("footer.html");
+// 		}
+// 	});
+// });

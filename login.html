@@ -44,9 +44,10 @@
 		<section>
 			<h1>登陆后使用</h1>
 			<div class="qrCode">
-				<img src="img/code.png"/>
+				<img src="img/code.png" />
 			</div>
 			<p>小程序授权登陆<br> 扫描二维码，识别小程序</p>
+
 		</section>
 	</div>
 	<footer></footer>
@@ -54,7 +55,40 @@
 	<script type="text/javascript" src="layui/layui.all.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 	<script>
-		
+
+		//模拟登陆
+		$(".qrCode").click(function () {
+			layer.prompt({ title: '开发模拟小程序登陆', formType: 3 }, function (pass, index) {
+				layer.close(index);
+				devLogin(pass)
+			});
+		})
+		//用户登录
+		function devLogin(phone) {
+			http.ajax({
+				url: 'user/devLogin',
+				type: 'POST',
+				json: false,
+				mask: true,
+				data: {
+					phone: phone,
+				}
+			}).then(function (data) {
+				if (data.code == 200) {
+					layer.msg('恭喜您，登录成功！', {
+						icon: 1
+					}, function () {
+						location.href = 'index.html';
+					});
+				}
+			}, function (err) {
+				console.log(err);
+			})
+		}
+
+
+
+
 	</script>
 </body>
 
