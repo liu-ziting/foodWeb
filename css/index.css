@@ -118,6 +118,9 @@ header .top section p{
 	float: left;
 	margin-right: 25px;
 }
+header .top section p:nth-child(2){
+	display: none;
+}
 header .top section p:last-child{
 	float: right;
 	cursor: pointer;
@@ -861,6 +864,7 @@ header nav  ul .active i{
 	color: #333333;
 	text-align: center;
 	margin-top: 22px;
+	height: 31px;
 	width: 100%;
 	font-weight: bold;
 	text-align: center;

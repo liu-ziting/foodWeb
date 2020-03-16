@@ -21,7 +21,7 @@
 				<p>
 					<a onclick="openUrl('login.html')" href="javascript:;">现在登录！</a>
 				</p>
-				<p onclick="openUrl('user.html')"><img src="img/user.png" />个人中心</p>
+				<p><img src="img/user.png" />个人中心</p>
 			</section>
 			<nav>
 				<h1 onclick="openUrl('index.html')">
@@ -64,7 +64,7 @@
 						<div  class="tx">
 							<img src="img/man.png"/>
 						</div>
-						<h1>韩梅梅</h1>
+						<h1>加载中</h1>
 					</span>
 					<p>个人用户</p>
 					<div class="linkList">
@@ -86,19 +86,24 @@
 				</div>
 				<div class="right">
 					<div class="up">
-						<h3>个人资料</h3>
-						<div class="Rleft">
-							<p><span>姓名：</span>韩梅梅</p>
-							<p><span>性别：</span>女</p>
-							<p><span>手机号：</span>15755055889</p>
-							<p><span>身份证号：</span>3452578948597895896</p>
-							<p><span>工作单位：</span>杭州孚立计算机有限公司</p>
-							<p><span>工作地址：</span>杭州市西湖区西溪科创园</p>
-						</div>
-						<div class="Rright">
-							<h4>已获取资格证:</h4>
-							<button type="button">尚未获取资格证</button>
-						</div>
+						<div id="view"></div>
+						<script id="userTpl" type="text/html">
+							<h3>个人资料</h3>
+							<div class="Rleft">
+								<p><span>姓名：</span>{{d.name}}</p>
+								<p><span>性别：</span>
+									{{#  if(d.sex == 1){ }}男{{#  } else { }}女{{#  } }} 
+								</p>
+								<p><span>手机号：</span>{{d.phone}}</p>
+								<p><span>身份证号：</span>{{d.idNo}}</p>
+								<p><span>工作单位：</span>{{d.company}}</p>
+								<p><span>工作地址：</span>{{d.workAddress}}</p>
+							</div>
+							<div class="Rright">
+								<h4>已获取资格证:</h4>
+								<button type="button">尚未获取资格证</button>
+							</div>
+						</script>
 					</div>
 					<div class="down">
 						<h3>我的课程</h3>
@@ -173,6 +178,38 @@
 			autoplay: {
 				delay: 5000
 			},
+		});
+
+		layui.use(['laypage', 'laytpl', 'layer'], function () {
+			var laytpl = layui.laytpl,
+				laypage = layui.laypage;
+
+			//用户详情
+			http.ajax({
+				url: 'user/getUserInfo',
+				type: 'GET',
+				json: false,
+				mask: true,
+			}).then(function (data) {
+				if (data.code == 200) {
+					var data = beNull(data.data);
+					var getTpl = userTpl.innerHTML
+						, view = document.getElementById('view');
+					laytpl(getTpl).render(data, function (html) {
+						view.innerHTML = html;
+					});
+				}
+			}, function (err) {
+				console.log(err)
+				if (err.status == 403) {
+					layer.msg('登录已失效！', {
+						icon: 5
+					}, function () {
+						location.href = 'login.html';
+					});
+				}
+			});
+
 		});
 		// 我的课程轮播
 		var courseSwiper = new Swiper('.courseSwiper', {

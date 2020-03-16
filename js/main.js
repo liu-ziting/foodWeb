@@ -1,7 +1,7 @@
 var App = {
-	apiBasePath: "http://api-business.chenkaix.cn/", 	//接口地址
+	apiBasePath: "http://edu-bus.utools.club/bus/", 	//接口地址
 	rootPath: getRootPath(),				//项目根目录地址
-	filePath: 'http://api-business.chenkaix.cn/',
+	filePath: 'http://edu-bus.utools.club/bus/',
 	timestamp: ((Date.parse(new Date())) / 1000).toString(),	//时间戳
 };
 
@@ -205,19 +205,74 @@ var http = {
 	}
 }
 
-//更新用户token
-function update_token(){
+//跳转到用户主页
+$("header .top section p:last-child").click(function(){
+	if(localStorage.getItem("login") == 'true'){
+		location.href = 'user.html';
+	}else{
+		layer.msg('暂未登录，请登录！', {
+			icon: 5
+		},function(){
+			location.href = 'login.html';
+		});
+	}
+})
+//获取用户详情
+getUserInfo();
+function getUserInfo() {
 	http.ajax({
-		url: 'user/update_token',
+		url: 'user/getUserInfo',
 		type: 'GET',
 		json: false,
 		mask: false,
 	}).then(function (data) {
-		if (data.code == 200) {}
+		localStorage.setItem("login",data.login);
+		if (data.code == 200) {
+			$("header .top section p:nth-child(2)").hide();
+			localStorage.setItem("name",data.data.name);
+			$(".userContent .left h1").text(beNull(data.data).name);
+		}
+	}, function (err) {
+		if (err.status) {
+			localStorage.removeItem("login");
+			$("header .top section p:nth-child(2)").show();
+		}
+	}) 
+};
+//更新用户token
+updateToken();
+function updateToken(){
+	http.ajax({
+		url: 'user/updateToken',
+		type: 'GET',
+		json: false,
+		mask: false,
+	}).then(function (data) {
+		if (data.code == 200) {
+			
+		}
 	}, function (err) {
 		if(err.status == 403){
 			
 		}
+	})
+};
+//退出登录接口
+function logout(){
+	http.ajax({
+		url: 'user/logout',
+		type: 'GET',
+		json: false,
+		mask: true,
+
+	}).then(function(data) {
+		if(data.code == 200) {
+			layer.msg('退出成功！');
+			localStorage.removeItem("login");
+			location.href = 'index.html';
+		}
+	}, function(err) {
+		
 	})
 };
 
