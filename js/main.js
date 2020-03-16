@@ -275,7 +275,41 @@ function logout(){
 		
 	})
 };
+//获取手机验证码
+function send_verify_code(phone,type) {
+	http.ajax({
+		url: 'user/send_verify_code',
+		type: 'POST',
+		json: false,
+		mask: true,
+		data: {
+			phone: phone,
+			type: type,
+		}
+	}).then(function (data) {
+		if (data.code == 200) {
+			layer.msg('验证码发送成功！');
+		}
+	}, function (err) {
+		console.log(err);
+	})
+};
 
+//验证码倒计时
+function countDownCode(){
+    var num = 60;
+    var timer = setInterval(function () {
+        if (num > 1) {
+            num--;
+			$(".getCode").text("重新发送(" + num + ")").attr("disabled", "disabled");
+			$(".getCode").css('background', '#B8B8B8');
+        } else {
+			$(".getCode").text("获取短信验证码").removeAttr("disabled");
+			$(".getCode").css('background', '#195edd');
+            clearInterval(timer);
+        }
+    }, 1000)
+}
 /* 获取当前的日期时间 格式“yyyy-MM-dd HH:MM:SS” */
 function getNowFormatDate() {
 	var date = new Date();

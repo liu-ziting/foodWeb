@@ -64,7 +64,7 @@
 						<div  class="tx">
 							<img src="img/man.png"/>
 						</div>
-						<h1> </h1>
+						<h1>韩梅梅</h1>
 					</span>
 					<p>个人用户</p>
 					<div class="linkList">
@@ -90,21 +90,21 @@
 						<div class="layui-form-item">
 							<label class="layui-form-label">原手机号码:</label>
 							<div class="layui-input-block">
-								<input type="text" name="" lay-verify="required" lay-reqtext="请输入当前绑定手机号码"
-									placeholder="请输入当前绑定手机号码" value="" autocomplete="off" class="layui-input">
+								<input type="tel" name="yphone" lay-verify="required" lay-reqtext="请输入当前绑定手机号码"
+									placeholder="请输入当前绑定手机号码" value="" autocomplete="off" class="layui-input yphone">
 							</div>
 						</div>
 						<div class="layui-form-item">
 							<label class="layui-form-label">新手机号码:</label>
 							<div class="layui-input-block">
-								<input type="text" name="" lay-verify="required" lay-reqtext="请输入新的手机号码"
-									placeholder="请输入新的手机号码" value="" autocomplete="off" class="layui-input">
+								<input type="tel" name="xphone" lay-verify="required" lay-reqtext="请输入新的手机号码"
+									placeholder="请输入新的手机号码" value="" autocomplete="off" class="layui-input xphone">
 							</div>
 						</div>
 						<div class="layui-form-item authCode">
 							<label class="layui-form-label">验证码:</label>
 							<div class="layui-input-block">
-								<input type="text" name="" lay-verify="required" lay-reqtext="请输入验证码"
+								<input type="text" name="code" lay-verify="required" lay-reqtext="请输入验证码"
 									placeholder="请输入验证码" value="" autocomplete="off" class="layui-input">
 								<button type="button" class="layui-btn qrbut getCode">获取验证码</button>
 							</div>
@@ -128,6 +128,83 @@
 				delay: 5000
 			},
 		});
+
+		layui.use(['form', 'layedit', 'laydate'], function () {
+			var form = layui.form
+				, layer = layui.layer
+			//监听提交
+			form.on('submit(register)', function (data) {
+				var phone = localStorage.getItem("phone");
+				var yphone = $(".yphone").val();
+				var xphone = $(".xphone").val();
+				if(phone == yphone){
+					change_phone(xphone,data.field.code);
+				}else{
+					layer.msg('原手机号输入错误!', {
+						icon: 5
+					});
+				};
+				return false;
+			});
+			
+		});
+
+		//获取验证码
+		$(".getCode").click(function(){
+			var phone = $(".xphone").val();
+			if(!phone){
+				layer.msg('请先输入手机号码!', {
+					icon: 5
+				});
+			}else{
+				check(phone,'phone');
+			}
+		})
+		
+		//修改绑定手机号
+		function change_phone(phone,code){
+			http.ajax({
+				url: 'user/change_phone',
+				type: 'POST',
+				json: false,
+				mask: true,
+				data:{
+					phone:phone,
+					code:code
+				}
+			}).then(function (data) {
+				if (data.code == 200) {
+					layer.msg('修改成功！', {
+						icon: 1
+					}, function() {
+						location.href = 'modifyPhone.html';
+					});
+				}
+			}, function (err) {
+
+			})
+		};
+
+		//检查手机号或用户名是否可注册
+		function check(data,type){
+			http.ajax({
+				url: 'user/check',
+				type: 'GET',
+				json: false,
+				mask: true,
+				data: {
+					data:data,
+					type:type,
+				}
+			}).then(function(data) {
+				if(data.code == 200){
+					send_verify_code(data,'changePhone');
+					countDownCode();
+				}
+			},function(err) {
+				
+			})
+		};
 	</script>
 </body>
 

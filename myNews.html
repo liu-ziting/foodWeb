@@ -87,26 +87,19 @@
 				<div class="right">
 					<h3>我的消息<p><i>个人中心 > 用户管理 > <span>我的消息</span></i></p></h3>
 					<ul>
-						<li>
-							<h1>滁州食品安全网<time>2020-01-09</time><span class="read">已读</span></h1>
-							<p>您购买的食品从业人员流通领域培训课程已生效，请在课程中心中查看课程并学习</p>
-						</li>
-						<li>
-							<h1>滁州食品安全网<time>2020-01-09</time><span class="">未读</span></h1>
-							<p>您购买的食品从业人员流通领域培训课程已生效，请在课程中心中查看课程并学习</p>
-						</li>
-						<li>
-							<h1>滁州食品安全网<time>2020-01-09</time><span class="">未读</span></h1>
-							<p>您购买的食品从业人员流通领域培训课程已生效，请在课程中心中查看课程并学习</p>
-						</li>
-						<li>
-							<h1>滁州食品安全网<time>2020-01-09</time><span class="">未读</span></h1>
-							<p>您购买的食品从业人员流通领域培训课程已生效，请在课程中心中查看课程并学习</p>
-						</li>
-						<li>
-							<h1>滁州食品安全网<time>2020-01-09</time><span class="">未读</span></h1>
-							<p>您购买的食品从业人员流通领域培训课程已生效，请在课程中心中查看课程并学习</p>
-						</li>
+						<div id="view"></div>
+						<script id="myNewsTpl" type="text/html">
+							{{# layui.each(d.items, function(index, item){ }}
+							<li>
+								<h1>滁州食品安全网<time>2020-01-09</time><span class="read">已读</span></h1>
+								<p>您购买的食品从业人员流通领域培训课程已生效，请在课程中心中查看课程并学习</p>
+							</li>
+							{{# }); }} {{# if(d.items.length === 0){ }}
+							<li>
+								<h1>暂无系统消息</h1>							</li>
+							{{# } }}
+							
+						</script>
 					</ul>
 					<!--分页-->
 					<div id="paging" class="paging"></div>
@@ -126,20 +119,57 @@
 				delay: 5000
 			},
 		});
-		layui.use(['laypage', 'layer'], function(){
-			var laypage = layui.laypage
-			,layer = layui.layer;
+		//消息列表
+		var pageNo = 1;
+		var pageSize = 20;
+		userSysNotice();
+		function userSysNotice() {
+			layui.use(['laypage', 'layer', 'laytpl'], function () {
+				var laypage = layui.laypage,
+					laytpl = layui.laytpl,
+					layer = layui.layer;
+				http.ajax({
+					url: 'sysNotice/userSysNotice',
+					type: 'GET',
+					json: false,
+					mask: true,
+					data: {
+						pageNo: pageNo,
+						pageSize: pageSize
+					}
+				}).then(function (data) {
+					var result = data;
+					var totalList = data.data.total;
+					$(".total").text(totalList);
+					if (data.code == 200) {
+						// 数据渲染
+						var data = data.data;
+						var getTpl = myNewsTpl.innerHTML,
+							view = document.getElementById('view');
+						laytpl(getTpl).render(data, function (html) {
+							view.innerHTML = html;
+						});
+						//分页
+						laypage.render({
+							elem: 'paging'
+							, curr: pageNo
+							, limit: pageSize
+							, count: totalList
+							, layout: ['count', 'prev', 'page', 'next', 'limit', 'skip']
+							, jump: function (obj, first) { //触发分页后的回调
+								if (!first) { //点击跳页触发函数自身，并传递当前页：obj.curr
+									pageNo = obj.curr;
+									pageSize = obj.limit;
+									userSysNotice();
+								}
+							}
+						});
+					}
+				}, function (err) {
 
-			//分页
-			laypage.render({
-				elem: 'paging'
-				,count: 100
-				,layout: ['count', 'prev', 'page', 'next', 'limit', 'skip']
-				,jump: function(obj){
-				console.log(obj)
-				}
+				})
 			});
-		})
+		};
 	</script>
 </body>
 

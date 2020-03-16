@@ -66,21 +66,21 @@
 						<label class="layui-form-label"><i>*</i>姓名：</label>
 						<div class="layui-input-block">
 							<input type="text" name="username" lay-verify="required" lay-reqtext="请输入您的姓名"
-									placeholder="请输入您的姓名" value="" autocomplete="off" class="layui-input">
+									placeholder="请输入您的姓名" value="" autocomplete="off" class="layui-input username">
 						</div>
 					</div>
 					<div class="layui-form-item">
 						<label class="layui-form-label"><i>*</i>身份证：</label>
 						<div class="layui-input-block">
-							<input type="text" name="username" lay-verify="required" lay-reqtext="请输入您的身份证号"
-									placeholder="请输入您的身份证号" value="" autocomplete="off" class="layui-input">
+							<input type="text" name="idNo" lay-verify="required" lay-reqtext="请输入您的身份证号"
+									placeholder="请输入您的身份证号" value="" autocomplete="off" class="layui-input idNo">
 						</div>
 					</div>
 					<div class="layui-form-item">
 						<label class="layui-form-label">证书编号：</label>
 						<div class="layui-input-block">
-							<input type="text" name="username" 
-									placeholder="请输入您的证书编号" value="" class="layui-input">						</div>
+							<input type="text" name="certificateNo" 
+									placeholder="请输入您的证书编号" value="" class="layui-input certificateNo">						</div>
 					</div>
 					<p>带 “ * ” 为必填选项，可通过正确有效的证书编号进行查询，也可通过<br/>姓名+身份证的方式进行查询。</p>
 					<button type="button" class="layui-btn inquire" lay-submit="" lay-filter="register">查询</button>
@@ -105,7 +105,41 @@
 				delay: 5000
 			},
 		});
-		
+
+		layui.use(['form', 'layedit', 'laydate'], function () {
+			var form = layui.form
+				, layer = layui.layer
+			//监听提交
+			form.on('submit(register)', function (data) {
+				certificateSearch(data.field.username,data.field.idNo,data.field.certificateNo);
+				return false;
+			});
+		});
+		//证书查询接口
+		function certificateSearch(username,idNo,certificateNo){
+			http.ajax({
+				url: 'certificate/search',
+				type: 'GET',
+				json: false,
+				mask: true,
+				data: {
+					username:username,
+					idNo: idNo,
+					certificateNo:certificateNo
+				}
+			}).then(function (data) {
+				if (data.code == 200) {
+					if(data.data == null){
+						layer.msg('暂无证书！', {
+							icon: 7
+						});
+					}
+				}
+			}, function (err) {
+
+			})
+		}
+
 	</script>
 </body>
 
