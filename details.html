@@ -59,25 +59,38 @@
 				<a href="">> 食品安全资讯</a>
 				<a href="">> 新闻详情</a>
 			</h1>
+			<div id="view"></div>
+			<script id="detailsTpl" type="text/html">
 			<div class="detailsBox">
-				<h1>中国食品安全法相关条例解读</h1>
+				
+				<h1>{{d.current.noticeTitle}}</h1>
 				<p>
-					<span>发布时间：2020-02-05</span>
-					<span>阅读量：3000</span>
+					<span>发布时间：{{d.current.createTime}}</span>
+					<span>阅读量：{{d.current.hitCount}}</span>
 					<i class="layui-icon layui-icon-login-weibo"></i>
 					<i class="layui-icon layui-icon-login-qq"></i>
-					<i class="layui-icon layui-icon-login-wechat"></i>	
+					<i class="layui-icon layui-icon-login-wechat"></i>
 				</p>
 				<div class="clear"></div>
 				<div class="content">
-					<p>用户在设计办公室时应该注意什么？首先，我们需要确保地面是光滑的，如果地面不是很光滑，员工在行走的过程中会影响到审美，这将影响整个公司的形象，这是非常重要的。而选择材料来保护环境，在装饰设计过程中，如果选择绿色环保材料，只要能控制质量，那么就能保证办公人员在工作过程中的呼吸，不会因为物质原因而影响呼吸。环保材料的选择可以使员工在工作过程中身心健康，选择自然的工作环境，使工作更加舒适，能够创造一个清晰、自然的工作环境，这是非常重要的。用户在设计办公室时应该注意什么？首先，我们需要确保地面是光滑的，如果地面不是很光滑，员工在行走的过程中会影响到审美，这将影响整个公司的形象，这是非常重要的。而作过程中的呼吸，不会因为物质原因而影响呼吸。</p>
-					<p>办公室设计中应注意的几个问题。其次，还应特别注意在办公空间中，必须在一些必要的地方配备合理的消防设备，这是非常重要的。由于许多人在办公设计过程中忽视了消防设备，消防检查的质量不高。因此，我们必须注意消防设备在正确的位置布置相应的消防设备，以备不时之需。 </p><p>在办公室设计中，电线改造也是非常重要的一点，一些公司在办公安装过程中，不会被邀请到专业公司进行改造，这样就会在人的操作过程中存在很大的隐患。</p><p>因为办公室需要更多的电力，寻找专业人员，合理地改造电线，从而避免了高峰时期的短路问题。而在人工维修的过程中，也可以节省更多的时间.客户需要更多地了解这些要点。 在办公室设计中，电线改造也是非常重要的一点，一些公司在办公安装过程中，不会被邀请到专业公司进行改造，这样就会在人的操作过程中存在很大的隐患。</p><p>因为办公室需要更多的电力，寻找专业人员，合理地改造电线，从而避免了高峰时期的短路问题。而在人工维修的过程中，也可以节省更多的时间.客户需要更多地了解这些要点。 v 在办公室设计中，电线改造也是非常重要的一点，一些公司在办公安装过程中，不会被邀请到专业公司进行改造，这样就会在人的操作过程中存在很大的隐患。因为办公室需要更多的电力，寻找专业人员，合理地改造电线，从而避免了高峰时期的短路问题。而在人工维修的过程中，也可以节省更多的时间.客户需要更多地了解这些要点。 在办公室设计中，电线改造也是非常重要的一点，一些公司在办公安装过程中，不会被邀请到专业公司进行改造，这样就会在人的操作过程中存在很大的隐患。因为办公室需要更多的电力，寻找专业人员，合理地改造电线，从而避免了高峰时期的短路问题。而在人工维修的过程中，也可以节省更多的时间.客户需要更多地了解这些要点。</p>
+					{{d.current.noticeContent}}
 				</div>
-				<div class="goBack" >返回列表</div>
-				<a href="">上一篇：已经没有上一篇了</a>
-				<a href="">下一篇：行业新规范，安全生产，品质保障</a>
+				<div class="goBack">返回列表</div>
+				{{#  if(d.previous){ }}
+				<a href="details.html?id={{d.previous.id}}">上一篇：{{d.previous.noticeTitle}}</a>
+				{{#  } else { }}
+				<a href="javascript:;">上一篇：已经没有上一篇了</a>
+				{{#  } }}  	
+				
+				{{#  if(d.next){ }}
+				<a href="details.html?id={{d.next.id}}">下一篇：{{d.next.noticeTitle}}</a>
+				{{#  } else { }}
+				<a href="javascript:;">下一篇：已经没有下一篇了</a>
+				{{#  } }} 
 				<div class="clear"></div>
+			
 			</div>
+		</script>
 		</section>
 	</div>
 	<footer></footer>
@@ -93,8 +106,38 @@
 			},
 		});
 
-		$(".goBack").click(function(){
-			history.back();
+		//获取新闻详情
+		layui.use(['laypage', 'layer', 'laytpl'], function () {
+			var laypage = layui.laypage,
+				laytpl = layui.laytpl,
+				layer = layui.layer;
+			http.ajax({
+				url: 'notice/newsDetail',
+				type: 'GET',
+				json: false,
+				mask: true,
+				data: {
+					newsId: getQueryString("id")
+				}
+			}).then(function (data) {
+				var result = data;
+				if (data.code == 200) {
+					// 数据渲染
+					var data = data.data;
+					$("title").html(data.current.noticeTitle);
+					var getTpl = detailsTpl.innerHTML,
+						view = document.getElementById('view');
+					laytpl(getTpl).render(data, function (html) {
+						view.innerHTML = html;
+					});
+					
+					$(".goBack").click(function () {
+						history.back();
+					})
+				}
+			}, function (err) {
+
+			})
 		})
 	</script>
 </body>

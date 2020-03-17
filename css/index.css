@@ -96,6 +96,9 @@ button {
 	width: 1200px;
 	margin: 0 auto;
 }
+#view{
+	min-height: 600px;
+}
 /* 头部 */
 header {
 	width: 100%;
@@ -598,7 +601,7 @@ header nav  ul .active i{
 }
 .foodInformation section .middle ul li p{
 	font-size: 14px;
-	width: 280px;
+	width: 250px;
 	float: left;
 	-webkit-line-clamp: 1;
 	display: -webkit-box;
@@ -675,7 +678,7 @@ header nav  ul .active i{
 .footer .left p{
 	font-size: 12px;
 	opacity: .9;
-	margin-top: 17px;
+	margin-top: 13px;
 }
 .footer .right{
 	float: right;

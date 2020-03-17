@@ -1,5 +1,6 @@
 var App = {
-	apiBasePath: "http://edu-bus.utools.club/bus/", 	//接口地址
+	// apiBasePath: "http://edu-bus.utools.club/bus/", 	//接口地址
+	apiBasePath: "http://api-business.lihail.cn/bus/", 	//接口地址
 	rootPath: getRootPath(),				//项目根目录地址
 	filePath: 'http://edu-bus.utools.club/bus/',
 	timestamp: ((Date.parse(new Date())) / 1000).toString(),	//时间戳
@@ -53,8 +54,8 @@ function jumpActive(value) {
 			return "3";
 		case "information":
 			return "4";
-		case "details":
-			return "4";
+		// case "details":
+		// 	return "4";
 		case "certificate":
 			return "5";
 		case "testCenter":
@@ -72,8 +73,7 @@ var aPos = pathName.indexOf('/');
 var bPos = pathName.indexOf('.');
 var activeUrl = pathName.substr(aPos + 1, bPos - aPos - 1);
 $("#navList li").eq(jumpActive(activeUrl)).addClass("active")
-// 底部
-$("footer").load("footer.html");
+
 
 // 返回顶部
 layui.use(['util'], function () {
@@ -84,7 +84,8 @@ layui.use(['util'], function () {
 		, bgcolor: '#393D49'
 	});
 })
-
+// 底部
+$("footer").load("footer.html");
 /* 获取url地址参数  */
 function getQueryString(name) {
 	var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
@@ -100,11 +101,19 @@ function imgError(image) {
 }
 /* 打开新页面 */
 function openUrl(url, type) {
-	if (!type) {
-		window.location.href = url;
-	} else {
-		window.open(url)
-	};
+	if(localStorage.getItem("login") == 'true'){
+		if (!type) {
+			window.location.href = url;
+		} else {
+			window.open(url)
+		};
+	}else{
+		layer.msg('暂未登录，请登录！', {
+			icon: 5
+		},function(){
+			location.href = 'login.html';
+		});
+	}
 };
 /** ajax封装
     url: 请求接口地址,
@@ -136,7 +145,7 @@ var http = {
 			def.resolve(rsp);
 			setTimeout(function () {
 				layer.close(loading);
-			}, 100)
+			}, 100);
 		}, function (error) {
 			if (error.status == 504) {
 				layer.msg('请求超时，请重试!', {

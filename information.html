@@ -64,11 +64,13 @@
 				
 				{{# layui.each(d.items, function(index, item){ }}
 				<li id="{{item.id}}">
-					<div class="imgBox gjpAfter"></div>
+					<div class="imgBox gjpAfter">
+						<img src="{{item.imageUrl}}"/>
+					</div>
 					<div class="textBox">
-						<h1>{{item.title}}</h1>
-						<p>日前，农业农村</p>
-						<time>{{item.createDate}}</time>
+						<h1>{{item.noticeTitle}}</h1>
+						<p>{{item.remark}}</p>
+						<time>{{item.createTime}}</time>
 					</div>
 				</li>
 				{{# }); }} {{# if(d.items.length === 0){ }}
@@ -77,6 +79,7 @@
 					<div class="textBox">
 						<h1>暂无食品安全相关资讯</h1>
 						<p>食品安全培训网</p>
+						<time>{{getNowFormatDate()}}</time>
 					</div>
 				</li>
 				{{# } }}
@@ -126,7 +129,7 @@
 					url: 'notice/newsList',
 					type: 'GET',
 					json: false,
-					mask: false,
+					mask: true,
 					data: {
 						pageNo: pageNo,
 						pageSize: pageSize,

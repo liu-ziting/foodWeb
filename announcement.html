@@ -59,55 +59,28 @@
 				<a href="">> 教学公告</a>
 			</h1>
 			<ul>
-				<li>
+				<div id="view"></div>
+				<script id="announcementTpl" type="text/html">
+				{{# layui.each(d.items, function(index, item){ }}
+				<li id="{{item.id}}">
 					<div class="textBox" style="width: 100%;">
-						<h1>学分制自主配课新型授课模式即将上线，敬请期待！</h1>
-						<p>后现代教学的一个主流观点是课程作为一个开放系统，应让学员转被动接受知识为主动探求真知。在培训课程学习中，能让学员更好地认 识自己，发现自己的特长及短板。</p>
-						<time>2020-01-09</time>
+						<h1>{{item.noticeTitle}}</h1>
+						<p>{{item.remark}}</p>
+						<time>{{item.createTime}}</time>
 					</div>
 				</li>
+				{{# }); }} {{# if(d.items.length === 0){ }}
 				<li>
-					<div class="textBox" style="width: 100%;">
-						<h1>学分制自主配课新型授课模式即将上线，敬请期待！</h1>
-						<p>后现代教学的一个主流观点是课程作为一个开放系统，应让学员转被动接受知识为主动探求真知。在培训课程学习中，能让学员更好地认 识自己，发现自己的特长及短板。</p>
-						<time>2020-01-09</time>
+					<div class="imgBox gjpAfter"></div>
+					<div class="textBox">
+						<h1>暂无教学公告</h1>
+						<p>食品安全培训网</p>
+						<time>{{getNowFormatDate()}}</time>
 					</div>
 				</li>
-				<li>
-					<div class="textBox" style="width: 100%;">
-						<h1>学分制自主配课新型授课模式即将上线，敬请期待！</h1>
-						<p>后现代教学的一个主流观点是课程作为一个开放系统，应让学员转被动接受知识为主动探求真知。在培训课程学习中，能让学员更好地认 识自己，发现自己的特长及短板。</p>
-						<time>2020-01-09</time>
-					</div>
-				</li>
-				<li>
-					<div class="textBox" style="width: 100%;">
-						<h1>学分制自主配课新型授课模式即将上线，敬请期待！</h1>
-						<p>后现代教学的一个主流观点是课程作为一个开放系统，应让学员转被动接受知识为主动探求真知。在培训课程学习中，能让学员更好地认 识自己，发现自己的特长及短板。</p>
-						<time>2020-01-09</time>
-					</div>
-				</li>
-				<li>
-					<div class="textBox" style="width: 100%;">
-						<h1>学分制自主配课新型授课模式即将上线，敬请期待！</h1>
-						<p>后现代教学的一个主流观点是课程作为一个开放系统，应让学员转被动接受知识为主动探求真知。在培训课程学习中，能让学员更好地认 识自己，发现自己的特长及短板。</p>
-						<time>2020-01-09</time>
-					</div>
-				</li>
-				<li>
-					<div class="textBox" style="width: 100%;">
-						<h1>学分制自主配课新型授课模式即将上线，敬请期待！</h1>
-						<p>后现代教学的一个主流观点是课程作为一个开放系统，应让学员转被动接受知识为主动探求真知。在培训课程学习中，能让学员更好地认 识自己，发现自己的特长及短板。</p>
-						<time>2020-01-09</time>
-					</div>
-				</li>
-				<li>
-					<div class="textBox" style="width: 100%;">
-						<h1>学分制自主配课新型授课模式即将上线，敬请期待！</h1>
-						<p>后现代教学的一个主流观点是课程作为一个开放系统，应让学员转被动接受知识为主动探求真知。在培训课程学习中，能让学员更好地认 识自己，发现自己的特长及短板。</p>
-						<time>2020-01-09</time>
-					</div>
-				</li>
+				{{# } }}
+				
+				</script>
 			</ul>
 			<!--分页-->
 			<div id="paging" class="paging"></div>
@@ -125,20 +98,65 @@
 				delay: 5000
 			},
 		});
-		layui.use(['laypage', 'layer'], function(){
-			var laypage = layui.laypage
-			,layer = layui.layer;
+		//教学公告列表
+		var pageNo = 1;
+		var pageSize = 20;
+		newsList();
+		function newsList() {
+			layui.use(['laypage', 'layer', 'laytpl'], function () {
+				var laypage = layui.laypage,
+					laytpl = layui.laytpl,
+					layer = layui.layer;
+				http.ajax({
+					url: 'notice/newsList',
+					type: 'GET',
+					json: false,
+					mask: true,
+					data: {
+						pageNo: pageNo,
+						pageSize: pageSize,
+						type:'teachingAnnounce'
+					}
+				}).then(function (data) {
+					var result = data;
+					if (data.code == 200) {
+						// 数据渲染
+						var data = data.data;
+						var totalList = data.total;
+						var getTpl = announcementTpl.innerHTML,
+							view = document.getElementById('view');
+						laytpl(getTpl).render(data, function (html) {
+							view.innerHTML = html;
+						});
+						//分页
+						laypage.render({
+							elem: 'paging'
+							, curr: pageNo
+							, limit: pageSize
+							, count: totalList
+							, layout: ['count', 'prev', 'page', 'next', 'limit', 'skip']
+							, jump: function (obj, first) { //触发分页后的回调
+								if (!first) { //点击跳页触发函数自身，并传递当前页：obj.curr
+									pageNo = obj.curr;
+									pageSize = obj.limit;
+									newsList();
+								}
+							}
+						});
+						//点击查看详情
+						$("li").click(function(){
+							var id = $(this).attr("id");
+							if(id){
+								openUrl('details.html?id='+id+'');
+							}
+						});
 
-			//分页
-			laypage.render({
-				elem: 'paging'
-				,count: 100
-				,layout: ['count', 'prev', 'page', 'next', 'limit', 'skip']
-				,jump: function(obj){
-				console.log(obj)
-				}
+					}
+				}, function (err) {
+
+				})
 			});
-		})
+		};
 	</script>
 </body>
 
