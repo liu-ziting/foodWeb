@@ -1209,9 +1209,6 @@ header nav  ul .active i{
 	margin-right: 50px;
 	font-weight: bold;
 }
-.publicList .right ul li:hover > p{
-	color: #2969C9;
-}
 .publicList .right ul li .read{
 	color: #F5520D;
 }

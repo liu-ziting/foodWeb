@@ -92,16 +92,21 @@
 						{{# layui.each(d.items, function(index, item){ }}
 						<li>
 							<div class="gbox green">
-								<h1>生产领域培训课程</h1>
-								<p>食品行业从业人员适用</p>
+								<h1>{{item.courseInfo.trainingType.trainingTypeName}}课程</h1>
+								<p>{{item.courseInfo.trainingType.memo}}适用</p>
 								<a href="#">前往学习 &gt;</a>
 								<em class="layui-icon layui-icon-rate-solid"></em>
 							</div>
-							<p>流通领域从业人员培训课程</p>
-							<time>取消收藏<span>前往购买</span></time>
+							<p>{{item.courseInfo.trainingType.trainingTypeName}}课程</p>
+							<time>
+								<i id="{{item.id}}" class="cancel">取消收藏</i>
+								{{#  if(item.buyStatus == 'unpurchased'){ }}
+								<span>前往购买</span>
+								{{#  } }} 
+							</time>
 						</li>
 						{{# }); }} {{# if(d.items.length === 0){ }}
-						<p style="text-align: center;font-size: 25px;color: #666666;line-height: 450px;">暂无相关课程</p>
+						<p style="text-align: center;font-size: 25px;color: #666666;line-height: 450px;">暂无收藏课程</p>
 						{{# } }}
 						</script>
 						<!-- <li>
@@ -178,12 +183,35 @@
 								}
 							}
 						});
+						$(".cancel").click(function(){
+							cancelCollection($(this).attr("id"));
+							$(this).hide()
+						})
 
 					}
 				}, function (err) {
 
 				})
 			});
+		};
+
+		//取消收藏
+		function cancelCollection(courseId) {
+			http.ajax({
+				url: 'course/cancelCollection',
+				type: 'GET',
+				json: false,
+				mask: false,
+				data: {
+					courseId: courseId
+				}
+			}).then(function (data) {
+				if (data.code == 200) {
+					layer.msg('取消收藏！');
+				}
+			}, function (err) {
+				
+			})
 		};
 
 	</script>
