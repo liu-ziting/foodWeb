@@ -87,6 +87,9 @@
 				<div class="right">
 					<h3>我的收藏<p><i>个人中心 > 培训课程 > <span>我的收藏</span></i></p></h3>
 					<ul>
+						<div id="view"></div>
+						<script id="myFavoriteTpl" type="text/html">
+						{{# layui.each(d.items, function(index, item){ }}
 						<li>
 							<div class="gbox green">
 								<h1>生产领域培训课程</h1>
@@ -97,7 +100,23 @@
 							<p>流通领域从业人员培训课程</p>
 							<time>取消收藏<span>前往购买</span></time>
 						</li>
+						{{# }); }} {{# if(d.items.length === 0){ }}
+						<p style="text-align: center;font-size: 25px;color: #666666;line-height: 450px;">暂无相关课程</p>
+						{{# } }}
+						</script>
+						<!-- <li>
+							<div class="gbox green">
+								<h1>生产领域培训课程</h1>
+								<p>食品行业从业人员适用</p>
+								<a href="#">前往学习 &gt;</a>
+								<em class="layui-icon layui-icon-rate-solid"></em>
+							</div>
+							<p>流通领域从业人员培训课程</p>
+							<time>取消收藏<span>前往购买</span></time>
+						</li> -->
 					</ul>
+					<!--分页-->
+					<div id="paging" class="paging"></div>
 				</div>
 			</div>
 		</section>
@@ -114,6 +133,59 @@
 				delay: 5000
 			},
 		});
+
+		//我的收藏课程列表
+		var pageNo = 1;
+		var pageSize = 18;
+		userFavorite();
+		function userFavorite() {
+			layui.use(['laypage', 'layer', 'laytpl'], function () {
+				var laypage = layui.laypage,
+					laytpl = layui.laytpl,
+					layer = layui.layer;
+				http.ajax({
+					url: 'course/userFavorite',
+					type: 'GET',
+					json: false,
+					mask: true,
+					data: {
+						pageNo: pageNo,
+						pageSize: pageSize,
+					}
+				}).then(function (data) {
+					var result = data;
+					if (data.code == 200) {
+						// 数据渲染
+						var data = beZero(data.data);
+						var totalList = data.total;
+						var getTpl = myFavoriteTpl.innerHTML,
+							view = document.getElementById('view');
+						laytpl(getTpl).render(data, function (html) {
+							view.innerHTML = html;
+						});
+						//分页
+						laypage.render({
+							elem: 'paging'
+							, curr: pageNo
+							, limit: pageSize
+							, count: totalList
+							, layout: ['count', 'prev', 'page', 'next', 'limit', 'skip']
+							, jump: function (obj, first) { //触发分页后的回调
+								if (!first) { //点击跳页触发函数自身，并传递当前页：obj.curr
+									pageNo = obj.curr;
+									pageSize = obj.limit;
+									userFavorite();
+								}
+							}
+						});
+
+					}
+				}, function (err) {
+
+				})
+			});
+		};
+
 	</script>
 </body>
 
