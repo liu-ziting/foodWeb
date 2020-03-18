@@ -60,34 +60,73 @@
 				<a href="">> 详情</a>
 			</h1>
 			<div class="courseDetalisTop">
-				<div class="left gjpAfter"></div>
-				<div class="right">
-					<h1>
-						<em>食品行业从业人员流通领域培训课程</em>
-						<span>必修课程</span>
-						<b><i class="layui-icon layui-icon-rate-solid"></i>收藏课程</b>
-					</h1>
-					<p>滁州市食品行业指定培训学习专项课程</p>
-					<div class="timeBox">
-						<span>
-							<img src="../img/book.png">
-							<p>5431人学习</p>
-						</span>
-						<span>
-							<img src="../img/time.png">
-							<p>32课时/960分钟</p>
-						</span>
-						<span>
-							<p class="orange">已经学习24课</p>
-						</span>
+				<!-- 模拟骨架屏 -->
+				<div class="temporary">
+					<div class="left gjpAfter"></div>
+					<div class="right">
+						<p class="temporaryList gjpAfter" style="width: 80%;margin-bottom: 12px;"></p>
+						<p class="temporaryList gjpAfter" style="width: 50%;margin-bottom: 12px;"></p>
+						<p class="temporaryList gjpAfter" style="width: 30%;margin-bottom: 78px;"></p>
+						<p class="temporaryList gjpAfter" style="width: 40%;margin-bottom: 12px;"></p>
 					</div>
-					<div class="priceBox">
-						<h2>￥648.00</h2>
-						<i>￥726.00</i>
-						<span>优惠特价，活动期间购买享受9折优惠</span>
-					</div>
-					<button onclick="openUrl('purchase.html')" type="button" class="layui-btn">立刻购买 ></button>
 				</div>
+				<div id="viewCourse"></div>
+				<script id="courseCenterDetailsTopTpl" type="text/html">
+					{{#  if(d.fontCoverPic == 0){ }}
+					<div class="left gjpAfter"></div>
+					{{#  } else { }}
+					<div class="left gjpAfter">
+						<img src="{{d.fontCoverPic}}"/>
+					</div>
+					{{#  } }} 
+					
+					<div class="right">
+							<h1>
+								<em>{{d.courseName}}</em>
+								{{#  if(d.compulsoryHours > 0){ }}
+								<span>必修课程</span>
+								{{#  } }} 
+								{{#  if(d.favorite == false){ }}
+								<b><i class="layui-icon layui-icon-rate-solid"></i><strong>收藏课程</strong></b>
+								{{#  } else { }}
+								<b class="collect"><i class="layui-icon layui-icon-rate-solid"></i><strong>已收藏</strong></b>
+								{{#  } }} 
+								
+							</h1>
+							<p>{{d.courseSummary}}</p>
+							<div class="timeBox">
+								<span>
+									<img src="../img/book.png">
+									<p>{{d.learnNum}}人学习</p>
+								</span>
+								<span>
+									<img src="../img/time.png">
+									<p>{{d.courseHourNum}}课时/{{d.totalLearningHours}}分钟</p>
+								</span>
+								<span>
+									{{#  if(d.learnProgress == 'unstart'){ }}
+									<p class="">还未开始学习</p>
+									{{#  } else { }}
+									<p class="orange">已经学习{{d.learnProgress}}课</p>
+									{{#  } }} 
+								</span>
+							</div>
+							<div class="priceBox">
+								<h2>￥{{d.courseRealPrice}}</h2>
+								<i>￥{{d.coursePrice}}</i>
+								{{#  if(d.pricePublicize == 0){ }}
+								{{#  } else { }}
+								<span>优惠特价，{{d.pricePublicize}}</span>
+								{{#  } }} 
+							</div>
+							
+							{{#  if(d.buyStatus == 'unpurchased'){ }}
+								<button onclick="openUrl('purchase.html')" type="button" class="layui-btn">立刻购买 ></button>
+							{{#  } else { }}
+								<button type="button" class="layui-btn">继续学习 ></button>
+							{{#  } }} 
+					</div>
+				</script>
 			</div>
 		</section>
 		<div class="courseDetalisTab">
@@ -99,14 +138,8 @@
 						<li>课程题库</li>
 					</ul>
 					<div class="layui-tab-content">
-						<div class="layui-tab-item layui-show">
-							适用人群 本课程适合食品行业流通领域从业人员。
-							<br>
-							课程概述
-							<br>【课程特色】<br> 思路清晰明确：多学科理论加持，给你不止于技巧和方法 理论实践结合：一网打尽业内相关知识点，理论联系实践经验，做到真正实用课程
-							课后海量题库：行业领域内海量题库，全面掌握知识点
-							<br>【课程收获】<br> 分析考点，拆解公告，快速掌握业内知识点； 快速理解学习知识盲区，拔高原有知识，最快时间掌握考点内容； 课后题海战术，海量知识点题目累积，考试不怕难;
-							准确掌握重点要点，深入理解行业需求。
+						<div class="layui-tab-item layui-show trainingDetail">
+							
 						</div>
 						<div class="layui-tab-item">
 							<ul>
@@ -115,7 +148,7 @@
 									<p>01 - 食品安全法解读（第一讲）</p>
 									<time><img src="img/vtime.png" />已学习</time>
 								</li>
-								<li >
+								<li>
 									<img src="img/video.png" />
 									<p>01 - 食品安全法解读（第一讲）</p>
 									<time><img src="img/vtime.png" />30分钟</time>
@@ -167,7 +200,7 @@
 								<img src="img/code.png" />
 							</div>
 							<div class="right">
-								<h1>食品行业从业人员流通领域 专项刷题</h1>
+								<h1 class="courseName"></h1>
 								<span>专项练习</span>
 								<span>海量题库</span>
 								<span>紧贴考点</span>
@@ -196,22 +229,90 @@
 
 		$(".topList span").click(function () {
 			$(this).addClass("active").siblings().removeClass("active");
-		})
+		});
+		//课程详情
+		courseDetail();
+		function courseDetail() {
+			layui.use(['laypage', 'layer', 'laytpl'], function () {
+				var laypage = layui.laypage,
+					laytpl = layui.laytpl,
+					layer = layui.layer;
+				http.ajax({
+					url: 'course/courseDetail',
+					type: 'GET',
+					json: false,
+					mask: false,
+					data: {
+						courseId: getQueryString("id")
+					}
+				}).then(function (data) {
+					if (data.code == 200) {
+						$(".temporary").hide();
+						// 数据渲染
+						var data = beZero(data.data);
+						var totalList = data.total;
+						var getTpl = courseCenterDetailsTopTpl.innerHTML,
+							view = document.getElementById('viewCourse');
+						laytpl(getTpl).render(data, function (html) {
+							view.innerHTML = html;
+						});
+						$(".trainingDetail").html(data.trainingDetail);
+						$(".courseName").html(data.courseName+' 专项刷题');
+						$("title").html(data.courseName);
+						//收藏
+						$(".courseDetalisTop .right h1 b").click(function(){
+							if(data.favorite == false){
+								favorite(getQueryString("id"))	
+							}else{
+								cancelCollection(getQueryString("id"))	
+							}
+						})
+					}
+				}, function (err) {
 
-		layui.use(['laypage', 'layer'], function () {
-			var laypage = layui.laypage
-				, layer = layui.layer;
+				})
+			})
+		};
 
-			//分页
-			laypage.render({
-				elem: 'paging'
-				, count: 100
-				, layout: ['count', 'prev', 'page', 'next', 'limit', 'skip']
-				, jump: function (obj) {
-					console.log(obj)
+		//收藏接口
+		function favorite(courseId) {
+			http.ajax({
+				url: 'course/favorite',
+				type: 'GET',
+				json: false,
+				mask: false,
+				data: {
+					courseId: courseId
 				}
-			});
-		})
+			}).then(function (data) {
+				if (data.code == 200) {
+					layer.msg('收藏成功！');
+					$(".courseDetalisTop .right h1 b").addClass("collect").find("strong").text("已收藏");
+				}
+			}, function (err) {
+				
+			})
+		};
+		//取消收藏
+		function cancelCollection(courseId) {
+			http.ajax({
+				url: 'course/cancelCollection',
+				type: 'GET',
+				json: false,
+				mask: false,
+				data: {
+					courseId: courseId
+				}
+			}).then(function (data) {
+				if (data.code == 200) {
+					layer.msg('取消收藏！');
+					$(".courseDetalisTop .right h1 b").removeClass("collect").find("strong").text("收藏课程");
+				}
+			}, function (err) {
+				
+			})
+		};
+		
 	</script>
 </body>
 

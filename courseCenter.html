@@ -62,246 +62,76 @@
 				<ul>
 					<li>
 						<p>适用对象：</p>
-						<span class="active">管理人员</span>
-						<span>从业人员</span>
-						<span>监管人员</span>
-						<span>宣传人员</span>
+						<div id="trainingTypeList">
+							<span class="mspan gjpAfter"></span>
+							<span class="mspan gjpAfter"></span>
+							<span class="mspan gjpAfter"></span>
+							<span class="mspan gjpAfter"></span>
+							<span class="mspan gjpAfter"></span>
+							<span class="mspan gjpAfter"></span>
+						</div>
 					</li>
 					<li>
 						<p>行业领域：</p>
-						<span>流通领域</span>
-						<span>生产领域</span>
-						<span>餐饮领域</span>
-						<span>保健食品</span>
-						<span>综合领域</span>
+						<div id="industryList">
+							<span class="mspan gjpAfter"></span>
+							<span class="mspan gjpAfter"></span>
+							<span class="mspan gjpAfter"></span>
+							<span class="mspan gjpAfter"></span>
+							<span class="mspan gjpAfter"></span>
+							<span class="mspan gjpAfter"></span>
+						</div>
 					</li>
 				</ul>
-				<div class="totality">共<span>12个</span>课程</div>
+				<div class="totality">共<span class="total">--个</span>课程</div>
 			</div>
 			<div class="courseMain">
 				<ul class="course">
-					<li onclick="openUrl('courseCenterDetails.html')">
-						<div class="gbox blue">
-							<h1>流通领域培训课程</h1>
-							<p>食品行业从业人员适用</p>
-							<a href="#">前往学习 ></a>
+					<div id="view"></div>
+					<script id="courseCenterTpl" type="text/html">
+					{{# layui.each(d.items, function(index, item){ }}
+					<li onclick="openUrl('courseCenterDetails.html?id={{item.id}}')">
+						{{#  if(item.fontCoverPic == 0 ||item.fontCoverPic == null){ }}
+						<div class="gbox" style="background: url(../img/bk1.png);">	
+						{{#  } else { }}
+						<div class="gbox" style="background: url({{item.fontCoverPic}});background-size:cover;background-position:center;">
+						{{#  } }} 
+					
+							<h1>{{item.trainingType.trainingTypeName}}课程</h1>
+							<p>{{item.trainingType.memo}}适用</p>
+							<a href="javascript:;">前往学习 ></a>
 						</div>
 						<div class="kbox">
 							<div class="right">
-								<h2>食品行业流通领域课程</h2>
-								<p>从业人员适用</p>
-								<i>简介：本课程适用于食品行业流通 领域从业人员，内容丰富</i>
+								<h2>{{item.courseName}}</h2>
+								<p>{{item.trainingType.memo}}适用</p>
+								<i>简介：{{item.courseSummary}}</i>
 							</div>
 							<div class="timeBox">
 								<span>
 									<img src="../img/book.png" />
-									<p>5431人学习</p>
+									<p>{{item.learnNum}}人学习</p>
 								</span>
 								<span>
 									<img src="../img/time.png" />
-									<p>32课时/960分钟</p>
+									<p>{{item.courseHourNum}}课时/{{item.totalLearningHours}}分钟</p>
 								</span>
 							</div>
 						</div>
 					</li>
-					<li onclick="openUrl('courseCenterDetails.html')">
-						<div class="gbox yellow">
-							<h1>流通领域培训课程</h1>
-							<p>食品行业从业人员适用</p>
-							<a href="#">前往学习 ></a>
-						</div>
-						<div class="kbox">
-							<div class="right">
-								<h2>食品行业流通领域课程</h2>
-								<p>从业人员适用</p>
-								<i>简介：本课程适用于食品行业流通 领域从业人员，内容丰富</i>
-							</div>
-							<div class="timeBox">
-								<span>
-									<img src="../img/book.png" />
-									<p>5431人学习</p>
-								</span>
-								<span>
-									<img src="../img/time.png" />
-									<p>32课时/960分钟</p>
-								</span>
-							</div>
-						</div>
-					</li>
-					<li onclick="openUrl('courseCenterDetails.html')">
-						<div class="gbox green">
-							<h1>流通领域培训课程</h1>
-							<p>食品行业从业人员适用</p>
-							<a href="#">前往学习 ></a>
-						</div>
-						<div class="kbox">
-							<div class="right">
-								<h2>食品行业流通领域课程</h2>
-								<p>从业人员适用</p>
-								<i>简介：本课程适用于食品行业流通 领域从业人员，内容丰富</i>
-							</div>
-							<div class="timeBox">
-								<span>
-									<img src="../img/book.png" />
-									<p>5431人学习</p>
-								</span>
-								<span>
-									<img src="../img/time.png" />
-									<p>32课时/960分钟</p>
-								</span>
-							</div>
-						</div>
-					</li>
-					<li onclick="openUrl('courseCenterDetails.html')">
-						<div class="gbox blue">
-							<h1>流通领域培训课程</h1>
-							<p>食品行业从业人员适用</p>
-							<a href="#">前往学习 ></a>
-						</div>
-						<div class="kbox">
-							<div class="right">
-								<h2>食品行业流通领域课程</h2>
-								<p>从业人员适用</p>
-								<i>简介：本课程适用于食品行业流通 领域从业人员，内容丰富</i>
-							</div>
-							<div class="timeBox">
-								<span>
-									<img src="../img/book.png" />
-									<p>5431人学习</p>
-								</span>
-								<span>
-									<img src="../img/time.png" />
-									<p>32课时/960分钟</p>
-								</span>
-							</div>
-						</div>
-					</li>
-					<li onclick="openUrl('courseCenterDetails.html')">
-						<div class="gbox yellow">
-							<h1>流通领域培训课程</h1>
-							<p>食品行业从业人员适用</p>
-							<a href="#">前往学习 ></a>
-						</div>
-						<div class="kbox">
-							<div class="right">
-								<h2>食品行业流通领域课程</h2>
-								<p>从业人员适用</p>
-								<i>简介：本课程适用于食品行业流通 领域从业人员，内容丰富</i>
-							</div>
-							<div class="timeBox">
-								<span>
-									<img src="../img/book.png" />
-									<p>5431人学习</p>
-								</span>
-								<span>
-									<img src="../img/time.png" />
-									<p>32课时/960分钟</p>
-								</span>
-							</div>
-						</div>
-					</li>
-					<li onclick="openUrl('courseCenterDetails.html')">
-						<div class="gbox green">
-							<h1>流通领域培训课程</h1>
-							<p>食品行业从业人员适用</p>
-							<a href="#">前往学习 ></a>
-						</div>
-						<div class="kbox">
-							<div class="right">
-								<h2>食品行业流通领域课程</h2>
-								<p>从业人员适用</p>
-								<i>简介：本课程适用于食品行业流通 领域从业人员，内容丰富</i>
-							</div>
-							<div class="timeBox">
-								<span>
-									<img src="../img/book.png" />
-									<p>5431人学习</p>
-								</span>
-								<span>
-									<img src="../img/time.png" />
-									<p>32课时/960分钟</p>
-								</span>
-							</div>
-						</div>
-					</li>
-					<li onclick="openUrl('courseCenterDetails.html')">
-						<div class="gbox blue">
-							<h1>流通领域培训课程</h1>
-							<p>食品行业从业人员适用</p>
-							<a href="#">前往学习 ></a>
-						</div>
-						<div class="kbox">
-							<div class="right">
-								<h2>食品行业流通领域课程</h2>
-								<p>从业人员适用</p>
-								<i>简介：本课程适用于食品行业流通 领域从业人员，内容丰富</i>
-							</div>
-							<div class="timeBox">
-								<span>
-									<img src="../img/book.png" />
-									<p>5431人学习</p>
-								</span>
-								<span>
-									<img src="../img/time.png" />
-									<p>32课时/960分钟</p>
-								</span>
-							</div>
-						</div>
-					</li>
-					<li onclick="openUrl('courseCenterDetails.html')">
-						<div class="gbox yellow">
-							<h1>流通领域培训课程</h1>
-							<p>食品行业从业人员适用</p>
-							<a href="#">前往学习 ></a>
-						</div>
-						<div class="kbox">
-							<div class="right">
-								<h2>食品行业流通领域课程</h2>
-								<p>从业人员适用</p>
-								<i>简介：本课程适用于食品行业流通 领域从业人员，内容丰富</i>
-							</div>
-							<div class="timeBox">
-								<span>
-									<img src="../img/book.png" />
-									<p>5431人学习</p>
-								</span>
-								<span>
-									<img src="../img/time.png" />
-									<p>32课时/960分钟</p>
-								</span>
-							</div>
-						</div>
-					</li>
-					<li onclick="openUrl('courseCenterDetails.html')">
-						<div class="gbox green">
-							<h1>流通领域培训课程</h1>
-							<p>食品行业从业人员适用</p>
-							<a href="#">前往学习 ></a>
-						</div>
-						<div class="kbox">
-							<div class="right">
-								<h2>食品行业流通领域课程</h2>
-								<p>从业人员适用</p>
-								<i>简介：本课程适用于食品行业流通 领域从业人员，内容丰富</i>
-							</div>
-							<div class="timeBox">
-								<span>
-									<img src="../img/book.png" />
-									<p>5431人学习</p>
-								</span>
-								<span>
-									<img src="../img/time.png" />
-									<p>32课时/960分钟</p>
-								</span>
-							</div>
-						</div>
-					</li>
+					{{# }); }} {{# if(d.items.length === 0){ }}
+					<p style="text-align: center;font-size: 25px;color: #666666;line-height: 450px;">暂无相关课程</p>
+					{{# } }}
+					</script>
+					
 				</ul>
 				<!--分页-->
 				<div id="paging" class="paging"></div>
 			</div>
 		</section>
 	</div>
+	<input type="hidden" id="trainingTypeId" value=""/>
+	<input type="hidden" id="industryId" value=""/>
 	<footer></footer>
 	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 	<script type="text/javascript" src="layui/layui.all.js"></script>
@@ -314,25 +144,132 @@
 				delay: 5000
 			},
 		});
-		
-		$(".topList span").click(function(){
-			$(this).addClass("active").siblings().removeClass("active");
-		})
 
-		layui.use(['laypage', 'layer'], function(){
-			var laypage = layui.laypage
-			,layer = layui.layer;
-
-			//分页
-			laypage.render({
-				elem: 'paging'
-				,count: 100
-				,layout: ['count', 'prev', 'page', 'next', 'limit', 'skip']
-				,jump: function(obj){
-				console.log(obj)
+		//适用对象列表
+		trainingTypeList();
+		function trainingTypeList() {
+			http.ajax({
+				url: 'course/trainingTypeList',
+				type: 'GET',
+				json: false,
+				mask: false,
+				data: {
+					
 				}
+			}).then(function (data) {
+				document.getElementById("trainingTypeList").innerHTML="";
+				if (data.code == 200) {
+					var list = data.data.items;
+					var inhtml = "";
+					for (var i = 0; i < list.length; i++) {
+						inhtml +='<span id="'+list[i].id+'">'+list[i].trainingTypeName+'</span>';
+					};
+					$("#trainingTypeList").append(inhtml);
+					$("#trainingTypeList span").click(function(){
+						if ($(this).hasClass("active")) {
+							$(this).removeClass("active");
+							$("#trainingTypeId").val("");
+						}else{
+							$(this).addClass("active").siblings().removeClass("active");
+							$("#trainingTypeId").val($(this).attr("id"));
+						};
+						courseList();
+					})
+				}
+			}, function (err) {
+				
+			})
+		};
+		//行业领域列表
+		industryList();
+		function industryList() {
+			http.ajax({
+				url: 'course/industryList',
+				type: 'GET',
+				json: false,
+				mask: false,
+				data: {
+					
+				}
+			}).then(function (data) {
+				document.getElementById("industryList").innerHTML="";
+				if (data.code == 200) {
+					var list = data.data.items;
+					var inhtml = "";
+					for (var i = 0; i < list.length; i++) {
+						inhtml +='<span id="'+list[i].id+'">'+list[i].industryName+'</span>';
+					};
+					$("#industryList").append(inhtml);
+					$("#industryList span").click(function(){
+						if ($(this).hasClass("active")) {
+							$(this).removeClass("active");
+							$("#industryId").val("");
+						} else {
+							$(this).addClass("active").siblings().removeClass("active");
+							$("#industryId").val($(this).attr("id"));
+						};
+						courseList();
+					})
+				}
+			}, function (err) {
+				
+			})
+		};
+	
+		//课程列表
+		var pageNo = 1;
+		var pageSize = 18;
+		courseList();
+		function courseList() {
+			layui.use(['laypage', 'layer', 'laytpl'], function () {
+				var laypage = layui.laypage,
+					laytpl = layui.laytpl,
+					layer = layui.layer;
+				http.ajax({
+					url: 'course/courseList',
+					type: 'GET',
+					json: false,
+					mask: true,
+					data: {
+						pageNo: pageNo,
+						pageSize: pageSize,
+						trainingTypeId:$("#trainingTypeId").val(),
+						industryId:$("#industryId").val(),
+					}
+				}).then(function (data) {
+					var result = data;
+					if (data.code == 200) {
+						// 数据渲染
+						var data = beZero(data.data);
+						var totalList = data.total;
+						$(".total").text(totalList+"个")
+						var getTpl = courseCenterTpl.innerHTML,
+							view = document.getElementById('view');
+						laytpl(getTpl).render(data, function (html) {
+							view.innerHTML = html;
+						});
+						//分页
+						laypage.render({
+							elem: 'paging'
+							, curr: pageNo
+							, limit: pageSize
+							, count: totalList
+							, layout: ['count', 'prev', 'page', 'next', 'limit', 'skip']
+							, jump: function (obj, first) { //触发分页后的回调
+								if (!first) { //点击跳页触发函数自身，并传递当前页：obj.curr
+									pageNo = obj.curr;
+									pageSize = obj.limit;
+									courseList();
+								}
+							}
+						});
+
+					}
+				}, function (err) {
+
+				})
 			});
-		})
+		};
 	</script>
 </body>
 

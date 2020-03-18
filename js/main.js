@@ -1,6 +1,6 @@
 var App = {
-	// apiBasePath: "http://edu-bus.utools.club/bus/", 	//接口地址
-	apiBasePath: "http://api-business.lihail.cn/bus/", 	//接口地址
+	apiBasePath: "http://edu-bus.utools.club/bus/", 	//接口地址
+	// apiBasePath: "http://api-business.lihail.cn/bus/", 	//接口地址
 	rootPath: getRootPath(),				//项目根目录地址
 	filePath: 'http://edu-bus.utools.club/bus/',
 	timestamp: ((Date.parse(new Date())) / 1000).toString(),	//时间戳
@@ -376,7 +376,23 @@ function beNull(data) {
 	}
 	return data;
 };
-
+function beZero(data) {
+	for (let x in data) {
+		if (data[x] === null) { // 如果是null 把直接内容转为 '暂无'
+			data[x] = '0';
+		} else {
+			// if (Array.isArray(data[x])) { // 是数组遍历数组 递归继续处理
+			// 	data[x] = data[x].map(z => {
+			// 	return beNull(z);
+			// 	});
+			// }
+			if (typeof (data[x]) === 'object') { // 是json 递归继续处理
+				data[x] = beZero(data[x])
+			}
+		}
+	}
+	return data;
+};
 //判断是pc还是H5
 function IsPC() {
 	var userAgentInfo = navigator.userAgent;
@@ -450,6 +466,7 @@ var cookie = {
 		}
 	}
 };
+
 
 // 获取导航栏
 // $(function () {

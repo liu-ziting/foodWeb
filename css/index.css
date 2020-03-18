@@ -98,6 +98,7 @@ button {
 }
 #view{
 	min-height: 600px;
+	overflow: hidden;
 }
 /* 头部 */
 header {
@@ -1385,13 +1386,20 @@ header nav  ul .active i{
 	height:30px;
 	line-height: 30px;
 }
+.courseCenter .topList ul li .mspan{
+	background-color: #f1f1f1;
+	position: relative;
+	overflow: hidden;
+	width: 83px;
+}
 .courseCenter .topList ul li span{
 	font-size: 14px;
 	color: #666666;
 	float: left;
 	display: block;
 	float: left;
-	width:83px;
+	width:auto;
+	padding: 0 10px;
 	height:30px;
 	font-size: 14px;
 	color: #333333;
@@ -1406,10 +1414,10 @@ header nav  ul .active i{
 	background-color: #397D47;
 	color:#ffffff
 }
-.courseCenter .topList ul li span:hover{
-	background-color: rgba(57,125,71,.8);
+/* .courseCenter .topList ul li span:hover{
+	background-color: rgba(57,125,71,.5);
 	color: #ffffff;
-}
+} */
 .courseCenter .topList .totality{
 	font-size: 18px;
 	color: #333333;
@@ -1531,8 +1539,14 @@ header nav  ul .active i{
 	margin-top: 6px;
 	cursor: pointer;
 }
+.courseDetalisTop .right h1 .collect{
+	color: rgba(245,82,13,1);
+}
 .courseDetalisTop .right h1 b i{
 	margin-right: 3px;
+}
+.courseDetalisTop .right h1 b strong{
+	font-weight: normal;
 }
 .courseDetalisTop .right .timeBox{
 	width: 100%;
@@ -1586,6 +1600,11 @@ header nav  ul .active i{
 	margin-left: 18px;
 	margin-top: 5px;
 	padding: 0 10px;
+}
+.temporaryList{
+	background-color: #eeeeee;
+	height: 45px;
+	position: relative;
 }
 .orange{
 	color: #F5520D !important;
