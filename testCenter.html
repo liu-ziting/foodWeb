@@ -74,23 +74,25 @@
 				{{# layui.each(d.items, function(index, item){ }}
 				<li>
 					<div class="leftBox">
-						<div class="gbox blue">
-							<h1>生产领域培训课程</h1>
-							<p>食品行业从业人员适用</p>
+						{{#  if(item.fontCoverPic == 0 ||item.fontCoverPic == null){ }}
+						<div class="gbox" style="background: url(../img/bk1.png);">	
+						{{#  } else { }}
+						<div class="gbox" style="background: url({{item.fontCoverPic}});background-size:cover;background-position:center;">
+						{{#  } }} 
+							<h1>{{item.courseInfo.trainingType.trainingTypeName}}课程</h1>
+							<p>{{item.courseInfo.trainingType.memo}}适用</p>
 						</div>
 					</div>
 					<div class="rightBox">
 						<h1>{{item.examName}}</h1>
 						<span><i class="layui-icon layui-icon-form"></i>题量：{{item.questionNum}}题</span><span><i class="layui-icon layui-icon-log"></i>限时：{{item.limitedTime}}分钟</span>
-						<p>适用：完成流通领域从业人员培训课程考生</p>
+						<p>适用：{{item.courseInfo.trainingType.memo}}</p>
 						<p>简介：{{item.brief}}</p>
-						<button onclick="openUrl('examination.html')" type="button" class="layui-btn startTest">开始考试</button>
+						<button onclick="openUrl('examination.html?id={{item.id}}')" type="button" class="layui-btn startTest">开始考试</button>
 					</div>
-				</li>
+				</li>	
 				{{# }); }} {{# if(d.items.length === 0){ }}
-				<li>
-					<p>暂无</p>
-				</li>
+				<p style="text-align: center;font-size: 25px;color: #666666;line-height: 450px;">暂无相关考试</p>
 				{{# } }}
 				</script>
 				<!-- <li>
