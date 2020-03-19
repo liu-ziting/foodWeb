@@ -59,9 +59,17 @@
 				<a href="">> 食品安全资讯</a>
 			</h1>
 			<ul>
+				<!-- 模拟骨架屏 -->
+				<li class="temporary">
+					<div class="imgBox gjpAfter temporaryList">	</div>
+					<div class="textBox">
+						<div class="temporaryList gjpAfter" style="width: 60%;margin-bottom: 17px;"></div>
+						<div class="temporaryList gjpAfter" style="width: 50%;margin-bottom: 19px;"></div>
+						<div class="temporaryList gjpAfter" style="width: 30%;margin-bottom: 22px;"></div>
+					</div>
+				</li>
 				<div id="view"></div>
 				<script id="informationTpl" type="text/html">
-				
 				{{# layui.each(d.items, function(index, item){ }}
 				<li id="{{item.id}}">
 					<div class="imgBox gjpAfter">
@@ -84,21 +92,6 @@
 				</li>
 				{{# } }}
 				</script>
-				<!-- <li onclick="openUrl('details.html')" >
-					<div class="imgBox gjpAfter"></div>
-					<div class="textBox">
-						<h1>猪肉价格首次环比下降！每头补贴1000元</h1>
-						<p>日前，农业农村部数据显示，第45周猪肉每公斤价格为51.36元，较第44周每公斤价格减少1.2元，这是自今年8月底以来，猪价首次出 现环比下降。你那“二师兄”便宜了吗?</p>
-						<time>2020-01-09</time>
-					</div>
-				</li>
-				<li onclick="openUrl('details.html')" >
-					<div class="textBox" style="width: 100%;">
-						<h1>猪肉价格首次环比下降！每头补贴1000元</h1>
-						<p>日前，农业农村部数据显示，第45周猪肉每公斤价格为51.36元，较第44周每公斤价格减少1.2元，这是自今年8月底以来，猪价首次出 现环比下降。你那“二师兄”便宜了吗?</p>
-						<time>2020-01-09</time>
-					</div>
-				</li> -->
 			</ul>
 			<!--分页-->
 			<div id="paging" class="paging"></div>
@@ -118,7 +111,7 @@
 		});
 		//食品安全资讯列表
 		var pageNo = 1;
-		var pageSize = 20;
+		var pageSize = 10;
 		newsList();
 		function newsList() {
 			layui.use(['laypage', 'layer', 'laytpl'], function () {
@@ -138,6 +131,7 @@
 				}).then(function (data) {
 					var result = data;
 					if (data.code == 200) {
+						$(".temporary").hide();
 						// 数据渲染
 						var data = data.data;
 						var totalList = data.total;
@@ -164,6 +158,7 @@
 						//点击查看详情
 						$("li").click(function(){
 							var id = $(this).attr("id");
+							var upTitle = localStorage.setItem("upTitle",'> 食品安全资讯')
 							if(id){
 								openUrl('details.html?id='+id+'');
 							}
@@ -171,7 +166,14 @@
 
 					}
 				}, function (err) {
-
+					if(err.status == 403){
+						layer.msg('未登录，不可操作！', {
+							icon: 5,
+							time: 800, 
+						},function(){
+							location.href = 'login.html';
+						});
+					}
 				})
 			});
 		};

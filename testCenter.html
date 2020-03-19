@@ -59,7 +59,41 @@
 				<a href="">> 考试中心</a>
 			</h1>
 			<ul>
+				<!-- 模拟骨架屏 -->
+				<li class="temporary" style="padding: 38px 50px;">
+					<div class="leftBox gjpAfter temporaryList" style="margin-top: 6px;"></div>
+					<div class="rightBox">
+						<p class="temporaryList gjpAfter" style="width: 60%;margin-bottom: 12px;"></p>
+						<p class="temporaryList gjpAfter" style="width: 50%;margin-bottom: 12px;"></p>
+						<p class="temporaryList gjpAfter" style="width: 30%;margin-bottom: 22px;"></p>
+						<p class="temporaryList gjpAfter" style="width: 40%;margin-bottom: 12px;"></p>
+					</div>
+				</li>
+				<div id="view"></div>
+				<script id="testCenterTpl" type="text/html">
+				{{# layui.each(d.items, function(index, item){ }}
 				<li>
+					<div class="leftBox">
+						<div class="gbox blue">
+							<h1>生产领域培训课程</h1>
+							<p>食品行业从业人员适用</p>
+						</div>
+					</div>
+					<div class="rightBox">
+						<h1>{{item.examName}}</h1>
+						<span><i class="layui-icon layui-icon-form"></i>题量：{{item.questionNum}}题</span><span><i class="layui-icon layui-icon-log"></i>限时：{{item.limitedTime}}分钟</span>
+						<p>适用：完成流通领域从业人员培训课程考生</p>
+						<p>简介：{{item.brief}}</p>
+						<button onclick="openUrl('examination.html')" type="button" class="layui-btn startTest">开始考试</button>
+					</div>
+				</li>
+				{{# }); }} {{# if(d.items.length === 0){ }}
+				<li>
+					<p>暂无</p>
+				</li>
+				{{# } }}
+				</script>
+				<!-- <li>
 					<div class="leftBox">
 						<div class="gbox blue">
 							<h1>生产领域培训课程</h1>
@@ -88,67 +122,7 @@
 						<p>简介：本套试卷共37题，分为单选题、多选题、判断题，考试限时50分钟，考生作答完毕提交试卷后即可 获得考试成绩，合格即可获取相关资格证书，不合格可再次进行考试。</p>
 						<button onclick="openUrl('doExercise.html')" type="button" class="layui-btn startTest">练习</button>
 					</div>
-				</li>
-				<li>
-					<div class="leftBox">
-						<div class="gbox green">
-							<h1>生产领域培训课程</h1>
-							<p>食品行业从业人员适用</p>
-						</div>
-					</div>
-					<div class="rightBox">
-						<h1>食品行业流通领域从业人员资格证考试</h1>
-						<span><i class="layui-icon layui-icon-form"></i>题量：37题</span><span><i class="layui-icon layui-icon-log"></i>限时：50分钟</span>
-						<p>适用：完成流通领域从业人员培训课程考生</p>
-						<p>简介：本套试卷共37题，分为单选题、多选题、判断题，考试限时50分钟，考生作答完毕提交试卷后即可 获得考试成绩，合格即可获取相关资格证书，不合格可再次进行考试。</p>
-						<button onclick="openUrl('doExercise.html')" type="button" class="layui-btn startTest">练习</button>
-					</div>
-				</li>
-				<li>
-					<div class="leftBox">
-						<div class="gbox blue">
-							<h1>生产领域培训课程</h1>
-							<p>食品行业从业人员适用</p>
-						</div>
-					</div>
-					<div class="rightBox">
-						<h1>食品行业流通领域从业人员资格证考试</h1>
-						<span><i class="layui-icon layui-icon-form"></i>题量：37题</span><span><i class="layui-icon layui-icon-log"></i>限时：50分钟</span>
-						<p>适用：完成流通领域从业人员培训课程考生</p>
-						<p>简介：本套试卷共37题，分为单选题、多选题、判断题，考试限时50分钟，考生作答完毕提交试卷后即可 获得考试成绩，合格即可获取相关资格证书，不合格可再次进行考试。</p>
-						<button onclick="openUrl('examination.html')" type="button" class="layui-btn startTest">开始考试</button>
-					</div>
-				</li>
-				<li>
-					<div class="leftBox">
-						<div class="gbox yellow">
-							<h1>生产领域培训课程</h1>
-							<p>食品行业从业人员适用</p>
-						</div>
-					</div>
-					<div class="rightBox">
-						<h1>食品行业流通领域从业人员资格证考试</h1>
-						<span><i class="layui-icon layui-icon-form"></i>题量：37题</span><span><i class="layui-icon layui-icon-log"></i>限时：50分钟</span>
-						<p>适用：完成流通领域从业人员培训课程考生</p>
-						<p>简介：本套试卷共37题，分为单选题、多选题、判断题，考试限时50分钟，考生作答完毕提交试卷后即可 获得考试成绩，合格即可获取相关资格证书，不合格可再次进行考试。</p>
-						<button onclick="openUrl('examination.html')" type="button" class="layui-btn startTest">开始考试</button>
-					</div>
-				</li>
-				<li>
-					<div class="leftBox">
-						<div class="gbox green">
-							<h1>生产领域培训课程</h1>
-							<p>食品行业从业人员适用</p>
-						</div>
-					</div>
-					<div class="rightBox">
-						<h1>食品行业流通领域从业人员资格证考试</h1>
-						<span><i class="layui-icon layui-icon-form"></i>题量：37题</span><span><i class="layui-icon layui-icon-log"></i>限时：50分钟</span>
-						<p>适用：完成流通领域从业人员培训课程考生</p>
-						<p>简介：本套试卷共37题，分为单选题、多选题、判断题，考试限时50分钟，考生作答完毕提交试卷后即可 获得考试成绩，合格即可获取相关资格证书，不合格可再次进行考试。</p>
-						<button onclick="openUrl('examination.html')" type="button" class="layui-btn startTest">开始考试</button>
-					</div>
-				</li>
+				</li> -->
 			</ul>
 			<!--分页-->
 			<div id="paging" class="paging"></div>
@@ -166,20 +140,64 @@
 				delay: 5000
 			},
 		});
-		layui.use(['laypage', 'layer'], function(){
-			var laypage = layui.laypage
-			,layer = layui.layer;
-
-			//分页
-			laypage.render({
-				elem: 'paging'
-				,count: 100
-				,layout: ['count', 'prev', 'page', 'next', 'limit', 'skip']
-				,jump: function(obj){
-				console.log(obj)
-				}
+		//考试-练习列表
+		var pageNo = 1;
+		var pageSize = 10;
+		examList();
+		function examList() {
+			layui.use(['laypage', 'layer', 'laytpl'], function () {
+				var laypage = layui.laypage,
+					laytpl = layui.laytpl,
+					layer = layui.layer;
+				http.ajax({
+					url: 'exam/examList',
+					type: 'GET',
+					json: false,
+					mask: true,
+					data: {
+						pageNo: pageNo,
+						pageSize: pageSize,
+					}
+				}).then(function (data) {
+					var result = data;
+					if (data.code == 200) {
+						$(".temporary").hide();
+						// 数据渲染
+						var data = data.data;
+						var totalList = data.total;
+						var getTpl = testCenterTpl.innerHTML,
+							view = document.getElementById('view');
+						laytpl(getTpl).render(data, function (html) {
+							view.innerHTML = html;
+						});
+						//分页
+						laypage.render({
+							elem: 'paging'
+							, curr: pageNo
+							, limit: pageSize
+							, count: totalList
+							, layout: ['count', 'prev', 'page', 'next', 'limit', 'skip']
+							, jump: function (obj, first) { //触发分页后的回调
+								if (!first) { //点击跳页触发函数自身，并传递当前页：obj.curr
+									pageNo = obj.curr;
+									pageSize = obj.limit;
+									examList();
+								}
+							}
+						});
+					}
+				}, function (err) {
+					if(err.status == 403){
+						layer.msg('未登录，不可操作！', {
+							icon: 5,
+							time: 800, 
+						},function(){
+							location.href = 'login.html';
+						});
+					}
+				})
 			});
-		})
+		};
 	</script>
 </body>
 

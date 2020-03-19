@@ -91,7 +91,11 @@
 						<script id="myFavoriteTpl" type="text/html">
 						{{# layui.each(d.items, function(index, item){ }}
 						<li>
-							<div class="gbox green">
+							{{#  if(item.fontCoverPic == 0 ||item.fontCoverPic == null){ }}
+							<div class="gbox" style="background: url(../img/bk1.png);">	
+							{{#  } else { }}
+							<div class="gbox" style="background: url({{item.fontCoverPic}});background-size:cover;background-position:center;">
+							{{#  } }} 
 								<h1>{{item.courseInfo.trainingType.trainingTypeName}}课程</h1>
 								<p>{{item.courseInfo.trainingType.memo}}适用</p>
 								<a href="#">前往学习 &gt;</a>
@@ -99,7 +103,7 @@
 							</div>
 							<p>{{item.courseInfo.trainingType.trainingTypeName}}课程</p>
 							<time>
-								<i id="{{item.id}}" class="cancel">取消收藏</i>
+								<i id="{{item.courseInfo.id}}" class="cancel">取消收藏</i>
 								{{#  if(item.buyStatus == 'unpurchased'){ }}
 								<span>前往购买</span>
 								{{#  } }} 
@@ -168,6 +172,7 @@
 						laytpl(getTpl).render(data, function (html) {
 							view.innerHTML = html;
 						});
+						if(totalList == 0){$(".paging").hide()}
 						//分页
 						laypage.render({
 							elem: 'paging'
@@ -208,6 +213,7 @@
 			}).then(function (data) {
 				if (data.code == 200) {
 					layer.msg('取消收藏！');
+					userFavorite();
 				}
 			}, function (err) {
 				

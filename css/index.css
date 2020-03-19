@@ -1598,6 +1598,10 @@ header nav  ul .active i{
 	margin-top: 5px;
 	padding: 0 10px;
 }
+.temporary{
+	position: relative;
+	overflow: hidden;
+}
 .temporaryList{
 	background-color: #eeeeee;
 	height: 45px;
@@ -2112,6 +2116,7 @@ header nav  ul .active i{
 	padding: 44px 50px;
 	height: 314px;
 	border-bottom: 1px solid #E7E6ED;
+	position: relative;
 }
 .testCenter ul .leftBox{
 	width: 178px;
@@ -2194,6 +2199,8 @@ header nav  ul .active i{
 	font-size:16px;
 	color: #ffffff;
 	margin-top: 19px;
+	position: absolute;
+	bottom: 44px;
 }
 .testCenter .paging{
 	margin: 30px 0;

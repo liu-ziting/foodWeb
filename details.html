@@ -56,7 +56,7 @@
 		<section class="centre">
 			<h1 class="titleSon">
 				<a href="index.html">首页</a>
-				<a href="">> 食品安全资讯</a>
+				<a class="upTitle goBack" href="javascript:;">> 加载中</a>
 				<a href="">> 新闻详情</a>
 			</h1>
 			<div id="view"></div>
@@ -105,7 +105,7 @@
 				delay: 5000
 			},
 		});
-
+		$(".upTitle").text(localStorage.getItem("upTitle"))
 		//获取新闻详情
 		layui.use(['laypage', 'layer', 'laytpl'], function () {
 			var laypage = layui.laypage,

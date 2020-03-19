@@ -34,6 +34,13 @@ function foodNewsList() {
 
             }
         }, function (err) {
-
+            if(err.status == 403){
+                layer.msg('未登录，不可操作！', {
+                    icon: 5,
+                    time: 800, 
+                },function(){
+                    location.href = 'login.html';
+                });
+            }
         })
 };

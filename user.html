@@ -86,6 +86,13 @@
 				</div>
 				<div class="right">
 					<div class="up">
+						<!-- 模拟骨架屏 -->
+						<div class="temporary">
+							<p class="temporaryList gjpAfter" style="width: 90%;margin-bottom:22px;"></p>
+							<p class="temporaryList gjpAfter" style="width: 80%;margin-bottom:22px;"></p>
+							<p class="temporaryList gjpAfter" style="width: 70%;margin-bottom:22px;"></p>
+							<p class="temporaryList gjpAfter" style="width: 75%;margin-bottom:22px;"></p>
+						</div>
 						<div id="view"></div>
 						<script id="userTpl" type="text/html">
 							<h3>个人资料</h3>
@@ -192,6 +199,7 @@
 				mask: true,
 			}).then(function (data) {
 				if (data.code == 200) {
+					$(".temporary").hide();
 					var data = beNull(data.data);
 					var getTpl = userTpl.innerHTML
 						, view = document.getElementById('view');

@@ -87,6 +87,15 @@
 				<div class="right">
 					<h3>修改资料<p><i>个人中心 > 用户管理 > <span>修改资料</span></i></p>
 					</h3>
+					<!-- 模拟骨架屏 -->
+					<div class="temporary" style="margin-top: 40px;">
+						<p class="temporaryList gjpAfter" style="width: 50%;margin-bottom:22px;"></p>
+						<p class="temporaryList gjpAfter" style="width: 50%;margin-bottom:22px;"></p>
+						<p class="temporaryList gjpAfter" style="width: 50%;margin-bottom:22px;"></p>
+						<p class="temporaryList gjpAfter" style="width: 50%;margin-bottom:22px;"></p>
+						<p class="temporaryList gjpAfter" style="width: 50%;margin-bottom:22px;"></p>
+						<p class="temporaryList gjpAfter" style="width: 50%;margin-bottom:22px;"></p>
+					</div>
 					<div id="view"></div>
 					<script id="modifiedDataTpl" type="text/html">
 						<form class="layui-form" action="">
@@ -174,6 +183,7 @@
 				mask: true,
 			}).then(function (data) {
 				if (data.code == 200) {
+					$(".temporary").hide();
 					var data = beNull(data.data);
 					var getTpl = modifiedDataTpl.innerHTML
 						, view = document.getElementById('view');
@@ -197,8 +207,6 @@
 			});
 		});
 		}
-		
-
 		
 		// 更新用户信息
 		function userUpdate(json){
