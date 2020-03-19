@@ -98,10 +98,10 @@
 							{{#  } }} 
 								<h1>{{item.courseInfo.trainingType.trainingTypeName}}课程</h1>
 								<p>{{item.courseInfo.trainingType.memo}}适用</p>
-								<a href="#">前往学习 &gt;</a>
+								<a onclick="openUrl('courseCenterDetails.html?id={{item.courseInfo.id}}')" href="javascript:;">前往学习 &gt;</a>
 								<em class="layui-icon layui-icon-rate-solid"></em>
 							</div>
-							<p>{{item.courseInfo.trainingType.trainingTypeName}}课程</p>
+							<p>{{item.courseInfo.courseName}}课程</p>
 							<time>
 								<i id="{{item.courseInfo.id}}" class="cancel">取消收藏</i>
 								{{#  if(item.buyStatus == 'unpurchased'){ }}

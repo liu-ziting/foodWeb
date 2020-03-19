@@ -262,6 +262,50 @@
 				delay: 5000
 			},
 		});
+
+		//考试试题列表
+		exam();
+		function exam(){
+			http.ajax({
+				url: 'exam/exam',
+				type: 'GET',
+				json: false,
+				mask: true,
+				data: {
+					examCenterId: getQueryString("id")
+				}
+			}).then(function (data) {
+				var result = data;
+				if (data.code == 200) {
+					
+				}
+			}, function (err) {
+				if(err.status == 403){
+					layer.msg('未登录，不可操作！', {
+						icon: 5,
+						time: 800, 
+					},function(){
+						location.href = 'login.html';
+					});
+				}
+			})
+		}
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		//模拟提交
 		$(".submit").click(function () {
 			layer.confirm('确定提交答卷？', {
@@ -295,6 +339,7 @@
 		$.makeArray($(':checkbox[name="like"]:checked').map(function () {
 			return this.value;
 		})).join(',');
+		
 		//收藏题目
 		$("#topic li em").click(function () {
 			var selectedIndex = $(this).parents("li").index();
@@ -309,7 +354,6 @@
 
 		//倒计时,时间存入缓存，休想刷新混时长
 		var maxtime = 1 * 600;
-		console.log(localStorage.getItem("maxtime"))
 		if (localStorage.getItem("maxtime")) {
 			maxtime = localStorage.getItem("maxtime");
 			timer = setInterval("CountDown()", 1000);
@@ -351,7 +395,7 @@
 		}
 
 
-		// 鼠标下滑，昨天答题卡固定在顶部
+		// 鼠标下滑，左侧答题卡固定在顶部
 		var ie6 = /msie 6/i.test(navigator.userAgent);
 		var tableDv = $('.fixation');
 		var st;
@@ -373,6 +417,8 @@
 			}
 
 		});
+
+		
 
 	</script>
 </body>
