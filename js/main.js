@@ -358,9 +358,7 @@ function renderForm() {
 		form.render();
 	});
 };
-/*
- * 数字序号转字符串序号  0 => "A"
- */
+//数字序号转字符串序号  0 => "A"
 function indexToString(index){
     var charcode;
     return index.toString(26).split("").map(function(item,i){
@@ -368,6 +366,16 @@ function indexToString(index){
         charcode+=(charcode>=97?10:49);
         return String.fromCharCode(charcode)
     }).join("").toUpperCase();
+};
+// 数组转字符串，逗号隔开
+function acTiveArrStringFun(obj) {
+	var arr = [];
+	if (obj != null && obj.length != 0) {
+		for (var i = 0; i < obj.length; i++) {
+			arr.push(indexToString(obj[i]));
+		}
+	}
+	return arr.toString();
 }
 //处理返回的数据为null时候，设置为暂无
 function beNull(data) {

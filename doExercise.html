@@ -10,6 +10,31 @@
 	<link rel="stylesheet" href="layui/css/layui.css" />
 	<link rel="stylesheet" href="css/swiper.min.css">
 	<link rel="stylesheet" href="css/index.css" />
+	<style>
+		.examination .right form .layui-form-checkbox,
+		.layui-form-select dl dd.layui-disabled {
+			margin-bottom: 20px !important;
+		}
+
+		.layui-disabled,
+		.layui-disabled {
+			color: #000000 !important;
+		}
+
+		.layui-disabled,
+		.layui-disabled:hover {
+			color: #000000 !important;
+		}
+
+		.layui-radio-disbaled>.layui-anim-scaleSpring {
+			color: #5FB878 !important;
+		}
+
+		.layui-form-checked i,
+		.layui-form-checked:hover i {
+			color: #5FB878 !important;
+		}
+	</style>
 </head>
 
 <body>
@@ -57,47 +82,52 @@
 			<h1 class="titleSon">
 				<a href="index.html">首页</a>
 				<a href="testCenter.html">> 考试中心</a>
-				<a href="">> 生产领域培训课程</a>
+				<a href="">> <span class="courseName">加载中</span></a>
 			</h1>
 			<div class="examination">
 				<div class="left fixation">
 					<ul id="sequence">
 						<li>
 							<h1>单选题</h1>
-							<div>
-								<span class="number">1</span>
-								<span class="number">2</span>
-								<span class="number">3</span>
-								<span class="number">4</span>
+							<div id="numChoiceListHtml">
+								<span class="number gjpAfter"></span>
+								<span class="number gjpAfter"></span>
+								<span class="number gjpAfter"></span>
 							</div>
 						</li>
 						<li>
 							<h1>判断题</h1>
-							<div>
-								<span class="number">5</span>
-								<span class="number">6</span>
-								<span class="number">7</span>
+							<div id="numjudgeListHtml">
+								<span class="number gjpAfter"></span>
+								<span class="number gjpAfter"></span>
+								<span class="number gjpAfter"></span>
 							</div>
 						</li>
 						<li>
 							<h1>多选题</h1>
-							<div>
-								<span class="number">8</span>
-								<span class="number">9</span>
-								<span class="number">10</span>
+							<div id="nummultiChoiceListHtml">
+								<span class="number gjpAfter"></span>
+								<span class="number gjpAfter"></span>
+								<span class="number gjpAfter"></span>
 							</div>
 						</li>
 					</ul>
 					<button type="button" class="layui-btn submit">交卷并查看解析</button>
 				</div>
 				<div class="right">
-					<h1>食品行业生产领域从业人员资格证考试</h1>
+					<h1 class="courseName">试卷加载中...</h1>
 					<p>
-						<span><i class="layui-icon layui-icon-form"></i>共37题</span>
+						<span><i class="layui-icon layui-icon-form"></i>共<em class="questionNum">--</em>题</span>
 					</p>
 					<form class="layui-form" action="">
 						<ul id="topic">
-							<li>
+							<li class="temporary gjpAfter"></li> 
+							<li class="temporary gjpAfter"></li> 
+							<li class="temporary gjpAfter"></li> 
+							<div id="ChoiceListHtml"></div>
+							<div id="judgeListHtml"></div>
+							<div id="multiChoiceListHtml"></div>
+							<!-- <li>
 								<p>
 									1、食品安全法规定，制定食品安全标准，应当以保障________为宗旨，做到科学合理、安全可靠
 									<i class="">查看解析</i>
@@ -112,155 +142,7 @@
 									解析：中华人民共和国食品安全法（2018修正）中第二十五条规定食品安全标准是强制执行的标准。除食品安全标准外，不得制定其他 食品强制性标准。因此，本题正确。
 								</h2>
 								<em class="layui-icon layui-icon-rate-solid"></em>
-							</li>
-							<li>
-								<p>
-									2、食品安全法规定，制定食品安全标准，应当以保障________为宗旨，做到科学合理、安全可靠
-									<i class="">查看解析</i>
-								</p>
-								<div class="layui-input-block">
-									<input type="radio" name="single2" value="A" title="A：公众身体健康">
-									<input type="radio" name="single2" value="B" title="B：公众生活需要">
-									<input type="radio" name="single2" value="C" title="C：社会生活需要">
-									<input type="radio" name="single2" value="D" title="D：企业安全生产">
-								</div>
-								<h2>
-									解析：中华人民共和国食品安全法（2018修正）中第二十五条规定食品安全标准是强制执行的标准。除食品安全标准外，不得制定其他 食品强制性标准。因此，本题正确。
-								</h2>
-								<em class="layui-icon layui-icon-rate-solid"></em>
-							</li>
-							<li>
-								<p>
-									3、食品安全法规定，制定食品安全标准，应当以保障________为宗旨，做到科学合理、安全可靠
-									<i class="">查看解析</i>
-								</p>
-								<div class="layui-input-block">
-									<input type="radio" name="single3" value="A" title="A：公众身体健康">
-									<input type="radio" name="single3" value="B" title="B：公众生活需要">
-									<input type="radio" name="single3" value="C" title="C：社会生活需要">
-									<input type="radio" name="single3" value="D" title="D：企业安全生产">
-								</div>
-								<h2>
-									解析：中华人民共和国食品安全法（2018修正）中第二十五条规定食品安全标准是强制执行的标准。除食品安全标准外，不得制定其他 食品强制性标准。因此，本题正确。
-								</h2>
-								<em class="layui-icon layui-icon-rate-solid"></em>
-							</li>
-							<li>
-								<p>
-									4、食品安全法规定，制定食品安全标准，应当以保障________为宗旨，做到科学合理、安全可靠
-									<i class="">查看解析</i>
-								</p>
-								<div class="layui-input-block">
-									<input type="radio" name="single4" value="A" title="A：公众身体健康">
-									<input type="radio" name="single4" value="B" title="B：公众生活需要">
-									<input type="radio" name="single4" value="C" title="C：社会生活需要">
-									<input type="radio" name="single4" value="D" title="D：企业安全生产">
-								</div>
-								<h2>
-									解析：中华人民共和国食品安全法（2018修正）中第二十五条规定食品安全标准是强制执行的标准。除食品安全标准外，不得制定其他 食品强制性标准。因此，本题正确。
-								</h2>
-								<em class="layui-icon layui-icon-rate-solid"></em>
-							</li>
-							<li>
-								<p>
-									5、食品安全法规定，制定食品安全标准，应当以保障________为宗旨，做到科学合理、安全可靠
-									<i class="">查看解析</i>
-								</p>
-								<div class="layui-input-block">
-									<input type="radio" name="single5" value="A" title="A：公众身体健康">
-									<input type="radio" name="single5" value="B" title="B：公众生活需要">
-									<input type="radio" name="single5" value="C" title="C：社会生活需要">
-									<input type="radio" name="single5" value="D" title="D：企业安全生产">
-								</div>
-								<h2>
-									解析：中华人民共和国食品安全法（2018修正）中第二十五条规定食品安全标准是强制执行的标准。除食品安全标准外，不得制定其他 食品强制性标准。因此，本题正确。
-								</h2>
-								<em class="layui-icon layui-icon-rate-solid"></em>
-							</li>
-							<li>
-								<p>
-									6、食品安全法规定，制定食品安全标准，应当以保障________为宗旨，做到科学合理、安全可靠
-									<i class="">查看解析</i>
-								</p>
-								<div class="layui-input-block">
-									<input type="radio" name="single6" value="A" title="A：公众身体健康">
-									<input type="radio" name="single6" value="B" title="B：公众生活需要">
-									<input type="radio" name="single6" value="C" title="C：社会生活需要">
-									<input type="radio" name="single6" value="D" title="D：企业安全生产">
-								</div>
-								<h2>
-									解析：中华人民共和国食品安全法（2018修正）中第二十五条规定食品安全标准是强制执行的标准。除食品安全标准外，不得制定其他 食品强制性标准。因此，本题正确。
-								</h2>
-								<em class="layui-icon layui-icon-rate-solid"></em>
-							</li>
-							<li>
-								<p>
-									7、食品安全法规定，制定食品安全标准，应当以保障________为宗旨，做到科学合理、安全可靠
-									<i class="">查看解析</i>
-								</p>
-								<div class="layui-input-block">
-									<input type="radio" name="single7" value="A" title="A：公众身体健康">
-									<input type="radio" name="single7" value="B" title="B：公众生活需要">
-									<input type="radio" name="single7" value="C" title="C：社会生活需要">
-									<input type="radio" name="single7" value="D" title="D：企业安全生产">
-								</div>
-								<h2>
-									解析：中华人民共和国食品安全法（2018修正）中第二十五条规定食品安全标准是强制执行的标准。除食品安全标准外，不得制定其他 食品强制性标准。因此，本题正确。
-								</h2>
-								<em class="layui-icon layui-icon-rate-solid"></em>
-							</li>
-							<li>
-								<p>
-									8、食品安全法规定，制定食品安全标准，应当以保障________为宗旨，做到科学合理、安全可靠
-									<i class="">查看解析</i>
-								</p>
-								<div class="layui-input-block multipleChoice">
-									<input type="checkbox" name="" value="A" title="A：公众身体健康">
-									<input type="checkbox" name="" value="B" title="B：公众生活需要">
-									<input type="checkbox" name="" value="C" title="C：社会生活需要">
-									<input type="checkbox" name="" value="D" title="D：企业安全生产">
-								</div>
-								<h2>
-									解析：中华人民共和国食品安全法（2018修正）中第二十五条规定食品安全标准是强制执行的标准。除食品安全标准外，不得制定其他 食品强制性标准。因此，本题正确。
-								</h2>
-								<em class="layui-icon layui-icon-rate-solid"></em>
-							</li>
-							<li>
-								<p>
-									9、食品安全法规定，制定食品安全标准，应当以保障________为宗旨，做到科学合理、安全可靠
-									<i class="">查看解析</i>
-								</p>
-								<div class="layui-input-block multipleChoice">
-									<input type="checkbox" name="" value="A" title="A：公众身体健康">
-									<input type="checkbox" name="" value="B" title="B：公众生活需要">
-									<input type="checkbox" name="" value="C" title="C：社会生活需要">
-									<input type="checkbox" name="" value="D" title="D：企业安全生产">
-								</div>
-								<h2>
-									解析：中华人民共和国食品安全法（2018修正）中第二十五条规定食品安全标准是强制执行的标准。除食品安全标准外，不得制定其他 食品强制性标准。因此，本题正确。
-								</h2>
-								<em class="layui-icon layui-icon-rate-solid"></em>
-							</li>
-							<li>
-								<p>
-									10、食品安全法规定，制定食品安全标准，应当以保障________为宗旨，做到科学合理、安全可靠
-									<i class="">查看解析</i>
-								</p>
-								<div class="layui-input-block multipleChoice">
-									<input type="checkbox" lay-filter="ck_hao_10" name="like" value="A"
-										title="A：公众身体健康">
-									<input type="checkbox" lay-filter="ck_hao_10" name="like" value="B"
-										title="B：公众生活需要">
-									<input type="checkbox" lay-filter="ck_hao_10" name="like" value="C"
-										title="C：社会生活需要">
-									<input type="checkbox" lay-filter="ck_hao_10" name="like" value="D"
-										title="D：企业安全生产">
-								</div>
-								<h2>
-									解析：中华人民共和国食品安全法（2018修正）中第二十五条规定食品安全标准是强制执行的标准。除食品安全标准外，不得制定其他 食品强制性标准。因此，本题正确。
-								</h2>
-								<em class="layui-icon layui-icon-rate-solid"></em>
-							</li>
+							</li> -->
 						</ul>
 					</form>
 				</div>
@@ -273,6 +155,7 @@
 	<script type="text/javascript" src="layui/layui.all.js"></script>
 	<script type="text/javascript" src="js/swiper.min.js"> </script>
 	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="js/doExercise.js"></script>
 	<script>
 		//轮播图
 		var indexBannerswiper = new Swiper('.sonBanner', {
@@ -280,33 +163,6 @@
 				delay: 5000
 			},
 		});
-
-		// 数据绑定到右侧答题卡
-		$("#topic li .layui-input-block").click(function () {
-			var selectedIndex = $(this).parents("li").index();
-			$("#sequence .number").eq(selectedIndex).addClass("green");
-			if ($(this).hasClass("multipleChoice")) {
-				if ($(this).find('.layui-form-checked').length == 0) {
-					$("#sequence .number").eq(selectedIndex).removeClass("green");
-				}
-			}
-		});
-
-		//获取复选框选中的值
-		$.makeArray($(':checkbox[name="like"]:checked').map(function () {
-			return this.value;
-		})).join(',');
-		//收藏题目
-		$("#topic li em").click(function () {
-			var selectedIndex = $(this).parents("li").index();
-			if ($(this).hasClass("activeStar")) {
-				$(this).removeClass("activeStar");
-				$("#sequence .number").eq(selectedIndex).removeClass("yellow")
-			} else {
-				$(this).addClass("activeStar");
-				$("#sequence .number").eq(selectedIndex).addClass("yellow")
-			}
-		})
 
 		// 鼠标下滑，昨天答题卡固定在顶部
 		var ie6 = /msie 6/i.test(navigator.userAgent);
@@ -318,40 +174,19 @@
 			if (st >= parseInt(tableDv.attr('otop'))) {
 				if (ie6) {//IE6不支持fixed属性，所以只能靠设置position为absolute和top实现此效果
 					tableDv.css({ position: 'absolute', top: st });
-				}else if (tableDv.css('position') != 'fixed') {
+				} else if (tableDv.css('position') != 'fixed') {
 					tableDv.css({ 'position': 'fixed', top: 0 });
 				}
-				console.log(1)	
-				$(".examination .right").css("margin-left","272px")
+				console.log(1)
+				$(".examination .right").css("margin-left", "272px")
 			} else if (tableDv.css('position') != 'static') {
 				tableDv.css({ 'position': 'static' });
 				console.log(2)
-				$(".examination .right").css("margin-left","62px")
+				$(".examination .right").css("margin-left", "62px")
 			}
-			
+
 		});
 
-		//模拟点击提交
-		$(".submit").click(function(){
-			if($(this).text() == "再练习一遍"){
-				location.reload();
-			}else{
-				$(".examination .right form em").hide();
-				$(".examination .right form ul li p i").show();
-				$("#sequence span").addClass('wrong');
-				$(this).text("再练习一遍");
-			}
-		});
-		//查看解析
-		$(".examination .right li i").click(function () {
-			if($(this).hasClass("activei")){
-				$(this).removeClass("activei");
-				$(this).parent().siblings("h2").hide()
-			}else{
-				$(this).addClass("activei");
-				$(this).parent().siblings("h2").show()
-			}
-		});
 
 	</script>
 </body>

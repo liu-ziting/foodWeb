@@ -207,7 +207,7 @@
 								<p>海量题库，贴合课程 <br>前往小程序进行刷题</p>
 								<h2>扫描二维码，识别小程序</h2>
 							</div>
-							<button>前往线上题库进行练习</button>
+							<button class="toExercise">前往线上题库进行练习</button>
 						</div>
 					</div>
 				</div>
@@ -274,6 +274,10 @@
 			})
 		};
 
+		//去练习
+		$(".toExercise").click(function(){
+			openUrl('doExercise.html?id='+getQueryString("id")+'')
+		})
 		//收藏接口
 		function favorite(courseId) {
 			http.ajax({

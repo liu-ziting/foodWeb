@@ -2236,6 +2236,7 @@ header nav  ul .active i{
 	margin-bottom: 7px;
 	cursor: pointer;
 	position: relative;
+	overflow: hidden;
 }
 .examination .left .green{
 	background: #397D47;
@@ -2331,6 +2332,10 @@ header nav  ul .active i{
 	margin-top: 18px;
 	position: relative;
 }
+.examination .right form ul .temporary{
+	height: 115px;
+}
+
 .examination .right form ul li p{
 	font-size: 14px;
 	color: #161616;
@@ -2354,6 +2359,7 @@ header nav  ul .active i{
 	margin-top: -3px;
 	display: none;
 }
+
 .examination .right form ul li p .activei {
     background: rgba(245,82,13,1);
     color: #ffffff;
@@ -2369,6 +2375,13 @@ header nav  ul .active i{
 	line-height: 28px;
 	display: none;
 	padding: 20px 15px 0 15px;
+}
+.examination .right form ul li h2 p{
+	padding: 0;
+}
+.examination .right form ul li h2 p span{
+	font-weight: bold;
+	color: rgba(57,125,71,1);
 }
 .examination .right form ul li em{
 	position: absolute;
