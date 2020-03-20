@@ -358,6 +358,17 @@ function renderForm() {
 		form.render();
 	});
 };
+/*
+ * 数字序号转字符串序号  0 => "A"
+ */
+function indexToString(index){
+    var charcode;
+    return index.toString(26).split("").map(function(item,i){
+        charcode = item.charCodeAt(0);
+        charcode+=(charcode>=97?10:49);
+        return String.fromCharCode(charcode)
+    }).join("").toUpperCase();
+}
 //处理返回的数据为null时候，设置为暂无
 function beNull(data) {
 	for (let x in data) {
