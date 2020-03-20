@@ -94,7 +94,7 @@
 					<p>
 						<span><i class="layui-icon layui-icon-log"></i>限时<em class="limitedTime"></em>分钟</span>
 						<span><i class="layui-icon layui-icon-form"></i>共<em class="questionNum"></em>题</span>
-						<span>2020-01-09 9:30 分开考</span>
+						<span class="nowTime"></span>
 						<b><time>考试开始！</time></b>
 					</p>
 					<form class="layui-form" action="">
@@ -170,6 +170,7 @@
 					$(".questionNum").text(total);
 					$(".limitedTime").text(result.info.limitedTime);
 					$("#id").val(result.id);
+					$(".nowTime").html(getNowFormatDate()+" 开考")
 					//单选题序号循环
 					for (var i = 0; i < result.choiceList.length; i++) {
 						numChoiceListHtml += '<span class="number">' + (i + 1) + '</span>';
@@ -406,7 +407,7 @@
 						//初始化数字滚动特效
 						$(".font").text(result.data.score);
 						if(result.data.pass == true){
-							$(".pass").text("恭喜您已成功通过<br> 【"+result.data.info.examName+"】考试")
+							$(".pass").html("恭喜您已成功通过<br> 【"+result.data.info.examName+"】考试")
 						}else{
 							$(".pass").html("很抱歉考试未合格，请重新参加<br> 【"+result.data.info.examName+"】考试")
 							$(".examResult .circle").css("border","7px solid #9A979A");
