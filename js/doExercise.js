@@ -141,11 +141,12 @@ function exercise() {
                     if (answerList == undefined) {
                         answerList = ""
                     }
-                    console.log(answerList)
                     if ($("#ChoiceListHtml li").eq(i).find(".answer").val() == answerList) {
                         $("#numChoiceListHtml span").eq(i).addClass('correct');
+                        $("#ChoiceListHtml li").eq(i).find("input:checked").next().addClass("correctBox")
                     } else {
                         $("#numChoiceListHtml span").eq(i).addClass('wrong');
+                        $("#ChoiceListHtml li").eq(i).find("input:checked").next().addClass("errorBox")
                     }
                 };
                 // 判断框的值
@@ -156,8 +157,10 @@ function exercise() {
                     }
                     if ($("#judgeListHtml li").eq(i).find(".answer").val() == answerList) {
                         $("#numjudgeListHtml span").eq(i).addClass('correct');
+                        $("#judgeListHtml li").eq(i).find("input:checked").next().addClass("correctBox")
                     } else {
                         $("#numjudgeListHtml span").eq(i).addClass('wrong');
+                        $("#judgeListHtml li").eq(i).find("input:checked").next().addClass("errorBox")
                     }
                 };
                 // 多选框的值
@@ -166,11 +169,30 @@ function exercise() {
                     for (var j = 0; j < $("#multiChoiceListHtml li").eq(i).find("input:checked").length; j++) {
                         answerList.push($("#multiChoiceListHtml li").eq(i).find("input:checked").eq(j).val() * 1)
                     }
+                    var answerBox = $("#multiChoiceListHtml li").eq(i).find(".answer").val();
+                    var str = answerBox;
+                    var str_array = str.split(',');
+                    var answerList2 = []
+                    for (var h = 0; h < str_array.length; h++) {
+                        str_array[h] = str_array[h].replace(/^\s*/, "").replace(/\s*$/, "");
+                        answerList2.push(str_array[h] * 1)
+                    }
+                    // 两个数组去重
+                    var intersection = answerList.filter(function (val) { return answerList2.indexOf(val) > -1 })
+
                     if ($("#multiChoiceListHtml li").eq(i).find(".answer").val() == answerList) {
                         $("#nummultiChoiceListHtml span").eq(i).addClass('correct');
+                        $("#multiChoiceListHtml li").eq(i).find("input:checked").next().addClass("correctBox");
                     } else {
                         $("#nummultiChoiceListHtml span").eq(i).addClass('wrong');
+                        $("#multiChoiceListHtml li").eq(i).find("input:checked").next().addClass("errorBox");
+                        //多选题判断自己答对的选项变绿    
+                        for (var k = 0; k < intersection.length; k++) {
+                            $("#multiChoiceListHtml li").eq(i).find("input:checked").eq(intersection[k]).next().addClass("correctBox")
+                        }
+
                     }
+                   
                 };
 
 
@@ -197,3 +219,4 @@ function exercise() {
         }
     })
 }
+
