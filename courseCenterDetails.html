@@ -139,11 +139,11 @@
 					</ul>
 					<div class="layui-tab-content">
 						<div class="layui-tab-item layui-show trainingDetail">
-							
+
 						</div>
 						<div class="layui-tab-item">
-							<ul>
-								<li onclick="openUrl('watchVideo.html')" class="active">
+							<ul id="kcList">
+								<!-- <li onclick="openUrl('watchVideo.html')" class="active">
 									<img src="img/video.png" />
 									<p>01 - 食品安全法解读（第一讲）</p>
 									<time><img src="img/vtime.png" />已学习</time>
@@ -152,52 +152,14 @@
 									<img src="img/video.png" />
 									<p>01 - 食品安全法解读（第一讲）</p>
 									<time><img src="img/vtime.png" />30分钟</time>
-								</li>
-								<li>
-									<img src="img/video.png" />
-									<p>01 - 食品安全法解读（第一讲）</p>
-									<time><img src="img/vtime.png" />30分钟</time>
-								</li>
-								<li>
-									<img src="img/video.png" />
-									<p>01 - 食品安全法解读（第一讲）</p>
-									<time><img src="img/vtime.png" />30分钟</time>
-								</li>
-								<li>
-									<img src="img/video.png" />
-									<p>01 - 食品安全法解读（第一讲）</p>
-									<time><img src="img/vtime.png" />30分钟</time>
-								</li>
-								<li>
-									<img src="img/video.png" />
-									<p>01 - 食品安全法解读（第一讲）</p>
-									<time><img src="img/vtime.png" />30分钟</time>
-								</li>
-								<li>
-									<img src="img/video.png" />
-									<p>01 - 食品安全法解读（第一讲）</p>
-									<time><img src="img/vtime.png" />30分钟</time>
-								</li>
-								<li>
-									<img src="img/video.png" />
-									<p>01 - 食品安全法解读（第一讲）</p>
-									<time><img src="img/vtime.png" />30分钟</time>
-								</li>
-								<li>
-									<img src="img/video.png" />
-									<p>01 - 食品安全法解读（第一讲）</p>
-									<time><img src="img/vtime.png" />30分钟</time>
-								</li>
-								<li>
-									<img src="img/video.png" />
-									<p>01 - 食品安全法解读（第一讲）</p>
-									<time><img src="img/vtime.png" />30分钟</time>
-								</li>
+								</li> -->
 							</ul>
 						</div>
 						<div class="layui-tab-item qrCodeBox">
-							<div class="left">
-								<img src="img/code.png" />
+							<div class="left gjpAfter">
+								<p>小程序正在努力开发中</p>
+								<P class="toExercise">前往线上题库进行练习>></P>
+								<!-- <img src="img/code.png" /> -->
 							</div>
 							<div class="right">
 								<h1 class="courseName"></h1>
@@ -257,14 +219,33 @@
 							view.innerHTML = html;
 						});
 						$(".trainingDetail").html(data.trainingDetail);
-						$(".courseName").html(data.courseName+' 专项刷题');
+						$(".courseName").html(data.courseName + ' 专项刷题');
 						$("title").html(data.courseName);
-						//收藏
-						$(".courseDetalisTop .right h1 b").click(function(){
-							if(data.favorite == false){
-								favorite(getQueryString("id"))	
+						
+						var listHtml = ""
+						for (var i = 0; i < data.courseHourList.length; i++) {
+							listHtml += '<li id="'+data.courseHourList[i].id+'">';
+							listHtml += '<img src="img/video.png" />';
+							listHtml += '<p>'+(i+1)+' - '+data.courseHourList[i].courseHourName+'</p>';
+							if(data.courseHourList[i].learnStatus){
+								listHtml += '<time><img src="img/vtime.png" />'+data.courseHourList[i].courseResourceDuration/60+'分钟</time>';
 							}else{
-								cancelCollection(getQueryString("id"))	
+								listHtml += '<time><img src="img/vtime.png" />已学习</time>';
+							}
+							listHtml += '</li>';
+						};
+						$("#kcList").append(listHtml);
+
+						$("#kcList li").click(function () {
+							var sid = $(this).attr("id");
+							openUrl('watchVideo.html?id='+getQueryString("id")+'&sid='+sid+'');
+						});
+						//收藏
+						$(".courseDetalisTop .right h1 b").click(function () {
+							if (data.favorite == false) {
+								favorite(getQueryString("id"))
+							} else {
+								cancelCollection(getQueryString("id"))
 							}
 						})
 					}
@@ -275,9 +256,10 @@
 		};
 
 		//去练习
-		$(".toExercise").click(function(){
-			openUrl('doExercise.html?id='+getQueryString("id")+'')
-		})
+		$(".toExercise").click(function () {
+			openUrl('doExercise.html?id=' + getQueryString("id") + '')
+		});
+
 		//收藏接口
 		function favorite(courseId) {
 			http.ajax({
@@ -294,7 +276,7 @@
 					$(".courseDetalisTop .right h1 b").addClass("collect").find("strong").text("已收藏");
 				}
 			}, function (err) {
-				
+
 			})
 		};
 		//取消收藏
@@ -313,10 +295,10 @@
 					$(".courseDetalisTop .right h1 b").removeClass("collect").find("strong").text("收藏课程");
 				}
 			}, function (err) {
-				
+
 			})
 		};
-		
+
 	</script>
 </body>
 

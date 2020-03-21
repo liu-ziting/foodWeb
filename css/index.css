@@ -1711,10 +1711,24 @@ header nav  ul .active i{
 	border-radius:3px;
 	border: 4px solid #F4F1FE;
 	float: left;
+	position: relative;
+	overflow: hidden;
+}
+.courseDetalisTab .centre .layui-tab-content .qrCodeBox .left p{
+	line-height: 38px;
+	text-align: center;
+}
+.courseDetalisTab .centre .layui-tab-content .qrCodeBox .left p:first-child{
+	margin-top: 100px;
+}
+.courseDetalisTab .centre .layui-tab-content .qrCodeBox .left p:last-child{
+	cursor: pointer;
 }
 .courseDetalisTab .centre .layui-tab-content .qrCodeBox .left img{
 	width: 100%;
 	height: 100%;
+	position: absolute;
+	top: 0;
 }
 .courseDetalisTab .centre .layui-tab-content .qrCodeBox .right{
 	float: left;
@@ -1829,6 +1843,13 @@ header nav  ul .active i{
 	padding: 24px 10px;
 	cursor: pointer;
 }
+.watchVideo .videoBox  .right ul .temporary{
+	background-color: #f1f1f1;
+    margin-top: 15px;
+	border: none;
+	position: relative;
+	overflow: hidden;
+}
 .watchVideo .videoBox  .right ul::-webkit-scrollbar {
     width: 6px;
     height: 1px;
@@ -1921,6 +1942,13 @@ header nav  ul .active i{
 	height:234px;
 	margin: 0 auto;
 	overflow: hidden;
+	border-radius: 234px;
+	background-color: #f1f1f1;
+}
+.watchVideo .exercise .right .codeBox p{
+	line-height: 234px;
+	text-align: center;
+	margin: 0;
 }
 .watchVideo .exercise .right .codeBox img{
 	width: 100%;

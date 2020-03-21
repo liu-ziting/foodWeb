@@ -94,7 +94,7 @@ function exercise() {
                 }
                 multiChoiceListHtml += "</div>" +
                     "<input type=\"hidden\" class=\"answer\"  value=\"" + result.multiChoiceList[i].answer + "\" />" +
-                    "<h2><p>正确答案：<span>" + acTiveArrStringFun(result.multiChoiceList[i].answer) + "</span></p>解析：" + result.judgeList[i].questionAnalyze + "</h2>" +
+                    "<h2><p>正确答案：<span>" + acTiveArrStringFun(result.multiChoiceList[i].answer) + "</span></p>解析：" + result.multiChoiceList[i].questionAnalyze + "</h2>" +
                     "<em class=\"layui-icon layui-icon-rate-solid\"></em>" +
                     "</li>";
             }
@@ -190,12 +190,8 @@ function exercise() {
                         for (var k = 0; k < intersection.length; k++) {
                             $("#multiChoiceListHtml li").eq(i).find("input:checked").eq(intersection[k]).next().addClass("correctBox")
                         }
-
                     }
-                   
                 };
-
-
                 $("input").attr("disabled", "disabled");
                 $("input").next().addClass('layui-radio-disbaled layui-disabled');
                 $("h2").removeClass('layui-radio-disbaled layui-disabled');

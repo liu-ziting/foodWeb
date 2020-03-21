@@ -9,6 +9,47 @@
 	<script type="text/javascript" src="js/nprogress.js"> </script>
 	<link rel="stylesheet" href="layui/css/layui.css" />
 	<link rel="stylesheet" href="css/index.css" />
+	<style>
+		form .layui-icon {
+			box-sizing: initial;
+		}
+
+		form .layui-form-checkbox span {
+			color: #000000;
+			background-color: #F6F6F6;
+		}
+
+		form .layui-form-checkbox,
+		.layui-form-select dl dd.layui-disabled {
+			background-color: #F6F6F6;
+		}
+
+		form .layui-form-checkbox i {
+			border-left: 1px solid #d2d2d2;
+		}
+
+		form .layui-form-checked i {
+			font-weight: bold;
+		}
+
+		form h2 p {
+			padding: 0 !important;
+		}
+
+		form h2 p span {
+			font-weight: bold;
+			color: rgba(57, 125, 71, 1);
+		}
+
+		form .layui-form-checkbox,
+		.layui-form-select dl dd.layui-disabled {
+			margin-bottom: 20px !important;
+		}
+
+		.layui-form-checkbox:hover span {
+			background-color: inherit !important;
+		}
+	</style>
 </head>
 
 <body>
@@ -45,28 +86,22 @@
 			<h1 class="titleSon" style="border-bottom:none">
 				<a href="index.html">首页</a>
 				<a href="courseCenter.html">> 课程中心</a>
-				<a href="courseCenterDetails.html">> 食品行业流通领域从业人员培训课程</a>
-				<a href="">> 02食品安全法解读（第二讲）</a>
+				<a href="javascript:history.back(-1)">> <span class="courseName">加载中</span></a>
+				<a href="">> <span class="courseHourName">加载中</span></a>
 			</h1>
 			<div class="videoBox">
 				<div class="left gjpAfter">
 					<div class="videosamplex"></div>
 				</div>
 				<div class="right">
-					<h1>课程列表<span>当前学习进度：04课/34课</span></h1>
-					<ul>
-						<li class="active">04-食品安全与卫生基础知识(第四讲)</li>
-						<li>04-食品安全与卫生基础知识(第四讲)</li>
-						<li>04-食品安全与卫生基础知识(第四讲)</li>
-						<li>04-食品安全与卫生基础知识(第四讲)</li>
-						<li>04-食品安全与卫生基础知识(第四讲)</li>
-						<li>04-食品安全与卫生基础知识(第四讲)</li>
-						<li>04-食品安全与卫生基础知识(第四讲)</li>
-						<li>04-食品安全与卫生基础知识(第四讲)</li>
-						<li>04-食品安全与卫生基础知识(第四讲)</li>
-						<li>04-食品安全与卫生基础知识(第四讲)</li>
-						<li>04-食品安全与卫生基础知识(第四讲)</li>
-						<li>04-食品安全与卫生基础知识(第四讲)</li>
+					<h1>课程列表<span>当前学习进度：<i class="learnProgress">-</i>课/<i class="totalList">--</i>课</span></h1>
+					<ul id="kcList">
+						<li class="temporary gjpAfter"></li>
+						<li class="temporary gjpAfter"></li>
+						<li class="temporary gjpAfter"></li>
+						<li class="temporary gjpAfter"></li>
+						<!-- <li class="active">04-食品安全与卫生基础知识(第四讲)</li>
+						<li>04-食品安全与卫生基础知识(第四讲)</li> -->
 					</ul>
 				</div>
 			</div>
@@ -75,7 +110,13 @@
 				<div class="left">
 					<form class="layui-form" action="">
 						<ul>
-							<li>
+							<li class="temporary gjpAfter"></li>
+							<li class="temporary gjpAfter"></li>
+							<li class="temporary gjpAfter"></li>
+							<div id="ChoiceListHtml"></div>
+							<div id="judgeListHtml"></div>
+							<div id="multiChoiceListHtml"></div>
+							<!-- <li>
 								<p>
 									1、食品安全法规定，制定食品安全标准，应当以保障________为宗旨，做到科学合理、安全可靠
 									<i>查看解析</i>
@@ -89,31 +130,17 @@
 								<h2>
 									解析：中华人民共和国食品安全法（2018修正）中第二十五条规定食品安全标准是强制执行的标准。除食品安全标准外，不得制定其他 食品强制性标准。因此，本题正确。
 								</h2>
-							</li>
-							<li>
-								<p>
-									2、食品安全法规定，制定食品安全标准，应当以保障________为宗旨，做到科学合理、安全可靠
-									<i>查看解析</i>
-								</p>
-								<div class="layui-input-block">
-									<input type="radio" name="sex" value="A：公众身体健康" title="A：公众身体健康" >
-									<input type="radio" name="sex" value="B：公众生活需要" title="B：公众生活需要">
-									<input type="radio" name="sex" value="C：社会生活需要" title="C：社会生活需要">
-									<input type="radio" name="sex" value="D" title="D：企业安全生产">
-								</div>
-								<h2>
-									解析：中华人民共和国食品安全法（2018修正）中第二十五条规定食品安全标准是强制执行的标准。除食品安全标准外，不得制定其他 食品强制性标准。因此，本题正确。
-								</h2>
-							</li>
+							</li> -->
 						</ul>
 					</form>
 				</div>
 				<div class="right">
 					<div class="codeBox">
-						<img src="img/code.png"/>
+						<p>小程序正在努力开发中</p>
+						<!-- <img src="img/code.png"/> -->
 					</div>
 					<p>扫描二维码前往小程序，练习更多题目</p>
-					<span>前往线上题库进行刷题 >></span>
+					<span class="toExercise">前往线上题库进行刷题 >></span>
 				</div>
 			</div>
 		</section>
@@ -121,33 +148,241 @@
 	<footer></footer>
 	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 	<script type="text/javascript" src="layui/layui.all.js"></script>
-	<script type="text/javascript" src="ckplayer/ckplayer.min.js"></script>
+	<script type="text/javascript" src="ckplayer/ckplayer.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 	<script>
-		//视频
-		$(".watchVideo .right li").click(function () {
-			$(this).addClass("active").siblings().removeClass("active")
-		});
-		var videoObject = {
-			container: '.videosamplex',//“#”代表容器的ID，“.”或“”代表容器的class
-			variable: 'player',//该属性必需设置，值等于下面的new chplayer()的对象
-			// poster: 'pic/wdm.jpg',
-			mobileCkControls: true,//是否在移动端（包括ios）环境中显示控制栏
-			mobileAutoFull: false,//在移动端播放后是否按系统设置的全屏播放
-			h5container: '#videoplayer',//h5环境中使用自定义容器
-			video: 'http://img.ksbbs.com/asset/Mon_1703/05cacb4e02f9d9e.mp4'//视频地址
-		};
-		var player = new ckplayer(videoObject);
 
-		//查看解析
-		$(".exercise .left li i").click(function () {
-			if($(this).hasClass("activei")){
-				$(this).removeClass("activei");
-				$(this).parent().siblings("h2").hide()
-			}else{
-				$(this).addClass("activei");
-				$(this).parent().siblings("h2").show()
+		var videoID = 10; //视频的区分ID，每个视频分配一个唯一的ID
+		var cookieTime = cookie.get('time_' + videoID); //调用已记录的time
+		//课程详情
+		courseDetail();
+		function courseDetail() {
+			http.ajax({
+				url: 'course/courseDetail',
+				type: 'GET',
+				json: false,
+				mask: false,
+				data: {
+					courseId: getQueryString("id")
+				}
+			}).then(function (data) {
+				if (data.code == 200) {
+					// 数据渲染
+					var data = beZero(data.data);
+					var listHtml = "";
+					$(".courseName").text(data.courseName);
+					$(".totalList").text(data.courseHourList.length);
+					$(".learnProgress").text(data.learnProgress);
+					for (var i = 0; i < data.courseHourList.length; i++) {
+						if (data.courseHourList[i].learnStatus == 'completed') {
+							listHtml += '<li style="color:#397D47" id=' + data.courseHourList[i].id + '>(' + (i + 1) + ')-' + data.courseHourList[i].courseHourName + '<span>（已完成）</span></li>';
+						} else {
+							listHtml += '<li id=' + data.courseHourList[i].id + '>(' + (i + 1) + ')-' + data.courseHourList[i].courseHourName + '</li>';
+						}
+
+					};
+					$("#kcList").append(listHtml);
+					$("#kcList .temporary").hide();
+					//视频
+					$("#" + getQueryString("sid") + "").addClass("active").siblings().removeClass("active");
+
+					// if(localStorage.getItem("courseHourId")){
+					// 	$("#"+localStorage.getItem("courseHourId")+"").addClass("active").siblings().removeClass("active");
+					// 	//获取视频
+					// 	courseHourDetail(localStorage.getItem("courseHourId"));
+					// }else{
+					//获取视频
+					courseHourDetail(getQueryString("sid"));
+					// }
+					$("#kcList  li").click(function () {
+						cookieTime = 0;
+						var sid = $(this).attr("id");
+						$(this).addClass("active").siblings().removeClass("active");
+						localStorage.setItem("courseHourId", sid);
+						courseHourDetail(sid);
+					});
+				}
+			}, function (err) {
+
+			})
+		};
+
+		//课程详情视频
+		function courseHourDetail(sid) {
+			http.ajax({
+				url: 'course/courseHourDetail',
+				type: 'GET',
+				json: false,
+				mask: true,
+				data: {
+					courseHourId: sid
+				}
+			}).then(function (data) {
+				var result = data.data;
+				if (data.code == 200) {
+					$(".exercise .temporary").hide();
+					$(".courseHourName").text(result.courseHourName);
+					var videoObject = {
+						container: '.videosamplex',//“#”代表容器的ID，“.”或“”代表容器的class
+						variable: 'player',//该属性必需设置，值等于下面的new chplayer()的对象
+						// poster: 'pic/wdm.jpg',
+						loaded: "loadHandler",
+						mobileCkControls: true,//是否在移动端（包括ios）环境中显示控制栏
+						mobileAutoFull: false,//在移动端播放后是否按系统设置的全屏播放
+						h5container: '#videoplayer',//h5环境中使用自定义容器
+						video: result.courseResourceUrl,//视频地址,
+					};
+					var cookieTime = result.progress;
+					if (!cookieTime || cookieTime == undefined) { //如果没有记录值，则设置时间0开始播放
+						cookieTime = 0;
+					}
+					if (cookieTime > 0) {
+						console.log('本视频记录的上次观看时间(秒)为：' + cookieTime);
+					}
+					if (cookieTime > 0) { //如果记录时间大于0，则设置视频播放后跳转至上次记录时间
+						videoObject['seek'] = cookieTime;
+					}
+					var player = new ckplayer(videoObject);
+					loadHandler(player);
+
+					// 随堂练习
+					var practice = result.practice;
+					doExercise(practice);
+				}
+			}, function (err) {
+
+			})
+		};
+
+		//随堂练习
+		function doExercise(practice) {
+			var ChoiceListHtml = '';
+			var judgeListHtml = '';
+			var multiChoiceListHtml = '';
+			for (var i = 0; i < practice.choiceList.length; i++) {
+				ChoiceListHtml += "<li id=" + practice.choiceList[i].id + "><p>" +
+					"<span style='margin-right: 0px;'>" + (i + 1) + "</span>、" + practice.choiceList[i].name + "" +
+					"<i>查看解析</i>" +
+					"</p>" +
+					"<div class=\"layui-input-block\">";
+				for (var j = 0; j < practice.choiceList[i].chooseResultList.length; j++) {
+					ChoiceListHtml += "<input type=\"radio\" name=\"dx" + i + "\" value=\"" + j + "\" title=\"" + indexToString(j) + "：" + practice.choiceList[i].chooseResultList[j].choose + "\">";
+				}
+
+				ChoiceListHtml += "</div>" +
+					"<input type=\"hidden\" class=\"answer\"  value=\"" + practice.choiceList[i].answer[0] + "\" />" +
+					"<h2><p>正确答案：<span>" + indexToString(practice.choiceList[i].answer[0]) + "</span></p>解析：" + practice.choiceList[i].questionAnalyze + "</h2>" +
+					"</li>";
 			}
+			$("#ChoiceListHtml").append(ChoiceListHtml);
+
+			// 判断题题目渲染
+			for (var i = 0; i < practice.judgeList.length; i++) {
+				judgeListHtml += "<li id=" + practice.judgeList[i].id + "><p>" +
+					"<span style='margin-right: 0px;'>" + (practice.choiceList.length + i + 1) + "</span>、" + practice.judgeList[i].name + "" +
+					"<i>查看解析</i>" +
+					"</p>" +
+					"<div class=\"layui-input-block\">";
+				for (var j = 0; j < practice.judgeList[i].chooseResultList.length; j++) {
+					judgeListHtml += "<input type=\"radio\" name=\"pd" + i + "\" value=\"" + j + "\" title=\"" + indexToString(j) + "：" + practice.judgeList[i].chooseResultList[j].choose + "\">";
+				}
+				judgeListHtml += "</div>" +
+					"<input type=\"hidden\" class=\"answer\"  value=\"" + practice.judgeList[i].answer[0] + "\" />" +
+					"<h2><p>正确答案：<span>" + indexToString(practice.judgeList[i].answer[0]) + "</span></p>解析：" + practice.judgeList[i].questionAnalyze + "</h2>" +
+					"</li>";
+			}
+			$("#judgeListHtml").append(judgeListHtml);
+
+			// 多选题题目渲染
+			for (var i = 0; i < practice.multiChoiceList.length; i++) {
+				multiChoiceListHtml += "<li id=" + practice.multiChoiceList[i].id + "><p>" +
+					"<span style='margin-right: 0px;'>" + (practice.choiceList.length + practice.choiceList.length + i + 1) + "</span>、" + practice.multiChoiceList[i].name + "" +
+					"<i>查看解析</i>" +
+					"</p>" +
+					"<div class=\"layui-input-block multipleChoice\">";
+				for (var j = 0; j < practice.multiChoiceList[i].chooseResultList.length; j++) {
+					multiChoiceListHtml += "<input type=\"checkbox\" name=\"dx" + i + "\" value=\"" + j + "\" title=\"" + indexToString(j) + "：" + practice.multiChoiceList[i].chooseResultList[j].choose + "\">";
+				}
+				multiChoiceListHtml += "</div>" +
+					"<input type=\"hidden\" class=\"answer\"  value=\"" + practice.multiChoiceList[i].answer + "\" />" +
+					"<h2><p>正确答案：<span>" + acTiveArrStringFun(practice.multiChoiceList[i].answer) + "</span></p>解析：" + practice.multiChoiceList[i].questionAnalyze + "</h2>" +
+					"</li>";
+			}
+			$("#multiChoiceListHtml").append(multiChoiceListHtml);
+
+			renderForm();
+			//查看解析
+			$(".exercise .left li i").click(function () {
+				if ($(this).hasClass("activei")) {
+					$(this).removeClass("activei");
+					$(this).parent().siblings("h2").hide()
+				} else {
+					$(this).addClass("activei");
+					$(this).parent().siblings("h2").show()
+				}
+			});
+		}
+
+		function loadHandler(player) {
+			player.addListener('time', timeHandler); //监听播放时间
+			player.addListener('ended', VideoPlayEndedHandler);//监听播放结束
+		}
+		function timeHandler(t) {
+			updateProgress(t);
+			cookie.set('time_' + videoID, t); //当前视频播放时间写入cookie
+		}
+		function VideoPlayEndedHandler() {//监听视频播放完成
+			updateLeanStatus();
+			console.log('本视频已结束');
+		}
+
+		//更新课时观看记录定时上报给我或者监听播放状态，离开页面或其他可能导致进度丢失的情况，上报一次进度给我
+		function updateProgress(t) {
+			var courseHourId = $("#kcList .active").attr("id");
+			http.ajax({
+				url: 'course/updateProgress',
+				type: 'GET',
+				json: false,
+				mask: false,
+				data: {
+					courseHourId: courseHourId,
+					progress: parseInt(t)
+				}
+			}).then(function (data) {
+				var result = data.data;
+				if (data.code == 200) {
+
+				}
+			}, function (err) {
+
+			})
+		};
+		//课时视频播放完毕后请求接口
+		function updateLeanStatus() {
+			var courseHourId = $("#kcList .active").attr("id");
+			http.ajax({
+				url: 'course/updateLeanStatus',
+				type: 'GET',
+				json: false,
+				mask: false,
+				data: {
+					courseHourId: courseHourId
+				}
+			}).then(function (data) {
+				var result = data.data;
+				if (data.code == 200) {
+
+				}
+			}, function (err) {
+
+			})
+		};
+
+
+
+		//去练习
+		$(".toExercise").click(function () {
+			openUrl('doExercise.html?id=' + getQueryString("id") + '')
 		});
 
 	</script>

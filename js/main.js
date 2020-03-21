@@ -63,7 +63,7 @@ function jumpActive(value) {
 		case "examination":
 			return "6";	
 		case "doExercise":
-			return "6";	
+			return "1";	
 		case "result":
 			return "6";	
 	}
@@ -479,7 +479,7 @@ var cookie = {
 	del: function (name) {
 		var exp = new Date();
 		exp.setTime(exp.getTime() - 1);
-		var cval = getCookie(name);
+		var cval = cookie.get(name);
 		if (cval != null) {
 			document.cookie = name + '=' + cval + ';expires=' + exp.toGMTString();
 		}
