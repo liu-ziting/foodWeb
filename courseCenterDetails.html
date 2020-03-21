@@ -224,13 +224,17 @@
 						
 						var listHtml = ""
 						for (var i = 0; i < data.courseHourList.length; i++) {
-							listHtml += '<li id="'+data.courseHourList[i].id+'">';
+							if(data.courseHourList[i].learnStatus == 'completed'){
+								listHtml += '<li class="active" id="'+data.courseHourList[i].id+'">';
+							}else{
+								listHtml += '<li id="'+data.courseHourList[i].id+'">';
+							}
 							listHtml += '<img src="img/video.png" />';
 							listHtml += '<p>'+(i+1)+' - '+data.courseHourList[i].courseHourName+'</p>';
-							if(data.courseHourList[i].learnStatus){
-								listHtml += '<time><img src="img/vtime.png" />'+data.courseHourList[i].courseResourceDuration/60+'分钟</time>';
-							}else{
+							if(data.courseHourList[i].learnStatus == 'completed'){
 								listHtml += '<time><img src="img/vtime.png" />已学习</time>';
+							}else{
+								listHtml += '<time><img src="img/vtime.png" />'+data.courseHourList[i].courseResourceDuration/60+'分钟</time>';
 							}
 							listHtml += '</li>';
 						};

@@ -86,7 +86,7 @@
 			<h1 class="titleSon" style="border-bottom:none">
 				<a href="index.html">首页</a>
 				<a href="courseCenter.html">> 课程中心</a>
-				<a href="javascript:history.back(-1)">> <span class="courseName">加载中</span></a>
+				<a class="upperLevel" href="javascript:;">> <span class="courseName">加载中</span></a>
 				<a href="">> <span class="courseHourName">加载中</span></a>
 			</h1>
 			<div class="videoBox">
@@ -175,11 +175,10 @@
 					$(".learnProgress").text(data.learnProgress);
 					for (var i = 0; i < data.courseHourList.length; i++) {
 						if (data.courseHourList[i].learnStatus == 'completed') {
-							listHtml += '<li style="color:#397D47" id=' + data.courseHourList[i].id + '>(' + (i + 1) + ')-' + data.courseHourList[i].courseHourName + '<span>（已完成）</span></li>';
+							listHtml += '<li style="color:#397D47" id=' + data.courseHourList[i].id + '>(' + (i + 1) + ')-' + data.courseHourList[i].courseHourName + '<span>（已学习）</span></li>';
 						} else {
 							listHtml += '<li id=' + data.courseHourList[i].id + '>(' + (i + 1) + ')-' + data.courseHourList[i].courseHourName + '</li>';
 						}
-
 					};
 					$("#kcList").append(listHtml);
 					$("#kcList .temporary").hide();
@@ -383,6 +382,10 @@
 		//去练习
 		$(".toExercise").click(function () {
 			openUrl('doExercise.html?id=' + getQueryString("id") + '')
+		});
+		//上一级
+		$(".upperLevel").click(function () {
+			openUrl('courseCenterDetails.html?id=' + getQueryString("id") + '')
 		});
 
 	</script>
