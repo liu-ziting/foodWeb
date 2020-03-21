@@ -172,7 +172,11 @@
 					var listHtml = "";
 					$(".courseName").text(data.courseName);
 					$(".totalList").text(data.courseHourList.length);
-					$(".learnProgress").text(data.learnProgress);
+					if(data.learnProgress == "unstart"){
+						$(".learnProgress").text('0');
+					}else{
+						$(".learnProgress").text(data.learnProgress);
+					}
 					for (var i = 0; i < data.courseHourList.length; i++) {
 						if (data.courseHourList[i].learnStatus == 'completed') {
 							listHtml += '<li style="color:#397D47" id=' + data.courseHourList[i].id + '>(' + (i + 1) + ')-' + data.courseHourList[i].courseHourName + '<span>（已学习）</span></li>';
