@@ -113,6 +113,7 @@
 							<li class="temporary gjpAfter"></li>
 							<li class="temporary gjpAfter"></li>
 							<li class="temporary gjpAfter"></li>
+							<div id="notAvailable"></div>
 							<div id="ChoiceListHtml"></div>
 							<div id="judgeListHtml"></div>
 							<div id="multiChoiceListHtml"></div>
@@ -262,6 +263,9 @@
 			var ChoiceListHtml = '';
 			var judgeListHtml = '';
 			var multiChoiceListHtml = '';
+			document.getElementById("ChoiceListHtml").innerHTML = "";
+			document.getElementById("judgeListHtml").innerHTML = "";
+			document.getElementById("multiChoiceListHtml").innerHTML = "";
 			for (var i = 0; i < practice.choiceList.length; i++) {
 				ChoiceListHtml += "<li id=" + practice.choiceList[i].id + "><p>" +
 					"<span style='margin-right: 0px;'>" + (i + 1) + "</span>、" + practice.choiceList[i].name + "" +
@@ -312,7 +316,13 @@
 					"</li>";
 			}
 			$("#multiChoiceListHtml").append(multiChoiceListHtml);
-
+			
+			if(practice.multiChoiceList.length == 0 && practice.judgeList.length == 0 && practice.choiceList.length == 0){
+				$("#notAvailable").show();
+				$("#notAvailable").html('<p style="text-align: center;font-size: 25px;color: #666666;line-height: 234px;">暂无该课程相关的随堂小练</p>')
+			}else{
+				$("#notAvailable").hide();
+			}
 			renderForm();
 			//查看解析
 			$(".exercise .left li i").click(function () {
@@ -380,9 +390,6 @@
 
 			})
 		};
-
-
-
 		//去练习
 		$(".toExercise").click(function () {
 			openUrl('doExercise.html?id=' + getQueryString("id") + '')

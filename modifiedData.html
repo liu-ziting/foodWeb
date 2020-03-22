@@ -191,11 +191,6 @@
 						view.innerHTML = html;
 					});
 					$(".sex").val(data.sex);
-					if(data.sex == 0){
-						$(".userContent .left .tx img").attr("src",'img/woman.png');
-					}else{
-						$(".userContent .left .tx img").attr("src",'img/man.png');
-					}
 					renderForm();
 					$(".userContent .left h1").text(data.name);
 					// 点击修改获得焦点

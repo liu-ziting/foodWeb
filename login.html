@@ -43,14 +43,12 @@
 	<div class="loginMain">
 		<section>
 			<h1>登陆后使用</h1>
-			<div class="qrCode">
-				<img src="img/code.png" />
-			</div>
-			<p>小程序授权登陆<br> 扫描二维码，识别小程序</p>
-
+			<div id="QRcode" class="qrCode"></div>
+			<p>小程序授权登陆，<span onclick="getLoginCode();" class="refresh">刷新</span><br> 扫描二维码，识别小程序</p>
 		</section>
 	</div>
 	<footer></footer>
+	<input type="hidden" id="loginCode" value=""/>
 	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 	<script type="text/javascript" src="layui/layui.all.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
@@ -63,7 +61,7 @@
 				devLogin(pass)
 			});
 		})
-		//用户登录
+		//测试环境用户登录
 		function devLogin(phone) {
 			http.ajax({
 				url: 'user/devLogin',
@@ -76,7 +74,8 @@
 			}).then(function (data) {
 				if (data.code == 200) {
 					layer.msg('恭喜您，登录成功！', {
-						icon: 1
+						icon: 1,
+						time:1000
 					}, function () {
 						location.href = 'index.html';
 					});
@@ -85,62 +84,14 @@
 				console.log(err);
 			})
 		};
-
+		
 		//获取loginCode
-		// getLoginCode();
-		function getLoginCode() {
-			http.ajax({
-				url: 'user/getLoginCode',
-				type: 'GET',
-				json: false,
-				mask: true,
-				data: {
-					
-				}
-			}).then(function (data) {
-				if (data.code == 200) {
-					getLoginQRCod(data.data) 
-				}
-			}, function (err) {
-				console.log(err);
-			})
-		};
-		//获取小程序二维码
-		function getLoginQRCod(loginCode) {
-			http.ajax({
-				url: 'user/getLoginQRCod',
-				type: 'GET',
-				json: false,
-				mask: true,
-				data: {
-					loginCode:loginCode
-				}
-			}).then(function (data) {
-				if (data.code == 200) {
-					getLoginQRCod(loginCode);
-				}
-			}, function (err) {
-				console.log(err);
-			})
-		};
+		getLoginCode();
+
 		//轮询
-		function getLoginQRCod(loginCode) {
-			http.ajax({
-				url: 'user/checkLogin',
-				type: 'GET',
-				json: false,
-				mask: true,
-				data: {
-					loginCode:loginCode
-				}
-			}).then(function (data) {
-				if (data.code == 200) {
-					getLoginQRCod(loginCode);
-				}
-			}, function (err) {
-				console.log(err);
-			})
-		};
+		window.setInterval(function () {
+			checkLogin($("#loginCode").val())
+		}, 3000)
 	</script>
 </body>
 

@@ -5,7 +5,7 @@ function foodNewsList() {
             url: 'notice/newsList',
             type: 'GET',
             json: false,
-            mask: true,
+            mask: false,
             data: {
                 pageNo: 1,
                 pageSize: 12,
@@ -85,7 +85,7 @@ function indexCourse() {
             url: 'course/indexCourse',
             type: 'GET',
             json: false,
-            mask: true,
+            mask: false,
             data: {
                 
             }

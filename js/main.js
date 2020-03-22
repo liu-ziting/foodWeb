@@ -13,12 +13,11 @@ document.onreadystatechange = function () {
 		NProgress.done();
 	}
 }
-			
+
 //导航栏操作
 $("#navList li").click(function () {
 	var _index = $(this).index() + 1;
-	openUrl(jumpUrl('0'+_index))
-	console.log(jumpUrl('0'+_index));
+	openUrl(jumpUrl('0' + _index))
 });
 function jumpUrl(value) {
 	switch (value) {
@@ -45,9 +44,9 @@ function jumpActive(value) {
 		case "courseCenter":
 			return "1";
 		case "courseCenterDetails":
-			return "1";	
+			return "1";
 		case "watchVideo":
-			return "1";	
+			return "1";
 		case "fingerpost":
 			return "2";
 		case "announcement":
@@ -61,11 +60,11 @@ function jumpActive(value) {
 		case "testCenter":
 			return "6";
 		case "examination":
-			return "6";	
+			return "6";
 		case "doExercise":
-			return "1";	
+			return "1";
 		case "result":
-			return "6";	
+			return "6";
 	}
 };
 var pathName = window.document.location.pathname;
@@ -101,17 +100,17 @@ function imgError(image) {
 }
 /* 打开新页面 */
 function openUrl(url, type) {
-	if(localStorage.getItem("login") == 'true'){
+	if (localStorage.getItem("login") == 'true') {
 		if (!type) {
 			window.location.href = url;
 		} else {
 			window.open(url)
 		};
-	}else{
+	} else {
 		layer.msg('暂未登录，请登录！', {
 			icon: 5
-		},function(){
-			location.href = 'login.html';
+		}, function () {
+			// location.href = 'login.html';
 		});
 	}
 };
@@ -212,118 +211,7 @@ var http = {
 		});
 		return def;
 	}
-}
-
-//跳转到用户主页
-$("header .top section p:last-child").click(function(){
-	if(localStorage.getItem("login") == 'true'){
-		location.href = 'user.html';
-	}else{
-		layer.msg('暂未登录，请登录！', {
-			icon: 5
-		},function(){
-			location.href = 'login.html';
-		});
-	}
-})
-//获取用户详情
-getUserInfo();
-function getUserInfo() {
-	http.ajax({
-		url: 'user/getUserInfo',
-		type: 'GET',
-		json: false,
-		mask: false,
-	}).then(function (data) {
-		localStorage.setItem("login",data.login);
-		if (data.code == 200) {
-			$("header .top section p:nth-child(2)").hide();
-			localStorage.setItem("name",data.data.name);
-			$(".userContent .left h1").text(beNull(data.data).name);
-			if(data.data.sex == 0){
-				$(".userContent .left .tx img").attr("src",'img/woman.png');
-			}else{
-				$(".userContent .left .tx img").attr("src",'img/man.png');
-			}
-		}
-	}, function (err) {
-		if (err.status) {
-			localStorage.removeItem("login");
-			$("header .top section p:nth-child(2)").show();
-		}
-	}) 
 };
-//更新用户token
-updateToken();
-function updateToken(){
-	http.ajax({
-		url: 'user/updateToken',
-		type: 'GET',
-		json: false,
-		mask: false,
-	}).then(function (data) {
-		if (data.code == 200) {
-			
-		}
-	}, function (err) {
-		if(err.status == 403){
-			
-		}
-	})
-};
-//退出登录接口
-function logout(){
-	http.ajax({
-		url: 'user/logout',
-		type: 'GET',
-		json: false,
-		mask: true,
-
-	}).then(function(data) {
-		if(data.code == 200) {
-			layer.msg('退出成功！');
-			localStorage.removeItem("login");
-			location.href = 'index.html';
-		}
-	}, function(err) {
-		
-	})
-};
-//获取手机验证码
-function send_verify_code(phone,type) {
-	http.ajax({
-		url: 'user/send_verify_code',
-		type: 'POST',
-		json: false,
-		mask: true,
-		data: {
-			phone: phone,
-			type: type,
-		}
-	}).then(function (data) {
-		if (data.code == 200) {
-			layer.msg('验证码发送成功！');
-		}
-	}, function (err) {
-		console.log(err);
-	})
-};
-
-//验证码倒计时
-function countDownCode(){
-    var num = 60;
-    var timer = setInterval(function () {
-        if (num > 1) {
-            num--;
-			$(".getCode").text("重新发送(" + num + ")").attr("disabled", "disabled");
-			$(".getCode").css('background', '#B8B8B8');
-        } else {
-			$(".getCode").text("获取短信验证码").removeAttr("disabled");
-			$(".getCode").css('background', '#195edd');
-            clearInterval(timer);
-        }
-    }, 1000)
-}
 /* 获取当前的日期时间 格式“yyyy-MM-dd HH:MM:SS” */
 function getNowFormatDate() {
 	var date = new Date();
@@ -364,13 +252,13 @@ function renderForm() {
 	});
 };
 //数字序号转字符串序号  0 => "A"
-function indexToString(index){
-    var charcode;
-    return index.toString(26).split("").map(function(item,i){
-        charcode = item.charCodeAt(0);
-        charcode+=(charcode>=97?10:49);
-        return String.fromCharCode(charcode)
-    }).join("").toUpperCase();
+function indexToString(index) {
+	var charcode;
+	return index.toString(26).split("").map(function (item, i) {
+		charcode = item.charCodeAt(0);
+		charcode += (charcode >= 97 ? 10 : 49);
+		return String.fromCharCode(charcode)
+	}).join("").toUpperCase();
 };
 // 数组转字符串，逗号隔开
 function acTiveArrStringFun(obj) {
@@ -400,9 +288,10 @@ function beNull(data) {
 	}
 	return data;
 };
+//处理返回的数据为null时候，设置为0
 function beZero(data) {
 	for (let x in data) {
-		if (data[x] === null) { // 如果是null 把直接内容转为 '暂无'
+		if (data[x] === null) { // 如果是null 把直接内容转为 '0'
 			data[x] = '0';
 		} else {
 			// if (Array.isArray(data[x])) { // 是数组遍历数组 递归继续处理
@@ -432,7 +321,194 @@ function IsPC() {
 	}
 	return flag;
 }
+//将秒数转换为时分秒格式
+function formatSeconds(value) {
+	var theTime = parseInt(value);// 秒
+	var middle = 0;// 分
+	var hour = 0;// 小时
+	if (theTime > 60) {
+		middle = parseInt(theTime / 60);
+		theTime = parseInt(theTime % 60);
+		if (middle > 60) {
+			hour = parseInt(middle / 60);
+			middle = parseInt(middle % 60);
+		}
+	}
+	var result = "" + parseInt(theTime) + "秒";
+	if (middle > 0) {
+		result = "" + parseInt(middle) + "分钟" + result;
+	}
+	if (hour > 0) {
+		result = "" + parseInt(hour) + "小时" + result;
+	}
+	return result;
+}
+//获取loginCode
+function getLoginCode() {
+	http.ajax({
+		url: 'user/getLoginCode',
+		type: 'GET',
+		json: false,
+		mask: false,
+		data: {}
+	}).then(function (data) {
+		if (data.code == 200) {
+			$("#loginCode").val(data.data);
+			getLoginQRCode(data.data);
+		}
+	}, function (err) {
+		console.log(err);
+	})
+};
+//获取小程序二维码
+function getLoginQRCode(loginCode) {
+	http.ajax({
+		url: 'user/getLoginQRCode',
+		type: 'GET',
+		json: false,
+		mask: false,
+		data: {
+			loginCode: loginCode
+		}
+	}).then(function (data) {
+		if (data.code == 200) {
+			$("#QRcode").append('<img id="imgQrCode" src="data:image/jpeg;base64,' + data.data + '" />');
+		}
+	}, function (err) {
+		console.log(err);
+	})
+};
+function checkLogin(loginCode) {
+	http.ajax({
+		url: 'user/checkLogin',
+		type: 'GET',
+		json: false,
+		mask: false,
+		data: {
+			loginCode: loginCode
+		}
+	}).then(function (data) {
+		if (data.code == 200) {
+			if (data.data == "") {
+				layer.msg('恭喜您，登录成功！', {
+					icon: 1,
+					time: 1000
+				}, function () {
+					location.href = 'index.html';
+				});
+			} else {
 
+			};
+		}
+	}, function (err) {
+		console.log(err);
+	})
+};
+//跳转到用户主页
+$("header .top section p:last-child").click(function () {
+	if (localStorage.getItem("login") == 'true') {
+		location.href = 'user.html';
+	} else {
+		layer.msg('暂未登录，请登录！', {
+			icon: 5
+		}, function () {
+			location.href = 'login.html';
+		});
+	}
+})
+//获取用户详情
+getUserInfo();
+function getUserInfo() {
+	http.ajax({
+		url: 'user/getUserInfo',
+		type: 'GET',
+		json: false,
+		mask: false,
+	}).then(function (data) {
+		localStorage.setItem("login", data.login);
+		if (data.code == 200) {
+			$("header .top section p:nth-child(2)").hide();
+			localStorage.setItem("name", data.data.name);
+			$(".userContent .left h1").text(beNull(data.data).name);
+		}
+	}, function (err) {
+		if (err.status) {
+			localStorage.removeItem("login");
+			$("header .top section p:nth-child(2)").show();
+		}
+	})
+};
+//更新用户token
+updateToken();
+function updateToken() {
+	http.ajax({
+		url: 'user/updateToken',
+		type: 'GET',
+		json: false,
+		mask: false,
+	}).then(function (data) {
+		if (data.code == 200) {
+
+		}
+	}, function (err) {
+		if (err.status == 403) {
+
+		}
+	})
+};
+//退出登录接口
+function logout() {
+	http.ajax({
+		url: 'user/logout',
+		type: 'GET',
+		json: false,
+		mask: true,
+
+	}).then(function (data) {
+		if (data.code == 200) {
+			layer.msg('退出成功！');
+			localStorage.removeItem("login");
+			location.href = 'index.html';
+		}
+	}, function (err) {
+
+	})
+};
+//获取手机验证码
+function send_verify_code(phone, type) {
+	http.ajax({
+		url: 'user/send_verify_code',
+		type: 'POST',
+		json: false,
+		mask: true,
+		data: {
+			phone: phone,
+			type: type,
+		}
+	}).then(function (data) {
+		if (data.code == 200) {
+			layer.msg('验证码发送成功！');
+		}
+	}, function (err) {
+		console.log(err);
+	})
+};
+
+//验证码倒计时
+function countDownCode() {
+	var num = 60;
+	var timer = setInterval(function () {
+		if (num > 1) {
+			num--;
+			$(".getCode").text("重新发送(" + num + ")").attr("disabled", "disabled");
+			$(".getCode").css('background', '#B8B8B8');
+		} else {
+			$(".getCode").text("获取短信验证码").removeAttr("disabled");
+			$(".getCode").css('background', '#195edd');
+			clearInterval(timer);
+		}
+	}, 1000)
+}
 //分享到微信
 function weixin(_this) {
 	var url = App.rootPath + $(_this).attr("id");
@@ -490,31 +566,3 @@ var cookie = {
 		}
 	}
 };
-
-
-// 获取导航栏
-// $(function () {
-// 	$.ajax({
-// 		type: "GET",
-// 		url: "js/nav.json",
-// 		dataType: "json",
-// 		success: function (data) {
-// 			var ihtml = "";
-// 			// 获取主机地址之后的目录
-// 			var pathName = window.document.location.pathname;
-// 			var aPos = pathName.indexOf('/');
-// 			var bPos = pathName.indexOf('.');
-// 			var activeUrl = pathName.substr(aPos + 1, bPos - aPos - 1);
-// 			for (var i = 0; i < data.length; i++) {
-// 				if (activeUrl == data[i].id) {
-// 					ihtml += '<li class="active" onclick=\"openUrl(\'' + data[i].href + '\')\">' + data[i].title + '<i></i></li>'
-// 				} else {
-// 					ihtml += '<li onclick=\"openUrl(\'' + data[i].href + '\')\">' + data[i].title + '<i></i></li>'
-// 				}
-// 			};
-// 			$("#navList").html(ihtml);
-// 			// 底部
-// 			$("footer").load("footer.html");
-// 		}
-// 	});
-// });
