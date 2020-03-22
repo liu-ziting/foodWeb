@@ -256,6 +256,7 @@ header nav  ul .active i{
 	cursor: pointer;
 	position: relative;
 	overflow: hidden;
+	margin-bottom: 25px;
 }
 .course li .kbox{
 	width: 336px;
@@ -278,6 +279,9 @@ header nav  ul .active i{
 	font-size: 16px;
 	color: #333333;
 	margin-bottom: 20px;
+}
+.course li .kbox .temporaryList {
+	height: 24px;
 }
 .course li .kbox .right p{
 	font-size: 12px;
@@ -430,10 +434,11 @@ header nav  ul .active i{
 }
 .videosamplex{
 	z-index: 99999;
+	height: 491px;
 }
 .information section .left .videoBox img{
-	width: 100%;
-	height: 100%;
+	/* width: 100%;
+	height: 100%; */
 }
 .information section .left .synopsis{
 	width:868px;
@@ -466,6 +471,7 @@ header nav  ul .active i{
 	float: right;
 	padding: 23px 0 20px 18px;
 	border-left: 1px solid #E7E6ED;
+	position: relative;
 }
 .information section .right h1{
 	font-size: 16px;
@@ -486,6 +492,13 @@ header nav  ul .active i{
 	border-bottom: 1px solid #E7E6ED;
 	padding: 23px 0;
 	cursor: pointer;
+}
+.information section .right ul  .temporary p{
+	margin: 0;
+	position: relative;
+	overflow: hidden;
+	width: 82%;
+	height: 25px;
 }
 .information section .right ul li:last-child{
 	border: none;
@@ -524,6 +537,9 @@ header nav  ul .active i{
 	color: #ffffff;
 	display: block;
 	margin: 25px auto;
+	position: absolute;
+    bottom: 6px;
+    left: 40px;
 }
 .foodInformation {
 	margin-bottom: 114px;
@@ -1461,7 +1477,8 @@ header nav  ul .active i{
 	padding-bottom: 25px;
 }
 .courseDetalisTop .left{
-	width:420px;
+	/* width:420px; */
+	width:220px;
 	height:283px;
 	overflow: hidden;
 	margin-right: 55px;
@@ -1489,7 +1506,7 @@ header nav  ul .active i{
 }
 .courseDetalisTop .right{
 	float: left;
-	width: 725px;
+	width: 925px;
 	height: 283px;
     position: relative;
 }

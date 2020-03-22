@@ -87,24 +87,63 @@
 			</div>
 			<div class="courseMain">
 				<ul class="course">
+					<li class="temporary">
+						<div class="gbox temporaryList gjpAfter"></div>
+						<div class="kbox">
+							<div class="right">
+								<p class="temporaryList gjpAfter" style="width: 100%;margin-bottom: 12px;"></p>
+								<p class="temporaryList gjpAfter" style="width: 80%;margin-bottom: 12px;"></p>
+								<p class="temporaryList gjpAfter" style="width: 80%;margin-top: 68px;"></p>
+							</div>
+							<div class="timeBox">
+								<p class="temporaryList gjpAfter" style="width: 100%;margin-top: 10px;"></p>
+							</div>
+						</div>
+					</li>
+					<li class="temporary">
+						<div class="gbox temporaryList gjpAfter"></div>
+						<div class="kbox">
+							<div class="right">
+								<p class="temporaryList gjpAfter" style="width: 100%;margin-bottom: 12px;"></p>
+								<p class="temporaryList gjpAfter" style="width: 80%;margin-bottom: 12px;"></p>
+								<p class="temporaryList gjpAfter" style="width: 80%;margin-top: 68px;"></p>
+							</div>
+							<div class="timeBox">
+								<p class="temporaryList gjpAfter" style="width: 100%;margin-top: 10px;"></p>
+							</div>
+						</div>
+					</li>
+					<li class="temporary">
+						<div class="gbox temporaryList gjpAfter"></div>
+						<div class="kbox">
+							<div class="right">
+								<p class="temporaryList gjpAfter" style="width: 100%;margin-bottom: 12px;"></p>
+								<p class="temporaryList gjpAfter" style="width: 80%;margin-bottom: 12px;"></p>
+								<p class="temporaryList gjpAfter" style="width: 80%;margin-top: 68px;"></p>
+							</div>
+							<div class="timeBox">
+								<p class="temporaryList gjpAfter" style="width: 100%;margin-top: 10px;"></p>
+							</div>
+						</div>
+					</li>
 					<div id="view"></div>
 					<script id="courseCenterTpl" type="text/html">
 					{{# layui.each(d.items, function(index, item){ }}
 					<li onclick="openUrl('courseCenterDetails.html?id={{item.id}}')">
 						{{#  if(item.fontCoverPic == 0 ||item.fontCoverPic == null){ }}
-						<div class="gbox" style="background: url(../img/bk1.png);">	
+						<div class="gbox" style="background: url(../img/no.png);">	
 						{{#  } else { }}
 						<div class="gbox" style="background: url({{item.fontCoverPic}});background-size:cover;background-position:center;">
 						{{#  } }} 
 					
-							<h1>{{item.trainingType.trainingTypeName}}课程</h1>
+							<!-- <h1>{{item.trainingType.trainingTypeName}}课程</h1>
 							<p>{{item.trainingType.memo}}适用</p>
-							<a href="javascript:;">前往学习 ></a>
+							<a href="javascript:;">前往学习 ></a> -->
 						</div>
 						<div class="kbox">
 							<div class="right">
 								<h2>{{item.courseName}}</h2>
-								<p>{{item.trainingType.memo}}适用</p>
+								<p>{{item.trainingType.trainingTypeName}}适用</p>
 								<i>简介：{{item.courseSummary}}</i>
 							</div>
 							<div class="timeBox">
@@ -246,6 +285,7 @@
 				}).then(function (data) {
 					var result = data;
 					if (data.code == 200) {
+						$(".temporary").hide()
 						// 数据渲染
 						var data = beZero(data.data);
 						var totalList = data.total;

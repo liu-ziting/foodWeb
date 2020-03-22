@@ -2,7 +2,7 @@ var App = {
 	apiBasePath: "http://edu-bus.utools.club/bus/", 	//接口地址
 	// apiBasePath: "http://api-business.lihail.cn/bus/", 	//接口地址
 	rootPath: getRootPath(),				//项目根目录地址
-	filePath: 'http://edu-bus.utools.club/bus/',
+	filePath: 'http://edubus.utools.club/bus/',
 	timestamp: ((Date.parse(new Date())) / 1000).toString(),	//时间戳
 };
 
@@ -240,6 +240,11 @@ function getUserInfo() {
 			$("header .top section p:nth-child(2)").hide();
 			localStorage.setItem("name",data.data.name);
 			$(".userContent .left h1").text(beNull(data.data).name);
+			if(data.data.sex == 0){
+				$(".userContent .left .tx img").attr("src",'img/woman.png');
+			}else{
+				$(".userContent .left .tx img").attr("src",'img/man.png');
+			}
 		}
 	}, function (err) {
 		if (err.status) {

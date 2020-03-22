@@ -64,7 +64,7 @@
 						<div  class="tx">
 							<img src="img/man.png"/>
 						</div>
-						<h1> </h1>
+						<h1>加载中</h1>
 					</span>
 					<p>个人用户</p>
 					<div class="linkList">
@@ -87,26 +87,20 @@
 				<div class="right">
 					<h3>学习记录<p><i>个人中心 > 培训课程 > <span>学习记录</span></i></p></h3>
 					<ul>
+						<div id="view"></div>
+						<script id="studyRecordTpl" type="text/html">
+						{{# layui.each(d.items, function(index, item){ }}
 						<li>
 							<h1>食品从业人员流通领域培训课程<time>2020-01-09</time><span class="">学习完成</span></h1>
 							<p>03-食品安全法（第三讲）</p>
 						</li>
-						<li>
-							<h1>食品从业人员流通领域培训课程<time>2020-01-09</time><span class="">已学16分钟</span></h1>
-							<p>03-食品安全法（第三讲）</p>
-						</li>
+						{{# }); }} {{# if(d.items.length === 0){ }}
 						<li>
 							<h1>食品从业人员流通领域培训课程<time>2020-01-09</time><span class="">学习完成</span></h1>
 							<p>03-食品安全法（第三讲）</p>
 						</li>
-						<li>
-							<h1>食品从业人员流通领域培训课程<time>2020-01-09</time><span class="">学习完成</span></h1>
-							<p>03-食品安全法（第三讲）</p>
-						</li>
-						<li>
-							<h1>食品从业人员流通领域培训课程<time>2020-01-09</time><span class="">学习完成</span></h1>
-							<p>03-食品安全法（第三讲）</p>
-						</li>
+						{{# } }}
+						</script>
 					</ul>
 					<!--分页-->
 					<div id="paging" class="paging"></div>
@@ -126,20 +120,74 @@
 				delay: 5000
 			},
 		});
-		layui.use(['laypage', 'layer'], function(){
-			var laypage = layui.laypage
-			,layer = layui.layer;
 
-			//分页
-			laypage.render({
-				elem: 'paging'
-				,count: 100
-				,layout: ['count', 'prev', 'page', 'next', 'limit', 'skip']
-				,jump: function(obj){
-				console.log(obj)
-				}
+		//学习记录
+		var pageNo = 1;
+		var pageSize = 10;
+		learnRecord();
+		function learnRecord() {
+			layui.use(['laypage', 'layer', 'laytpl'], function () {
+				var laypage = layui.laypage,
+					laytpl = layui.laytpl,
+					layer = layui.layer;
+				http.ajax({
+					url: 'course/learnRecord',
+					type: 'GET',
+					json: false,
+					mask: true,
+					data: {
+						pageNo: pageNo,
+						pageSize: pageSize,
+					}
+				}).then(function (data) {
+					var result = data;
+					if (data.code == 200) {
+						$(".temporary").hide();
+						// 数据渲染
+						var data = data.data;
+						var totalList = data.total;
+						var getTpl = studyRecordTpl.innerHTML,
+							view = document.getElementById('view');
+						laytpl(getTpl).render(data, function (html) {
+							view.innerHTML = html;
+						});
+						//分页
+						laypage.render({
+							elem: 'paging'
+							, curr: pageNo
+							, limit: pageSize
+							, count: totalList
+							, layout: ['count', 'prev', 'page', 'next', 'limit', 'skip']
+							, jump: function (obj, first) { //触发分页后的回调
+								if (!first) { //点击跳页触发函数自身，并传递当前页：obj.curr
+									pageNo = obj.curr;
+									pageSize = obj.limit;
+									learnRecord();
+								}
+							}
+						});
+						//点击查看详情
+						// $("li").click(function(){
+						// 	var id = $(this).attr("id");
+						// 	var upTitle = localStorage.setItem("upTitle",'> 食品安全资讯')
+						// 	if(id){
+						// 		openUrl('details.html?id='+id+'');
+						// 	}
+						// });
+
+					}
+				}, function (err) {
+					if(err.status == 403){
+						layer.msg('未登录，不可操作！', {
+							icon: 5,
+							time: 800, 
+						},function(){
+							location.href = 'login.html';
+						});
+					}
+				})
 			});
-		})
+		};
 	</script>
 </body>
 
