@@ -15,14 +15,16 @@
 */
 function ckplayerConfig() {
 	return {
-		flashvars: {},//用来补充flashvars里的对象
+		flashvars: {
+			
+		},//用来补充flashvars里的对象
 		languagePath: '',//语言包文件地址
 		stylePath: '',//风格包文件地址
 		config: {
 			fullInteractive: true,//是否开启交互功能
 			delay: 30,//延迟加载视频，单位：毫秒
 			timeFrequency: 100,//计算当前播放时间和加载量的时间频率，单位：毫秒
-			autoLoad: true,//视频是否自动加载
+			autoLoad: false,//视频是否自动加载
 			loadNext: 0,//多段视频预加载的段数，设置成0则全部加载
 			definition: true,//是否使用清晰度组件
 			subtitle:false,//是否使用多字幕切换组件

@@ -91,7 +91,8 @@
 			</h1>
 			<div class="videoBox">
 				<div class="left gjpAfter">
-					<div class="videosamplex"></div>
+					<div id="videoplayer" class="videosamplex"></div>
+					<!-- <div class="videoPrevent"></div> -->
 				</div>
 				<div class="right">
 					<h1>课程列表<span>当前学习进度：<i class="learnProgress">-</i>课/<i class="totalList">--</i>课</span></h1>
@@ -155,6 +156,8 @@
 
 		var videoID = 10; //视频的区分ID，每个视频分配一个唯一的ID
 		var cookieTime = cookie.get('time_' + videoID); //调用已记录的time
+		var videoObject ;
+		var player ;
 		//课程详情
 		courseDetail();
 		function courseDetail() {
@@ -180,14 +183,18 @@
 					}
 					for (var i = 0; i < data.courseHourList.length; i++) {
 						if (data.courseHourList[i].learnStatus == 'completed') {
-							listHtml += '<li style="color:#397D47" id=' + data.courseHourList[i].id + '>(' + (i + 1) + ')-' + data.courseHourList[i].courseHourName + '<span>（已学习）</span></li>';
+							listHtml += '<li style="color:#397D47" class='+ data.courseHourList[i].learnStatus+' id=' + data.courseHourList[i].id + '>(' + (i + 1) + ')-' + data.courseHourList[i].courseHourName + '<span>（已学习）</span></li>';
 						} else {
-							listHtml += '<li id=' + data.courseHourList[i].id + '>(' + (i + 1) + ')-' + data.courseHourList[i].courseHourName + '</li>';
+							listHtml += '<li  class='+ data.courseHourList[i].learnStatus+' id=' + data.courseHourList[i].id + '>(' + (i + 1) + ')-' + data.courseHourList[i].courseHourName + '</li>';
 						}
 					};
 					$("#kcList").append(listHtml);
 					$("#kcList .temporary").hide();
 					//视频
+					// var learnStatus = $("#" + getQueryString("sid") + "").attr("class");
+					// if(learnStatus == 'completed'){
+					// 	$(".videoPrevent").hide();
+					// }
 					$("#" + getQueryString("sid") + "").addClass("active").siblings().removeClass("active");
 
 					// if(localStorage.getItem("courseHourId")){
@@ -201,6 +208,12 @@
 					$("#kcList  li").click(function () {
 						cookieTime = 0;
 						var sid = $(this).attr("id");
+						var learnStatus = $(this).attr("class");
+						// if(learnStatus == 'completed'){
+						// 	$(".videoPrevent").hide();
+						// }else{
+						// 	$(".videoPrevent").show();
+						// }
 						$(this).addClass("active").siblings().removeClass("active");
 						localStorage.setItem("courseHourId", sid);
 						courseHourDetail(sid);
@@ -210,8 +223,12 @@
 
 			})
 		};
-
+		// 不可以快进
+		// $(".videoPrevent").click(function(){
+		// 	layer.msg('该课程未观看完毕，不可快进');	
+		// })
 		//课程详情视频
+		
 		function courseHourDetail(sid) {
 			http.ajax({
 				url: 'course/courseHourDetail',
@@ -226,16 +243,18 @@
 				if (data.code == 200) {
 					$(".exercise .temporary").hide();
 					$(".courseHourName").text(result.courseHourName);
-					var videoObject = {
-						container: '.videosamplex',//“#”代表容器的ID，“.”或“”代表容器的class
+					videoObject = {
+						container: '#videoplayer',//“#”代表容器的ID，“.”或“”代表容器的class
 						variable: 'player',//该属性必需设置，值等于下面的new chplayer()的对象
-						// poster: 'pic/wdm.jpg',
+						// poster: 'pic/wdm.jpg',//封面图片
 						loaded: "loadHandler",
+						loop: false, //播放结束是否循环播放
 						mobileCkControls: true,//是否在移动端（包括ios）环境中显示控制栏
 						mobileAutoFull: false,//在移动端播放后是否按系统设置的全屏播放
 						h5container: '#videoplayer',//h5环境中使用自定义容器
 						video: result.courseResourceUrl,//视频地址,
 					};
+				
 					var cookieTime = result.progress;
 					if (!cookieTime || cookieTime == undefined) { //如果没有记录值，则设置时间0开始播放
 						cookieTime = 0;
@@ -246,12 +265,13 @@
 					if (cookieTime > 0) { //如果记录时间大于0，则设置视频播放后跳转至上次记录时间
 						videoObject['seek'] = cookieTime;
 					}
-					var player = new ckplayer(videoObject);
+					player = new ckplayer(videoObject);
 					loadHandler(player);
 
 					// 随堂练习
 					var practice = result.practice;
 					doExercise(practice);
+
 				}
 			}, function (err) {
 
@@ -341,13 +361,19 @@
 			player.addListener('ended', VideoPlayEndedHandler);//监听播放结束
 		}
 		function timeHandler(t) {
-			updateProgress(t);
 			cookie.set('time_' + videoID, t); //当前视频播放时间写入cookie
 		}
 		function VideoPlayEndedHandler() {//监听视频播放完成
 			updateLeanStatus();
 			console.log('本视频已结束');
 		}
+	
+		// 3秒上传一次视频观看进度给后台
+		window.setInterval(function () {
+			realTime = cookie.get('time_' + videoID);
+			updateProgress(realTime);
+		}, 3000)
+	
 
 		//更新课时观看记录定时上报给我或者监听播放状态，离开页面或其他可能导致进度丢失的情况，上报一次进度给我
 		function updateProgress(t) {
