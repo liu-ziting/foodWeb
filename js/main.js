@@ -146,6 +146,7 @@ var http = {
 				layer.close(loading);
 			}, 100);
 		}, function (error) {
+			console.log(error)
 			if (error.status == 504) {
 				layer.msg('请求超时，请重试!', {
 					icon: 5
@@ -378,6 +379,7 @@ function getLoginQRCode(loginCode) {
 		console.log(err);
 	})
 };
+//轮询登录状态
 function checkLogin(loginCode) {
 	http.ajax({
 		url: 'user/checkLogin',

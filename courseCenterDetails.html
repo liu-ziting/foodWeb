@@ -123,7 +123,7 @@
 							{{#  if(d.buyStatus == 'unpurchased'){ }}
 								<button onclick="openUrl('purchase.html')" type="button" class="layui-btn">立刻购买 ></button>
 							{{#  } else { }}
-								<button type="button" class="layui-btn">继续学习 ></button>
+								<button onclick="openUrl('watchVideo.html?id={{d.id}}&sid={{d.courseHourList[0].id}}')" type="button" class="layui-btn">继续学习 ></button>
 							{{#  } }} 
 					</div>
 				</script>

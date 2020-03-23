@@ -60,22 +60,22 @@
 			<div class="userContent">
 				<div class="left">
 					<span onclick="openUrl('user.html?#user')">
-						<img src="img/userbg.png"/>
-						<div  class="tx">
-							<img src="img/man.png"/>
+						<img src="img/userbg.png" />
+						<div class="tx">
+							<img src="img/man.png" />
 						</div>
 						<h1>加载中</h1>
 					</span>
 					<p>个人用户</p>
 					<div class="linkList">
 						<div>
-							<h2><img src="img/useri1.png"/>用户管理</h2>
+							<h2><img src="img/useri1.png" />用户管理</h2>
 							<p onclick="openUrl('modifiedData.html?#modifiedData')">修改资料</p>
 							<p onclick="openUrl('myNews.html?#myNews')">我的消息</p>
 							<p onclick="openUrl('modifyPhone.html?#modifyPhone')">更换手机号</p>
 						</div>
 						<div>
-							<h2><img src="img/useri2.png"/>培训课程</h2>
+							<h2><img src="img/useri2.png" />培训课程</h2>
 							<p onclick="openUrl('myCourse.html?#myCourse')">课程管理</p>
 							<p onclick="openUrl('studyRecord.html?#studyRecord')">学习记录</p>
 							<p onclick="openUrl('myFavorite.html?#myCourse')">我的收藏</p>
@@ -114,60 +114,20 @@
 					</div>
 					<div class="down">
 						<h3>我的课程</h3>
-						 <!-- Swiper -->
+						<!-- Swiper -->
 						<div class="swiper-container courseSwiper">
-							<div class="swiper-wrapper">
-								<div class="swiper-slide">
+							<div id="userCourse" class="swiper-wrapper">
+								<!-- <div class="swiper-slide">
 									<div class="gbox blue">
 										<h1>生产领域培训课程</h1>
 										<p>食品行业从业人员适用</p>
 										<a href="#">前往学习 &gt;</a>
 									</div>
 									<time>已学习课程<span>继续学习</span></time>
-								</div>
-								<div class="swiper-slide">
-									<div class="gbox green">
-										<h1>生产领域培训课程</h1>
-										<p>食品行业从业人员适用</p>
-										<a href="#">前往学习 &gt;</a>
-									</div>
-									<time>尚未学习<span>继续学习</span></time>
-								</div>
-								<div class="swiper-slide">
-									<div class="gbox yellow">
-										<h1>生产领域培训课程</h1>
-										<p>食品行业从业人员适用</p>
-										<a href="#">前往学习 &gt;</a>
-									</div>
-									<time>学习已完成</time>
-								</div>
-								<div class="swiper-slide">
-									<div class="gbox blue">
-										<h1>生产领域培训课程</h1>
-										<p>食品行业从业人员适用</p>
-										<a href="#">前往学习 &gt;</a>
-									</div>
-									<time>已学习课程<span>继续学习</span></time>
-								</div>
-								<div class="swiper-slide">
-									<div class="gbox green">
-										<h1>生产领域培训课程</h1>
-										<p>食品行业从业人员适用</p>
-										<a href="#">前往学习 &gt;</a>
-									</div>
-									<time>尚未学习<span>继续学习</span></time>
-								</div>
-								<div class="swiper-slide">
-									<div class="gbox yellow">
-										<h1>生产领域培训课程</h1>
-										<p>食品行业从业人员适用</p>
-										<a href="#">前往学习 &gt;</a>
-									</div>
-									<time>学习已完成</time>
-								</div>
+								</div> -->
 							</div>
-							 <!-- 如果需要滚动条 -->
-    						<div class="swiper-scrollbar"></div>
+							<!-- 如果需要滚动条 -->
+							<div class="swiper-scrollbar"></div>
 						</div>
 					</div>
 				</div>
@@ -219,15 +179,72 @@
 			});
 
 		});
-		// 我的课程轮播
-		var courseSwiper = new Swiper('.courseSwiper', {
-			slidesPerView: 3,
-			spaceBetween: 124,
-			// 如果需要滚动条
-			scrollbar: {
-				el: '.swiper-scrollbar',
-			},
-		});
+
+		//我的课程列表
+		var pageNo = 1;
+		var pageSize = 10;
+		userCourse();
+		function userCourse() {
+			layui.use(['laypage', 'layer', 'laytpl'], function () {
+				var laypage = layui.laypage,
+					laytpl = layui.laytpl,
+					layer = layui.layer;
+				http.ajax({
+					url: 'course/userCourse',
+					type: 'GET',
+					json: false,
+					mask: true,
+					data: {
+						pageNo: pageNo,
+						pageSize: pageSize,
+					}
+				}).then(function (data) {
+					var result = data.data;
+					var innerHTML = "";
+					if (data.code == 200) {
+						for (var i = 0; i < result.items.length; i++) {
+							innerHTML += "<div id="+result.items[i].courseDTO.id+" class=\"swiper-slide\">";
+
+							if (result.items[i].courseDTO.fontCoverPic == 0 || result.items[i].courseDTO.fontCoverPic == null) {
+								innerHTML += "<div style='background: url(../img/no.png);' class=\"gbox\">";
+							} else {
+								innerHTML += "<div style='background: url(" + result.items[i].courseDTO.fontCoverPic + ");background-size:cover;background-position:center;'  class=\"gbox\">";
+							};
+							innerHTML += "</div>";
+							innerHTML += "<p>" + result.items[i].courseDTO.courseName + "课程</p>";
+							if (result.items[i].learnStatus == 'unstart') {
+								innerHTML += "<time>尚未学习<span>继续学习</span></time>";
+							} else if (result.items[i].learnStatus == 'under_way') {
+								innerHTML += "<time>已学习课程<span>继续学习</span></time>";
+							} else if (result.items[i].learnStatus == 'completed') {
+								innerHTML += "<time>学习已完成</time>";
+							};
+
+							innerHTML += "</div>";
+						};
+
+						$("#userCourse").append(innerHTML);
+						// 我的课程轮播
+						var courseSwiper = new Swiper('.courseSwiper', {
+							slidesPerView: 3,
+							spaceBetween: 124,
+							// 如果需要滚动条
+							scrollbar: {
+								el: '.swiper-scrollbar',
+							},
+						});
+						$("#userCourse > div").click(function(){
+							var id = $(this).attr("id");
+							if(id){
+								openUrl('courseCenterDetails.html?id='+id+'');
+							}
+						});
+					}
+				}, function (err) {
+
+				})
+			});
+		};
 	</script>
 </body>
 
