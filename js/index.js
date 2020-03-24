@@ -186,6 +186,8 @@ function videoPlay(courseResourceUrl){
         variable: 'player',//该属性必需设置，值等于下面的new chplayer()的对象
         // poster: 'img/no.png',
         loaded: "loadHandler",
+        autoplay: true, //是否自动播放
+        loop: true, //播放结束是否循环播放
         mobileCkControls: true,//是否在移动端（包括ios）环境中显示控制栏
         mobileAutoFull: false,//在移动端播放后是否按系统设置的全屏播放
         h5container: '#videoplayer',//h5环境中使用自定义容器
@@ -214,6 +216,7 @@ function timeHandler(t) {
 }
 function VideoPlayEndedHandler() {//监听视频播放完成
     console.log('本视频已结束');
+
 }
 
 // 课程简介

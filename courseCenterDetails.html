@@ -238,11 +238,18 @@
 							}
 							listHtml += '</li>';
 						};
+
+						if(data.courseHourList.length == 0){
+							listHtml +='<li><img src="img/video.png" /><p>暂无课程列表</p></li>'
+						}
+
 						$("#kcList").append(listHtml);
 
 						$("#kcList li").click(function () {
 							var sid = $(this).attr("id");
-							openUrl('watchVideo.html?id='+getQueryString("id")+'&sid='+sid+'');
+							if(sid){
+								openUrl('watchVideo.html?id='+getQueryString("id")+'&sid='+sid+'');
+							}
 						});
 						//收藏
 						$(".courseDetalisTop .right h1 b").click(function () {

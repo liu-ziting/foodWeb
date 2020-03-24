@@ -90,22 +90,22 @@
 						<div id="view"></div>
 						<script id="myFavoriteTpl" type="text/html">
 						{{# layui.each(d.items, function(index, item){ }}
-						<li onclick="openUrl('courseCenterDetails.html?id={{item.courseInfo.id}}')">
+						<li>
 							{{#  if(item.courseInfo.fontCoverPic == 0 ||item.courseInfo.fontCoverPic == null){ }}
-							<div class="gbox" style="background: url(../img/no.png);">	
+							<div onclick="openUrl('courseCenterDetails.html?id={{item.courseInfo.id}}')" class="gbox" style="background: url(../img/no.png);">	
 							{{#  } else { }}
-							<div class="gbox" style="background: url({{item.courseInfo.fontCoverPic}});background-size:cover;background-position:center;">
+							<div onclick="openUrl('courseCenterDetails.html?id={{item.courseInfo.id}}')" class="gbox" style="background: url({{item.courseInfo.fontCoverPic}});background-size:cover;background-position:center;">
 							{{#  } }} 
 								<!-- <h1>{{item.courseInfo.trainingType.trainingTypeName}}课程</h1>
 								<p>{{item.courseInfo.trainingType.memo}}适用</p>
 								<a onclick="openUrl('courseCenterDetails.html?id={{item.courseInfo.id}}')" href="javascript:;">前往学习 &gt;</a>
 								<em class="layui-icon layui-icon-rate-solid"></em> -->
 							</div>
-							<p>{{item.courseInfo.courseName}}课程</p>
+							<p onclick="openUrl('courseCenterDetails.html?id={{item.courseInfo.id}}')">{{item.courseInfo.courseName}}课程</p>
 							<time>
 								<i id="{{item.courseInfo.id}}" class="cancel">取消收藏</i>
 								{{#  if(item.buyStatus == 'unpurchased'){ }}
-								<span>前往购买</span>
+								<span onclick="openUrl('courseCenterDetails.html?id={{item.courseInfo.id}}')">前往购买</span>
 								{{#  } }} 
 							</time>
 						</li>
