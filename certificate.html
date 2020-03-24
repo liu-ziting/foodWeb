@@ -86,18 +86,24 @@
 					<button type="button" class="layui-btn inquire" lay-submit="" lay-filter="register">查询</button>
 				</form>
 			</div>
-			<div class="searchResult" >
-				<div class="imgBox">
-					<h1>刘子亭</h1>
-					<p>恭喜您通过【<span>某某行业流通领域从业人员资格证</span>】考试，成功获取【<span>某某行业流通领域从业人员资格</span>】证书
-					证书，您可以持有本证书从事某某行业流通领域工作
-					</p>
-					<time>
-						<i>2020.03.24</i>
-						<em>15897977</em>
-					</time>
+			<div class="layui-carousel searchResultBox" id="carousel" lay-filter="carousel" style="background-color: #ffffff;">
+				<div id="certificateList" carousel-item="">
+					<!-- <div>
+						<div class="searchResult">
+							<div class="imgBox">
+								<h1 class="username"></h1>
+								<p>恭喜您通过【<span class="certificateName"></span>】考试，成功获取【<span class="certificateName"></span>】证书
+								证书，您可以持有本证书从事某某行业流通领域工作
+								</p>
+								<time>
+									<i class="createTime"></i>
+									<em class="certificateNo"></em>
+								</time>
+							</div>
+						</div>
+					</div> -->
 				</div>
-			</div>
+			</div> 
 		</section>
 	</div>
 	<footer></footer>
@@ -112,7 +118,7 @@
 				delay: 5000
 			},
 		});
-
+		
 		layui.use(['form', 'layedit', 'laydate'], function () {
 			var form = layui.form
 				, layer = layui.layer
@@ -122,6 +128,7 @@
 				return false;
 			});
 		});
+
 		//证书查询接口
 		function certificateSearch(username,idNo,certificateNo){
 			http.ajax({
@@ -136,10 +143,39 @@
 				}
 			}).then(function (data) {
 				if (data.code == 200) {
-					if(data.data == null){
+					if(data.data.items.length == 0){
 						layer.msg('暂无证书！', {
 							icon: 7
 						});
+					}else{
+						var iHTMl = ""
+						for (var i = 0; i < data.data.items.length; i++) {
+							iHTMl +="<div><div class=\"searchResult\">"+
+							"<div class=\"imgBox\">"+
+							"<h1>"+data.data.items[i].username+"</h1>"+
+							"<p>恭喜您通过【<span>"+data.data.items[i].certificateName+"</span>】考试，成功获取【<span>"+data.data.items[i].certificateName+"</span>】证书"+
+							"证书，您可以持有本证书从事某某行业流通领域工作"+
+							"</p>"+
+							"<time><i>"+data.data.items[i].createTime+"</i>"+
+							"<em>"+data.data.items[i].certificateNo+"</em></time>"+
+							"</div></div></div>";
+						};
+						$("#certificateList").append(iHTMl);
+						$(".certificate").hide();
+						$(".searchResult").show();
+					
+						layui.use(['carousel', 'form'], function(){
+							var carousel = layui.carousel
+							,form = layui.form;
+							//常规轮播
+							carousel.render({
+								elem: '#carousel'
+								,indicator:'none'
+								,width: '1200px'
+								,height: '748px'
+								,arrow: 'always'
+							});
+						})
 					}
 				}
 			}, function (err) {
@@ -147,6 +183,10 @@
 			})
 		}
 
+
+		if(getQueryString("username")){
+			// certificateSearch(getQueryString("username"),getQueryString("username"),'');
+		}
 	</script>
 </body>
 

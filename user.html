@@ -108,7 +108,10 @@
 							</div>
 							<div class="Rright">
 								<h4>已获取资格证:</h4>
-								<button type="button">尚未获取资格证</button>
+								<ul id="certificateList" >
+									
+								</ul>
+								<button class="noCertificate" type="button">尚未获取资格证</button>
 							</div>
 						</script>
 					</div>
@@ -166,6 +169,7 @@
 					laytpl(getTpl).render(data, function (html) {
 						view.innerHTML = html;
 					});
+					certificateSearch(data.name,data.idNo)
 				}
 			}, function (err) {
 				console.log(err)
@@ -245,6 +249,40 @@
 				})
 			});
 		};
+
+		//证书查询接口
+		function certificateSearch(username,idNo){
+			http.ajax({
+				url: 'certificate/search',
+				type: 'GET',
+				json: false,
+				mask: true,
+				data: {
+					username:username,
+					idNo: idNo,
+					certificateNo:''
+				}
+			}).then(function (data) {
+				if (data.code == 200) {
+					if(data.data.items.length == 0){
+						$(".noCertificate").show();
+					}else{	
+						var iHTMl = "";
+						for (var i = 0; i < data.data.items.length; i++) {
+							iHTMl +="<li>【"+data.data.items[i].certificateName+"】</li>";
+						};
+
+						$("#certificateList").append(iHTMl);
+
+						$("#certificateList li").click(function(){
+							// openUrl('certificate.html?username='+username+'&idNo='+idNo+'');
+						})
+					}
+				}
+			}, function (err) {
+
+			})
+		}
 	</script>
 </body>
 

@@ -1037,6 +1037,16 @@ header nav  ul .active i{
 	font-size: 12px;
 	color: #999999;
 	margin-top: 60px;
+	display: none;
+}
+.userContent .right .Rright ul{
+	margin-top: 30px;
+}
+.userContent .right .Rright ul li{
+	margin-bottom: 15px;
+	font-size: 15px;
+	text-align: center;
+	cursor: pointer;
 }
 .userContent .right .courseSwiper{
 	margin-top: 13px;
@@ -2092,6 +2102,9 @@ header nav  ul .active i{
 	background: url(../img/certificate.png) no-repeat;
 	background-size: 100% 100%;
 }
+.searchResultBox div{
+	background-color: #fff;
+}
 .searchResult > div img{
 	width: 100%;
 	height: 100%;
@@ -2124,11 +2137,14 @@ header nav  ul .active i{
 }
 .searchResult > div time i{
 	float: left;
-	margin-left: 25px;
+    margin-left: 25px;
+    width: 100px;
+    overflow: hidden;
+    height: 19px;
 }
 .searchResult > div time em{
 	float: right;
-	margin-right: -17px;
+	margin-right: -92px
 }
 .searchResult > div::before{
 	content: "资格证书加载中...";
@@ -2143,6 +2159,7 @@ header nav  ul .active i{
     position: absolute;
 	z-index: -1;
 }
+
 /* 支付 */
 .purchase {
 	padding-bottom: 210px;

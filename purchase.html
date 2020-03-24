@@ -63,10 +63,10 @@
 				<ul>
 					<li>
 						<p>课程名称：</p>
-						<h1>食品行业流通领域从业人员资格培训课程</h1>
-						<span class="money">￥648.00</span>
+						<h1 id="courseName">正在获取支付信息...</h1>
+						<span id="courseRealPrice" class="money">￥--</span>
 					</li>
-					<li>
+					<li class="payment">
 						<p>支付方式：</p>
 						<div class="wechat pbox">
 							<i class="wicon"></i>
@@ -98,7 +98,100 @@
 		//支付切换
 		$(".purchase ul li:nth-child(2) div").click(function(){
 			$(this).addClass("active").siblings().removeClass("active");
+			getPayInfo();	
 		});
+		//支付接口
+		function getPayInfo(){
+				var payChannel = $(".payment .active .payChannel").val();
+				http.ajax({
+					url: 'goods/get_pay_info',
+					type: 'GET',
+					json: false,
+					mask: true,
+					data: {
+						id:getQueryString("id"),
+						payChannel:payChannel,
+						terminalType:'pc'
+					}
+				}).then(function(data) {
+					if(data.code == 200) {
+						if(payChannel == 'ali_pay_pc'){
+							var json = JSON.parse(data.data);
+							var payNo = json.payNo;
+							var payUrl = json.payUrl;
+							localStorage.setItem("payUrl",payUrl);
+							localStorage.setItem("payNo",payNo);
+							window.open('pay.html');
+							getPayResult(payNo);
+						}else if(payChannel == 'wechat_pay_pc'){
+							// $("#wxPayBox").show()
+						};
+					}
+				}, function(err) {
+					
+				})
+		};
+		
+		//查询支付结果
+		function getPayResult(payNo){
+			http.ajax({
+				url: 'goods/get_pay_result',
+				type: 'GET',
+				json: false,
+				mask: false,
+				data: {
+					payNo:payNo
+				}
+			}).then(function(data) {
+				var payChannel = $(".payment .active .payChannel").val();
+				if(data.code == 200) {
+					if(data.data == "success"){
+						//支付成功
+						layer.msg('支付成功！', {
+							icon: 1
+						},function(){
+							openUrl('courseCenterDetails.html?id='+getQueryString("id")+'');
+						});
+					}else if(data.data == "failed"){
+						//支付失败
+						layer.msg('支付失败！', {
+							icon: 5
+						},function(){
+							window.location.reload();
+						});
+					}else{
+						getPayResult(payNo);
+					}
+				}
+			}, function(err) {
+				
+			})
+		};
+
+		//课程详情
+		courseDetail();
+		function courseDetail() {
+			http.ajax({
+				url: 'course/courseDetail',
+				type: 'GET',
+				json: false,
+				mask: false,
+				data: {
+					courseId: getQueryString("id")
+				}
+			}).then(function (data) {
+				var result = beZero(data.data)
+				if (data.code == 200) {
+					$("#courseName").text(result.courseName);
+					$("#courseRealPrice").text("￥"+result.courseRealPrice);
+				}
+			}, function (err) {
+
+			})
+		};
+		
+		
+		
 	</script>
 </body>
 
