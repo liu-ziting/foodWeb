@@ -87,26 +87,36 @@
 				<div class="right">
 					<h3>购买记录<p><i>个人中心 > 培训课程 > <span>购买记录</span></i></p></h3>
 					<ul>
-						<li>
+						<!-- <li>
 							<h1>食品从业人员流通领域培训课程<time>2020-01-09</time><span class="">交易完成</span></h1>
 							<p><i>￥648.00</i>订单号：2020100906058</p>
+						</li> -->
+						<li class="temporary">
+							<p class="temporaryList gjpAfter" style="width: 60%;margin-bottom: 12px;"></p>
+							<p class="temporaryList gjpAfter" style="width: 50%;"></p>
 						</li>
-						<li>
-							<h1>食品从业人员流通领域培训课程<time>2020-01-09</time><span class="">交易完成</span></h1>
-							<p><i>￥648.00</i>订单号：2020100906058</p>
+						<li class="temporary">
+							<p class="temporaryList gjpAfter" style="width: 60%;margin-bottom: 12px;"></p>
+							<p class="temporaryList gjpAfter" style="width: 50%;"></p>
 						</li>
-						<li>
-							<h1>食品从业人员流通领域培训课程<time>2020-01-09</time><span class="">交易完成</span></h1>
-							<p><i>￥648.00</i>订单号：2020100906058</p>
+						<li class="temporary">
+							<p class="temporaryList gjpAfter" style="width: 60%;margin-bottom: 12px;"></p>
+							<p class="temporaryList gjpAfter" style="width: 50%;"></p>
 						</li>
-						<li>
-							<h1>食品从业人员流通领域培训课程<time>2020-01-09</time><span class="">交易完成</span></h1>
-							<p><i>￥648.00</i>订单号：2020100906058</p>
-						</li>
-						<li>
-							<h1>食品从业人员流通领域培训课程<time>2020-01-09</time><span class="">交易完成</span></h1>
-							<p><i>￥648.00</i>订单号：2020100906058</p>
-						</li>
+						<div id="view"></div>
+						<script id="purchaseRecordTpl" type="text/html">
+						{{# layui.each(d.items, function(index, item){ }}
+							<li>
+								<h1>食品从业人员流通领域培训课程<time>2020-01-09</time><span class="">交易完成</span></h1>
+								<p><i>￥648.00</i>订单号：2020100906058</p>
+							</li> 
+							{{# }); }} {{# if(d.items.length === 0){ }}
+							<li>
+								<h1>暂无购买记录<time></time></h1>
+								<p>暂无购买记录</p>
+							</li> 
+						{{# } }}
+						</script>
 					</ul>
 					<!--分页-->
 					<div id="paging" class="paging"></div>
@@ -126,20 +136,67 @@
 				delay: 5000
 			},
 		});
-		layui.use(['laypage', 'layer'], function(){
-			var laypage = layui.laypage
-			,layer = layui.layer;
 
-			//分页
-			laypage.render({
-				elem: 'paging'
-				,count: 100
-				,layout: ['count', 'prev', 'page', 'next', 'limit', 'skip']
-				,jump: function(obj){
-				console.log(obj)
-				}
+		//购买记录列表
+		var pageNo = 1;
+		var pageSize = 10;
+		orderRecords();
+		function orderRecords() {
+			layui.use(['laypage', 'layer', 'laytpl'], function () {
+				var laypage = layui.laypage,
+					laytpl = layui.laytpl,
+					layer = layui.layer;
+				http.ajax({
+					url: 'order/orderRecords',
+					type: 'GET',
+					json: false,
+					mask: true,
+					data: {
+						pageNo: pageNo,
+						pageSize: pageSize,
+						type:'foodNews'
+					}
+				}).then(function (data) {
+					var result = data;
+					if (data.code == 200) {
+						$(".temporary").hide();
+						// 数据渲染
+						var data = data.data;
+						var totalList = data.total;
+						var getTpl = purchaseRecordTpl.innerHTML,
+							view = document.getElementById('view');
+						laytpl(getTpl).render(data, function (html) {
+							view.innerHTML = html;
+						});
+						//分页
+						laypage.render({
+							elem: 'paging'
+							, curr: pageNo
+							, limit: pageSize
+							, count: totalList
+							, layout: ['count', 'prev', 'page', 'next', 'limit', 'skip']
+							, jump: function (obj, first) { //触发分页后的回调
+								if (!first) { //点击跳页触发函数自身，并传递当前页：obj.curr
+									pageNo = obj.curr;
+									pageSize = obj.limit;
+									orderRecords();
+								}
+							}
+						});
+
+					}
+				}, function (err) {
+					if(err.status == 403){
+						layer.msg('未登录，不可操作！', {
+							icon: 5,
+							time: 800, 
+						},function(){
+							location.href = 'login.html';
+						});
+					}
+				})
 			});
-		})
+		};
 	</script>
 </body>
 

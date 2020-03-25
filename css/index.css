@@ -2237,6 +2237,21 @@ header nav  ul .active i{
 	background: url(../img/zfb2.png) no-repeat;
 	background-size: 100% 100%;
 }
+.purchase ul li .imgBox{
+	/* width: 350px;
+	height: 350px;
+	background: url(../img/qrk.png) no-repeat;
+	background-size: 100% 100%;
+	float: left; */
+}
+.purchase ul li .imgBox img{
+	width: 300px;
+    height: 300px;
+	display: block;
+}
+.purchase ul .ewmBox{
+	display: none;
+}
 /* 考试中心 */
 .testCenter ul li{
 	padding: 44px 50px;

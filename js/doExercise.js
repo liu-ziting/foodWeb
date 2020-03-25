@@ -170,6 +170,7 @@ function exercise() {
                         answerList.push($("#multiChoiceListHtml li").eq(i).find("input:checked").eq(j).val() * 1)
                     }
                     var answerBox = $("#multiChoiceListHtml li").eq(i).find(".answer").val();
+                    
                     var str = answerBox;
                     var str_array = str.split(',');
                     var answerList2 = []
@@ -179,6 +180,7 @@ function exercise() {
                     }
                     // 两个数组去重
                     var intersection = answerList.filter(function (val) { return answerList2.indexOf(val) > -1 })
+
 
                     if ($("#multiChoiceListHtml li").eq(i).find(".answer").val() == answerList) {
                         $("#nummultiChoiceListHtml span").eq(i).addClass('correct');
