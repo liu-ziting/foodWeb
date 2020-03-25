@@ -248,6 +248,7 @@
 						$("#kcList li").click(function () {
 							var sid = $(this).attr("id");
 							if(sid){
+								localStorage.removeItem("courseHourId");
 								openUrl('watchVideo.html?id='+getQueryString("id")+'&sid='+sid+'');
 							}
 						});
