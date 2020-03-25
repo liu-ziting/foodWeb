@@ -275,6 +275,12 @@ function examSubmit() {
                 }
                 $(".font").numScroll();
             }, 1000)
+        }else{
+            layer.msg('考试失败！失败原因：'+data.msg+'请联系管理员！', {
+                icon: 5
+            },function(){
+                history.back();
+            });
         }
     }, function (err) {
 

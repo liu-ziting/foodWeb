@@ -1047,6 +1047,7 @@ header nav  ul .active i{
 	font-size: 15px;
 	text-align: center;
 	cursor: pointer;
+	color: #333333;
 }
 .userContent .right .courseSwiper{
 	margin-top: 13px;
