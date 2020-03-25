@@ -60,23 +60,23 @@
 			<div class="userContent">
 				<div class="left">
 					<span onclick="openUrl('user.html?#user')">
-						<img src="img/userbg.png"/>
-						<div  class="tx">
-							<img src="img/man.png"/>
+						<img src="img/userbg.png" />
+						<div class="tx">
+							<img src="img/man.png" />
 						</div>
 						<h1>加载中</h1>
 					</span>
 					<p>个人用户</p>
 					<div class="linkList">
 						<div>
-							<h2><img src="img/useri1.png"/>用户管理</h2>
+							<h2><img src="img/useri1.png" />用户管理</h2>
 							<p onclick="openUrl('modifiedData.html?#modifiedData')">修改资料</p>
 							<p onclick="openUrl('myNews.html?#myNews')">我的消息</p>
 							<p onclick="openUrl('modifyPhone.html?#modifyPhone')">更换手机号</p>
 						</div>
 						<div>
-							<h2><img src="img/useri2.png"/>培训课程</h2>
-							<p onclick="openUrl('myCourse.html?#myCourse')">课程管理</p>
+							<h2><img src="img/useri2.png" />培训课程</h2>
+							<p onclick="openUrl('myCourse.html?#myCourse')">我的课程</p>
 							<p onclick="openUrl('studyRecord.html?#studyRecord')">学习记录</p>
 							<p onclick="openUrl('myFavorite.html?#myCourse')">我的收藏</p>
 							<p class="active">购买记录</p>
@@ -85,41 +85,165 @@
 					</div>
 				</div>
 				<div class="right">
-					<h3>购买记录<p><i>个人中心 > 培训课程 > <span>购买记录</span></i></p></h3>
-					<ul>
-						<!-- <li>
-							<h1>食品从业人员流通领域培训课程<time>2020-01-09</time><span class="">交易完成</span></h1>
-							<p><i>￥648.00</i>订单号：2020100906058</p>
-						</li> -->
-						<li class="temporary">
-							<p class="temporaryList gjpAfter" style="width: 60%;margin-bottom: 12px;"></p>
-							<p class="temporaryList gjpAfter" style="width: 50%;"></p>
-						</li>
-						<li class="temporary">
-							<p class="temporaryList gjpAfter" style="width: 60%;margin-bottom: 12px;"></p>
-							<p class="temporaryList gjpAfter" style="width: 50%;"></p>
-						</li>
-						<li class="temporary">
-							<p class="temporaryList gjpAfter" style="width: 60%;margin-bottom: 12px;"></p>
-							<p class="temporaryList gjpAfter" style="width: 50%;"></p>
-						</li>
-						<div id="view"></div>
-						<script id="purchaseRecordTpl" type="text/html">
-						{{# layui.each(d.items, function(index, item){ }}
-							<li>
+					<h3>购买记录<p><i>个人中心 > 培训课程 > <span>购买记录</span></i></p>
+					</h3>
+					<div class="recordList">
+						<ul>
+							<!-- <li>
 								<h1>食品从业人员流通领域培训课程<time>2020-01-09</time><span class="">交易完成</span></h1>
 								<p><i>￥648.00</i>订单号：2020100906058</p>
-							</li> 
-							{{# }); }} {{# if(d.items.length === 0){ }}
-							<li>
-								<h1>暂无购买记录<time></time></h1>
-								<p>暂无购买记录</p>
-							</li> 
-						{{# } }}
-						</script>
-					</ul>
-					<!--分页-->
-					<div id="paging" class="paging"></div>
+							</li> -->
+							<li class="temporary">
+								<p class="temporaryList gjpAfter" style="width: 60%;margin-bottom: 12px;"></p>
+								<p class="temporaryList gjpAfter" style="width: 50%;"></p>
+							</li>
+							<li class="temporary">
+								<p class="temporaryList gjpAfter" style="width: 60%;margin-bottom: 12px;"></p>
+								<p class="temporaryList gjpAfter" style="width: 50%;"></p>
+							</li>
+							<li class="temporary">
+								<p class="temporaryList gjpAfter" style="width: 60%;margin-bottom: 12px;"></p>
+								<p class="temporaryList gjpAfter" style="width: 50%;"></p>
+							</li>
+							<div id="view"></div>
+							<script id="purchaseRecordTpl" type="text/html">
+							{{# layui.each(d.items, function(index, item){ }}
+								<li>
+									<h1>食品从业人员流通领域培训课程<time>2020-01-09</time><span class="">交易完成</span></h1>
+									<p><i>￥648.00</i>订单号：2020100906058<span>申请开票</span></p>
+								</li> 
+								{{# }); }} {{# if(d.items.length === 0){ }}
+								<li>
+									<h1>暂无购买记录<time></time></h1>
+									<p>暂无购买记录</p>
+								</li> 
+							{{# } }}
+							</script>
+						</ul>
+						<!--分页-->
+						<div id="paging" class="paging"></div>
+					</div>
+					<section class="invoice">
+						<h4>根据增值税管理办法要求，如需为单位开具增值税发票，需提供纳税人识别号或统一社会信用代码，否则该发票无法作为税收凭证。
+							温馨提示：目前仅提供纸质发票，请仔细填写并核对开票信息，暂不支持发票换开申请。</h4>
+						<form class="layui-form" action="">
+							<div class="layui-form-item">
+								<label class="layui-form-label"><i>*</i>发票类型</label>
+								<div class="layui-input-block">
+									<input type="radio" name="" value="增值税电子普通发票" title="增值税电子普通发票" checked="">
+								</div>
+							</div>
+							<div class="layui-form-item">
+								<label class="layui-form-label">抬头类型</label>
+								<div class="layui-input-block test">
+									<input type="radio" lay-filter="radioInput" name="type" value="个人" title="个人" checked="">
+									<input type="radio" lay-filter="radioInput" name="type" value="单位" title="单位">
+								</div>
+							</div>
+							<!-- 个人 -->
+							<div class="personal" >
+								<div class="layui-form-item">
+									<label class="layui-form-label"><i>*</i>发票抬头</label>
+									<div class="layui-input-block">
+										<input type="text" name="" lay-verify="required" lay-reqtext="请输入发票抬头"
+											placeholder="" value="" autocomplete="off" class="layui-input ">
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<label class="layui-form-label"><i>*</i>收票人姓名</label>
+									<div class="layui-input-block">
+										<input type="text" name="" lay-verify="required" lay-reqtext="请输入收票人姓名"
+											placeholder="" value="" autocomplete="off" class="layui-input ">
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<label class="layui-form-label">收票人手机号</label>
+									<div class="layui-input-block">
+										<input type="text" name="" 
+											placeholder="" value="" autocomplete="off" class="layui-input ">
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<label class="layui-form-label">详细地址</label>
+									<div class="layui-input-block">
+										<input type="text" name="" 
+											placeholder="" value="" autocomplete="off" class="layui-input ">
+									</div>
+								</div>
+							</div>
+							<!-- 单位 --> 
+							<div class="unit" style="display: none;">
+								<div class="layui-form-item">
+									<label class="layui-form-label"><i>*</i>单位名称</label>
+									<div class="layui-input-block">
+										<input type="text" name="" lay-verify="required" lay-reqtext="请输入单位名称"
+											placeholder="" value="" autocomplete="off" class="layui-input ">
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<label class="layui-form-label"><i>*</i>纳税人识别号</label>
+									<div class="layui-input-block">
+										<input type="text" name="" lay-verify="required" lay-reqtext="请输入纳税人识别号"
+											placeholder="" value="" autocomplete="off" class="layui-input ">
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<label class="layui-form-label">注册地址</label>
+									<div class="layui-input-block">
+										<input type="text" name="" 
+											placeholder="" value="" autocomplete="off" class="layui-input ">
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<label class="layui-form-label">注册电话</label>
+									<div class="layui-input-block">
+										<input type="text" name="" 
+											placeholder="" value="" autocomplete="off" class="layui-input ">
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<label class="layui-form-label">开户银行</label>
+									<div class="layui-input-block">
+										<input type="text" name="" 
+											placeholder="" value="" autocomplete="off" class="layui-input ">
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<label class="layui-form-label">开户行账号</label>
+									<div class="layui-input-block">
+										<input type="text" name="" 
+											placeholder="" value="" autocomplete="off" class="layui-input ">
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<label class="layui-form-label">收票人姓名</label>
+									<div class="layui-input-block">
+										<input type="text" name="" 
+											placeholder="" value="" autocomplete="off" class="layui-input ">
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<label class="layui-form-label">收票人手机号</label>
+									<div class="layui-input-block">
+										<input type="text" name="" 
+											placeholder="" value="" autocomplete="off" class="layui-input ">
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<label class="layui-form-label">收票详细地址</label>
+									<div class="layui-input-block">
+										<input type="text" name="" 
+											placeholder="" value="" autocomplete="off" class="layui-input ">
+									</div>
+								</div>
+							</div>
+							<button type="button" class="layui-btn submit" lay-submit=""
+								lay-filter="register">保存</button>
+							<button type="button" class="layui-btn cancel" 
+								lay-filter="register">取消</button>
+						</form>
+
+					</section>
 				</div>
 			</div>
 		</section>
@@ -154,7 +278,7 @@
 					data: {
 						pageNo: pageNo,
 						pageSize: pageSize,
-						type:'foodNews'
+						type: 'foodNews'
 					}
 				}).then(function (data) {
 					var result = data;
@@ -186,17 +310,35 @@
 
 					}
 				}, function (err) {
-					if(err.status == 403){
+					if (err.status == 403) {
 						layer.msg('未登录，不可操作！', {
 							icon: 5,
-							time: 800, 
-						},function(){
+							time: 800,
+						}, function () {
 							location.href = 'login.html';
 						});
 					}
 				})
 			});
 		};
+	
+		//发票
+
+		//判断是个人还是公司
+		var form = layui.form;
+		form.on('radio(radioInput)', function(data){ 
+			console.log(data);
+			if(data.value == "单位"){
+				$(".unit").show();
+				$(".personal").hide().removeAttr("lay-verify");;
+			}else{
+				$(".personal").show();
+				$(".unit").hide().removeAttr("lay-verify");;
+			}
+		});
+		$(".cancel").click(function(){
+			$(".invoice").hide();
+		})
 	</script>
 </body>
 

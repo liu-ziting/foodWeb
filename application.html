@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>安徽食品安全培训网</title>
+	<link href="img/logo.png" rel="SHORTCUT ICON">
+	<link rel="stylesheet" href="css/nprogress.css">
+	<script type="text/javascript" src="js/nprogress.js"> </script>
+	<link rel="stylesheet" href="layui/css/layui.css" />
+	<link rel="stylesheet" href="css/swiper.min.css">
+	<link rel="stylesheet" href="css/index.css" />
+	<style>
+		.certificate form .layui-form-label {
+			width: 110px;
+		}
+		.certificate form .layui-input-block {
+   			margin-left: 110px;
+		}
+		.certificate form{
+			margin-bottom: 150px;
+		}
+		.certificate form .layui-anim  {
+			color: #999999;
+		}
+		.layui-form-radioed i{
+			color: #5FB878 !important;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- 头部 -->
+	<header>
+		<div class="top">
+			<section>
+				<p>你好，欢迎访问滁州食品安全网</p>
+				<p>
+					<a onclick="openUrl('login.html')" href="javascript:;">现在登录！</a>
+				</p>
+				<p><img src="img/user.png" />个人中心</p>
+			</section>
+			<nav>
+				<h1 onclick="openUrl('index.html')">
+					<img src="img/logo.png" />
+					<p>安徽食品安全培训网</p>
+					<i>Food safety training in anhui province </i>
+				</h1>
+				<ul id="navList">
+					<li>首页<i></i></li>
+					<li>课程中心<i></i></li>
+					<li>学习指南<i></i></li>
+					<li>教学公告<i></i></li>
+					<li>食品安全资讯<i></i></li>
+					<li>在线证书查询<i></i></li>
+					<li>考试中心<i></i></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<div class="">
+		<!-- 子页面轮播 -->
+		<div class="swiper-container sonBanner">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">
+					<img src="img/sbanner.png" />
+				</div>
+				<div class="swiper-slide">
+					<img src="img/sbanner.png" />
+				</div>
+			</div>
+		</div>
+		<section class="centre">
+			<h1 class="titleSon">
+				<a href="index.html">首页 ></a>
+				<a href="testCenter.html">考试中心 ></a>
+				<a href="">在线证书查询</a>
+			</h1>
+			<div class="certificate">
+				<form class="layui-form" action="">
+					<h1>证书申请资料填写</h1>
+					<span></span>
+					<div class="layui-form-item">
+						<label class="layui-form-label"><i>*</i>姓名：</label>
+						<div class="layui-input-block">
+							<input type="text" name="username" lay-verify="required" lay-reqtext="请输入您的姓名"
+									placeholder="请输入您的姓名" value="" autocomplete="off" class="layui-input username">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label"><i>*</i>性别：</label>
+						<div class="layui-input-block">
+						  <input type="radio" name="sex" value="男" title="男" checked="">
+						  <input type="radio" name="sex" value="女" title="女">
+						</div>
+					  </div>
+					<div class="layui-form-item">
+						<label class="layui-form-label"><i>*</i>身份证：</label>
+						<div class="layui-input-block">
+							<input type="text" name="idNo" lay-verify="required" lay-reqtext="请输入正确的身份证号码"
+									placeholder="请输入正确的身份证号码" value="" autocomplete="off" class="layui-input idNo">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label"><i>*</i>手机号：</label>
+						<div class="layui-input-block">
+							<input type="text" name="phone" lay-verify="required" lay-reqtext="请输入正确手机号码获取信息"
+									placeholder="请输入正确手机号码获取信息" value="" class="layui-input phone">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label"><i>*</i>收货地址：</label>
+						<div class="layui-input-block">
+							<input type="text" name="certificateNo" 
+									placeholder="请输入收取证书的邮寄地址" value="" class="layui-input certificateNo">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">公司名称：</label>
+						<div class="layui-input-block">
+							<input type="text" name="certificateNo" 
+									placeholder="请输入公司名称" value="" class="layui-input certificateNo">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">企业代码：</label>
+						<div class="layui-input-block">
+							<input type="text" name="certificateNo" 
+									placeholder="请输入企业统一社会信用代码" value="" class="layui-input certificateNo">
+						</div>
+					</div>
+					<p>带 “ * ” 请填写真实有效的身份信息，资料通过审核后将以邮<br/>寄的方式将资格证寄出，请确保手机号码及地址信息正确。</p>
+					<button type="button" class="layui-btn inquire" lay-submit="" lay-filter="register">申请发证</button>
+				</form>
+			</div>
+		</section>
+	</div>
+	<footer></footer>
+	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="layui/layui.all.js"></script>
+	<script type="text/javascript" src="js/swiper.min.js"> </script>
+	<script type="text/javascript" src="js/main.js"></script>
+	<script>
+		//轮播图
+		var indexBannerswiper = new Swiper('.sonBanner', {
+			autoplay: {
+				delay: 5000
+			},
+		});
+		
+		layui.use(['form', 'layedit', 'laydate'], function () {
+			var form = layui.form
+				, layer = layui.layer
+			//监听提交
+			form.on('submit(register)', function (data) {
+				certificateSearch(data.field.username,data.field.idNo,data.field.certificateNo);
+				return false;
+			});
+		});
+
+		
+	</script>
+</body>
+
+</html>

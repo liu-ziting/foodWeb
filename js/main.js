@@ -1,6 +1,6 @@
 var App = {
-	apiBasePath: "http://edu-bus.utools.club/bus/", 	//接口地址
-	// apiBasePath: "http://api-business.lihail.cn/bus/", 	//接口地址
+	// apiBasePath: "http://edu-bus.utools.club/bus/", 	//接口地址
+	apiBasePath: "http://api-business.lihail.cn/bus/", 	//接口地址
 	rootPath: getRootPath(),				//项目根目录地址
 	filePath: 'http://edubus.utools.club/bus/',
 	timestamp: ((Date.parse(new Date())) / 1000).toString(),	//时间戳

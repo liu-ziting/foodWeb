@@ -140,11 +140,11 @@ function exam() {
                         localStorage.removeItem("maxtime");
                     }
                 }, 1000);
-                window.addEventListener("beforeunload", function (e) {
-                    var confirmationMessage = "\o/";
-                    (e || window.event).returnValue = confirmationMessage; // Gecko and Trident
-                    return confirmationMessage; // Gecko and WebKit
-                });
+                // window.addEventListener("beforeunload", function (e) {
+                //     var confirmationMessage = "\o/";
+                //     (e || window.event).returnValue = confirmationMessage; // Gecko and Trident
+                //     return confirmationMessage; // Gecko and WebKit
+                // });
             } else {
                 layer.confirm('考试马上开始，准备好了吗？', {
                     btn: ['是', '否'],
@@ -266,12 +266,14 @@ function examSubmit() {
                 //初始化数字滚动特效
                 $(".font").text(result.data.score);
                 if(result.data.pass == true){
-                    $(".pass").html("恭喜您已成功通过<br> 【"+result.data.info.examName+"】考试")
+                    $(".pass").html("恭喜您已成功通过<br> 【"+result.data.info.examName+"】考试");
+                    $(".application").show();
                 }else{
                     $(".pass").html("很抱歉考试未合格，请重新参加<br> 【"+result.data.info.examName+"】考试")
                     $(".examResult .circle").css("border","7px solid #9A979A");
                     $(".examResult .circle p").css("color","#9A979A");
                     $(".examResult .circle p i").css("color","#9A979A");
+                    $(".restart").show();
                 }
                 $(".font").numScroll();
             }, 1000)

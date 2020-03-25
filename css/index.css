@@ -1225,12 +1225,13 @@ header nav  ul .active i{
 .publicList .right ul li{
 	padding: 29px 0;
 	border-bottom: 1px solid #E7E6ED;
-	cursor: pointer;
 }
 .publicList .right ul li h1{
 	font-size: 18px;
 	color: #333333;
 	font-weight: bold;
+	cursor: pointer;
+
 }
 .publicList .right ul li:hover h1{
 	color: #397D47;
@@ -1251,6 +1252,16 @@ header nav  ul .active i{
 	margin-top: 27px;
 	font-size: 14px;
 	color: #666666;
+}
+.publicList .right ul li p span{
+	width:59px;
+	font-size:14px;
+	font-weight:bold;
+	color:rgba(102,102,102,1);
+	margin: 0;
+	text-align: right;
+	cursor: pointer;
+	
 }
 .publicList .right ul .temporary p{
 	height: 30px;
@@ -2680,5 +2691,63 @@ header nav  ul .active i{
 	text-align: center;
 	line-height: 51px;
 	margin: 40px auto;
-	display: block;
+	display: none;
+}
+.invoice{
+	display: none;
+}
+.invoice h4{
+	width: 100%;
+	height:52px;
+	background:rgba(248,237,217,1);
+	border-radius:4px;
+	font-size:12px;
+	font-weight:bold;
+	color:rgba(249,109,50,1);
+	padding: 10px;
+}
+.invoice form{
+	margin-top: 45px;
+	width: 500px;
+}
+.invoice form .layui-form-label{
+	width: 125px;
+	font-weight:bold;
+	color:rgba(102,102,102,1);
+}
+.invoice form .layui-input-block{
+	margin-left: 150px;
+}
+.invoice form .layui-form-item{
+	margin-bottom: 25px;
+}
+.invoice form i {
+    color: #F5520D;
+    font-weight: bold;
+    padding-right: 3px;
+}
+.invoice form .layui-anim  {
+	color: #999999;
+}
+.invoice form .layui-form-radioed i{
+	color: #2969C9 !important;
+}
+.invoice form  button{
+	width:117px;
+	height:51px;
+	background:rgba(242,243,244,1);
+	border-radius:3px;
+	font-size: 14.5px;
+	color: #999999;
+	margin-top: 25px;
+	margin-bottom: 100px;
+}
+.invoice form  .cancel:hover{
+	color: inherit;
+}
+.invoice form .submit{
+	background-color: #2969C9;
+	color: #ffffff;
+	margin-left: 150px;
+    margin-right: 45px;
 }
