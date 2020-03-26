@@ -118,7 +118,7 @@
 									</h1>
 									<p><i>￥{{item.consumeAmount}}</i>订单号：{{item.payNo}}
 										{{#  if(item.invoiceStatus === "not_apply"){ }}
-											<span class="application">申请开票</span>
+											<span id='{{item.id}}' class="application">申请开票</span>
 										{{#  } }} 									
 									</p>
 								</li> 
@@ -226,6 +226,7 @@
 										placeholder="" value="" autocomplete="off" class="layui-input ">
 								</div>
 							</div>
+							<input type="hidden" name="paymentId" id="paymentId" value="" />
 							<button type="button" class="layui-btn submit" lay-submit=""
 								lay-filter="register">保存</button>
 							<button type="button" class="layui-btn cancel" 
@@ -299,6 +300,7 @@
 						
 						//点击申请开票
 						$(".application").click(function(){
+							$("#paymentId").val($(this).attr("id"))
 							$(".recordList").hide();
 							$(".invoice").show();
 						})
@@ -362,10 +364,13 @@
 				data: JSON.stringify(json)
 			}).then(function (data) {
 				if (data.code == 200) {
-					layer.msg('申请成功', {icon: 1});
-					$(".invoice").hide();
-					$(".recordList").show();
-					orderRecords();
+					layer.msg('申请成功！', {
+						icon: 1,
+					}, function () {
+						$(".invoice").hide();
+						$(".recordList").show();
+						orderRecords();
+					});
 				}else{
 					layer.msg(data.msg, {icon: 2});
 				}
