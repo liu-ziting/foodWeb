@@ -122,8 +122,10 @@
 							
 							{{#  if(d.buyStatus == 'unpurchased'){ }}
 								<button onclick="openUrl('purchase.html?id={{d.id}}')" type="button" class="layui-btn">立刻购买 ></button>
+							{{#  } else if(d.courseHourList.length == 0) { }}
+								<button type="button" class="layui-btn layui-btn-disabled">暂无课程</button>
 							{{#  } else { }}
-								<button onclick="openUrl('watchVideo.html?id={{d.id}}&sid={{d.courseHourList[0].id}}')" type="button" class="layui-btn">继续学习 ></button>
+								<button onclick="openUrl('watchVideo.html?id={{d.id}}')" type="button" class="layui-btn">继续学习 ></button>
 							{{#  } }} 
 					</div>
 				</script>
@@ -143,16 +145,7 @@
 						</div>
 						<div class="layui-tab-item">
 							<ul id="kcList">
-								<!-- <li onclick="openUrl('watchVideo.html')" class="active">
-									<img src="img/video.png" />
-									<p>01 - 食品安全法解读（第一讲）</p>
-									<time><img src="img/vtime.png" />已学习</time>
-								</li>
-								<li>
-									<img src="img/video.png" />
-									<p>01 - 食品安全法解读（第一讲）</p>
-									<time><img src="img/vtime.png" />30分钟</time>
-								</li> -->
+								
 							</ul>
 						</div>
 						<div class="layui-tab-item qrCodeBox">

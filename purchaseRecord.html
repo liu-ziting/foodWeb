@@ -109,8 +109,18 @@
 							<script id="purchaseRecordTpl" type="text/html">
 							{{# layui.each(d.items, function(index, item){ }}
 								<li>
-									<h1>食品从业人员流通领域培训课程<time>2020-01-09</time><span class="">交易完成</span></h1>
-									<p><i>￥648.00</i>订单号：2020100906058<span>申请开票</span></p>
+									<h1>{{item.courseDTO.courseName}}<time>{{item.createTime}}</time>
+									{{#  if(item.status === "success"){ }}
+										<span class="">交易成功</span>
+									{{#  } else { }}
+										<span class="">交易失败</span>
+									{{#  } }} 
+									</h1>
+									<p><i>￥{{item.consumeAmount}}</i>订单号：{{item.payNo}}
+										{{#  if(item.invoiceStatus === "not_apply"){ }}
+											<span class="application">申请开票</span>
+										{{#  } }} 									
+									</p>
 								</li> 
 								{{# }); }} {{# if(d.items.length === 0){ }}
 								<li>
@@ -130,14 +140,14 @@
 							<div class="layui-form-item">
 								<label class="layui-form-label"><i>*</i>发票类型</label>
 								<div class="layui-input-block">
-									<input type="radio" name="" value="增值税电子普通发票" title="增值税电子普通发票" checked="">
+									<input type="radio" name="invoiceTitleType" value="增值税电子普通发票" title="增值税电子普通发票" checked="">
 								</div>
 							</div>
 							<div class="layui-form-item">
 								<label class="layui-form-label">抬头类型</label>
 								<div class="layui-input-block test">
-									<input type="radio" lay-filter="radioInput" name="type" value="个人" title="个人" checked="">
-									<input type="radio" lay-filter="radioInput" name="type" value="单位" title="单位">
+									<input type="radio" lay-filter="radioInput" name="invoiceType" value="个人" title="个人" checked="">
+									<input type="radio" lay-filter="radioInput" name="invoiceType" value="公司" title="公司">
 								</div>
 							</div>
 							<!-- 个人 -->
@@ -145,28 +155,7 @@
 								<div class="layui-form-item">
 									<label class="layui-form-label"><i>*</i>发票抬头</label>
 									<div class="layui-input-block">
-										<input type="text" name="" lay-verify="required" lay-reqtext="请输入发票抬头"
-											placeholder="" value="" autocomplete="off" class="layui-input ">
-									</div>
-								</div>
-								<div class="layui-form-item">
-									<label class="layui-form-label"><i>*</i>收票人姓名</label>
-									<div class="layui-input-block">
-										<input type="text" name="" lay-verify="required" lay-reqtext="请输入收票人姓名"
-											placeholder="" value="" autocomplete="off" class="layui-input ">
-									</div>
-								</div>
-								<div class="layui-form-item">
-									<label class="layui-form-label">收票人手机号</label>
-									<div class="layui-input-block">
-										<input type="text" name="" 
-											placeholder="" value="" autocomplete="off" class="layui-input ">
-									</div>
-								</div>
-								<div class="layui-form-item">
-									<label class="layui-form-label">详细地址</label>
-									<div class="layui-input-block">
-										<input type="text" name="" 
+										<input type="text" name="invoiceTitle" lay-verify="required" lay-reqtext="请输入发票抬头"
 											placeholder="" value="" autocomplete="off" class="layui-input ">
 									</div>
 								</div>
@@ -183,58 +172,58 @@
 								<div class="layui-form-item">
 									<label class="layui-form-label"><i>*</i>纳税人识别号</label>
 									<div class="layui-input-block">
-										<input type="text" name="" lay-verify="required" lay-reqtext="请输入纳税人识别号"
+										<input type="text" name="taxpayerIdentificationNum" lay-verify="required" lay-reqtext="请输入纳税人识别号"
 											placeholder="" value="" autocomplete="off" class="layui-input ">
 									</div>
 								</div>
 								<div class="layui-form-item">
 									<label class="layui-form-label">注册地址</label>
 									<div class="layui-input-block">
-										<input type="text" name="" 
+										<input type="text" name="registerAddress" 
 											placeholder="" value="" autocomplete="off" class="layui-input ">
 									</div>
 								</div>
 								<div class="layui-form-item">
 									<label class="layui-form-label">注册电话</label>
 									<div class="layui-input-block">
-										<input type="text" name="" 
+										<input type="text" name="registerTel" 
 											placeholder="" value="" autocomplete="off" class="layui-input ">
 									</div>
 								</div>
 								<div class="layui-form-item">
 									<label class="layui-form-label">开户银行</label>
 									<div class="layui-input-block">
-										<input type="text" name="" 
+										<input type="text" name="bankName" 
 											placeholder="" value="" autocomplete="off" class="layui-input ">
 									</div>
 								</div>
 								<div class="layui-form-item">
 									<label class="layui-form-label">开户行账号</label>
 									<div class="layui-input-block">
-										<input type="text" name="" 
+										<input type="text" name="bankCardNo" 
 											placeholder="" value="" autocomplete="off" class="layui-input ">
 									</div>
 								</div>
-								<div class="layui-form-item">
-									<label class="layui-form-label">收票人姓名</label>
-									<div class="layui-input-block">
-										<input type="text" name="" 
-											placeholder="" value="" autocomplete="off" class="layui-input ">
-									</div>
+							</div>
+							<div class="layui-form-item">
+								<label class="layui-form-label">收票人姓名</label>
+								<div class="layui-input-block">
+									<input type="text" name="recipientName" 
+										placeholder="" value="" autocomplete="off" class="layui-input ">
 								</div>
-								<div class="layui-form-item">
-									<label class="layui-form-label">收票人手机号</label>
-									<div class="layui-input-block">
-										<input type="text" name="" 
-											placeholder="" value="" autocomplete="off" class="layui-input ">
-									</div>
+							</div>
+							<div class="layui-form-item">
+								<label class="layui-form-label">收票人手机号</label>
+								<div class="layui-input-block">
+									<input type="text" name="recipientPhone" 
+										placeholder="" value="" autocomplete="off" class="layui-input ">
 								</div>
-								<div class="layui-form-item">
-									<label class="layui-form-label">收票详细地址</label>
-									<div class="layui-input-block">
-										<input type="text" name="" 
-											placeholder="" value="" autocomplete="off" class="layui-input ">
-									</div>
+							</div>
+							<div class="layui-form-item">
+								<label class="layui-form-label">收票详细地址</label>
+								<div class="layui-input-block">
+									<input type="text" name="address" 
+										placeholder="" value="" autocomplete="off" class="layui-input ">
 								</div>
 							</div>
 							<button type="button" class="layui-btn submit" lay-submit=""
@@ -307,6 +296,12 @@
 								}
 							}
 						});
+						
+						//点击申请开票
+						$(".application").click(function(){
+							$(".recordList").hide();
+							$(".invoice").show();
+						})
 
 					}
 				}, function (err) {
@@ -325,20 +320,60 @@
 		//发票
 
 		//判断是个人还是公司
+		$(".unit input").removeAttr("lay-verify");
 		var form = layui.form;
 		form.on('radio(radioInput)', function(data){ 
 			console.log(data);
-			if(data.value == "单位"){
+			if(data.value == "公司"){
 				$(".unit").show();
-				$(".personal").hide().removeAttr("lay-verify");;
+				$(".personal").hide();
+				$(".personal input").removeAttr("lay-verify");
 			}else{
 				$(".personal").show();
-				$(".unit").hide().removeAttr("lay-verify");;
+				$(".unit").hide();
+				$(".unit input").removeAttr("lay-verify");
 			}
 		});
 		$(".cancel").click(function(){
 			$(".invoice").hide();
+			$(".recordList").show();
+		});
+
+		layui.use(['laypage', 'laytpl', 'layer','form'], function () {
+			var laytpl = layui.laytpl,
+				form = layui.form,
+				laypage = layui.laypage;
+			//监听提交
+			form.on('submit(register)', function (data) {
+				console.log(data.field)
+				invoiceApply(data.field);
+				return false;
+			});
 		})
+
+		//申请开票
+		function invoiceApply(json){
+			console.log(json)
+			http.ajax({
+				url: 'order/invoiceApply',
+				type: 'POST',
+				json: true,
+				mask: true,
+				data: JSON.stringify(json)
+			}).then(function (data) {
+				if (data.code == 200) {
+					layer.msg('申请成功', {icon: 1});
+					$(".invoice").hide();
+					$(".recordList").show();
+					orderRecords();
+				}else{
+					layer.msg(data.msg, {icon: 2});
+				}
+			}, function (err) {
+				layer.msg(err.responseJSON.msg, {icon: 2});
+			});
+		}
+
 	</script>
 </body>
 
