@@ -125,7 +125,7 @@
 							{{#  } else if(d.courseHourList.length == 0) { }}
 								<button type="button" class="layui-btn layui-btn-disabled">暂无课程</button>
 							{{#  } else { }}
-								<button onclick="openUrl('watchVideo.html?id={{d.id}}')" type="button" class="layui-btn">继续学习 ></button>
+								<button onclick="openUrl('watchVideo.html?id={{d.id}}&sid={{d.courseHourList[0].id}}')" type="button" class="layui-btn">继续学习 ></button>
 							{{#  } }} 
 					</div>
 				</script>
@@ -257,9 +257,9 @@
 							}
 						});
 
-						// $("button").click(function () {
-						// 	localStorage.removeItem("courseHourId");
-						// });
+						$("button").click(function () {
+							localStorage.removeItem("courseHourId");
+						});
 					}
 				}, function (err) {
 

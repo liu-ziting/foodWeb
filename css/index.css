@@ -1063,7 +1063,14 @@ header nav  ul .active i{
 }
 .userContent .right .courseSwiper p{
 	width: 178px;
-    margin-top: 235px;
+	margin-top: 235px;
+	display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    white-space: normal !important;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 }
 .userContent .right .swiper-slide{
 	cursor: pointer;
@@ -1340,6 +1347,13 @@ header nav  ul .active i{
 	width: 178px;
 	margin-top: 240px;
 	cursor: pointer;
+	display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    white-space: normal !important;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 }
 #myCourse ul li > time{
 	width: 178px;
