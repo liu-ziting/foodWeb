@@ -99,7 +99,7 @@
 							<div class="Rleft">
 								<p><span>姓名：</span>{{d.name}}</p>
 								<p><span>性别：</span>
-									{{#  if(d.sex == 1){ }}男{{#  } else { }}女{{#  } }} 
+									{{#  if(d.sex == "男"){ }}男{{#  } else { }}女{{#  } }} 
 								</p>
 								<p><span>手机号：</span>{{d.phone}}</p>
 								<p><span>身份证号：</span>{{d.idNo}}</p>
@@ -210,18 +210,23 @@
 							innerHTML += "<div id="+result.items[i].courseDTO.id+" class=\"swiper-slide\">";
 
 							if (result.items[i].courseDTO.fontCoverPic == 0 || result.items[i].courseDTO.fontCoverPic == null) {
-								innerHTML += "<div style='background: url(../img/no.png);' class=\"gbox\">";
+								innerHTML += "<div onclick=\"openUrl('courseCenterDetails.html?id="+result.items[i].courseDTO.id+"')\" style='background: url(../img/no.png);' class=\"gbox\">";
 							} else {
-								innerHTML += "<div style='background: url(" + result.items[i].courseDTO.fontCoverPic + ");background-size:cover;background-position:center;'  class=\"gbox\">";
+								innerHTML += "<div onclick=\"openUrl('courseCenterDetails.html?id="+result.items[i].courseDTO.id+"')\" style='background: url(" + result.items[i].courseDTO.fontCoverPic + ");background-size:cover;background-position:center;'  class=\"gbox\">";
 							};
 							innerHTML += "</div>";
 							innerHTML += "<p>" + result.items[i].courseDTO.courseName + "课程</p>";
 							if (result.items[i].learnStatus == 'unstart') {
-								innerHTML += "<time>尚未学习<span>继续学习</span></time>";
+								innerHTML += "<time>尚未学习<span onclick=\"openUrl('courseCenterDetails.html?id="+result.items[i].courseDTO.id+"')\" >继续学习</span></time>";
 							} else if (result.items[i].learnStatus == 'under_way') {
-								innerHTML += "<time>已学习课程<span>继续学习</span></time>";
+								innerHTML += "<time>已学习课程<span onclick=\"openUrl('courseCenterDetails.html?id="+result.items[i].courseDTO.id+"')\" >继续学习</span></time>";
 							} else if (result.items[i].learnStatus == 'completed') {
-								innerHTML += "<time>学习已完成</time>";
+								if(result.items[i].examPass == false){
+									innerHTML += "<time>学习已完成<span onclick=\"openUrl('examination.html?id="+result.items[i].examCenterId+"')\" >重新考试</span></time>";
+								}else{
+									innerHTML += "<time>学习已完成<span onclick=\"openUrl('application.html?id="+result.items[i].examCenterId+"')\" >申请发证</span></time>";
+								}
+								
 							};
 
 							innerHTML += "</div>";
@@ -236,12 +241,6 @@
 							scrollbar: {
 								el: '.swiper-scrollbar',
 							},
-						});
-						$("#userCourse > div").click(function(){
-							var id = $(this).attr("id");
-							if(id){
-								openUrl('courseCenterDetails.html?id='+id+'');
-							}
 						});
 					}
 				}, function (err) {
@@ -264,7 +263,7 @@
 				}
 			}).then(function (data) {
 				if (data.code == 200) {
-					if(data.data.items.length == 0){
+					if(data.data == null || data.data.items.length == 0 ){
 						$(".noCertificate").show();
 					}else{	
 						var iHTMl = "";

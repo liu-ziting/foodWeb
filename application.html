@@ -74,64 +74,67 @@
 			<h1 class="titleSon">
 				<a href="index.html">首页 ></a>
 				<a href="testCenter.html">考试中心 ></a>
-				<a href="">在线证书查询</a>
+				<a href="">申请资料填写</a>
 			</h1>
 			<div class="certificate">
-				<form class="layui-form" action="">
-					<h1>证书申请资料填写</h1>
-					<span></span>
-					<div class="layui-form-item">
-						<label class="layui-form-label"><i>*</i>姓名：</label>
-						<div class="layui-input-block">
-							<input type="text" name="username" lay-verify="required" lay-reqtext="请输入您的姓名"
-									placeholder="请输入您的姓名" value="" autocomplete="off" class="layui-input username">
+				<div id="view"></div>
+				<script id="applicationTpl" type="text/html">
+					<form class="layui-form" action="">
+						<h1>证书申请资料填写</h1>
+						<span></span>
+						<div class="layui-form-item">
+							<label class="layui-form-label"><i>*</i>姓名：</label>
+							<div class="layui-input-block">
+								<input type="text" value="{{d.name}}" name="username" lay-verify="required" lay-reqtext="请输入您的姓名"
+										placeholder="请输入您的姓名" value="" autocomplete="off" class="layui-input username">
+							</div>
 						</div>
-					</div>
-					<div class="layui-form-item">
-						<label class="layui-form-label"><i>*</i>性别：</label>
-						<div class="layui-input-block">
-						  <input type="radio" name="sex" value="男" title="男" checked="">
-						  <input type="radio" name="sex" value="女" title="女">
+						<div class="layui-form-item">
+							<label class="layui-form-label"><i>*</i>性别：</label>
+							<div class="layui-input-block">
+								<input {{d.sex == '男' ? 'checked' : '' }} type="radio" name="sex" value="男" title="男">
+								<input {{ d.sex == '女' ? 'checked' : '' }} type="radio" name="sex" value="女" title="女">
+							</div>
 						</div>
-					  </div>
-					<div class="layui-form-item">
-						<label class="layui-form-label"><i>*</i>身份证：</label>
-						<div class="layui-input-block">
-							<input type="text" name="idNo" lay-verify="required" lay-reqtext="请输入正确的身份证号码"
-									placeholder="请输入正确的身份证号码" value="" autocomplete="off" class="layui-input idNo">
+						<div class="layui-form-item">
+							<label class="layui-form-label"><i>*</i>身份证：</label>
+							<div class="layui-input-block">
+								<input type="text"  value="{{d.idNo}}"  name="idNo" lay-verify="required" lay-reqtext="请输入正确的身份证号码"
+										placeholder="请输入正确的身份证号码" value="" autocomplete="off" class="layui-input idNo">
+							</div>
 						</div>
-					</div>
-					<div class="layui-form-item">
-						<label class="layui-form-label"><i>*</i>手机号：</label>
-						<div class="layui-input-block">
-							<input type="text" name="phone" lay-verify="required" lay-reqtext="请输入正确手机号码获取信息"
-									placeholder="请输入正确手机号码获取信息" value="" class="layui-input phone">
+						<div class="layui-form-item">
+							<label class="layui-form-label"><i>*</i>手机号：</label>
+							<div class="layui-input-block">
+								<input type="text" value="{{d.phone}}"  name="phone" lay-verify="required" lay-reqtext="请输入正确手机号码获取信息"
+										placeholder="请输入正确手机号码获取信息" value="" class="layui-input phone">
+							</div>
 						</div>
-					</div>
-					<div class="layui-form-item">
-						<label class="layui-form-label"><i>*</i>收货地址：</label>
-						<div class="layui-input-block">
-							<input type="text" name="certificateNo" 
-									placeholder="请输入收取证书的邮寄地址" value="" class="layui-input certificateNo">
+						<div class="layui-form-item">
+							<label class="layui-form-label"><i>*</i>收货地址：</label>
+							<div class="layui-input-block">
+								<input type="text" name="address"  lay-verify="required" lay-reqtext="请输入收取证书的邮寄地址"
+										placeholder="请输入收取证书的邮寄地址" value="" class="layui-input address">
+							</div>
 						</div>
-					</div>
-					<div class="layui-form-item">
-						<label class="layui-form-label">公司名称：</label>
-						<div class="layui-input-block">
-							<input type="text" name="certificateNo" 
-									placeholder="请输入公司名称" value="" class="layui-input certificateNo">
+						<div class="layui-form-item">
+							<label class="layui-form-label">公司名称：</label>
+							<div class="layui-input-block">
+								<input type="text" value="{{d.company}}" name="company" 
+										placeholder="请输入公司名称" value="" class="layui-input company">
+							</div>
 						</div>
-					</div>
-					<div class="layui-form-item">
-						<label class="layui-form-label">企业代码：</label>
-						<div class="layui-input-block">
-							<input type="text" name="certificateNo" 
-									placeholder="请输入企业统一社会信用代码" value="" class="layui-input certificateNo">
+						<div class="layui-form-item">
+							<label class="layui-form-label">企业代码：</label>
+							<div class="layui-input-block">
+								<input type="text" name="enterpriseCode" 
+										placeholder="请输入企业统一社会信用代码" value="" class="layui-input enterpriseCode">
+							</div>
 						</div>
-					</div>
-					<p>带 “ * ” 请填写真实有效的身份信息，资料通过审核后将以邮<br/>寄的方式将资格证寄出，请确保手机号码及地址信息正确。</p>
-					<button type="button" class="layui-btn inquire" lay-submit="" lay-filter="register">申请发证</button>
-				</form>
+						<p>带 “ * ” 请填写真实有效的身份信息，资料通过审核后将以邮<br/>寄的方式将资格证寄出，请确保手机号码及地址信息正确。</p>
+						<button type="button" class="layui-btn inquire" lay-submit="" lay-filter="register">申请发证</button>
+					</form>
+				</script>
 			</div>
 		</section>
 	</div>
@@ -148,17 +151,62 @@
 			},
 		});
 		
-		layui.use(['form', 'layedit', 'laydate'], function () {
-			var form = layui.form
-				, layer = layui.layer
+		getUserInfo();
+		function getUserInfo(){
+			layui.use(['laypage', 'laytpl', 'layer','form'], function () {
+			var laytpl = layui.laytpl,
+				form = layui.form,
+				laypage = layui.laypage;
 			//监听提交
 			form.on('submit(register)', function (data) {
-				certificateSearch(data.field.username,data.field.idNo,data.field.certificateNo);
+				console.log(data.field)
+				issueCertificate(data.field);
 				return false;
 			});
+			http.ajax({
+				url: 'user/getUserInfo',
+				type: 'GET',
+				json: false,
+				mask: true,
+			}).then(function (data) {
+				if (data.code == 200) {
+					var data = beNull(data.data);
+					var getTpl = applicationTpl.innerHTML
+						, view = document.getElementById('view');
+					laytpl(getTpl).render(data, function (html) {
+						view.innerHTML = html;
+					});
+					renderForm();
+				}
+			}, function (err) {
+				layer.msg('登录已失效！', {
+					icon: 5
+				}, function () {
+					location.href = 'login.html';
+				});
+			});
 		});
+		}
 
-		
+		//申请发证
+		function issueCertificate(json){
+			console.log(json)
+			http.ajax({
+				url: 'certificate/issueCertificate?courseId='+getQueryString("id")+'',
+				type: 'POST',
+				json: true,
+				mask: true,
+				data: JSON.stringify(json)
+			}).then(function (data) {
+				if (data.code == 200) {
+					layer.msg('申请成功', {icon: 1});
+				}else{
+					layer.msg(data.msg, {icon: 2});
+				}
+			}, function (err) {
+				layer.msg(err.responseJSON.msg, {icon: 2});
+			});
+		}
 	</script>
 </body>
 

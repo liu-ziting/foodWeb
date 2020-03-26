@@ -288,3 +288,8 @@ function examSubmit() {
 
     })
 }
+
+//点击发证
+$(".application").click(function(){
+    openUrl('application.html?id='+getQueryString('id')+'');
+})

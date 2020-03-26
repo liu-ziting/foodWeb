@@ -94,21 +94,27 @@
 						<div id="view"></div>
 						<script id="myCourseTpl" type="text/html">
 						{{# layui.each(d.items, function(index, item){ }}
-						<li onclick="openUrl('courseCenterDetails.html?id={{item.courseDTO.id}}')">
+						<li>
 							{{#  if(item.courseDTO.fontCoverPic == 0 ||item.courseDTO.fontCoverPic == null){ }}
-							<div class="gbox" style="background: url(../img/no.png);">	
+							<div onclick="openUrl('courseCenterDetails.html?id={{item.courseDTO.id}}')" class="gbox" style="background: url(../img/no.png);">	
 							{{#  } else { }}
-							<div class="gbox" style="background: url({{item.courseDTO.fontCoverPic}});background-size:cover;background-position:center;">
+							<div onclick="openUrl('courseCenterDetails.html?id={{item.courseDTO.id}}')" class="gbox" style="background: url({{item.courseDTO.fontCoverPic}});background-size:cover;background-position:center;">
 							{{#  } }} 
 							
 							</div>
-							<p>{{item.courseDTO.courseName}}课程</p>
+							<p onclick="openUrl('courseCenterDetails.html?id={{item.courseDTO.id}}')">{{item.courseDTO.courseName}}课程</p>
 							{{#  if(item.learnStatus == 'unstart'){ }}
-							<time>尚未学习<span>继续学习</span></time>
+							<time>尚未学习<span onclick="openUrl('courseCenterDetails.html?id={{item.courseDTO.id}}')">继续学习</span></time>
 							{{#  } else if(item.learnStatus == 'under_way') { }}
-							<time>已学习课程<span>继续学习</span></time>
+							<time>已学习课程<span onclick="openUrl('courseCenterDetails.html?id={{item.courseDTO.id}}')">继续学习</span></time>
 							{{#  } else if(item.learnStatus == 'completed'){ }}
-							<time>学习已完成</time>
+
+								{{#  if(item.examPass == false){ }}
+								<time>学习已完成<span  onclick="openUrl('examination.html?id={{item.examCenterId}}')">重新考试</span></time>
+								{{#  } else { }}
+								<time>学习已完成<span onclick="openUrl('application.html?id={{item.examCenterId}}')">申请发证</span></time>
+								{{#  } }} 
+							
 							{{#  } }} 
 						</li>
 						{{# }); }} {{# if(d.items.length === 0){ }}

@@ -135,7 +135,7 @@
 					<ul class="layui-tab-title">
 						<li class="layui-this">课程简介</li>
 						<li>课程目录</li>
-						<li>课程题库</li>
+						<li class="questionBank">课程题库</li>
 					</ul>
 					<div class="layui-tab-content">
 						<div class="layui-tab-item layui-show trainingDetail">
@@ -212,6 +212,9 @@
 						$(".temporary").hide();
 						// 数据渲染
 						var data = beZero(data.data);
+						if(data.buyStatus == 'unpurchased'){
+							$(".questionBank").hide();
+						}
 						var totalList = data.total;
 						var getTpl = courseCenterDetailsTopTpl.innerHTML,
 							view = document.getElementById('viewCourse');

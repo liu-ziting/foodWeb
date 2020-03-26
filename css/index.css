@@ -1285,6 +1285,7 @@ header nav  ul .active i{
 	border-radius: 3px;
 	z-index: 9;
 	transition: all 0.3s;
+	cursor: pointer;
 }
 .publicList .right  .blue{
 	background: url(../img/bk1.png);
@@ -1338,6 +1339,7 @@ header nav  ul .active i{
 #myCourse ul li > p{
 	width: 178px;
 	margin-top: 240px;
+	cursor: pointer;
 }
 #myCourse ul li > time{
 	width: 178px;
@@ -1345,9 +1347,13 @@ header nav  ul .active i{
 	margin-top: 10px;
 	margin-left: 0;
 }
+#myCourse ul li > time i{
+	cursor: pointer;
+}
 #myCourse ul li > time span{
 	margin: 0;
 	color: #F5520D;
+	cursor: pointer;
 }
 #myCourse ul li:hover .gbox{
 	box-shadow:0px 6px 10px 0px #cccccc ;
@@ -2353,6 +2359,15 @@ header nav  ul .active i{
 	margin-top: 19px;
 	position: absolute;
 	bottom: 44px;
+}
+.testCenter li .layui-btn-disabled{
+	background-color: #999999;
+}
+.testCenter li .passed{
+	background-color: #029042 !important;
+}
+.testCenter li .notPurchased{
+	background-color: #669999 !important;
 }
 .testCenter .paging{
 	margin: 30px 0;

@@ -88,7 +88,17 @@
 						<span><i class="layui-icon layui-icon-form"></i>题量：{{item.questionNum}}题</span><span><i class="layui-icon layui-icon-log"></i>限时：{{item.limitedTime}}分钟</span>
 						<p>适用：{{item.courseInfo.trainingType.memo}}</p>
 						<p>简介：{{item.brief}}</p>
-						<button onclick="openUrl('examination.html?id={{item.id}}')" type="button" class="layui-btn startTest">开始考试</button>
+
+						{{#  if(item.userExamStatus == 'can_exam'){ }}
+							<button onclick="openUrl('examination.html?id={{item.id}}')" type="button" class="layui-btn startTest">开始考试</button>
+						{{#  } else if(item.userExamStatus == 'passed') { }}
+							<button  type="button" class="layui-btn startTest layui-btn-disabled passed">已通过考试</button>
+						{{#  } else if(item.userExamStatus == 'not_completed') { }}
+							<button  type="button" class="layui-btn startTest layui-btn-disabled">学习未完成</button>
+						{{#  } else if(item.userExamStatus == 'not_purchased') { }}
+							<button  type="button" class="layui-btn startTest layui-btn-disabled notPurchased">未购买该课程</button>
+						{{#  } }} 
+						
 					</div>
 				</li>	
 				{{# }); }} {{# if(d.items.length === 0){ }}
