@@ -565,6 +565,29 @@ function bannerList(type,son) {
 		console.log(err);
 	})
 };
+//广告接口
+ad_list();
+function ad_list() {
+	http.ajax({
+		url: 'ad/ad_list',
+		type: 'GET',
+		json: false,
+		mask: false,
+		data: {
+			pageNo: 1,
+			pageSize: 5,
+			type:'index'
+		}
+	}).then(function (data) {
+		var result = data.data;
+		if (data.code == 200) {
+			var innerHTML = "";
+			
+		}
+	}, function (err) {
+		console.log(err);
+	})
+};
 //分享到微信
 function weixin(_this) {
 	var url = App.rootPath + $(_this).attr("id");
