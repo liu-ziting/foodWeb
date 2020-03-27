@@ -194,6 +194,9 @@ header nav  ul .active i{
 /* 首页轮播图 */
 .banner{
 	position: relative;
+	min-height: 574px;
+	background-color: #f1f1f1;
+	overflow: hidden;
 }
 .banner img{
 	width: 100%;
@@ -201,7 +204,7 @@ header nav  ul .active i{
 	z-index: 10;
 	height: 574px;
 }
-.banner .swiper-slide:before {
+.banner:before {
     content: "食品安全培训网";
     font-family: "宋体";
     font-size: 30px;
@@ -212,7 +215,7 @@ header nav  ul .active i{
     line-height: 574px;
     width: 100%;
     position: absolute;
-	z-index: -1;
+	z-index: 1;
 }
 .notice{
 	width: 100%;
@@ -827,8 +830,9 @@ header nav  ul .active i{
 	width: 100%;
 	height: 257px;
 	overflow: hidden;
+	background-color: #f1f1f1;
 }
-.sonBanner .swiper-slide::before{
+.sonBanner::before{
 	content: "食品安全培训网";
     font-family: "宋体";
     font-size: 20px;
@@ -839,14 +843,14 @@ header nav  ul .active i{
     line-height: 257px;
     width: 100%;
     position: absolute;
-    z-index: 9;
+    z-index: 1;
 }
 .sonBanner img{
 	width: 100%;
 	height: 257px;
 	display: block;
 	position: absolute;
-	z-index: 999;
+	z-index: 999999;
 }
 .userTitle{
 	font-size:24px;

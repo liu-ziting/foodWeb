@@ -73,6 +73,7 @@ var bPos = pathName.indexOf('.');
 var activeUrl = pathName.substr(aPos + 1, bPos - aPos - 1);
 $("#navList li").eq(jumpActive(activeUrl)).addClass("active")
 
+
 // $("title").html($("#navList .active").text());
 // 返回顶部
 layui.use(['util'], function () {
@@ -511,6 +512,59 @@ function countDownCode() {
 		}
 	}, 1000)
 }
+//轮播图接口
+bannerList(activeUrl)
+function bannerList(type,son) {
+	http.ajax({
+		url: 'banner/bannerList',
+		type: 'GET',
+		json: false,
+		mask: false,
+		data: {
+			pageNo: 1,
+			pageSize: 5,
+			type:type
+		}
+	}).then(function (data) {
+		var result = data.data;
+		if (data.code == 200) {
+			var innerHTML = "";
+			for (var i = 0; i <result.items.length; i++) {
+				innerHTML +='<div class="swiper-slide">';
+				innerHTML +='<img src="img/b1.png" />';
+				innerHTML +='</div>';
+			};
+			if(result.total == 0){
+				innerHTML +='<div class="swiper-slide">';
+				if(son == 'index'){
+					innerHTML +='<img src="../img/b1.png" />';
+				}else{
+					innerHTML +='<img src="../img/sbanner.png" />';
+				}
+				innerHTML +='</div>';
+			};
+			if(son == 'index'){
+				$(".indexBanner > div").append(innerHTML);
+				//首页轮播图
+				var indexBannerswiper = new Swiper('.indexBanner', {
+					autoplay: {
+						delay: 5000
+					},
+				});
+			}else{
+				$(".sonBanner > div").append(innerHTML);
+				//其他页面轮播图
+				var indexBannerswiper = new Swiper('.sonBanner', {
+					autoplay: {
+						delay: 5000
+					},
+				});
+			}
+		}
+	}, function (err) {
+		console.log(err);
+	})
+};
 //分享到微信
 function weixin(_this) {
 	var url = App.rootPath + $(_this).attr("id");

@@ -45,12 +45,7 @@
 		<!-- 子页面轮播 -->
 		<div class="swiper-container sonBanner">
 			<div class="swiper-wrapper">
-				<div class="swiper-slide">
-					<img src="img/sbanner.png" />
-				</div>
-				<div class="swiper-slide">
-					<img src="img/sbanner.png" />
-				</div>
+				
 			</div>
 		</div>
 		<section id="myNews" class="centre publicList">
@@ -87,6 +82,15 @@
 				<div class="right">
 					<h3>我的消息<p><i>个人中心 > 用户管理 > <span>我的消息</span></i></p></h3>
 					<ul>
+						<li class="temporary" >
+							<h1 class="temporaryList gjpAfter"></h1>
+						</li>
+						<li class="temporary" >
+							<h1 class="temporaryList gjpAfter"></h1>
+						</li>
+						<li class="temporary" >
+							<h1 class="temporaryList gjpAfter"></h1>
+						</li>
 						<div id="view"></div>
 						<script id="myNewsTpl" type="text/html">
 							{{# layui.each(d.items, function(index, item){ }}
@@ -138,12 +142,13 @@
 					url: 'sysNotice/userSysNotice',
 					type: 'GET',
 					json: false,
-					mask: true,
+					mask: false,
 					data: {
 						pageNo: pageNo,
 						pageSize: pageSize
 					}
 				}).then(function (data) {
+					$(".temporary").hide();
 					var result = data;
 					var totalList = data.data.total;
 					$(".total").text(totalList);
