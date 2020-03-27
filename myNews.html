@@ -90,15 +90,21 @@
 						<div id="view"></div>
 						<script id="myNewsTpl" type="text/html">
 							{{# layui.each(d.items, function(index, item){ }}
-							<li>
-								<h1>滁州食品安全网<time>2020-01-09</time><span class="read">已读</span></h1>
-								<p>您购买的食品从业人员流通领域培训课程已生效，请在课程中心中查看课程并学习</p>
+							<li onclick="openInform({{item.id}})">
+								<h1>{{item.title}}<time>{{item.createTime}}</time>
+									{{#  if(item.readStatus == 'unread'){ }}
+									<span class="">未读</span>
+									{{#  } else { }}
+									<span class="read">已读</span>
+									{{#  } }} 	
+								</h1>
+								<!-- <p>{{item.content}}</p> -->
 							</li>
 							{{# }); }} {{# if(d.items.length === 0){ }}
 							<li>
-								<h1>暂无系统消息</h1>							</li>
+								<h1>暂无系统消息</h1>
+							</li>
 							{{# } }}
-							
 						</script>
 					</ul>
 					<!--分页-->
@@ -170,6 +176,33 @@
 				})
 			});
 		};
+
+		//阅读系统消息详情
+		function openInform(noticeId) {
+			http.ajax({
+				url: 'sysNotice/readSysNotice',
+				type: 'GET',
+				json: false,
+				mask: false,
+				data: {
+					noticeId: noticeId
+				}
+			}).then(function (data) {
+				if (data.code == 200) {
+					layer.open({
+						type: 1,
+						title: data.data.title,
+						skin: 'layui-layer-rim',
+						area: ['420px', '240px'],
+						content: '<div style="padding: 15px;"><p>' + data.data.content + '</p></div>'
+					});
+					userSysNotice();
+				}
+			}, function (err) {
+
+			})
+
+		}
 	</script>
 </body>
 

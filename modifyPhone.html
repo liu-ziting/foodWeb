@@ -186,19 +186,19 @@
 		};
 
 		//检查手机号或用户名是否可注册
-		function check(data,type){
+		function check(phone,type){
 			http.ajax({
 				url: 'user/check',
 				type: 'GET',
 				json: false,
 				mask: true,
 				data: {
-					data:data,
+					data:phone,
 					type:type,
 				}
-			}).then(function(data) {
+			}).then(function(phone) {
 				if(data.code == 200){
-					send_verify_code(data,'changePhone');
+					send_verify_code(phone,'changePhone');
 					countDownCode();
 				}
 			},function(err) {
