@@ -79,6 +79,10 @@
 					</li>
 				</ul>
 				<div class="totality">共<span class="total">--个</span>课程</div>
+				<div class="search">
+					<input type="text" class="searchVal" placeholder="请输入您要查询的课程名称" />
+					<span id="clickSearch" class="layui-icon layui-icon-search"></span>
+				</div>
 			</div>
 			<div class="courseMain">
 				<ul class="course">
@@ -196,6 +200,7 @@
 							$(this).addClass("active").siblings().removeClass("active");
 							$("#trainingTypeId").val($(this).attr("id"));
 						};
+						$(".searchVal").val("")
 						courseList();
 					})
 				}
@@ -238,6 +243,7 @@
 							$(this).addClass("active").siblings().removeClass("active");
 							$("#industryId").val($(this).attr("id"));
 						};
+						$(".searchVal").val("")
 						courseList();
 					})
 				}
@@ -265,6 +271,7 @@
 						pageSize: pageSize,
 						trainingTypeId:$("#trainingTypeId").val(),
 						industryId:$("#industryId").val(),
+						key:$(".searchVal").val()
 					}
 				}).then(function (data) {
 					var result = data;
@@ -301,6 +308,16 @@
 				})
 			});
 		};
+
+		//搜索课程
+		$("#clickSearch").click(function(){
+			courseList();
+		});
+		$(document).keypress(function (e) {
+			if (e.keyCode == 13) {
+				courseList();
+			}
+		});
 	</script>
 </body>
 

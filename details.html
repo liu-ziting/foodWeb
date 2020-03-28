@@ -62,9 +62,9 @@
 				<p>
 					<span>发布时间：{{d.current.createTime}}</span>
 					<span>阅读量：{{d.current.hitCount}}</span>
-					<i class="layui-icon layui-icon-login-weibo"></i>
-					<i class="layui-icon layui-icon-login-qq"></i>
-					<i class="layui-icon layui-icon-login-wechat"></i>
+					<i onclick="shareToXl(this)"  id="/details.html?id={{d.current.id}}" bt="{{d.current.noticeTitle}}" class="layui-icon layui-icon-login-weibo"></i>
+					<i onclick="shareToQq(this)" id="/details.html?id={{d.current.id}}" bt="{{d.current.noticeTitle}}" class="layui-icon layui-icon-login-qq"></i>
+					<i onclick="weixin(this)" id="/details.html?id={{d.current.id}}"  class="layui-icon layui-icon-login-wechat"></i>
 				</p>
 				<div class="clear"></div>
 				<div class="content">
@@ -92,6 +92,7 @@
 	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 	<script type="text/javascript" src="layui/layui.all.js"></script>
 	<script type="text/javascript" src="js/swiper.min.js"> </script>
+	<script type="text/javascript" src="js/jquery.qrcode.min.js" ></script>
 	<script type="text/javascript" src="js/main.js"></script>
 	<script>
 		//轮播图

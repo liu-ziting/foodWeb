@@ -1513,6 +1513,27 @@ header nav  ul .active i{
 .courseCenter .topList .totality span{
 	color: #F5520D;
 }
+.courseCenter .topList .search{
+	float: right;
+	margin-top: -70px;
+	position: relative;
+}
+.courseCenter .topList .search input{
+	height: 32px;
+    line-height: 32px;
+    padding-left: 20px;
+    width: 300px;
+    border-radius: 40px;
+	border: 1px solid #E7E6ED;
+}
+.courseCenter .topList .search span{
+	position: absolute;
+    right: 12px;
+    top: 5px;
+    font-size: 22px;
+    color: #666666;
+    cursor: pointer;
+}
 .courseCenter .courseMain{
 	overflow: hidden;
 	padding-bottom: 45px;

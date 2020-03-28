@@ -591,6 +591,7 @@ function ad_list() {
 //分享到微信
 function weixin(_this) {
 	var url = App.rootPath + $(_this).attr("id");
+	console.log(url)
 	layer.open({
 		type: 1,
 		skin: 'layui-layer-demo', //样式类名

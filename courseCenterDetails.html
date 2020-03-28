@@ -165,6 +165,7 @@
 		</div>
 	</div>
 	<footer></footer>
+	
 	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 	<script type="text/javascript" src="layui/layui.all.js"></script>
 	<script type="text/javascript" src="js/swiper.min.js"> </script>
@@ -221,6 +222,7 @@
 							}else{
 								listHtml += '<time><img src="img/vtime.png" />'+data.courseHourList[i].courseResourceDuration/60+'分钟</time>';
 							}
+							listHtml += '<input type="hidden" value="'+data.courseHourList[i].free+'" class="free" />';
 							listHtml += '</li>';
 						};
 
@@ -231,11 +233,23 @@
 						$("#kcList").append(listHtml);
 
 						$("#kcList li").click(function () {
+							localStorage.removeItem("courseHourId");
 							var sid = $(this).attr("id");
-							if(sid){
-								localStorage.removeItem("courseHourId");
+							var free = $(this).find(".free").val();
+							//是否购买，购买直接看，没购买，看是否免费
+							if(sid && data.buyStatus == 'purchased'){
 								openUrl('watchVideo.html?id='+getQueryString("id")+'&sid='+sid+'');
+							}else{
+								if(sid && free == 'true'){
+									openUrl('watchVideo.html?id='+getQueryString("id")+'&sid='+sid+'');
+								}else{
+									layer.msg('为购买不可观看！', {
+										icon: 5
+									}, function () {
+									});
+								}
 							}
+							
 						});
 						//收藏
 						$(".courseDetalisTop .right h1 b").click(function () {
