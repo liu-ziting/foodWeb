@@ -30,9 +30,9 @@ function courseDetail() {
             }
             for (var i = 0; i < data.courseHourList.length; i++) {
                 if (data.courseHourList[i].learnStatus == 'completed') {
-                    listHtml += '<li style="color:#397D47" class=' + data.courseHourList[i].learnStatus + ' id=' + data.courseHourList[i].id + '>(' + (i + 1) + ')-' + data.courseHourList[i].courseHourName + '<span>（已学习）</span></li>';
+                    listHtml += '<li style="color:#397D47" class=' + data.courseHourList[i].learnStatus + ' id=' + data.courseHourList[i].id + '>(' + (i + 1) + ')-' + data.courseHourList[i].courseHourName + '<span>（已学习）</span><input type="hidden" value="'+data.courseHourList[i].free+'" class="free" /></li>';
                 } else {
-                    listHtml += '<li  class=' + data.courseHourList[i].learnStatus + ' id=' + data.courseHourList[i].id + '>(' + (i + 1) + ')-' + data.courseHourList[i].courseHourName + '</li>';
+                    listHtml += '<li  class=' + data.courseHourList[i].learnStatus + ' id=' + data.courseHourList[i].id + '>(' + (i + 1) + ')-' + data.courseHourList[i].courseHourName + '<input type="hidden" value="'+data.courseHourList[i].free+'" class="free" /></li>';
                 }
             };
             $("#kcList").append(listHtml);
@@ -58,15 +58,31 @@ function courseDetail() {
                 cookieTime = 0;
                 var sid = $(this).attr("id");
                 var learnStatus = $(this).attr("class");
+                var free = $(this).find(".free").val();
                 // 切换视频时候判断是否已学习
                 if (learnStatus == 'completed') {
                     $(".videoPrevent").hide();
                 } else {
                     $(".videoPrevent").show();
                 }
-                $(this).addClass("active").siblings().removeClass("active");
-                localStorage.setItem("courseHourId", sid);
-                courseHourDetail(sid);
+                
+                if(sid && data.buyStatus == 'purchased'){
+                     courseHourDetail(sid);
+                     $(this).addClass("active").siblings().removeClass("active");
+                     localStorage.setItem("courseHourId", sid);
+                }else{
+                    if(sid && free == 'true'){
+                        courseHourDetail(sid);
+                        $(this).addClass("active").siblings().removeClass("active");
+                        localStorage.setItem("courseHourId", sid);
+                    }else{
+                        layer.msg('为购买不可观看！', {
+                            icon: 5
+                        }, function () {
+                        });
+                    }
+                }
+               
             });
 
             if($("#kcList .active").hasClass("unstart")){
