@@ -531,7 +531,8 @@ function bannerList(type,son) {
 			var innerHTML = "";
 			for (var i = 0; i <result.items.length; i++) {
 				innerHTML +='<div class="swiper-slide">';
-				innerHTML +='<img src="img/b1.png" />';
+				innerHTML +='<a target="_blank" href="'+result.items[i].slidingLink+'"><img src="'+result.items[i].slidingImgUrl+'" /></a>';
+
 				innerHTML +='</div>';
 			};
 			if(result.total == 0){
@@ -575,14 +576,25 @@ function ad_list() {
 		mask: false,
 		data: {
 			pageNo: 1,
-			pageSize: 5,
+			pageSize: 3,
 			type:'index'
 		}
 	}).then(function (data) {
-		var result = data.data;
 		if (data.code == 200) {
 			var innerHTML = "";
-			
+			var result = data.data.items;
+            var iHTML = '';
+            for (var i = 0; i < result.length; i++) {
+				iHTML +="<li class=\"gjpAfter\">"+
+				"<a title=\"" + result[i].title + "\" target=\"blank\" href=\"" + result[i].linkUrl + "\" >"+
+				"<img src=\"" + result[i].imageUrl + "\" /></a></li>";
+			};
+            if (data.data.total == 0) {
+                $("#advertisingListBox > li").show();
+			}else{
+				$("#advertisingListBox > li").hide();
+			}
+			$("#advertisingListBox").append(iHTML);
 		}
 	}, function (err) {
 		console.log(err);

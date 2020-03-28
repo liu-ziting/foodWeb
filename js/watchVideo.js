@@ -76,7 +76,7 @@ function courseDetail() {
                         $(this).addClass("active").siblings().removeClass("active");
                         localStorage.setItem("courseHourId", sid);
                     }else{
-                        layer.msg('为购买不可观看！', {
+                        layer.msg('未购买不可观看！', {
                             icon: 5
                         }, function () {
                         });
