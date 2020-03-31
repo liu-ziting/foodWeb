@@ -165,7 +165,7 @@ function freeCourseList() {
                     var index = $(this).index();
                     $(this).addClass("active").siblings().removeClass("active");
                     var courseResourceUrl = result.items[index].courseResourceUrl;
-                    videoPlay(courseResourceUrl);
+                    videoPlay(courseResourceUrl,'true');
 
                     leftDetsils(result,index,id)
                 });
@@ -180,13 +180,13 @@ function freeCourseList() {
 };
 
 // 播放视频
-function videoPlay(courseResourceUrl){
+function videoPlay(courseResourceUrl,isAutoplay){
     var videoObject = {
         container: '.videosamplex',//“#”代表容器的ID，“.”或“”代表容器的class
         variable: 'player',//该属性必需设置，值等于下面的new chplayer()的对象
         // poster: 'img/no.png',
         loaded: "loadHandler",
-        autoplay: false, //是否自动播放
+        autoplay: isAutoplay, //是否自动播放
         loop: false, //播放结束是否循环播放
         mobileCkControls: true,//是否在移动端（包括ios）环境中显示控制栏
         mobileAutoFull: false,//在移动端播放后是否按系统设置的全屏播放
