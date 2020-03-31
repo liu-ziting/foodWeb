@@ -74,16 +74,18 @@
 						{{#  } else { }}
 						<div class="gbox" style="background: url({{item.courseInfo.fontCoverPic}});background-size:cover;background-position:center;">
 						{{#  } }} 
-							<!-- <h1>{{item.courseInfo.trainingType.trainingTypeName}}课程</h1>
-							<p>{{item.courseInfo.trainingType.memo}}适用</p> -->
+							
 						</div>
 					</div>
 					<div class="rightBox">
 						<h1>{{item.examName}}</h1>
 						<span><i class="layui-icon layui-icon-form"></i>题量：{{item.questionNum}}题</span><span><i class="layui-icon layui-icon-log"></i>限时：{{item.limitedTime}}分钟</span>
-						<p>适用：{{item.courseInfo.trainingType.memo}}</p>
+						{{#  if(item.courseInfo.trainingType){ }}
+							<p>适用：{{item.courseInfo.trainingType.memo}}</p>
+						{{#  } else { }}
+							<p>适用：暂无</p>
+						{{#  } }} 
 						<p>简介：{{item.brief}}</p>
-
 						{{#  if(item.userExamStatus == 'can_exam'){ }}
 							<button onclick="openUrl('examination.html?id={{item.id}}')" type="button" class="layui-btn startTest">开始考试</button>
 						{{#  } else if(item.userExamStatus == 'passed') { }}
