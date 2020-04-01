@@ -321,10 +321,12 @@
 				$(".unit").show();
 				$(".personal").hide();
 				$(".personal input").removeAttr("lay-verify");
+				$(".unit input").attr("lay-verify","required");
 			}else{
 				$(".personal").show();
 				$(".unit").hide();
 				$(".unit input").removeAttr("lay-verify");
+				$(".personal input").attr("lay-verify","required");
 			}
 		});
 		$(".cancel").click(function(){

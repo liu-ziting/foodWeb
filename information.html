@@ -128,7 +128,7 @@
 					if (data.code == 200) {
 						$(".temporary").hide();
 						// 数据渲染
-						var data = data.data;
+						var data = beAir(data.data);
 						var totalList = data.total;
 						var getTpl = informationTpl.innerHTML,
 							view = document.getElementById('view');

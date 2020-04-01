@@ -2129,12 +2129,13 @@ header nav  ul .active i{
 }
 .certificate form p{
 	font-size: 14px;
-	color: #FF6600;
+	color: #F5520D;
 	width: 527px;
 	text-align: center;
 	margin: 0 auto;
-	line-height: 28px;
-	margin-top: -10px;
+	line-height: 25px;
+	font-weight:400;
+	margin-top: 80px;
 }
 .certificate form .inquire{
 	width:264px;

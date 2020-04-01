@@ -12,19 +12,60 @@
 	<link rel="stylesheet" href="css/index.css" />
 	<style>
 		.certificate form .layui-form-label {
-			width: 110px;
+			width: 156px;
 		}
+
 		.certificate form .layui-input-block {
-   			margin-left: 110px;
+			margin-left: 156px;
 		}
-		.certificate form{
+		.certificate form section{
+			margin-left: -45px;
+		}
+		.certificate form {
 			margin-bottom: 150px;
 		}
-		.certificate form .layui-anim  {
+
+		.certificate form .layui-anim {
 			color: #999999;
 		}
-		.layui-form-radioed i{
+
+		.layui-form-radioed i {
 			color: #5FB878 !important;
+		}
+
+		.imgBox {
+			width: 86px;
+			height: 121px;
+			background: rgba(236, 236, 236, 1);
+			float: left;
+			margin-right: 48px;
+		}
+
+		.imgBox img {
+			width: 86px;
+			height: 121px;
+			display: block;
+		}
+
+		.addPhotos {
+			width: 76px;
+			height: 34px;
+			background: rgba(41, 105, 201, 1);
+			border-radius: 4px;
+			z-index: 9999999;
+		}
+
+		.introduce {
+			margin-left: 133px;
+			float: left;
+			margin-top: -48px;
+		}
+
+		.introduce em {
+			font-size: 12px;
+			color: #999999;
+			width: 100%;
+			display: block;
 		}
 	</style>
 </head>
@@ -62,7 +103,7 @@
 		<!-- 子页面轮播 -->
 		<div class="swiper-container sonBanner">
 			<div class="swiper-wrapper">
-				
+
 			</div>
 		</div>
 		<section class="centre">
@@ -77,6 +118,7 @@
 					<form class="layui-form" action="">
 						<h1>证书申请资料填写</h1>
 						<span></span>
+						<section>
 						<div class="layui-form-item">
 							<label class="layui-form-label"><i>*</i>姓名：</label>
 							<div class="layui-input-block">
@@ -92,7 +134,7 @@
 							</div>
 						</div>
 						<div class="layui-form-item">
-							<label class="layui-form-label"><i>*</i>身份证：</label>
+							<label class="layui-form-label"><i>*</i>身份证号：</label>
 							<div class="layui-input-block">
 								<input type="text"  value="{{d.idNo}}"  name="idNo" lay-verify="required" lay-reqtext="请输入正确的身份证号码"
 										placeholder="请输入正确的身份证号码" value="" autocomplete="off" class="layui-input idNo">
@@ -106,7 +148,7 @@
 							</div>
 						</div>
 						<div class="layui-form-item">
-							<label class="layui-form-label"><i>*</i>收货地址：</label>
+							<label class="layui-form-label"><i>*</i>邮寄地址：</label>
 							<div class="layui-input-block">
 								<input type="text" name="address"  lay-verify="required" lay-reqtext="请输入收取证书的邮寄地址"
 										placeholder="请输入收取证书的邮寄地址" value="" class="layui-input address">
@@ -120,13 +162,30 @@
 							</div>
 						</div>
 						<div class="layui-form-item">
-							<label class="layui-form-label">企业代码：</label>
+							<label class="layui-form-label">统一社会信用代码：</label>
 							<div class="layui-input-block">
 								<input type="text" name="enterpriseCode" 
 										placeholder="请输入企业统一社会信用代码" value="" class="layui-input enterpriseCode">
 							</div>
 						</div>
-						<p>带 “ * ” 请填写真实有效的身份信息，资料通过审核后将以邮<br/>寄的方式将资格证寄出，请确保手机号码及地址信息正确。</p>
+						<div class="layui-form-item">
+							<label class="layui-form-label">证书证件照片：</label>
+							<div class="layui-input-block" >
+								<div class="imgBox">
+									<img class="layui-upload-img" id="demo1">
+									<input type="hidden" name="avatarUrl" 
+										placeholder="请上传证件照" value="" class="layui-input avatarUrl">
+								</div>
+								<button id="test1" type="button" class="layui-btn layui-btn-sm addPhotos">添加照片</button>
+								<div class="introduce">
+									<em>1，照片大小不超过2M。</em>
+									<em>2，尺寸为2.5X3.5cm的一寸照。</em>
+									<em>3，上传格式为：png、jpg、gif。</em>
+								</div>
+							</div>
+						</div>
+						</section>
+						<p>带 “*” 为必填选项，请填写真实有效的身份信息，资料通过审核后将以邮<br/>寄的方式将资格证寄出，请确保手机号码及地址信息正确。</p>
 						<button type="button" class="layui-btn inquire" lay-submit="" lay-filter="register">申请发证</button>
 					</form>
 				</script>
@@ -139,67 +198,101 @@
 	<script type="text/javascript" src="js/swiper.min.js"> </script>
 	<script type="text/javascript" src="js/main.js"></script>
 	<script>
-		//轮播图
-		var indexBannerswiper = new Swiper('.sonBanner', {
-			autoplay: {
-				delay: 5000
-			},
-		});
-		
+
+		// 证件照上传
+		function uploadImg() {
+			layui.use('upload', function () {
+				var $ = layui.jquery
+					, upload = layui.upload;
+				var uploadInst = upload.render({
+					elem: '#test1'
+					, url: App.apiBasePath + 'upload/fileUpload' //改成您自己的上传接口
+					, size: 2048 //限制文件大小，单位 KB
+					, accept: 'images'
+					, method: 'POST'
+					, before: function (obj) {
+						//预读本地文件示例，不支持ie8
+						obj.preview(function (index, file, result) {
+							$('#demo1').attr('src', result); //图片链接（base64）
+						});
+					}
+					, done: function (res) {
+						//上传成功
+						if (res.code == 200) {
+							$(".avatarUrl").val(App.filePath + res.data);
+							$('#demo1').attr('src', App.filePath + res.data); //图片链接（base64）
+						} else {
+							layer.msg('上传失败，请重新上传！');
+						}
+					}
+					, error: function () {
+						layer.msg('上传失败，请重新上传！');
+					}
+				});
+			})
+		}
+
 		getUserInfo();
-		function getUserInfo(){
-			layui.use(['laypage', 'laytpl', 'layer','form'], function () {
-			var laytpl = layui.laytpl,
-				form = layui.form,
-				laypage = layui.laypage;
-			//监听提交
-			form.on('submit(register)', function (data) {
-				console.log(data.field)
-				issueCertificate(data.field);
-				return false;
-			});
-			http.ajax({
-				url: 'user/getUserInfo',
-				type: 'GET',
-				json: false,
-				mask: true,
-			}).then(function (data) {
-				if (data.code == 200) {
-					var data = beNull(data.data);
-					var getTpl = applicationTpl.innerHTML
-						, view = document.getElementById('view');
-					laytpl(getTpl).render(data, function (html) {
-						view.innerHTML = html;
+		function getUserInfo() {
+			layui.use(['laypage', 'laytpl', 'layer', 'form'], function () {
+				var laytpl = layui.laytpl,
+					form = layui.form,
+					laypage = layui.laypage;
+				//监听提交
+				form.on('submit(register)', function (data) {
+					console.log(data.field)
+					issueCertificate(data.field);
+					return false;
+				});
+				http.ajax({
+					url: 'user/getUserInfo',
+					type: 'GET',
+					json: false,
+					mask: true,
+				}).then(function (data) {
+					if (data.code == 200) {
+						var data = beNull(data.data);
+						var getTpl = applicationTpl.innerHTML
+							, view = document.getElementById('view');
+						laytpl(getTpl).render(data, function (html) {
+							view.innerHTML = html;
+						});
+						renderForm();
+						uploadImg();
+					}
+				}, function (err) {
+					layer.msg('登录已失效！', {
+						icon: 5
+					}, function () {
+						location.href = 'login.html';
 					});
-					renderForm();
-				}
-			}, function (err) {
-				layer.msg('登录已失效！', {
-					icon: 5
-				}, function () {
-					location.href = 'login.html';
 				});
 			});
-		});
 		}
 
 		//申请发证
-		function issueCertificate(json){
+		function issueCertificate(json) {
 			console.log(json)
 			http.ajax({
-				url: 'certificate/issueCertificate?courseId='+getQueryString("id")+'',
+				url: 'certificate/issueCertificate?courseId=' + getQueryString("id") + '',
 				type: 'POST',
 				json: true,
 				mask: true,
 				data: JSON.stringify(json)
 			}).then(function (data) {
 				if (data.code == 200) {
-					layer.msg('申请成功', {icon: 1});
-				}else{
-					layer.msg(data.msg, {icon: 2});
+					layer.msg('申请成功', { icon: 1 });
+				} else {
+					layer.msg(data.msg, { icon: 2 });
 				}
 			}, function (err) {
-				layer.msg(err.responseJSON.msg, {icon: 2});
+				if(err.status == 400){
+					layer.msg('传参错误，请联系管理员！', {
+						icon: 5
+					});
+				}else{
+					// layer.msg(err.message, { icon: 2 });
+				}
 			});
 		}
 	</script>

@@ -1,9 +1,10 @@
 var App = {
-	apiBasePath: "http://edu-bus.utools.club/bus/", 	//接口地址
-	// apiBasePath: "http://api-business.lihail.cn/bus/", 	//接口地址
-	rootPath: getRootPath(),				//项目根目录地址
-	filePath: 'http://edubus.utools.club/bus/',
-	timestamp: ((Date.parse(new Date())) / 1000).toString(),	//时间戳
+	// apiBasePath: "http://www.ahspaq.com/bus/",            	//正式服务接口地址
+	apiBasePath: "http://edu-bus.utools.club/bus/", 	    //本地服务接口地址
+	// apiBasePath: "http://api-business.lihail.cn/bus/", 	//测试服务接口地址
+	rootPath: getRootPath(),				                //项目根目录地址
+	filePath: 'http://resources.ahspaq.com/',               //图片路径
+	timestamp: ((Date.parse(new Date())) / 1000).toString(),//时间戳
 };
 
 //头部进度加载条
@@ -147,7 +148,6 @@ var http = {
 				layer.close(loading);
 			}, 100);
 		}, function (error) {
-			console.log(error)
 			if (error.status == 504) {
 				layer.msg('请求超时，请重试!', {
 					icon: 5
@@ -156,9 +156,10 @@ var http = {
 				var err = JSON.parse(error.responseText);
 				var code = err.code; // 错误码
 				var emsg = err.msg; // 错误内容提示（字符串）
+				console.log(code)
 				switch (code) {
 					case 500: // 500 服务器错误
-						layer.msg('服务器发生错误，请联系管理员！', {
+						layer.msg('服务器发生错误，请联系管理员', {
 							icon: 5
 						});
 						break;
@@ -169,23 +170,28 @@ var http = {
 						//location.href = 'login.html';
 						//});
 						break;
+					case 400: // 400 传参错误
+						layer.msg('传参错误，请联系管理员', {
+							icon: 5
+						});
+						break;
 					case 401: // 401 登录失败
-						layer.msg('登录失败！', {
+						layer.msg('登录失败', {
 							icon: 5
 						});
 						break;
 					case 10002: // 10002 注册失败
-						layer.msg('用户注册失败！', {
+						layer.msg('用户注册失败', {
 							icon: 5
 						});
 						break;
 					case 10000: // 10000 手机号已存在
-						layer.msg('手机号已存在！', {
+						layer.msg('手机号已存在', {
 							icon: 5
 						});
 						break;
 					case 10001: // 10001 验证码发送失败
-						layer.msg('验证码发送失败！', {
+						layer.msg('验证码发送失败', {
 							icon: 5
 						});
 						break;
@@ -200,7 +206,12 @@ var http = {
 						});
 						break;
 					case 10009: // 10009 创建支付信息失败
-						layer.msg(emsg + '，请联系管理员！', {
+						layer.msg(emsg + '，请联系管理员', {
+							icon: 5
+						});
+						break;
+					case 10018: // 10018 不符合发证要求
+						layer.msg(emsg, {
 							icon: 5
 						});
 						break;
@@ -285,6 +296,24 @@ function beNull(data) {
 			// }
 			if (typeof (data[x]) === 'object') { // 是json 递归继续处理
 				data[x] = beNull(data[x])
+			}
+		}
+	}
+	return data;
+};
+//处理返回的数据为null时候，设置为暂无
+function beAir(data) {
+	for (let x in data) {
+		if (data[x] === null) { // 如果是null 把直接内容转为 '暂无'
+			data[x] = '-';
+		} else {
+			// if (Array.isArray(data[x])) { // 是数组遍历数组 递归继续处理
+			// 	data[x] = data[x].map(z => {
+			// 	return beNull(z);
+			// 	});
+			// }
+			if (typeof (data[x]) === 'object') { // 是json 递归继续处理
+				data[x] = beAir(data[x])
 			}
 		}
 	}
