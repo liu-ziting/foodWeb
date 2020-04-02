@@ -220,7 +220,7 @@
 							if(data.courseHourList[i].learnStatus == 'completed'){
 								listHtml += '<time><img src="img/vtime.png" />已学习</time>';
 							}else{
-								listHtml += '<time><img src="img/vtime.png" />'+data.courseHourList[i].courseResourceDuration/60+'分钟</time>';
+								listHtml += '<time><img src="img/vtime.png" />'+data.courseHourList[i].courseResourceDuration+'分钟</time>';
 							}
 							listHtml += '<input type="hidden" value="'+data.courseHourList[i].free+'" class="free" />';
 							listHtml += '</li>';
