@@ -18,8 +18,13 @@ function foodNewsList() {
             var topList="";
             if (data.code == 200) {
                 // 数据渲染
-                leftHtml +="<div class=\"imgBox gjpAfter\">"+
-                "</div>"+
+                leftHtml +="<div class=\"imgBox gjpAfter\">";
+                if(result.items[0].imageUrl){
+                    leftHtml +="<img src="+result.items[0].imageUrl+" />";
+                }else{
+                    
+                }
+                leftHtml +="</div>"+
                 "<div class=\"textBox\">"+
                 "<time>新闻 | "+result.items[0].createTime+"</time>"+
                 "<p>"+result.items[0].noticeTitle+"</p>"+
@@ -211,12 +216,10 @@ function loadHandler(player) {
     player.addListener('ended', VideoPlayEndedHandler);//监听播放结束
 }
 function timeHandler(t) {
-    console.log(t)
     cookie.set('time_' + videoID, t); //当前视频播放时间写入cookie
 }
 function VideoPlayEndedHandler() {//监听视频播放完成
     console.log('本视频已结束');
-
 }
 
 // 课程简介
