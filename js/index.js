@@ -100,10 +100,18 @@ function indexCourse() {
                 $(".course .temporary").hide();
                 //从业人员培训课程
                 var listOne = result.items[0];
-                courseList(listOne,"courseOne");
+                if(listOne == undefined){
+                    $("#courseOne").parents().parent(".manager").hide();
+                }else{
+                    courseList(listOne,"courseOne");
+                }
                 //管理人员培训课程
                 var listTwo = result.items[1];
-                courseList(listTwo,"courseTwo");
+                if(listTwo == undefined){
+                    $("#courseTwo").parents().parent(".manager").hide();
+                }else{
+                    courseList(listTwo,"courseTwo");
+                }
                 
             }
         }, function (err) {
@@ -132,6 +140,7 @@ function courseList(list,id){
         "</div></div></li>";
     };
     $("#"+id+"").append(innerHtml);
+    $("#"+id+"").siblings(".title").find(".stitle").text(list[0].trainingType.trainingTypeName);
 }
 
 // 获取试听课程列表

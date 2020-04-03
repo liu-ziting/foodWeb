@@ -1785,7 +1785,8 @@ header nav  ul .active i{
 	min-height: 500px;
 }
 .courseDetalisTab .centre .layui-tab-content > div:nth-child(1){
-	width: 560px;
+	/* width: 560px; */
+	width: 100%;
 	line-height: 35px;
 }
 .courseDetalisTab .centre .layui-tab-content ul{

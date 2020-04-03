@@ -118,7 +118,7 @@ function courseHourDetail(sid) {
             courseHourId: sid
         }
     }).then(function (data) {
-        var result = data.data;
+        var result = beNull(data.data);
         if (data.code == 200) {
             $(".exercise .temporary").hide();
             $(".courseHourName").text(result.courseHourName);
