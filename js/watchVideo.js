@@ -1,6 +1,6 @@
 
 var videoID = 10; //视频的区分ID，每个视频分配一个唯一的ID
-var maxTime = 30;//观看视频30秒前不能快进
+var maxTime = 300;//观看视频5分钟前不能快进
 var cookieTime = cookie.get('time_' + videoID); //调用已记录的time
 var videoObject;
 var player;
