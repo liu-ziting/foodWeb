@@ -1,6 +1,6 @@
 var App = {
-	apiBasePath: "http://www.ahspaq.com/bus/",            	//正式服务接口地址
-	// apiBasePath: "http://edu-bus.utools.club/bus/", 	    //本地服务接口地址
+	// apiBasePath: "http://www.ahspaq.com/bus/",            	//正式服务接口地址
+	apiBasePath: "http://edu-bus.utools.club/bus/", 	    //本地服务接口地址
 	// apiBasePath: "http://api-business.lihail.cn/bus/", 	//测试服务接口地址
 	rootPath: getRootPath(),				                //项目根目录地址
 	filePath: 'http://resources.ahspaq.com/',               //图片路径
