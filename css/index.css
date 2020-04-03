@@ -1460,6 +1460,10 @@ header nav  ul .active i{
 	color:rgba(102,102,102,1);
 	margin: 38px 0;
 	line-height: 25px;
+	-webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 .newsList ul li time{
 	font-size:14px;
