@@ -642,6 +642,10 @@ header nav  ul .active i{
 }
 .foodInformation section .middle ul li span{
 	float: right;
+    width: 80px;
+    height: 16px;
+    color: #666666;
+    overflow: hidden;
 }
 .foodInformation section .middle a{
 	font-size: 12px;
