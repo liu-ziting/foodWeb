@@ -41,57 +41,55 @@
 		</div>
 	</header>
 	<div class="loginMain">
-		<section>
-			<h1>登陆后使用</h1>
+		<section class="numberLogin">
+			<h1>欢迎登陆安徽食品安全培训网</h1>
+			<!-- 登录 -->
+			<div class="loginBox">
+				<div class="upRight">
+					<img src="img/loginIcon1.png"/>
+				</div>
+				<form>
+					<label>
+						<i class="layui-icon layui-icon-cellphone"></i>
+						<input type="tel" class="phone" name="phone" lay-verify="phone" autocomplete="off" placeholder="请输入手机账号" class="layui-input">
+					</label>
+					<label>
+						<i class="layui-icon layui-icon-vercode"></i>
+						<input type="text" class="code" name="code" lay-verify="code" autocomplete="off" placeholder="请输入验证码" class="layui-input">
+					</label>
+					<button type="button" class="layui-btn getCode">获取验证码</button>
+					<p>
+						新用户，点击<span class="registerBut">注册</span>
+					</p>
+					<div class="clear"></div>
+					<button type="button" class="layui-btn submit">登录</button>
+					<fieldset class="layui-elem-field layui-field-title">
+						<legend>其他账号登录</legend>
+					</fieldset>
+					<b class="layui-icon layui-icon-login-wechat ewm"></b>
+				</form>
+			</div>
+		</section>
+		<section class="qrcodeLogin">
+			<div class="upRight">
+				<img src="img/loginIcon2.png"/>
+			</div>
+			<h1>欢迎登陆安徽食品安全培训网</h1>
 			<div id="QRcode" class="qrCode"></div>
-			<p>小程序授权登陆，<span onclick="getLoginCode();" class="refresh">刷新</span><br> 扫描二维码，识别小程序</p>
+			<p>小程序授权登陆
+				<!-- <span onclick="getLoginCode();" class="refresh">刷新</span> -->
+				<br> 扫描二维码，识别小程序</p>
 		</section>
 	</div>
 	<footer></footer>
 	<input type="hidden" id="loginCode" value=""/>
+	<input type="hidden" id="checkType" value="login"/>
 	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 	<script type="text/javascript" src="layui/layui.all.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="js/login.js"></script>
 	<script>
-
-		//模拟登陆
-		$(".qrCode").click(function () {
-			layer.prompt({ title: '开发模拟小程序登陆', formType: 3 }, function (pass, index) {
-				layer.close(index);
-				devLogin(pass)
-			});
-		})
-		//测试环境用户登录
-		function devLogin(phone) {
-			http.ajax({
-				url: 'user/devLogin',
-				type: 'POST',
-				json: false,
-				mask: true,
-				data: {
-					phone: phone,
-				}
-			}).then(function (data) {
-				if (data.code == 200) {
-					layer.msg('恭喜您，登录成功！', {
-						icon: 1,
-						time:1000
-					}, function () {
-						location.href = 'index.html';
-					});
-				}
-			}, function (err) {
-				console.log(err);
-			})
-		};
 		
-		//获取loginCode
-		getLoginCode();
-
-		//轮询
-		window.setInterval(function () {
-			// checkLogin($("#loginCode").val())
-		}, 3000)
 	</script>
 </body>
 

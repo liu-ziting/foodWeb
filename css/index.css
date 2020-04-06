@@ -764,35 +764,46 @@ header nav  ul .active i{
 	position: relative;
 }
 .loginMain section{
-	background: url(../img/loginBox.png) no-repeat;
-	background-size: 100% 100%;
-	width: 480px;
-	height: 480px;
+	/* background: url(../img/loginBox.png) no-repeat; */
+	width:433px;
+	height:460px;
+	background:rgba(255,255,255,1);
+	box-shadow:0px 14px 36px 4px rgba(145,143,143,0.32);
+	border-radius:4px;
 	margin: 0 auto;
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	margin-left: -240px;
-	margin-top: -225px;
+	margin-left: -216.5px;
+	margin-top: -230px;
 	padding: 26px;
+	overflow: hidden;
 }
 .loginMain section h1{
 	font-size: 18px;
 	color: #333333;
 	font-weight:bold;
-	width: 103px;
-	margin: 0 auto;
+	width: 100%;
 	text-align: center;
-	border-bottom: 3px solid #397D47;
-	margin-top: 10px;
 	padding-bottom: 5px;
+	position: relative;
+}
+.loginMain section h1:after {
+    content: '';
+    position: absolute;
+    top: 120%;
+    background: #397D47;
+    width: 80px;
+    height: 3px;
+    left: 50%;
+    margin-left: -40px;
 }
 .loginMain section .qrCode{
 	width: 236px;
 	height: 236px;
 	border-radius: 236px;
 	display: block;
-	margin: 31px auto;
+	margin: 40px auto;
 	position: relative;
 }
 .loginMain section p{
@@ -807,7 +818,7 @@ header nav  ul .active i{
 	color: #029042;
 }
 .loginMain section .qrCode:before {
-    content: "小程序码加载中...";
+    content: "微信小程序登录暂不可用";
     font-family: "宋体";
     font-size: 20px;
     color: #8D8D8D;
@@ -825,6 +836,95 @@ header nav  ul .active i{
 	height: 100%;
 	z-index: 10;
 	position: absolute;
+}
+.loginMain form{
+	width: 350px;
+	margin: 0 auto;
+	margin-top: 45px;
+}
+.loginMain form label{
+	width: 100%;
+	height: 43px;
+	line-height: 43px;
+	border:1px solid #999999;
+	display: block;
+	margin-bottom: 30px;
+	float: left;
+}
+.loginMain form label input{
+	height: 40px;
+	line-height: 40px;
+	border: none;
+	width: 200px;
+	font-size: 14px;
+	padding: 0;
+}
+.loginMain form label i{
+	display: block;
+	float: left;
+	margin-left: 15px;
+	margin-right: 10px;
+	color: #999999;
+	font-size: 20px;
+}
+.loginMain form label:nth-child(2){
+	width: 213px;
+}
+.loginMain form label:nth-child(2) input{
+	width: 110px;
+}
+.loginMain form .getCode{
+	width:122px;
+	height:43px;
+	background:rgba(40,105,201,1);
+	float: left;
+	margin-left: 15px;
+}
+.loginMain form p{
+	text-align: center;
+	width: 100%;
+	font-size: 12px;
+	color: #999999;
+	float: left;
+	overflow: hidden;
+}
+.loginMain form p span{
+	color: #2969C9;
+}
+.loginMain form .submit{
+	width:262px;
+	height:51px;
+	background:rgba(41,105,201,1);
+	font-size: 14px;
+	margin: 0 auto;
+	margin-top: 15px;
+	display: block;
+}
+.loginMain form fieldset{
+	width: 262px;
+    text-align: center;
+	margin: 30px auto 0 auto;
+	border-top: 1px solid #999999;
+}
+.loginMain form fieldset legend{
+	font-size: 12px;
+	color: #999999;
+}
+.loginMain form b{
+	font-size: 35px;
+    margin: 10px auto;
+    display: block;
+	text-align: center;
+	cursor: pointer;
+}
+.loginMain .upRight{
+	position: absolute;
+	top: 0;
+	right: 0;
+	cursor: pointer;
+}
+.qrcodeLogin{
+	display: none;
 }
 /* 个人中心 */
 .userMain {

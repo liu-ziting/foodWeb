@@ -500,7 +500,7 @@ function logout() {
 		if (data.code == 200) {
 			layer.msg('退出成功！');
 			localStorage.removeItem("login");
-			location.href = 'index.html';
+			location.href = 'login.html';
 		}
 	}, function (err) {
 
@@ -509,7 +509,7 @@ function logout() {
 //获取手机验证码
 function send_verify_code(phone, type) {
 	http.ajax({
-		url: 'user/send_verify_code',
+		url: 'user/sendVerifyCode',
 		type: 'POST',
 		json: false,
 		mask: true,
@@ -535,7 +535,7 @@ function countDownCode() {
 			$(".getCode").text("重新发送(" + num + ")").attr("disabled", "disabled");
 			$(".getCode").css('background', '#B8B8B8');
 		} else {
-			$(".getCode").text("获取短信验证码").removeAttr("disabled");
+			$(".getCode").text("获取验证码").removeAttr("disabled");
 			$(".getCode").css('background', '#195edd');
 			clearInterval(timer);
 		}
