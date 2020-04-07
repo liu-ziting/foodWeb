@@ -133,12 +133,13 @@
 						for (var i = 0; i < data.data.items.length; i++) {
 							iHTMl +="<div><div class=\"searchResult\">"+
 							"<div class=\"imgBox\">"+
-							"<h1>"+data.data.items[i].username+"</h1>"+
-							"<p>恭喜您通过【<span>"+data.data.items[i].certificateName+"</span>】考试，成功获取【<span>"+data.data.items[i].certificateName+"</span>】证书"+
-							"证书，您可以持有本证书从事"+data.data.items[i].examName+"工作"+
-							"</p>"+
-							"<time><i>"+data.data.items[i].createTime+"</i>"+
-							"<em>"+data.data.items[i].certificateNo+"</em></time>"+
+							"<img src="+data.data.items[i].certificateUrl+" />"+
+							// "<h1>"+data.data.items[i].username+"</h1>"+
+							// "<p>恭喜您通过【<span>"+data.data.items[i].certificateName+"</span>】考试，成功获取【<span>"+data.data.items[i].certificateName+"</span>】证书"+
+							// "证书，您可以持有本证书从事"+data.data.items[i].examName+"工作"+
+							// "</p>"+
+							// "<time><i>"+data.data.items[i].createTime+"</i>"+
+							// "<em>"+data.data.items[i].certificateNo+"</em></time>"+
 							"</div></div></div>";
 						};
 						$("#certificateList").append(iHTMl);

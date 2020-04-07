@@ -211,7 +211,7 @@
 								if(result.items[i].examPass == false){
 									innerHTML += "<time>学习已完成<span onclick=\"openUrl('examination.html?id="+result.items[i].examCenterId+"')\" >开始考试</span></time>";
 								}else{
-									innerHTML += "<time>学习已完成<span onclick=\"openUrl('application.html?id="+result.items[i].examCenterId+"')\" >申请发证</span></time>";
+									innerHTML += "<time>学习已完成<span onclick=\"openUrl('application.html?id="+result.items[i].courseDTO.id+"')\" >申请发证</span></time>";
 								}
 								
 							};
