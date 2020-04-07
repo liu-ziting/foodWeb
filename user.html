@@ -209,7 +209,7 @@
 								innerHTML += "<time>已学习课程<span onclick=\"openUrl('courseCenterDetails.html?id="+result.items[i].courseDTO.id+"')\" >继续学习</span></time>";
 							} else if (result.items[i].learnStatus == 'completed') {
 								if(result.items[i].examPass == false){
-									innerHTML += "<time>学习已完成<span onclick=\"openUrl('examination.html?id="+result.items[i].examCenterId+"')\" >重新考试</span></time>";
+									innerHTML += "<time>学习已完成<span onclick=\"openUrl('examination.html?id="+result.items[i].examCenterId+"')\" >开始考试</span></time>";
 								}else{
 									innerHTML += "<time>学习已完成<span onclick=\"openUrl('application.html?id="+result.items[i].examCenterId+"')\" >申请发证</span></time>";
 								}

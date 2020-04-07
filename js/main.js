@@ -185,11 +185,11 @@ var http = {
 							icon: 5
 						});
 						break;
-					case 10000: // 10000 手机号已存在
-						layer.msg('手机号已存在', {
-							icon: 5
-						});
-						break;
+					// case 10000: // 10000 手机号已存在
+					// 	layer.msg('手机号已存在', {
+					// 		icon: 5
+					// 	});
+					// 	break;
 					case 10001: // 10001 验证码发送失败
 						layer.msg('验证码发送失败', {
 							icon: 5
@@ -520,6 +520,7 @@ function send_verify_code(phone, type) {
 	}).then(function (data) {
 		if (data.code == 200) {
 			layer.msg('验证码发送成功！');
+			countDownCode();
 		}
 	}, function (err) {
 		console.log(err);

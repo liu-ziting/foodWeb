@@ -102,7 +102,12 @@
 									{{#  if(d.learnProgress == 'unstart'){ }}
 									<p class="">还未开始学习</p>
 									{{#  } else { }}
-									<p class="orange">已经学习{{d.learnProgress}}课</p>
+										{{#  if(d.learnProgress == 'completed'){ }}
+										<p class="orange">学习已完成</p>
+										{{#  } else { }}
+										<p class="orange">已经学习{{d.learnProgress}}课</p>
+										{{#  } }} 
+									
 									{{#  } }} 
 								</span>
 							</div>
@@ -120,7 +125,11 @@
 							{{#  } else if(d.courseHourList.length == 0) { }}
 								<button type="button" class="layui-btn layui-btn-disabled">暂无课程</button>
 							{{#  } else { }}
-								<button onclick="openUrl('watchVideo.html?id={{d.id}}&sid={{d.courseHourList[0].id}}')" type="button" class="layui-btn">继续学习 ></button>
+								{{#  if(d.learnProgress == 'completed'){ }}
+								<button onclick="openUrl('testCenter.html')" type="button" class="layui-btn">参加考试 ></button>
+								{{#  } else { }}
+									<button onclick="openUrl('watchVideo.html?id={{d.id}}&sid={{d.courseHourList[0].id}}')" type="button" class="layui-btn">继续学习 ></button>
+								{{#  } }} 
 							{{#  } }} 
 					</div>
 				</script>

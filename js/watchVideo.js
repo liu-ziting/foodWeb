@@ -26,7 +26,12 @@ function courseDetail() {
             if (data.learnProgress == "unstart") {
                 $(".learnProgress").text('0');
             } else {
-                $(".learnProgress").text(data.learnProgress);
+                if(data.learnProgress == 'completed'){
+                    $(".learnProgress").text(data.courseHourList.length);
+                }else{
+                    $(".learnProgress").text(data.learnProgress);
+                }
+                
             }
             for (var i = 0; i < data.courseHourList.length; i++) {
                 if (data.courseHourList[i].learnStatus == 'completed') {
