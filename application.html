@@ -272,7 +272,6 @@
 
 		//申请发证
 		function issueCertificate(json) {
-			console.log(json)
 			http.ajax({
 				url: 'certificate/issueCertificate?courseId=' + getQueryString("id") + '',
 				type: 'POST',
@@ -282,6 +281,17 @@
 			}).then(function (data) {
 				if (data.code == 200) {
 					layer.msg('申请成功', { icon: 1 });
+
+					$(".certificate").find("input").attr("readonly","readonly");
+					$(".certificate").find("input").css("border","none");
+					$(".inquire").addClass("look");
+					$(".inquire").text("查看证书");
+					$(".addPhotos").hide();
+					$(".introduce").hide();
+					// 查看证书
+					$(".look").click(function(){
+						onclick="openUrl('certificate.html')"
+					})
 				} else {
 					layer.msg(data.msg, { icon: 2 });
 				}
@@ -295,6 +305,8 @@
 				}
 			});
 		}
+
+		
 	</script>
 </body>
 

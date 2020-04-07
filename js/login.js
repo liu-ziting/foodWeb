@@ -44,10 +44,23 @@ $(".getCode").click(function(){
             icon: 5
         });
     }else{
-        check(phone,'phone');
+        if(isPoneAvailable(phone)){
+           $(".popupsLogin").show()
+        }
     }
 });
-
+// 图形验证
+$('#captcha').sliderCaptcha({
+    repeatIcon: 'fa fa-redo',
+    setSrc: function () {
+        return 'http://images.sdgxgz.com/Picim' + Math.round(Math.random() * 136) + '.jpg';
+    },
+    onSuccess: function () {
+        layer.msg('验证成功！');
+        check($(".phone").val(), 'phone');
+    }
+});
+//点击登录
 $(".submit").click(function(){
     var phone = $(".phone").val();
     var code = $(".code").val();
@@ -120,6 +133,7 @@ function register(json){
 
 //检查手机号或用户名是否可注册
 function check(phone,type){
+    $(".popupsLogin").hide()
     http.ajax({
         url: 'user/check',
         type: 'GET',

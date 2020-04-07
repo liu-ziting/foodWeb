@@ -185,11 +185,11 @@ var http = {
 							icon: 5
 						});
 						break;
-					// case 10000: // 10000 手机号已存在
-					// 	layer.msg('手机号已存在', {
-					// 		icon: 5
-					// 	});
-					// 	break;
+					case 10017: // 10017 已拥有当前课程证书
+						layer.msg('已拥有当前课程证书', {
+							icon: 5
+						});
+						break;
 					case 10001: // 10001 验证码发送失败
 						layer.msg('验证码发送失败', {
 							icon: 5
@@ -373,6 +373,18 @@ function formatSeconds(value) {
 		result = "" + parseInt(hour) + "小时" + result;
 	}
 	return result;
+}
+// 验证是否是手机号
+function isPoneAvailable(poneInput) {
+	var myreg=/^[1][3,4,5,7,8][0-9]{9}$/;
+	if (!myreg.test(poneInput)) {
+		layer.msg('手机号不正确！', {
+			icon: 5
+		});
+		return false;
+	} else {
+		return true;
+	}
 }
 //获取loginCode
 function getLoginCode() {

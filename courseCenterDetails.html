@@ -112,12 +112,17 @@
 								</span>
 							</div>
 							<div class="priceBox">
-								<h2>￥{{d.courseRealPrice}}</h2>
-								<i>￥{{d.coursePrice}}</i>
-								{{#  if(d.pricePublicize == 0){ }}
+								{{#  if(d.buyStatus == 'unpurchased'){ }}
+									<h2>￥{{d.courseRealPrice}}</h2>
+									<i>￥{{d.coursePrice}}</i>
+									{{#  if(d.pricePublicize == 0){ }}
+									{{#  } else { }}
+									<span>优惠特价，{{d.pricePublicize}}</span>
+									{{#  } }} 
 								{{#  } else { }}
-								<span>优惠特价，{{d.pricePublicize}}</span>
+
 								{{#  } }} 
+								
 							</div>
 							
 							{{#  if(d.buyStatus == 'unpurchased'){ }}
