@@ -4,11 +4,13 @@ $(".registerBut").click(function(){
     $(".code").val("");
     if($(this).text() == "注册"){
         $(this).text("登录");
+        $(".registerTest").text("已有账号")
         $(".loginMain h1").text("欢迎注册安徽食品安全培训网");
         $(".submit").text("注册账号");
         $("#checkType").val("register");
     }else{
         $(this).text("注册");
+        $(".registerTest").text("新用户")
         $(".loginMain h1").text("欢迎登录安徽食品安全培训网");
         $(".submit").text("登录");
         $("#checkType").val("login");
