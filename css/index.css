@@ -2260,6 +2260,16 @@ header nav  ul .active i{
 	margin: 36px auto 0 auto;
 	display: block
 }
+.certificate form .look{
+	width:264px;
+	height:51px;
+	background:rgba(41,105,201,1);
+	border-radius:3px;
+	font-size: 14px;
+	color: #FFFFFF;
+	margin: 36px auto 0 auto;
+	display: block
+}
 .searchResult{
 	padding: 86px;
 	display: none;

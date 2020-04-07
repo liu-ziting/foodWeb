@@ -187,6 +187,7 @@
 						</section>
 						<p>带 “*” 为必填选项，请填写真实有效的身份信息，资料通过审核后将以邮<br/>寄的方式将资格证寄出，请确保手机号码及地址信息正确。</p>
 						<button type="button" class="layui-btn inquire" lay-submit="" lay-filter="register">申请发证</button>
+						<button onclick="openUrl('certificate.html')" style="display:none" type="button" class="layui-btn look" >查询证书</button>
 					</form>
 				</script>
 			</div>
@@ -284,14 +285,11 @@
 
 					$(".certificate").find("input").attr("readonly","readonly");
 					$(".certificate").find("input").css("border","none");
-					$(".inquire").addClass("look");
-					$(".inquire").text("查看证书");
+					$(".inquire").hide();
+					$(".look").show();
 					$(".addPhotos").hide();
 					$(".introduce").hide();
-					// 查看证书
-					$(".look").click(function(){
-						onclick="openUrl('certificate.html')"
-					})
+					
 				} else {
 					layer.msg(data.msg, { icon: 2 });
 				}
@@ -305,7 +303,6 @@
 				}
 			});
 		}
-
 		
 	</script>
 </body>
