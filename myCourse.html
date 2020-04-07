@@ -76,7 +76,7 @@
 							<p onclick="openUrl('myFavorite.html?#myCourse')">我的收藏</p>
 							<p onclick="openUrl('purchaseRecord.html?#purchaseRecord')">购买记录</p>
 						</div>
-						<button type="button" onclick="logout()" class="layui-btn quit">退出登陆</button>
+						<button type="button" onclick="logout()" class="layui-btn quit">退出登录</button>
 					</div>
 				</div>
 				<div class="right">
@@ -105,9 +105,9 @@
 							{{#  } else if(item.learnStatus == 'completed'){ }}
 
 								{{#  if(item.examPass == false){ }}
-								<time>学习已完成<span  onclick="openUrl('examination.html?id={{item.examCenterId}}')">重新考试</span></time>
+								<time>学习已完成<span  onclick="openUrl('examination.html?id={{item.examCenterId}}')">开始考试</span></time>
 								{{#  } else { }}
-								<time>学习已完成<span onclick="openUrl('application.html?id={{item.examCenterId}}')">申请发证</span></time>
+								<time>学习已完成<span onclick="openUrl('application.html?id={{item.courseDTO.id}}')">申请发证</span></time>
 								{{#  } }} 
 							
 							{{#  } }} 

@@ -76,7 +76,7 @@
 							<p onclick="openUrl('myFavorite.html?#myCourse')">我的收藏</p>
 							<p onclick="openUrl('purchaseRecord.html?#purchaseRecord')">购买记录</p>
 						</div>
-						<button type="button" onclick="logout()" class="layui-btn quit">退出登陆</button>
+						<button type="button" onclick="logout()" class="layui-btn quit">退出登录</button>
 					</div>
 				</div>
 				<div class="right">
@@ -211,7 +211,12 @@
 								if(result.items[i].examPass == false){
 									innerHTML += "<time>学习已完成<span onclick=\"openUrl('examination.html?id="+result.items[i].examCenterId+"')\" >开始考试</span></time>";
 								}else{
-									innerHTML += "<time>学习已完成<span onclick=\"openUrl('application.html?id="+result.items[i].courseDTO.id+"')\" >申请发证</span></time>";
+									if(result.items[i].applyCertificateStatus == 'applyed'){
+										innerHTML += "<time>学习已完成<span onclick=\"openUrl('certificate.html')\" >查询证书</span></time>";
+									}else{
+										innerHTML += "<time>学习已完成<span onclick=\"openUrl('application.html?id="+result.items[i].courseDTO.id+"')\" >申请发证</span></time>";
+									}
+									
 								}
 								
 							};
