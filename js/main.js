@@ -102,19 +102,19 @@ function imgError(image) {
 }
 /* 打开新页面 */
 function openUrl(url, type) {
-	if (localStorage.getItem("login") == 'true') {
+	// if (localStorage.getItem("login") == 'true') {
 		if (!type) {
 			window.location.href = url;
 		} else {
 			window.open(url)
 		};
-	} else {
-		layer.msg('暂未登录，请登录！', {
-			icon: 5
-		}, function () {
-			// location.href = 'login.html';
-		});
-	}
+	// } else {
+	// 	layer.msg('暂未登录，请登录！', {
+	// 		icon: 5
+	// 	}, function () {
+	// 		// location.href = 'login.html';
+	// 	});
+	// }
 };
 /** ajax封装
     url: 请求接口地址,

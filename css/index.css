@@ -2953,3 +2953,22 @@ header nav  ul .active i{
 	margin-left: 150px;
     margin-right: 45px;
 }
+.course{
+	position: relative;
+}
+.blurry{
+	filter: blur(10px);
+}
+strong{
+	font-family: "宋体";
+    font-size: 30px;
+    color: #8D8D8D;
+    top: 0;
+    text-align: center;
+    line-height: 300px;
+    width: 100%;
+    position: absolute;
+	z-index: 9999999;
+	top: 0;
+	display: none;
+}
