@@ -53,7 +53,7 @@ $(".getCode").click(function(){
 $('#captcha').sliderCaptcha({
     repeatIcon: 'fa fa-redo',
     setSrc: function () {
-        return 'http://images.sdgxgz.com/Picim' + Math.round(Math.random() * 136) + '.jpg';
+        // return 'http://images.sdgxgz.com/Picim' + Math.round(Math.random() * 136) + '.jpg';
     },
     onSuccess: function () {
         layer.msg('验证成功！');
