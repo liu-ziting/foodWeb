@@ -1,6 +1,6 @@
 var App = {
 	//  apiBasePath: "/bus/",            	//正式服务接口地址
-	apiBasePath: "http://edu-bus.utools.club/bus/", 	    //本地服务接口地址
+	apiBasePath: "http://edu-bus-c.utools.club/bus/", 	    //本地服务接口地址
 	// apiBasePath: "http://api-business.lihail.cn/bus/", 	//测试服务接口地址
 	rootPath: getRootPath(),				                //项目根目录地址
 	filePath: 'http://resources.ahspaq.com/',               //图片路径
@@ -211,6 +211,11 @@ var http = {
 						});
 						break;
 					case 10018: // 10018 不符合发证要求
+						layer.msg(emsg, {
+							icon: 5
+						});
+						break;
+					case 10019: // 10019 发证失败
 						layer.msg(emsg, {
 							icon: 5
 						});

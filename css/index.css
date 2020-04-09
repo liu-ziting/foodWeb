@@ -2291,6 +2291,28 @@ header nav  ul .active i{
 	height: 100%;
 	display: block;
 }
+.searchResult > div .unaudited{
+	position: absolute;
+    top: 23px;
+    display: block;
+    left: 65px;
+    width: 157px;
+	height: 142px;
+	top:30px;
+    z-index: 9999;
+    background: url(../img/audit2.png) no-repeat;
+}
+.searchResult > div .rejected{
+	position: absolute;
+    top: 23px;
+    display: block;
+    left: 65px;
+    width: 157px;
+	height: 142px;
+	top:30px;
+    z-index: 9999;
+    background: url(../img/audit1.png) no-repeat;
+}
 .searchResult > div h1{
 	font-size: 40px;
 	text-align: center;
@@ -2340,7 +2362,14 @@ header nav  ul .active i{
     position: absolute;
 	z-index: -1;
 }
-
+.areabox > div{
+	width: 114px;
+	float: left;
+	margin-left: 15px;
+}
+.areabox > div:first-child{
+	margin-left: 0;
+}
 /* 支付 */
 .purchase {
 	padding-bottom: 210px;
@@ -2434,10 +2463,15 @@ header nav  ul .active i{
 	margin-top: 27px;
 	width: 800px;
 }
+.purchase ul .ewmBox em{
+	float: left;
+    color: #f00;
+    width: 860px;
+}
 .purchase ul .ewmBox  > img{
 	display: block;
-	float: left;
-	margin-top: 97px;
+    float: left;
+    margin-top: 40px;
     margin-bottom: 20px;
 }
 .purchase ul .ewmBox i{

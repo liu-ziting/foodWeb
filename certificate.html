@@ -45,7 +45,7 @@
 		<!-- 子页面轮播 -->
 		<div class="swiper-container sonBanner">
 			<div class="swiper-wrapper">
-				
+
 			</div>
 		</div>
 		<section class="centre">
@@ -61,30 +61,31 @@
 						<label class="layui-form-label"><i>*</i>姓名：</label>
 						<div class="layui-input-block">
 							<input type="text" name="username" lay-verify="required" lay-reqtext="请输入您的姓名"
-									placeholder="请输入您的姓名" value="" autocomplete="off" class="layui-input username">
+								placeholder="请输入您的姓名" value="" autocomplete="off" class="layui-input username">
 						</div>
 					</div>
 					<div class="layui-form-item">
 						<label class="layui-form-label"><i>*</i>身份证：</label>
 						<div class="layui-input-block">
 							<input type="text" name="idNo" lay-verify="required" lay-reqtext="请输入您的身份证号"
-									placeholder="请输入您的身份证号" value="" autocomplete="off" class="layui-input idNo">
+								placeholder="请输入您的身份证号" value="" autocomplete="off" class="layui-input idNo">
 						</div>
 					</div>
 					<div class="layui-form-item">
 						<label class="layui-form-label">证书编号：</label>
 						<div class="layui-input-block">
-							<input type="text" name="certificateNo" 
-									placeholder="请输入您的证书编号" value="" class="layui-input certificateNo">						</div>
+							<input type="text" name="certificateNo" placeholder="请输入您的证书编号" value=""
+								class="layui-input certificateNo"> </div>
 					</div>
-					<p>带 “ * ” 为必填选项，可通过正确有效的证书编号进行查询，也可通过<br/>姓名+身份证的方式进行查询。</p>
+					<p>带 “ * ” 为必填选项，可通过正确有效的证书编号进行查询，也可通过<br />姓名+身份证的方式进行查询。</p>
 					<button type="button" class="layui-btn inquire" lay-submit="" lay-filter="register">查询</button>
 				</form>
 			</div>
-			<div class="layui-carousel searchResultBox" id="carousel" lay-filter="carousel" style="background-color: #ffffff;">
+			<div class="layui-carousel searchResultBox" id="carousel" lay-filter="carousel"
+				style="background-color: #ffffff;">
 				<div id="certificateList" carousel-item="">
 				</div>
-			</div> 
+			</div>
 		</section>
 	</div>
 	<footer></footer>
@@ -99,63 +100,68 @@
 				delay: 5000
 			},
 		});
-		
+
 		layui.use(['form', 'layedit', 'laydate'], function () {
 			var form = layui.form
 				, layer = layui.layer
 			//监听提交
 			form.on('submit(register)', function (data) {
-				certificateSearch(data.field.username,data.field.idNo,data.field.certificateNo);
+				certificateSearch(data.field.username, data.field.idNo, data.field.certificateNo);
 				return false;
 			});
 		});
 
 		//证书查询接口
-		function certificateSearch(username,idNo,certificateNo){
+		function certificateSearch(username, idNo, certificateNo) {
 			http.ajax({
 				url: 'certificate/search',
 				type: 'GET',
 				json: false,
 				mask: true,
 				data: {
-					username:username,
+					username: username,
 					idNo: idNo,
-					certificateNo:certificateNo
+					certificateNo: certificateNo
 				}
 			}).then(function (data) {
 				if (data.code == 200) {
-					if(data.data == null || data.data.items.length == 0 ){
+					if (data.data == null || data.data.items.length == 0) {
 						layer.msg('暂无证书！', {
 							icon: 7
 						});
-					}else{
+					} else {
 						var iHTMl = ""
 						for (var i = 0; i < data.data.items.length; i++) {
-							iHTMl +="<div><div class=\"searchResult\">"+
-							"<div class=\"imgBox\">"+
-							"<img src="+data.data.items[i].certificateUrl+" />"+
-							// "<h1>"+data.data.items[i].username+"</h1>"+
-							// "<p>恭喜您通过【<span>"+data.data.items[i].certificateName+"</span>】考试，成功获取【<span>"+data.data.items[i].certificateName+"</span>】证书"+
-							// "证书，您可以持有本证书从事"+data.data.items[i].examName+"工作"+
-							// "</p>"+
-							// "<time><i>"+data.data.items[i].createTime+"</i>"+
-							// "<em>"+data.data.items[i].certificateNo+"</em></time>"+
-							"</div></div></div>";
+							iHTMl += "<div id=" + i + " ><div class=\"searchResult\">" +
+								"<div class=\"imgBox\">" ;
+								if (data.data.items[i].status == "unaudited") {
+									iHTMl += "<span class=\"unaudited\"></span>" ;	
+								} else if (data.data.items[i].status == "rejected") {
+									iHTMl += "<span class=\"rejected\"></span>" ;	
+								}
+								iHTMl += "<img src=" + data.data.items[i].certificateUrl + " />" +
+								// "<h1>"+data.data.items[i].username+"</h1>"+
+								// "<p>恭喜您通过【<span>"+data.data.items[i].certificateName+"</span>】考试，成功获取【<span>"+data.data.items[i].certificateName+"</span>】证书"+
+								// "证书，您可以持有本证书从事"+data.data.items[i].examName+"工作"+
+								// "</p>"+
+								// "<time><i>"+data.data.items[i].createTime+"</i>"+
+								// "<em>"+data.data.items[i].certificateNo+"</em></time>"+
+								"</div></div></div>";
 						};
 						$("#certificateList").append(iHTMl);
 						$(".certificate").hide();
 						$(".searchResult").show();
-					
-						layui.use(['carousel', 'form'], function(){
+
+						layui.use(['carousel', 'form'], function () {
 							var carousel = layui.carousel
-							,form = layui.form;
+								, form = layui.form;
 							//常规轮播
 							carousel.render({
 								elem: '#carousel'
-								,indicator:'none'
-								,width: '1200px'
-								,height: '748px'
-								,arrow: 'always'
+								, indicator: 'none'
+								, width: '1200px'
+								, height: '748px'
+								, arrow: 'always'
 							});
 						})
 					}
@@ -165,9 +171,11 @@
 			})
 		}
 
-		if(getQueryString("username")){
-			certificateSearch(decodeURI(decodeURI(getQueryString("username"))),getQueryString("idNo"),'');
+		if (getQueryString("username")) {
+			certificateSearch(decodeURI(decodeURI(getQueryString("username"))), getQueryString("idNo"), '');
 		}
+
+
 	</script>
 </body>
 

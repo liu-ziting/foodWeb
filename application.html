@@ -18,9 +18,11 @@
 		.certificate form .layui-input-block {
 			margin-left: 156px;
 		}
-		.certificate form section{
+
+		.certificate form section {
 			margin-left: -45px;
 		}
+
 		.certificate form {
 			margin-bottom: 150px;
 		}
@@ -129,8 +131,8 @@
 						<div class="layui-form-item">
 							<label class="layui-form-label"><i>*</i>性别：</label>
 							<div class="layui-input-block">
-								<input {{d.sex == '男' ? 'checked' : '' }} type="radio" name="sex" value="男" title="男">
-								<input {{ d.sex == '女' ? 'checked' : '' }} type="radio" name="sex" value="女" title="女">
+								<input {{d.sex == '1' ? 'checked' : '' }} type="radio" name="sex" value="男" title="男">
+								<input {{ d.sex == '0' ? 'checked' : '' }} type="radio" name="sex" value="女" title="女">
 							</div>
 						</div>
 						<div class="layui-form-item">
@@ -148,10 +150,30 @@
 							</div>
 						</div>
 						<div class="layui-form-item">
-							<label class="layui-form-label"><i>*</i>邮寄地址：</label>
+							<label class="layui-form-label"><i>*</i>邮寄地区：</label>
+							<div class="layui-input-block areabox">
+								<div class="provinceBox">
+									<select id="province" name="" lay-filter="province">
+										
+									</select>
+								</div>
+								<div>
+									<select id="city" name="" lay-filter="city">
+										
+									</select>
+								</div>
+								<div>
+									<select id="area" name="" lay-filter="area">
+										
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label"><i>*</i>详细地址：</label>
 							<div class="layui-input-block">
-								<input type="text" name="address"  lay-verify="required" lay-reqtext="请输入收取证书的邮寄地址"
-										placeholder="请输入收取证书的邮寄地址" value="" class="layui-input address">
+								<input type="text" name="address"  lay-verify="required" lay-reqtext="请输入收取证书的详细地址"
+										placeholder="请输入收取证书的详细地址" value="" class="layui-input address">
 							</div>
 						</div>
 						<div class="layui-form-item">
@@ -184,6 +206,7 @@
 								</div>
 							</div>
 						</div>
+						<input type="hidden" name="areaCode" id="areaCode" value="" lay-verify="required" lay-reqtext="请选择行政区划" />
 						</section>
 						<p>带 “*” 为必填选项，请填写真实有效的身份信息，资料通过审核后将以邮<br/>寄的方式将资格证寄出，请确保手机号码及地址信息正确。</p>
 						<button type="button" class="layui-btn inquire" lay-submit="" lay-filter="register">申请发证</button>
@@ -214,7 +237,7 @@
 					, before: function (obj) {
 						//预读本地文件示例，不支持ie8
 						obj.preview(function (index, file, result) {
-							$('#demo1').attr('src', result); //图片链接（base64）
+							// $('#demo1').attr('src', result); //图片链接（base64）
 						});
 					}
 					, done: function (res) {
@@ -283,27 +306,133 @@
 				if (data.code == 200) {
 					layer.msg('申请成功', { icon: 1 });
 
-					$(".certificate").find("input").attr("readonly","readonly");
-					$(".certificate").find("input").css("border","none");
+					$(".certificate").find("input").attr("readonly", "readonly");
+					$(".certificate").find("input").css("border", "none");
 					$(".inquire").hide();
 					$(".look").show();
 					$(".addPhotos").hide();
 					$(".introduce").hide();
-					
+
 				} else {
 					layer.msg(data.msg, { icon: 2 });
 				}
 			}, function (err) {
-				if(err.status == 400){
+				if (err.status == 400) {
 					layer.msg('传参错误，请联系管理员！', {
 						icon: 5
 					});
-				}else{
+				} else {
 					// layer.msg(err.message, { icon: 2 });
 				}
 			});
 		}
-		
+
+
+		//行政区划
+		$(function(){
+			province(0);
+		})
+		// 省
+		function province(parentId) {
+			$("#province").html("");
+			layui.use('form', function () {
+				var form = layui.form;
+				http.ajax({
+					url: 'area/areaListByParentId',
+					type: 'GET',
+					json: false,
+					mask: false,
+					data: {
+						parentId: parentId
+					}
+				}).then(function (data) {
+					if (data.code == 200) {
+						var innerHTML = "";
+						innerHTML +='<option value="">请选择省</option>';
+						for (var i = 0; i < data.data.items.length; i++) {
+							innerHTML += '<option  value="' +data.data.items[i].id+'-'+data.data.items[i].areaCode+'-'+ data.data.items[i].name +'">' + data.data.items[i].name + '</option>';
+						}
+						$("#province").append(innerHTML);
+						form.render();
+						form.on('select(province)', function (data) {
+							var idAreacode = data.value;
+							var type = idAreacode.split("-");
+							city(type[0],type[2]);
+						});
+					}
+				}, function (err) {
+
+				});
+			})
+		}
+		// 市
+		function city(parentId,name) {
+			$("#city").html("");
+			layui.use('form', function () {
+				var form = layui.form;
+				http.ajax({
+					url: 'area/areaListByParentId',
+					type: 'GET',
+					json: false,
+					mask: false,
+					data: {
+						parentId: parentId
+					}
+				}).then(function (data) {
+					if (data.code == 200) {
+						var innerHTML = "";
+						innerHTML +='<option value="">请选择市</option>';
+						for (var i = 0; i < data.data.items.length; i++) {
+							innerHTML += '<option  value="' +data.data.items[i].id+'-'+data.data.items[i].areaCode+'-'+ data.data.items[i].name +'">' + data.data.items[i].name + '</option>';
+						}
+						$("#city").append(innerHTML);
+						form.render();
+						form.on('select(city)', function (data) {
+							var idAreacode = data.value;
+							var type = idAreacode.split("-");
+							var cname = name + type[2];
+							area(type[0],cname);
+						});
+					}
+				}, function (err) {
+
+				});
+			})
+		}
+		// 区
+		function area(parentId,cname) {
+			$("#area").html("");
+			layui.use('form', function () {
+				var form = layui.form;
+				http.ajax({
+					url: 'area/areaListByParentId',
+					type: 'GET',
+					json: false,
+					mask: false,
+					data: {
+						parentId: parentId
+					}
+				}).then(function (data) {
+					if (data.code == 200) {
+						var innerHTML = "";
+						innerHTML +='<option value="">请选择区</option>';
+						for (var i = 0; i < data.data.items.length; i++) {
+							innerHTML += '<option  value="' +data.data.items[i].id+'-'+data.data.items[i].areaCode+'-'+ data.data.items[i].name +'">' + data.data.items[i].name + '</option>';
+						}
+						$("#area").append(innerHTML);
+						form.render();
+						form.on('select(area)', function (data) {
+							var idAreacode = data.value;
+							var type = idAreacode.split("-");
+							$(".address").val(cname+type[2]);
+							$("#areaCode").val(type[1])
+						});
+					}
+				}, function (err) {
+
+				});
+			})
+		}
 	</script>
 </body>
 
