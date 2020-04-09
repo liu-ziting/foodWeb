@@ -45,6 +45,7 @@ $(".getCode").click(function(){
         });
     }else{
         if(isPoneAvailable(phone)){
+            $('#captcha').sliderCaptcha('reset');
             if($("#checkType").val() == "register"){
                 $(".popupsLogin").show()
             }else{
@@ -148,6 +149,7 @@ function check(phone,type){
             type:type,
         }
     }).then(function(data) {
+        console.log(data.code)
         if(data.code == 200){
             if(data.data == true){
                 if($("#checkType").val() == "register"){
@@ -165,15 +167,28 @@ function check(phone,type){
             }else{
                 send_verify_code(phone,$("#checkType").val());
             }
+        }else if(data.code == 10000){
+            if($("#checkType").val() == "login"){
+                send_verify_code(phone,$("#checkType").val());
+            }else{
+                layer.msg(data.msg, {
+                    icon: 5
+                });
+                $(".registerBut").text("登录");
+                $(".registerTest").text("已有账号")
+                $(".loginMain h1").text("欢迎注册安徽食品安全培训网");
+                $(".submit").text("注册账号");
+                $("#checkType").val("register");
+            }
         }
     },function(err) {
-        if($("#checkType").val() == "register"){
-            layer.msg('手机号已存在!', {
-                icon: 5
-            });     
-        }else{
-            send_verify_code(phone,$("#checkType").val());
-        }
+        // if($("#checkType").val() == "register"){
+        //     layer.msg('手机号已存在!', {
+        //         icon: 5
+        //     });     
+        // }else{
+        //     send_verify_code(phone,$("#checkType").val());
+        // }
     })
 };
 //模拟登陆

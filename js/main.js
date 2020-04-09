@@ -74,7 +74,6 @@ var bPos = pathName.indexOf('.');
 var activeUrl = pathName.substr(aPos + 1, bPos - aPos - 1);
 $("#navList li").eq(jumpActive(activeUrl)).addClass("active")
 
-
 // $("title").html($("#navList .active").text());
 // 返回顶部
 layui.use(['util'], function () {
@@ -143,10 +142,29 @@ var http = {
 			},
 			contentType: options.json ? 'application/json;charset=UTF-8' : 'application/x-www-form-urlencoded',
 		}).then(function (rsp) {
-			def.resolve(rsp);
 			setTimeout(function () {
 				layer.close(loading);
 			}, 100);
+			if(rsp.code == 200){
+				def.resolve(rsp);
+			}else if(rsp.code == 403) {
+				if(activeUrl == "login" || activeUrl == "courseCenter" || activeUrl == "index" || activeUrl == "fingerpost"|| activeUrl == "announcement" || activeUrl == "information" || activeUrl == "certificate" || activeUrl == "details"){
+
+				}else{
+					layer.msg('暂未登录，请登录！', {
+						icon: 5
+					}, function () {
+						location.href = 'login.html';
+					});
+					return false;
+				}
+			}else if(rsp.code == 10000) {
+				def.resolve(rsp);
+			}else{
+				layer.msg(rsp.msg, {
+					icon: 5
+				});
+			}
 		}, function (error) {
 			if (error.status == 504) {
 				layer.msg('请求超时，请重试!', {
