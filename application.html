@@ -208,7 +208,7 @@
 						</div>
 						<input type="hidden" name="areaCode" id="areaCode" value="" lay-verify="required" lay-reqtext="请选择行政区划" />
 						</section>
-						<p>带 “*” 为必填选项，请填写真实有效的身份信息，资料通过审核后将以邮<br/>寄的方式将资格证寄出，请确保手机号码及地址信息正确。</p>
+						<p class="prompt">带 “*” 为必填选项，请填写真实有效的身份信息，资料通过审核后将以邮<br/>寄的方式将资格证寄出，请确保手机号码及地址信息正确。</p>
 						<button type="button" class="layui-btn inquire" lay-submit="" lay-filter="register">申请发证</button>
 						<button onclick="openUrl('certificate.html')" style="display:none" type="button" class="layui-btn look" >查询证书</button>
 					</form>
@@ -222,7 +222,7 @@
 	<script type="text/javascript" src="js/swiper.min.js"> </script>
 	<script type="text/javascript" src="js/main.js"></script>
 	<script>
-
+		var loading ;
 		// 证件照上传
 		function uploadImg() {
 			layui.use('upload', function () {
@@ -235,7 +235,8 @@
 					, accept: 'images'
 					, method: 'POST'
 					, before: function (obj) {
-						//预读本地文件示例，不支持ie8
+						//预读本地文件示例，不支持ie8\
+						loading = layer.load(); //上传loading
 						obj.preview(function (index, file, result) {
 							// $('#demo1').attr('src', result); //图片链接（base64）
 						});
@@ -243,6 +244,7 @@
 					, done: function (res) {
 						//上传成功
 						if (res.code == 200) {
+							layer.closeAll('loading'); //关闭loading
 							$(".avatarUrl").val(App.filePath + res.data);
 							$('#demo1').attr('src', App.filePath + res.data); //图片链接（base64）
 						} else {
@@ -294,6 +296,7 @@
 			});
 		}
 
+		
 		//申请发证
 		function issueCertificate(json) {
 			http.ajax({
@@ -312,6 +315,7 @@
 					$(".look").show();
 					$(".addPhotos").hide();
 					$(".introduce").hide();
+					$(".prompt").html("您已经成功提交申请，待审核通过后正式发证。")
 
 				} else {
 					layer.msg(data.msg, { icon: 2 });
