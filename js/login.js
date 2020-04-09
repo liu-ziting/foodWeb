@@ -45,7 +45,12 @@ $(".getCode").click(function(){
         });
     }else{
         if(isPoneAvailable(phone)){
-           $(".popupsLogin").show()
+            if($("#checkType").val() == "register"){
+                $(".popupsLogin").show()
+            }else{
+                check($(".phone").val(), 'phone');
+            }
+          
         }
     }
 });
@@ -56,7 +61,6 @@ $('#captcha').sliderCaptcha({
         // return 'http://images.sdgxgz.com/Picim' + Math.round(Math.random() * 136) + '.jpg';
     },
     onSuccess: function () {
-        layer.msg('验证成功！');
         check($(".phone").val(), 'phone');
     }
 });
