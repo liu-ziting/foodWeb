@@ -1,6 +1,6 @@
 var App = {
-	//  apiBasePath: "/bus/",            	//正式服务接口地址
-	apiBasePath: "http://edu-bus-c.utools.club/bus/", 	    //本地服务接口地址
+	 apiBasePath: "/bus/",            	//正式服务接口地址
+	// apiBasePath: "http://edu-bus-c.utools.club/bus/", 	    //本地服务接口地址
 	// apiBasePath: "http://api-business.lihail.cn/bus/", 	//测试服务接口地址
 	rootPath: getRootPath(),				                //项目根目录地址
 	filePath: 'http://resources.ahspaq.com/',               //图片路径
@@ -148,7 +148,7 @@ var http = {
 			if(rsp.code == 200){
 				def.resolve(rsp);
 			}else if(rsp.code == 403) {
-				if(activeUrl == "login" || activeUrl == "courseCenter" || activeUrl == "index" || activeUrl == "fingerpost"|| activeUrl == "announcement" || activeUrl == "information" || activeUrl == "certificate" || activeUrl == "details"){
+				if(activeUrl == "login" || activeUrl == "courseCenter" || activeUrl == "index" || activeUrl == "fingerpost"|| activeUrl == "announcement" || activeUrl == "information" || activeUrl == "certificate" || activeUrl == "details" || activeUrl == ""){
 
 				}else{
 					layer.msg('暂未登录，请登录！', {
