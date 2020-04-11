@@ -67,8 +67,10 @@
 				<script id="informationTpl" type="text/html">
 				{{# layui.each(d.items, function(index, item){ }}
 				<li id="{{item.id}}">
-					<div class="imgBox gjpAfter">
-						<img src="{{item.imageUrl}}"/>
+					<div class="imgBox">
+						{{#  if(item.imageUrl){ }}
+							<img src="{{item.imageUrl}}"/>
+						{{#  } }} 	
 					</div>
 					<div class="textBox">
 						<h1>{{item.noticeTitle}}</h1>
