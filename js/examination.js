@@ -42,7 +42,7 @@ function exam() {
             $("#numjudgeListHtml").append(numjudgeListHtml);
             //多选题序号循环
             for (var i = 0; i < result.multiChoiceList.length; i++) {
-                nummultiChoiceListHtml += '<span class="number">' + (result.choiceList.length + result.choiceList.length + i) + '</span>';
+                nummultiChoiceListHtml += '<span class="number">' + (result.choiceList.length + result.judgeList.length + i + 1) + '</span>';
             };
             $("#nummultiChoiceListHtml").append(nummultiChoiceListHtml);
 
@@ -79,7 +79,7 @@ function exam() {
             // 多选题题目渲染
             for (var i = 0; i < result.multiChoiceList.length; i++) {
                 multiChoiceListHtml += "<li id=" + result.multiChoiceList[i].id + "><p>" +
-                    "<span style='margin-right: 0px;'>" + (result.choiceList.length + result.choiceList.length + i) + "</span>、" + result.multiChoiceList[i].name + "" +
+                    "<span style='margin-right: 0px;'>" + (result.choiceList.length + result.judgeList.length + i + 1) + "</span>、" + result.multiChoiceList[i].name + "" +
                     "</p>" +
                     "<div class=\"layui-input-block multipleChoice\">";
                 for (var j = 0; j < result.multiChoiceList[i].chooseResultList.length; j++) {
@@ -292,7 +292,7 @@ function examSubmit() {
 
 //点击发证
 $(".application").click(function(){
-    openUrl('application.html?id='+getQueryString('id')+'');
+    openUrl('application.html?id='+getQueryString('kid')+'');
 })
 
 //全屏

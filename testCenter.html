@@ -87,7 +87,7 @@
 						{{#  } }} 
 						<p>简介：{{item.brief}}</p>
 						{{#  if(item.userExamStatus == 'can_exam'){ }}
-							<button onclick="openUrl('examination.html?id={{item.id}}')" type="button" class="layui-btn startTest">开始考试</button>
+							<button onclick="openUrl('examination.html?id={{item.id}}&kid={{item.courseInfo.id}}')" type="button" class="layui-btn startTest">开始考试</button>
 						{{#  } else if(item.userExamStatus == 'passed') { }}
 							<button  type="button" class="layui-btn startTest layui-btn-disabled passed">已通过考试</button>
 						{{#  } else if(item.userExamStatus == 'not_completed') { }}
