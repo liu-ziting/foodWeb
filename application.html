@@ -187,7 +187,7 @@
 							<label class="layui-form-label">统一社会信用代码：</label>
 							<div class="layui-input-block">
 								<input type="text" name="enterpriseCode" 
-										placeholder="请输入企业统一社会信用代码" value="" class="layui-input enterpriseCode">
+										placeholder="请输入企业统一社会信用代码" value="{{d.enterpriseCode}}" class="layui-input enterpriseCode">
 							</div>
 						</div>
 						<div class="layui-form-item">
@@ -333,9 +333,9 @@
 
 
 		//行政区划
-		$(function(){
+		setTimeout(function(){
 			province(0);
-		})
+		},800)	
 		// 省
 		function province(parentId) {
 			$("#province").html("");
