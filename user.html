@@ -21,7 +21,9 @@
 				<p>
 					<a onclick="openUrl('login.html')" href="javascript:;">现在登录！</a>
 				</p>
-				<p><img src="img/user.png" />个人中心</p>
+				<p><a onclick="openUrl('fingerpost.html')" href="javascript:;">
+					<!-- <img src="img/user.png" /> -->
+					学习指南</a></p>
 			</section>
 			<nav>
 				<h1 onclick="openUrl('index.html')">
@@ -32,11 +34,11 @@
 				<ul id="navList">
 					<li>首页<i></i></li>
 					<li>课程中心<i></i></li>
-					<li>学习指南<i></i></li>
 					<li>教学公告<i></i></li>
 					<li>食品安全资讯<i></i></li>
 					<li>在线证书查询<i></i></li>
 					<li>考试中心<i></i></li>
+					<li>个人中心<i></i></li>
 				</ul>
 			</nav>
 		</div>
@@ -94,7 +96,7 @@
 							<div class="Rleft">
 								<p><span>姓名：</span>{{d.name}}</p>
 								<p><span>性别：</span>
-									{{#  if(d.sex == "1"){ }}男{{#  } else { }}女{{#  } }} 
+									{{#  if(d.sex == "男"){ }}男{{#  } else { }}女{{#  } }} 
 								</p>
 								<p><span>手机号：</span>{{d.phone}}</p>
 								<p><span>身份证号：</span>{{d.idNo}}</p>

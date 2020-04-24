@@ -21,7 +21,9 @@
 				<p>
 					<a onclick="openUrl('login.html')" href="javascript:;">现在登录！</a>
 				</p>
-				<p><img src="img/user.png" />个人中心</p>
+				<p><a onclick="openUrl('fingerpost.html')" href="javascript:;">
+					<!-- <img src="img/user.png" /> -->
+					学习指南</a></p>
 			</section>
 			<nav>
 				<h1 onclick="openUrl('index.html')">
@@ -32,11 +34,11 @@
 				<ul id="navList">
 					<li>首页<i></i></li>
 					<li>课程中心<i></i></li>
-					<li>学习指南<i></i></li>
 					<li>教学公告<i></i></li>
 					<li>食品安全资讯<i></i></li>
 					<li>在线证书查询<i></i></li>
 					<li>考试中心<i></i></li>
+					<li>个人中心<i></i></li>
 				</ul>
 			</nav>
 		</div>
@@ -107,8 +109,8 @@
 							<div class="layui-input-block">
 								<select class="sex" value="{{d.sex}}" name="sex" lay-verify="required" lay-reqtext="请选择您的性别">
 									<option value="">请选择您的性别</option>
-									<option value="1">男</option>
-									<option value="0">女</option>
+									<option value="男">男</option>
+									<option value="女">女</option>
 								</select>
 							</div>
 							<img src="img/edit.png" />

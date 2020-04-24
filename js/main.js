@@ -1,12 +1,11 @@
 var App = {
 	//  apiBasePath: "/bus/",            	//正式服务接口地址
-	apiBasePath: "http://edu-bus-c.utools.club/bus/", 	    //本地服务接口地址
+	apiBasePath: "http://edu-bus.utools.club/bus/", 	    //本地服务接口地址
 	// apiBasePath: "http://api-business.lihail.cn/bus/", 	//测试服务接口地址
 	rootPath: getRootPath(),				                //项目根目录地址
 	filePath: 'http://resources.ahspaq.com/',               //图片路径
 	timestamp: ((Date.parse(new Date())) / 1000).toString(),//时间戳
 };
-
 //头部进度加载条
 NProgress.start();
 document.onreadystatechange = function () {
@@ -18,28 +17,45 @@ document.onreadystatechange = function () {
 //导航栏操作
 $("#navList li").click(function () {
 	var _index = $(this).index() + 1;
-	openUrl(jumpUrl('0' + _index))
+	if(_index <= 6){
+		openUrl(jumpUrl('0' + _index))
+	}
 });
+
+//跳转到个人中心
+$("#navList li:last-child").click(function () {
+	if (localStorage.getItem("login") == 'true') {
+		location.href = 'user.html';
+	} else {
+		layer.msg('暂未登录，请登录！', {
+			icon: 5
+		}, function () {
+			location.href = 'login.html';
+		});
+	}
+})
 function jumpUrl(value) {
 	switch (value) {
 		case "01":
 			return "index.html";
 		case "02":
-			return "courseCenter.html";
+			return "courseCenter.html";//课程中心
 		case "03":
-			return "fingerpost.html";
+			return "announcement.html";//教学公告
 		case "04":
-			return "announcement.html";
+			return "information.html";//食品安全资讯
 		case "05":
-			return "information.html";
+			return "certificate.html";//证书查询
 		case "06":
-			return "certificate.html";
+			return "testCenter.html";//考试中心
 		case "07":
-			return "testCenter.html";
+			return "user.html";//个人中心
 	}
 };
 function jumpActive(value) {
 	switch (value) {
+		case "":
+			return "0";
 		case "index":
 			return "0";
 		case "courseCenter":
@@ -48,24 +64,39 @@ function jumpActive(value) {
 			return "1";
 		case "watchVideo":
 			return "1";
-		case "fingerpost":
-			return "2";
 		case "announcement":
-			return "3";
+			return "2";
 		case "information":
-			return "4";
+			return "3";
 		case "application":
 			return "5";
 		case "certificate":
-			return "5";
+			return "4";
 		case "testCenter":
-			return "6";
+			return "5";
 		case "examination":
-			return "6";
+			return "5";
 		case "doExercise":
 			return "1";
 		case "result":
+			return "5";
+		case "user":
 			return "6";
+		case "modifiedData":
+			return "6";
+		case "myNews":
+			return "6";
+		case "modifyPhone":
+			return "6";
+		case "myCourse":
+			return "6";
+		case "studyRecord":
+			return "6";
+		case "myFavorite":
+			return "6";
+		case "purchaseRecord":
+			return "6";
+
 	}
 };
 var pathName = window.document.location.pathname;
@@ -472,18 +503,7 @@ function checkLogin(loginCode) {
 		console.log(err);
 	})
 };
-//跳转到用户主页
-$("header .top section p:last-child").click(function () {
-	if (localStorage.getItem("login") == 'true') {
-		location.href = 'user.html';
-	} else {
-		layer.msg('暂未登录，请登录！', {
-			icon: 5
-		}, function () {
-			location.href = 'login.html';
-		});
-	}
-})
+
 //获取用户详情
 getUserInfo();
 function getUserInfo() {
