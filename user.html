@@ -10,6 +10,20 @@
 	<link rel="stylesheet" href="layui/css/layui.css" />
 	<link rel="stylesheet" href="css/swiper.min.css">
 	<link rel="stylesheet" href="css/index.css" />
+	<style>
+		.notAvailable{
+			text-align: center;
+			font-size: 25px;
+			color: #666666;
+			line-height: 450px;
+			margin-top: -379px;
+			z-index: 999999;
+			position: relative;
+		}
+		.notAvailable a{
+			color: #FF5722;
+		}
+	</style>
 </head>
 
 <body>
@@ -96,7 +110,9 @@
 							<div class="Rleft">
 								<p><span>姓名：</span>{{d.name}}</p>
 								<p><span>性别：</span>
-									{{#  if(d.sex == "男"){ }}男{{#  } else { }}女{{#  } }} 
+									{{#  if(d.sex == "1"){ }}
+									男
+									{{#  } else if(d.sex == "0"){ }}女{{#  } }} 
 								</p>
 								<p><span>手机号：</span>{{d.phone}}</p>
 								<p><span>身份证号：</span>{{d.idNo}}</p>
@@ -121,6 +137,7 @@
 							<!-- 如果需要滚动条 -->
 							<div class="swiper-scrollbar"></div>
 						</div>
+						<p class="notAvailable" style="display: none;">暂无课程,<a href="courseCenter.html">去购买</a></p>
 					</div>
 				</div>
 			</div>
@@ -225,6 +242,9 @@
 
 							innerHTML += "</div>";
 						};
+						if(result.total == 0){
+							$(".notAvailable").show();
+						}
 
 						$("#userCourse").append(innerHTML);
 						// 我的课程轮播
