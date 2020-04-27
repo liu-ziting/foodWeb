@@ -175,6 +175,7 @@
 	<script type="text/javascript" src="js/main.js"></script>
 	<script>
 		var courseId = getQueryString("courseId")
+		var industryId = getQueryString("industryId")
 		//适用对象列表
 		trainingTypeList();
 		function trainingTypeList() {
@@ -206,14 +207,7 @@
 						$(".searchVal").val("")
 						courseList();
 					})
-
-					if(courseId){
-						$("#trainingTypeId").val(courseId);
-						$('#trainingTypeList #'+courseId+'').addClass("active").siblings().removeClass("active");
-						courseList();
-					}else{
-						courseList();
-					}
+					industryList();
 				}
 			}, function (err) {
 				if(err.status == 403){
@@ -227,7 +221,7 @@
 			})
 		};
 		//行业领域列表
-		industryList();
+		
 		function industryList() {
 			http.ajax({
 				url: 'course/industryList',
@@ -257,6 +251,15 @@
 						$(".searchVal").val("")
 						courseList();
 					})
+					if(industryId){
+						$("#industryId").val(industryId);
+						$('#industryList #'+industryId+'').addClass("active").siblings().removeClass("active");
+					};
+					if(courseId){
+						$("#trainingTypeId").val(courseId);
+						$('#trainingTypeList #'+courseId+'').addClass("active").siblings().removeClass("active");
+						courseList();
+					}
 				}
 			}, function (err) {
 				
@@ -266,7 +269,9 @@
 		//课程列表
 		var pageNo = 1;
 		var pageSize = 18;
-		
+		if(courseId == undefined && industryId == undefined){
+			courseList();
+		}
 		function courseList() {
 			layui.use(['laypage', 'layer', 'laytpl'], function () {
 				var laypage = layui.laypage,
