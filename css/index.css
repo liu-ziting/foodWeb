@@ -152,25 +152,29 @@ header nav{
 header nav h1{
 	padding-top: 25px;
 	color: #029042;
-	width: 380px;
+	width: 405px;
 	float: left;
 	cursor: pointer;
 }
 header nav h1 img{
 	display: block;
 	float: left;
-	margin-right: 30px;
+	margin-right: 20px;
+	margin-top: -14px;
 }
 header nav h1 p{
-	font-size: 26px;
-	padding-top: 5px;
+	font-size: 30px;
+	padding-top: 2px;
 	letter-spacing: 2px;
 	font-weight:500;
+	font-family: "黑体";
 }
 header nav h1 i{
-	font-size: 15px;
+	font-size: 17px;
 	display: block;
-    margin-top: -2px;
+	padding-left: 2px;
+    float: left;
+    margin-top: 2px;
 }
 header nav  ul{
 	float: right;
@@ -179,7 +183,7 @@ header nav  ul li{
 	float: left;
 	font-size: 18px;
 	color: #000000;
-	margin-left: 37px;
+	margin-left: 30px;
 	line-height: 105px;
 	cursor: pointer;
 	position: relative;
