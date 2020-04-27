@@ -69,7 +69,9 @@
 				<h1>{{d.current.noticeTitle}}</h1>
 				<p>
 					<span>发布时间：{{d.current.createTime}}</span>
+					<span>来源：{{d.current.source}}</span>
 					<span>阅读量：{{d.current.hitCount}}</span>
+					
 					<i onclick="shareToXl(this)"  id="/details.html?id={{d.current.id}}" bt="{{d.current.noticeTitle}}" class="layui-icon layui-icon-login-weibo"></i>
 					<i onclick="shareToQq(this)" id="/details.html?id={{d.current.id}}" bt="{{d.current.noticeTitle}}" class="layui-icon layui-icon-login-qq"></i>
 					<i onclick="weixin(this)" id="/details.html?id={{d.current.id}}"  class="layui-icon layui-icon-login-wechat"></i>
