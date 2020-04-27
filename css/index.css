@@ -152,7 +152,7 @@ header nav{
 header nav h1{
 	padding-top: 25px;
 	color: #029042;
-	width: 405px;
+	width: 410px;
 	float: left;
 	cursor: pointer;
 }
@@ -166,7 +166,7 @@ header nav h1 p{
 	font-size: 30px;
 	padding-top: 2px;
 	letter-spacing: 2px;
-	font-weight:500;
+	font-weight:bold;
 	font-family: "黑体";
 }
 header nav h1 i{
@@ -174,7 +174,8 @@ header nav h1 i{
 	display: block;
 	padding-left: 2px;
     float: left;
-    margin-top: 2px;
+	margin-top: 2px;
+	font-weight: 500;
 }
 header nav  ul{
 	float: right;
