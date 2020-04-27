@@ -84,7 +84,7 @@ function foodNewsList() {
 };
 
 // 获取课程列表
-indexCourse()
+// indexCourse()
 function indexCourse() {
         http.ajax({
             url: 'course/indexCourse',

@@ -150,7 +150,7 @@ header nav{
 	margin: 0 auto;
 }
 header nav h1{
-	padding-top: 18px;
+	padding-top: 25px;
 	color: #029042;
 	width: 380px;
 	float: left;
@@ -162,13 +162,15 @@ header nav h1 img{
 	margin-right: 30px;
 }
 header nav h1 p{
-	font-size: 22px;
-	padding-top: 4px;
+	font-size: 26px;
+	padding-top: 5px;
+	letter-spacing: 2px;
+	font-weight:500;
 }
 header nav h1 i{
-	font-size: 14px;
+	font-size: 15px;
 	display: block;
-    margin-top: -5px;
+    margin-top: -2px;
 }
 header nav  ul{
 	float: right;
@@ -194,7 +196,7 @@ header nav  ul .active i{
 /* 首页轮播图 */
 .banner{
 	position: relative;
-	min-height: 574px;
+	height: 490px;
 	background-color: #f1f1f1;
 	overflow: hidden;
 }
@@ -202,7 +204,7 @@ header nav  ul .active i{
 	width: 100%;
 	height: auto;
 	z-index: 10;
-	height: 574px;
+	height: 490px;
 }
 .banner:before {
     content: "安徽食品安全培训网";
@@ -212,7 +214,7 @@ header nav  ul .active i{
     background-color: #eeeeee;
     top: 0;
     text-align: center;
-    line-height: 574px;
+    line-height: 490px;
     width: 100%;
     position: absolute;
 	z-index: 1;
@@ -421,6 +423,7 @@ header nav  ul .active i{
 	width: 100%;
 	height: 580px;
 	border: 1px solid #E7E6ED;
+	background-color: #ffffff;
 }
 .information section .left{
 	width: 868px;
@@ -3005,4 +3008,168 @@ strong{
 	z-index: 9999999;
 	top: 0;
 	display: none;
+}
+/* 新增首页模块 */
+.information{
+	background-color: #F7F8FA;
+	padding-bottom: 46px;
+}
+.newIndexListBox {
+	overflow: hidden;
+	margin-bottom: 26px;
+}
+.newIndexListBox .title{
+	padding-bottom: 30px;
+	padding-top: 60px;
+}
+.newIndexListBox ul{
+	overflow: hidden;
+	height: 400px;
+}
+.newIndexListBox ul li{
+	width: 280px;
+	height: 382px;
+	cursor: pointer;
+	transition: all 0.6s;
+	float: left;
+	margin-right: 26px;
+	position: relative;
+}
+.newIndexListBox ul li:last-child{
+	margin: 0;
+}
+.newIndexListBox ul li:hover{
+	transition: all 0.6s;
+	box-shadow:0px 7px 14px 2px rgba(102,102,102,0.1);
+}
+.newIndexListBox ul li .topImg{
+	width: 100%;
+	height: 205px;
+	float: left;
+	position: relative;
+	background-color: #eeeeee;
+}
+.newIndexListBox ul li .topImg h3{
+	font-size: 18px;
+	color: #ffffff;
+	text-align: center;
+	font-weight: bold;
+	position: relative;
+	margin-top: 85px;
+}
+.newIndexListBox ul li .topImg :after {
+	content: '';
+    position: absolute;
+    top: -15px;
+    background: #ffffff;
+    width: 25px;
+    height: 6px;
+    margin-left: -12.5px;
+	left: 50%;
+	transition: all 0.6s;
+}
+.newIndexListBox ul li .topImg a{
+	font-size: 12px;
+	text-align: center;
+	color: #ffffff;
+	width: 100%;
+	display: block;
+	margin-top: 34px;
+}
+.newIndexListBox ul li:nth-child(1) .topImg{
+	background-color: #1C7AC3;
+	background: url(../img/indexKc1.png);
+}
+.newIndexListBox ul li:nth-child(2) .topImg{
+	background-color: #1CC39A;
+	background: url(../img/indexKc2.png);
+}
+.newIndexListBox ul li:nth-child(3) .topImg{
+	background-color: #F3CC18;
+	background: url(../img/indexKc3.png);
+}
+.newIndexListBox ul li:nth-child(4) .topImg{
+	background-color: #F39418;
+	background: url(../img/indexKc4.png);
+}
+.newIndexListBox ul li h1{
+	font-size:16px;
+	color: #666666;
+	margin-top: 16px;
+	width: 100%;
+	font-weight: bold;
+	float: left;
+	padding-left: 10px;
+}
+.newIndexListBox ul li h2{
+	font-size:12px;
+	color: #333333;
+	margin-top: 10px;
+	width: 100%;
+	float: left;
+	padding-left: 10px;
+}
+.newIndexListBox ul li p{
+	font-size:12px;
+	color: #666666;
+	margin-top: 10px;
+	width: 100%;
+	float: left;
+	line-height: 20px;
+	width: 258px;
+	margin-bottom: 10px;
+	font-weight:400;
+	padding-left: 10px;
+}
+.newIndexListBox ul li i{
+	font-size: 12px;
+	color: #666666;
+	float: left;
+	margin-right: 20px;
+}
+.newIndexListBox ul li i img{
+	display: block;
+	float: left;
+	margin-top: -3px;
+    margin-right: 2px;
+}
+.newIndexListBox ul li .iconList{
+	padding-left: 10px;
+	position: absolute;
+	bottom: 15px;
+}
+.newIndexListBox ul li .iconList i:last-child{
+	margin-right: 0;
+}
+
+.dot {
+	font-family: simsun;
+	width: 7px;
+	overflow: hidden;
+}
+:root .dot { 
+	display: inline-block;
+	width: 7px;
+	vertical-align: bottom;
+	overflow: hidden;
+}
+@-webkit-keyframes dot {
+	0% { width: 0; margin-right: 1.5em; }
+	33% { width: .5em; margin-right: 1em; }
+	66% { width: 1em; margin-right: .5em; }
+	100% { width: 1.5em; margin-right: 0;}
+}
+
+@keyframes dot {
+	0% { width: 0; margin-right: 1.5em; }
+	33% { width: .5em; margin-right: 1em; }
+	66% { width: 1em; margin-right: .5em; }
+	100% { width: 1.5em; margin-right: 0;}
+}
+.newIndexListBox ul li:hover .dot{
+	animation: dot 1s infinite step-start;
+}
+.newIndexListBox ul li:hover .topImg  :after {
+	top: -20px;
+	transition: all 0.3s;
 }
