@@ -32,7 +32,7 @@ function foodNewsList() {
                 "</div>";
 
                 for (var i = 1; i < result.items.length; i++) {
-                    rightHtml += '<li id="'+result.items[i].id+'"  ><p>'+result.items[i].noticeTitle+'</p><span>'+result.items[i].createTime+'</span></li>';
+                    rightHtml += '<li title='+result.items[i].noticeTitle+' id="'+result.items[i].id+'"  ><p>'+result.items[i].noticeTitle+'</p><span>'+result.items[i].createTime+'</span></li>';
                 };
 
                 for (var i = 0; i < result.items.length; i++) {
