@@ -160,9 +160,9 @@
 							</ul>
 						</div>
 						<div class="layui-tab-item qrCodeBox">
-							<div class="left gjpAfter">
-								<p>小程序正在努力开发中</p>
-								<P class="toExercise">前往线上题库进行练习>></P>
+							<div class="left gjpAfter leftCodeImg">
+								<!-- <p>小程序正在努力开发中</p>
+								<P class="toExercise">前往线上题库进行练习>></P> -->
 								<!-- <img src="img/code.png" /> -->
 							</div>
 							<div class="right">
@@ -337,6 +337,26 @@
 			})
 		};
 
+		//获取获取小程序刷题二维码
+		getExerciseQrCode();
+		function getExerciseQrCode() {
+			http.ajax({
+				url: 'course/getExerciseQrCode',
+				type: 'GET',
+				json: false,
+				mask: false,
+				data: {
+					courseId: getQueryString("id")
+				}
+			}).then(function (data) {
+				if (data.code == 200) {
+					$(".leftCodeImg").append("<img style='transform: scale(1.3);' src='data:image/png;base64,"+data.data+" '/>");
+					$(".leftCodeImg").removeClass("gjpAfter")
+				}
+			}, function (err) {
+
+			})
+		};
 	</script>
 </body>
 
