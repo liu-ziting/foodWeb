@@ -1,6 +1,6 @@
 var App = {
-	//  apiBasePath: "/bus/",            	//正式服务接口地址
-	apiBasePath: "http://edu-bus.utools.club/bus/", 	    //本地服务接口地址
+	apiBasePath: "/bus/",            	//正式服务接口地址
+	// apiBasePath: "http://edu-bus.utools.club/bus/", 	    //本地服务接口地址
 	// apiBasePath: "http://api-business.lihail.cn/bus/", 	//测试服务接口地址
 	rootPath: getRootPath(),				                //项目根目录地址
 	filePath: 'http://resources.ahspaq.com/',               //图片路径
@@ -191,6 +191,8 @@ var http = {
 					return false;
 				}
 			}else if(rsp.code == 10000) {
+				def.resolve(rsp);
+			}else if(rsp.code == 10007) {
 				def.resolve(rsp);
 			}else{
 				layer.msg(rsp.msg, {
