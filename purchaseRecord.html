@@ -76,13 +76,13 @@
 							<p onclick="openUrl('myCourse.html?#myCourse')">我的课程</p>
 							<p onclick="openUrl('studyRecord.html?#studyRecord')">学习记录</p>
 							<p onclick="openUrl('myFavorite.html?#myCourse')">我的收藏</p>
-							<p class="active">购买记录</p>
+							<p class="active">报名记录</p>
 						</div>
 						<button type="button" onclick="logout()" class="layui-btn quit">退出登录</button>
 					</div>
 				</div>
 				<div class="right">
-					<h3>购买记录<p><i>个人中心 > 培训课程 > <span>购买记录</span></i></p>
+					<h3>报名记录<p><i>个人中心 > 培训课程 > <span>报名记录</span></i></p>
 					</h3>
 					<div class="recordList">
 						<ul>
@@ -119,8 +119,8 @@
 								</li> 
 								{{# }); }} {{# if(d.items.length === 0){ }}
 								<li>
-									<h1>暂无购买记录<time></time></h1>
-									<p>暂无购买记录</p>
+									<h1>暂无报名记录<time></time></h1>
+									<p>暂无报名记录</p>
 								</li> 
 							{{# } }}
 							</script>
@@ -246,7 +246,7 @@
 			},
 		});
 
-		//购买记录列表
+		//报名记录列表
 		var pageNo = 1;
 		var pageSize = 10;
 		orderRecords();

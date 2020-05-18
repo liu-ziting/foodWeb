@@ -76,7 +76,7 @@
 							<p onclick="openUrl('myCourse.html?#myCourse')">我的课程</p>
 							<p onclick="openUrl('studyRecord.html?#studyRecord')">学习记录</p>
 							<p class="active">我的收藏</p>
-							<p onclick="openUrl('purchaseRecord.html?#purchaseRecord')">购买记录</p>
+							<p onclick="openUrl('purchaseRecord.html?#purchaseRecord')">报名记录</p>
 						</div>
 						<button type="button" onclick="logout()" class="layui-btn quit">退出登录</button>
 					</div>
@@ -102,7 +102,7 @@
 							<time>
 								<i id="{{item.courseInfo.id}}" class="cancel">取消收藏</i>
 								{{#  if(item.buyStatus == 'unpurchased'){ }}
-								<span onclick="openUrl('courseCenterDetails.html?id={{item.courseInfo.id}}')">前往购买</span>
+								<span onclick="openUrl('courseCenterDetails.html?id={{item.courseInfo.id}}')">前往报名</span>
 								{{#  } }} 
 							</time>
 						</li>
@@ -118,7 +118,7 @@
 								<em class="layui-icon layui-icon-rate-solid"></em>
 							</div>
 							<p>流通领域从业人员培训课程</p>
-							<time>取消收藏<span>前往购买</span></time>
+							<time>取消收藏<span>前往报名</span></time>
 						</li> -->
 					</ul>
 					<!--分页-->

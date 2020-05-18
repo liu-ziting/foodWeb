@@ -128,7 +128,7 @@
 							</div>
 							
 							{{#  if(d.buyStatus == 'unpurchased'){ }}
-								<button onclick="openUrl('purchase.html?id={{d.id}}')" type="button" class="layui-btn">立刻购买 ></button>
+								<button onclick="openUrl('purchase.html?id={{d.id}}')" type="button" class="layui-btn">立刻报名 ></button>
 							{{#  } else if(d.courseHourList.length == 0) { }}
 								<button type="button" class="layui-btn layui-btn-disabled">暂无课程</button>
 							{{#  } else { }}
@@ -259,7 +259,7 @@
 								if(sid && free == 'true'){
 									openUrl('watchVideo.html?id='+getQueryString("id")+'&sid='+sid+'');
 								}else{
-									layer.msg('未购买不可观看！', {
+									layer.msg('未报名不可观看！', {
 										icon: 5
 									}, function () {
 									});
