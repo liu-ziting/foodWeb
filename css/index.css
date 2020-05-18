@@ -537,6 +537,12 @@ header nav  ul .active i{
 	line-height:23px;
 	color: #999999;
 	font-size: 12px;
+	display: -webkit-box;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .information section .right ul li p{
 	font-size: 14px;
@@ -3029,11 +3035,11 @@ strong{
 }
 .newIndexListBox ul{
 	overflow: hidden;
-	height: 400px;
+	height: 410px;
 }
 .newIndexListBox ul li{
 	width: 280px;
-	height: 382px;
+	height: 390px;
 	cursor: pointer;
 	transition: all 0.6s;
 	float: left;
@@ -3130,7 +3136,10 @@ strong{
 	font-size: 12px;
 	color: #666666;
 	float: left;
-	margin-right: 20px;
+	margin-top: 3px;
+	margin-right: 15px;
+	width: 120px;
+	height: 20px;
 }
 .newIndexListBox ul li i img{
 	display: block;

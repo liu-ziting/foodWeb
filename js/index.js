@@ -163,7 +163,7 @@ function freeCourseList() {
             $("#auditionRight .temporary").hide();
             if (data.code == 200) {
                 for (var i = 0; i < result.items.length; i++) {
-                    rigthHtml+='<li id='+result.items[i].courseInfo.id+'><span>'+result.items[i].courseInfo.trainingType.trainingTypeName+'</span><p>'+result.items[i].courseInfo.courseName+' - '+result.items[i].courseHourName+'</p></li>'
+                    rigthHtml+='<li id='+result.items[i].courseInfo.id+'><span title="'+result.items[i].courseInfo.trainingType.trainingTypeName+'">'+result.items[i].courseInfo.trainingType.trainingTypeName+'</span><p>'+result.items[i].courseInfo.courseName+' - '+result.items[i].courseHourName+'</p></li>'
                 };
                 $("#auditionRight").append(rigthHtml);
                 
