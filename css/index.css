@@ -495,6 +495,7 @@ header nav  ul .active i{
 	padding: 23px 0 20px 18px;
 	border-left: 1px solid #E7E6ED;
 	position: relative;
+	overflow: hidden;
 }
 .information section .right h1{
 	font-size: 16px;
@@ -509,6 +510,9 @@ header nav  ul .active i{
 }
 .information section .right ul{
 	margin-top: 5px;
+    overflow-y: scroll;
+    height: 443px;
+    width: 329px;
 }
 .information section .right ul li{
 	width: 100%;
@@ -565,7 +569,7 @@ header nav  ul .active i{
 	font-size:14px;
 	color: #ffffff;
 	display: block;
-	margin: 25px auto;
+	margin: 10px auto;
 	position: absolute;
     bottom: 6px;
     left: 40px;
