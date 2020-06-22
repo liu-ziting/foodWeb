@@ -31,18 +31,30 @@ function exam() {
             $("#id").val(result.id);
             $(".nowTime").html(getNowFormatDate()+" 开考")
             //单选题序号循环
+            if(result.choiceList.length == 0){
+                $("#numChoiceListHtml").siblings("h1").hide();
+            }
             for (var i = 0; i < result.choiceList.length; i++) {
-                numChoiceListHtml += '<span class="number">' + (i + 1) + '</span>';
+                // numChoiceListHtml += '<span class="number">' + (i + 1) + '</span>';
+                numChoiceListHtml += "<span onclick=\"javascript:location.href=\'#"+result.choiceList[i].id+"\'\" class=\"number\" >"+(i + 1)+"</span>";
             };
             $("#numChoiceListHtml").append(numChoiceListHtml);
             //判断题序号循环
+            if(result.judgeList.length == 0){
+                $("#numjudgeListHtml").siblings("h1").hide();
+            }
             for (var i = 0; i < result.judgeList.length; i++) {
-                numjudgeListHtml += '<span class="number">' + (result.choiceList.length + i + 1) + '</span>';
+               //  numjudgeListHtml += '<span class="number">' + (result.choiceList.length + i + 1) + '</span>';
+               numjudgeListHtml += "<span onclick=\"javascript:location.href=\'#"+result.judgeList[i].id+"\'\" class=\"number\" >"+(result.choiceList.length + i + 1)+"</span>";
             };
             $("#numjudgeListHtml").append(numjudgeListHtml);
             //多选题序号循环
+            if(result.multiChoiceList.length == 0){
+                $("#nummultiChoiceListHtml").siblings("h1").hide();
+            }
             for (var i = 0; i < result.multiChoiceList.length; i++) {
-                nummultiChoiceListHtml += '<span class="number">' + (result.choiceList.length + result.judgeList.length + i + 1) + '</span>';
+                nummultiChoiceListHtml += "<span onclick=\"javascript:location.href=\'#"+result.multiChoiceList[i].id+"\'\" class=\"number\" >"+(result.choiceList.length + result.judgeList.length + i + 1)+"</span>";
+                //nummultiChoiceListHtml += '<span class="number">' + (result.choiceList.length + result.judgeList.length + i + 1) + '</span>';
             };
             $("#nummultiChoiceListHtml").append(nummultiChoiceListHtml);
 

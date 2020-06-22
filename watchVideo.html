@@ -124,7 +124,7 @@
 					</form>
 				</div>
 				<div class="right">
-					<div class="codeBox">
+					<div class="codeBox leftCodeImg">
 						<p>小程序正在努力开发中</p>
 						<!-- <img src="img/code.png"/> -->
 					</div>
@@ -141,7 +141,26 @@
 	<script type="text/javascript" src="js/main.js"></script>
 	<script type="text/javascript" src="js/watchVideo.js"></script>
 	<script>
+		//获取获取小程序刷题二维码
+		getExerciseQrCode();
+		function getExerciseQrCode() {
+			http.ajax({
+				url: 'course/getExerciseQrCode',
+				type: 'GET',
+				json: false,
+				mask: false,
+				data: {
+					courseId: getQueryString("id")
+				}
+			}).then(function (data) {
+				if (data.code == 200) {
+					$(".leftCodeImg").append("<img style='transform: scale(1.1);' src='data:image/png;base64,"+data.data+" '/>");
+					$(".leftCodeImg p").hide()
+				}
+			}, function (err) {
 
+			})
+		};
 	</script>
 </body>
 
