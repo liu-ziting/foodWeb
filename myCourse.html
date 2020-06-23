@@ -109,7 +109,7 @@
 							{{#  } else if(item.learnStatus == 'completed'){ }}
 
 								{{#  if(item.examPass == false){ }}
-								<time>学习已完成<span  onclick="openUrl('examination.html?id={{item.examCenterId}}')">开始考试</span></time>
+								<time>学习已完成<span  onclick="openUrl('examination.html?id={{item.examCenterId}}&kid={{item.courseDTO.id}}')">开始考试</span></time>
 								{{#  } else { }}
 									{{#  if(item.applyCertificateStatus == 'applyed'){ }}
 									<time>学习已完成<span onclick="openUrl('certificate.html')">查询证书</span></time>
