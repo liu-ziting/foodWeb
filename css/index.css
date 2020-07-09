@@ -767,6 +767,7 @@ header nav  ul .active i{
 	display: block;
 	margin: 0 auto;
 	margin-bottom: 10px;
+	width: 80px;
 }
 .footer .right .ewm p{
 	font-size: 12px;
